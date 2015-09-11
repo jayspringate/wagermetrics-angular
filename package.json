@@ -1,4 +1,4 @@
- {
+{
   "name": "wagermetrics-angular",
   "version": "0.1.0",
   "private": true,
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/jayspringate/wagermetrics-angular",
   "devDependencies": {
+    "angular": "^1.4.5",
     "chai": "^2.3.0",
     "chai-http": "^1.0.0",
     "css-loader": "^0.16.0",

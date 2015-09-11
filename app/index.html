@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Yesteryear' rel='stylesheet' type='text/css'>
   </head>
-  <body class="container_16 clearfix">
+  <body data-ng-app class="container_16 clearfix">
     <main>
     <header class="header">
         Wagermetrics
@@ -214,7 +214,7 @@
         <option value="20">20</option>
        </select>
       </form>
-      <button id='testClick' class="grid_2 push_7">Get Results</button>
+      <button data-ng-click='getResultsClick()' getid='testClick' class="grid_2 push_7">Get Results</button>
       <div id="teamLogo" class ='nba'></div>
       <table class="resultsTable" id='winLossTable'>
         <tr>

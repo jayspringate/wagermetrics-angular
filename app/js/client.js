@@ -1,5 +1,9 @@
+'use strict';
+
+require('angular/angular');
 var request = require('superagent');
-require('./requirements.js');
+require('./requirements');
+var $ = require('./jquery'); //this might cause problem
 
 var gamesList = document.getElementById('gamesList');
 
@@ -12,9 +16,10 @@ request
     games = JSON.parse(res.text);
   });
 
-$(function() {
+function wrapper () {
 
-  $('#testClick').on('click', function() {
+  function getResultsClick () {
+
     var property = [];
     var selection = [];
     var element;
@@ -199,5 +204,5 @@ $(function() {
     $('#gamesTable').append($table);
     $('#gamesTable').addClass('resultsTable');
 
-  });
-});
+  }
+}
