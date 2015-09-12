@@ -3,18 +3,21 @@
 require('angular/angular');
 var request = require('superagent');
 require('./requirements');
-var $ = require('./jquery'); //this might cause problem
 
-var gamesList = document.getElementById('gamesList');
+var wagerApp = angular.module('wagerApp', []); //corresponds to data-ng-app in body tag
 
-var games = [];
+var wagerController = wagerApp.controller('wagerController', ['$scope', function($scope) {
 
-request
-  .get('/api/games')
-  .end(function(err, res) {
-    if (err) return console.log(err);
-    games = JSON.parse(res.text);
-  });
+  $scope.games = [];
+
+  request
+    .get('/api/games')
+    .end(function(err, res) {
+      if (err) return console.log(err);
+      $scope.games = JSON.parse(res.text);
+
+      //get lists for html dropdowns
+
 
 function wrapper () {
 
@@ -23,7 +26,7 @@ function wrapper () {
     var property = [];
     var selection = [];
     var element;
-    var filteredGames = games;
+    var filteredGames = $scope.games;
     var winCount = 0;
     var lossCount = 0;
     var pushCount = 0;
@@ -206,3 +209,9 @@ function wrapper () {
 
   }
 }
+
+    });
+}]);
+
+
+
