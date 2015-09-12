@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Yesteryear' rel='stylesheet' type='text/css'>
   </head>
-  <body data-ng-app class="container_16 clearfix">
-    <main>
+  <body data-ng-app='wagerApp' class="container_16 clearfix">
+    <main data-ng-controller='wagerController'>
     <header class="header">
         Wagermetrics
     </header>
@@ -250,25 +250,25 @@
       </table>
       <h1 class="break-even grid_5 push_4"> -110 break-even: 52.4% </h1>
       <h1 class="break-even grid_5 push_3"> -105 break-even: 51.2% </h1>
-    </main>
-    <section>
-      <table id='gamesTable' class='resultsTable'>
-        <tr>
-          <td>Date</td>
-          <td>Team</td>
-          <td>Court</td>
-          <td>Opponent</td>
-          <td>Score</td>
-          <td>Result</td>
-          <td>Spread</td>
-          <td>Spread Move</td>
-          <td>Spread Grade</td>
-          <td>Total</td>
-          <td>Total Move</td>
-          <td>Total Grade</td>
-        </tr>
-      </table>
-    </section>
+      <section>
+        <table id='gamesTable' class='resultsTable'>
+          <tr>
+            <td>Date</td>
+            <td>Team</td>
+            <td>Court</td>
+            <td>Opponent</td>
+            <td>Score</td>
+            <td>Result</td>
+            <td>Spread</td>
+            <td>Spread Move</td>
+            <td>Spread Grade</td>
+            <td>Total</td>
+            <td>Total Move</td>
+            <td>Total Grade</td>
+          </tr>
+        </table>
+      </section>
+    </main>  <!-- wagerController -->
   <script src="bundle.js"></script>
   </body>
 </html>
