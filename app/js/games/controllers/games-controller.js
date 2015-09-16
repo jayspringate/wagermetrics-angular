@@ -7,7 +7,6 @@ module.exports = function (app) {
       $scope.games = [];
       $scope.errors = [];
       $scope.teamList = require('../team-list.js');
-      console.log($scope.teamList);
       $scope.spreadList = require('../spread-list.js');
 
       $scope.getAll = function () {
