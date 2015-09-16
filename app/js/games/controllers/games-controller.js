@@ -1,10 +1,14 @@
 'use strict';
 
 module.exports = function (app) {
+
   app.controller('gamesController', ['$scope', '$http', function($scope, $http) {
 
       $scope.games = [];
       $scope.errors = [];
+      $scope.teamList = require('../team-list.js');
+      console.log($scope.teamList);
+      $scope.spreadList = require('../spread-list.js');
 
       $scope.getAll = function () {
 
