@@ -8,6 +8,8 @@ module.exports = function (app) {
       $scope.errors = [];
       $scope.teamList = require('../team-list.js');
       $scope.spreadList = require('../spread-list.js');
+      $scope.id = '';
+      $scope.dropDownTitle = '';
 
       $scope.getAll = function () {
 
@@ -21,5 +23,10 @@ module.exports = function (app) {
           console.log(res.data);
         });
       };
+
+      $scope.resultsClick = function() {
+
+      };
+
   }]);
 };
