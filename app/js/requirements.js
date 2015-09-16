@@ -1,4 +1,3 @@
-require("script!./jquery.js");
 require('./../css/base.css');
 require('./../css/modules.css');
 require('./../css/reset.css');
