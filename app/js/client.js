@@ -2,7 +2,7 @@
 
 require('angular/angular');
 
-require('./directives/directives.js');
+require('./games/directives/directives.js');
 
 require('./requirements.js');
 
