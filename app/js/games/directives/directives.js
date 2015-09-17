@@ -5,4 +5,4 @@ var directives = angular.module('directives', []);
 //requires
 
 require('./nav-directive')(directives);
-require('./team-form-directive')(directives);
+require('./form-directive')(directives);

@@ -8,7 +8,7 @@ module.exports = function(app) {
 
       restrict: 'AC',
       replace: true, //replaces placement element
-      template: '<nav class="navBar"><h1 class="leftNavHeader">NBA</h1><h1 class="midNavHeader">NFL</h1><h2 class="comingSoon">coming soon!</h2><h1 class="midNavHeader">NCAAFB</h1><h2 class="comingSoon">coming soon!</h2></nav>',
+      templateUrl: 'js/games/templates/nav-directive-template.html',
       scope: {} //scope specific to this directive, can set default values inside
     };
   });
