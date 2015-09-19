@@ -6,7 +6,7 @@ module.exports = function (app) {
 
       $scope.games = [];
       $scope.errors = [];
-      $scope.teamList = require('../dropdown-lists/sublists/team-list.js');
+      $scope.dropdownLists = require('../dropdown-lists/dropdown-lists.js');
 
 
       $scope.getAll = function () {

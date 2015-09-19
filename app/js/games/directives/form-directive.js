@@ -9,12 +9,12 @@ module.exports = function(app) {
       restrict: 'AC',
       replace: true, //replaces placement element
       templateUrl: 'js/games/templates/form-directive-template.html',
-      transclude: true,
      //scope specific to this directive, can set default values inside
       scope: {
         formClassName: '@',
-        listId: '@',
-        dropdownTitle: '@'
+        listName: '@',
+        dropdownTitle: '@',
+        dropdownLists: '=',
       }
     };
   });
