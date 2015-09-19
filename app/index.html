@@ -16,66 +16,24 @@
       </header>
       <div data-nav-directive></div>
       <h1 class="grid_5 push_6 subheading">Trend Analyzer</h1>
-      <div data-form-directive data-list-id="team" data-dropdown-title="Team">
-        <option value="blank" selected="selected">{{$parent.dropdownTitle}}</option>
-        <option data-ng-repeat="element in teamList" data-ng-value="{{element.value}}">{{element.name}}</option>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="team" data-dropdown-title="Team">
       </div>
-      <form class="dropDown">
-        <select autocomplete='off' id="teamCourt" class="grid_6 push_5">
-          <option value="blank" selected="selected">Court</option>
-          <option value="home">Home</option>
-          <option value="road">Road</option>
-        </select>
-      </form>
-      <div data-form-directive data-list-id="opponent" data-dropdown-title="Opponent" data-form-class-name='dropDown'>
-        <option value="blank" selected="selected">{{$parent.dropdownTitle}}</option>
-        <option data-ng-repeat="element in teamList" data-ng-value="{{element.value}}">{{element.name}}</option>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="teamCourt" data-dropdown-title="Court" data-form-class-name='dropDown'>
       </div>
-      <form class="dropDown">
-        <select autocomplete='off' id="gameType" class="grid_6 push_5">
-          <option value="blank" selected="selected">Game Type</option>
-          <option value="reg">Regular Season</option>
-          <option value="playoff">Playoffs</option>
-        </select>
-      </form>
-      <form class="dropDown">
-        <select autocomplete='off' id="season" class="grid_6 push_5">
-          <option value="blank" selected="selected">Season</option>
-          <option value="2014-15">2014-15</option>
-          <option value="2013-14">2013-14</option>
-          <option value="2012-13">2012-13</option>
-          <option value="2011-12">2011-12</option>
-        </select>
-      </form>
-      <form class="dropDown">
-        <select autocomplete='off' id="status" class="grid_6 push_5">
-          <option value="blank">Spread Status</option>
-          <option value="favorite">Favorite</option>
-          <option value="underdog">Underdog</option>
-        </select>
-      </form>
-      <form class="dropDown">
-        <select autocomplete='off' id="spreadMove" class="grid_6 push_5">
-          <option value="blank">Spread Move</option>
-          <option value="FOR">For</option>
-          <option value="AGAINST">Against</option>
-          <option value="NONE">None</option>
-        </select>
-      </form>
-      <form class="dropDown">
-        <select autocomplete='off' id="totalMove" class="grid_6 push_5">
-          <option value="blank">Total Move</option>
-          <option value="UP">Up</option>
-          <option value="DOWN">Down</option>
-          <option value="NONE">None</option>
-        </select>
-      </form>
-      <form class="dropDown">
-       <select autocomplete='off' id="spreadClose" class="grid_6 push_5">
-        <option value="blank" selected="selected">Spread</option>
-        <option data-ng-repeat='spread in spreadList' data-ng-value='{{spread}}'>{{spread}}</option>
-       </select>
-      </form>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="opponent" data-dropdown-title="Opponent" data-form-class-name='dropDown'>
+      </div>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="gameType" data-dropdown-title="Game Type" data-form-class-name='dropDown'>
+      </div>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="season" data-dropdown-title="Season" data-form-class-name='dropDown'>
+      </div>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="status" data-dropdown-title="Spread Status" data-form-class-name='dropDown'>
+      </div>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="spreadMove" data-dropdown-title="Spread Move" data-form-class-name='dropDown'>
+      </div>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="totalMove" data-dropdown-title="Total Move" data-form-class-name='dropDown'>
+      </div>
+      <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="spreadClose" data-dropdown-title="Spread" data-form-class-name='dropDown'>
+      </div>
       <button data-ng-click='getResultsClick()' getid='testClick' class="grid_2 push_7">Get Results</button>
       <div id="teamLogo" class ='nba'></div>
       <table class="resultsTable" id='winLossTable'>

@@ -1,4 +1,5 @@
 <form class="{{formClassName}}">
-  <select data-ng-transclude autocomplete="off" id="{{listId}}" class="grid_6 push_5">
+  <select data-ng-model="listName.name" data-ng-options="listName.name for listName in dropdownLists[listName] track by listName.value" autocomplete="off" id="{{listName}}" class="grid_6 push_5">
+    <option value ="" selected="selected">{{dropdownTitle}}</option>
   </select>
 </form>

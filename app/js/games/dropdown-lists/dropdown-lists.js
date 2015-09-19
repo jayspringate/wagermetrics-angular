@@ -11,12 +11,12 @@ var totalMoveList = require('./sublists/total-move-list');
 
 module.exports = {
           team: teamList,
-          court: courtList,
+          teamCourt: courtList,
           opponent: teamList,
           gameType: gameTypeList,
           season: seasonList,
           status: statusList,
-          spread: spreadList,
+          spreadClose: spreadList,
           spreadMove: spreadMoveList,
           totalMove: totalMoveList
         };
