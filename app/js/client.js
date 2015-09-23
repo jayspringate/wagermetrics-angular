@@ -2,9 +2,9 @@
 
 require('angular/angular');
 
-require('./games/directives/directives.js');
+require('./requirements');
 
-require('./requirements.js');
+require('./games/directives/directives.js');
 
 var wagerApp = angular.module('wagerApp', ['directives']);
 

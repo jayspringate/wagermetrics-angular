@@ -50,7 +50,7 @@
 
 	__webpack_require__(2);
 
-	__webpack_require__(5);
+	__webpack_require__(78);
 
 	var wagerApp = angular.module('wagerApp', ['directives']);
 
@@ -28892,70 +28892,14 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var directives = angular.module('directives', []);
-
-	//requires
-
-	__webpack_require__(3)(directives);
-	__webpack_require__(4)(directives);
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function(app) {
-	  app.directive('navDirective', function() {
-	    return {
-
-	      //directive can only contain one outer, parent element - cannot have siblings
-
-	      restrict: 'AEC',
-	      replace: true, //replaces placement element
-	      templateUrl: 'js/games/templates/nav-directive-template.html',
-	      scope: {} //scope specific to this directive, can set default values inside
-	    };
-	  });
-	};
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function(app) {
-	  app.directive('formDirective', function() {
-	    return {
-
-	      //directive can only contain one outer, parent element - cannot have siblings
-
-	      restrict: 'AEC',
-	      replace: true, //replaces placement element
-	      templateUrl: 'js/games/templates/form-directive-template.html',
-	     //scope specific to this directive, can set default values inside
-	      scope: {
-	        formClassName: '@',
-	        listName: '@',
-	        dropdownTitle: '@',
-	        dropdownLists: '=',
-	      }
-	    };
-	  });
-	};
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(6);
-	__webpack_require__(10);
-	__webpack_require__(43);
+	__webpack_require__(3);
+	__webpack_require__(7);
+	__webpack_require__(40);
+	__webpack_require__(42);
 	__webpack_require__(45);
+	__webpack_require__(47);
 	__webpack_require__(48);
+	__webpack_require__(49);
 	__webpack_require__(50);
 	__webpack_require__(51);
 	__webpack_require__(52);
@@ -28984,21 +28928,18 @@
 	__webpack_require__(75);
 	__webpack_require__(76);
 	__webpack_require__(77);
-	__webpack_require__(78);
-	__webpack_require__(79);
-	__webpack_require__(80);
 
 /***/ },
-/* 6 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(7);
+	var content = __webpack_require__(4);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -29015,10 +28956,10 @@
 	}
 
 /***/ },
-/* 7 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
@@ -29029,7 +28970,7 @@
 
 
 /***/ },
-/* 8 */
+/* 5 */
 /***/ function(module, exports) {
 
 	/*
@@ -29085,7 +29026,7 @@
 
 
 /***/ },
-/* 9 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -29310,16 +29251,16 @@
 
 
 /***/ },
-/* 10 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(11);
+	var content = __webpack_require__(8);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -29336,216 +29277,216 @@
 	}
 
 /***/ },
-/* 11 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "\n.header {\n\tfont-family: 'Yesteryear';\n\tfont-size: 80px;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n \tfont-size: 32px;\n \tfont-family: arial;\n \tmargin-top: 20px;\n \tmargin-left: 37%;\n \tfont-weight: bold;\n \ttext-decoration: underline;\n \tmargin-right: -10px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .leftNavHeader {\n \tmargin-left: 320px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \tcolor: #FFE0B2;\n }\n\n .midNavHeader {\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n }\n\n .comingSoon {\n \tfont-size: 11px;\n \twidth: 20px;\n\tdisplay: inline-block;\n }\n\n .break-even {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.dropDown {\n\tpadding-top: 15px;\n\tclear: both;\n\theight: 20px;\n}\n\n#team {\nmargin-top: 20px;\nfont-size: 20px;\nclear: both;\nheight: 40px;\n}\n\nselect {\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n}\n\nbutton {\n\tclear: both;\n\tmargin-top: 15px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 14px;\n\tfont-weight: bold;\n\tmargin-bottom: 20px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n\n}\n.resultsTable {\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: #729ea5;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\n}\n\n.resultsTable tr {\n\tbackground-color: #DBDBDB;\n\n}\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n.resultsTable tr:hover {\n\tbackground-color:#deb887;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 30px;\n\twidth: 50%;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .85;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tmargin: 0 auto;\n\tmargin-top: 20px;\n\tclear: both;\n\tmargin-top: 50px;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\nsection {\n\tmargin-top: 20px;\n}\n\n.ATL {\n\tbackground-image: url(" + __webpack_require__(12) + ");\n}\n\n.BK {\n\tbackground-image: url(" + __webpack_require__(13) + ");\n}\n\n.BOS {\n\tbackground-image: url(" + __webpack_require__(14) + ");\n}\n\n.CHAR {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.CHI {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.CLE {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n.DAL {\n\tbackground-image: url(" + __webpack_require__(18) + ");\n}\n\n.DEN {\n\tbackground-image: url(" + __webpack_require__(19) + ");\n}\n\n.DET {\n\tbackground-image: url(" + __webpack_require__(20) + ");\n}\n\n.GS {\n\tbackground-image: url(" + __webpack_require__(21) + ");\n}\n\n.HOU {\n\tbackground-image: url(" + __webpack_require__(22) + ");\n}\n\n.IND {\n\tbackground-image: url(" + __webpack_require__(23) + ");\n}\n\n.LAC {\n\tbackground-image: url(" + __webpack_require__(24) + ");\n}\n\n.LAL {\n\tbackground-image: url(" + __webpack_require__(25) + ");\n}\n\n.MEM {\n\tbackground-image: url(" + __webpack_require__(26) + ");\n}\n\n.MIA {\n\tbackground-image: url(" + __webpack_require__(27) + ");\n}\n\n.MIL {\n\tbackground-image: url(" + __webpack_require__(28) + ");\n}\n\n.MIN {\n\tbackground-image: url(" + __webpack_require__(29) + ");\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(30) + ");\n}\n.NO {\n\tbackground-image: url(" + __webpack_require__(31) + ");\n}\n\n.NY {\n\tbackground-image: url(" + __webpack_require__(32) + ");\n}\n\n.OKC {\n\tbackground-image: url(" + __webpack_require__(33) + ");\n}\n\n.ORL {\n\tbackground-image: url(" + __webpack_require__(34) + ");\n}\n\n.PHI {\n\tbackground-image: url(" + __webpack_require__(35) + ");\n}\n\n.PHO {\n\tbackground-image: url(" + __webpack_require__(36) + ");\n}\n\n.POR {\n\tbackground-image: url(" + __webpack_require__(37) + ");\n}\n\n.SA {\n\tbackground-image: url(" + __webpack_require__(38) + ");\n}\n\n.SAC {\n\tbackground-image: url(" + __webpack_require__(39) + ");\n}\n\n.TOR {\n\tbackground-image: url(" + __webpack_require__(40) + ");\n}\n\n.UTA {\n\tbackground-image: url(" + __webpack_require__(41) + ");\n}\n\n.WAS {\n\tbackground-image: url(" + __webpack_require__(42) + ");\n}\n", ""]);
+	exports.push([module.id, "\n.header {\n\tfont-family: 'Yesteryear';\n\tfont-size: 80px;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n \tfont-size: 32px;\n \tfont-family: arial;\n \tmargin-top: 20px;\n \tmargin-left: 37%;\n \tfont-weight: bold;\n \ttext-decoration: underline;\n \tmargin-right: -10px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .leftNavHeader {\n \tmargin-left: 320px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \tcolor: #FFE0B2;\n }\n\n .midNavHeader {\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n }\n\n .comingSoon {\n \tfont-size: 11px;\n \twidth: 20px;\n\tdisplay: inline-block;\n }\n\n .break-even {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.dropDown {\n\tpadding-top: 15px;\n\tclear: both;\n\theight: 20px;\n}\n\n#team {\nmargin-top: 20px;\nfont-size: 20px;\nclear: both;\nheight: 40px;\n}\n\nselect {\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n}\n\nbutton {\n\tclear: both;\n\tmargin-top: 15px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 14px;\n\tfont-weight: bold;\n\tmargin-bottom: 20px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n\n}\n.resultsTable {\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: #729ea5;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\n}\n\n.resultsTable tr {\n\tbackground-color: #DBDBDB;\n\n}\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n.resultsTable tr:hover {\n\tbackground-color:#deb887;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 30px;\n\twidth: 50%;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .85;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tmargin: 0 auto;\n\tmargin-top: 20px;\n\tclear: both;\n\tmargin-top: 50px;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\nsection {\n\tmargin-top: 20px;\n}\n\n.ATL {\n\tbackground-image: url(" + __webpack_require__(9) + ");\n}\n\n.BK {\n\tbackground-image: url(" + __webpack_require__(10) + ");\n}\n\n.BOS {\n\tbackground-image: url(" + __webpack_require__(11) + ");\n}\n\n.CHAR {\n\tbackground-image: url(" + __webpack_require__(12) + ");\n}\n\n.CHI {\n\tbackground-image: url(" + __webpack_require__(13) + ");\n}\n\n.CLE {\n\tbackground-image: url(" + __webpack_require__(14) + ");\n}\n\n.DAL {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.DEN {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.DET {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n.GS {\n\tbackground-image: url(" + __webpack_require__(18) + ");\n}\n\n.HOU {\n\tbackground-image: url(" + __webpack_require__(19) + ");\n}\n\n.IND {\n\tbackground-image: url(" + __webpack_require__(20) + ");\n}\n\n.LAC {\n\tbackground-image: url(" + __webpack_require__(21) + ");\n}\n\n.LAL {\n\tbackground-image: url(" + __webpack_require__(22) + ");\n}\n\n.MEM {\n\tbackground-image: url(" + __webpack_require__(23) + ");\n}\n\n.MIA {\n\tbackground-image: url(" + __webpack_require__(24) + ");\n}\n\n.MIL {\n\tbackground-image: url(" + __webpack_require__(25) + ");\n}\n\n.MIN {\n\tbackground-image: url(" + __webpack_require__(26) + ");\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(27) + ");\n}\n.NO {\n\tbackground-image: url(" + __webpack_require__(28) + ");\n}\n\n.NY {\n\tbackground-image: url(" + __webpack_require__(29) + ");\n}\n\n.OKC {\n\tbackground-image: url(" + __webpack_require__(30) + ");\n}\n\n.ORL {\n\tbackground-image: url(" + __webpack_require__(31) + ");\n}\n\n.PHI {\n\tbackground-image: url(" + __webpack_require__(32) + ");\n}\n\n.PHO {\n\tbackground-image: url(" + __webpack_require__(33) + ");\n}\n\n.POR {\n\tbackground-image: url(" + __webpack_require__(34) + ");\n}\n\n.SA {\n\tbackground-image: url(" + __webpack_require__(35) + ");\n}\n\n.SAC {\n\tbackground-image: url(" + __webpack_require__(36) + ");\n}\n\n.TOR {\n\tbackground-image: url(" + __webpack_require__(37) + ");\n}\n\n.UTA {\n\tbackground-image: url(" + __webpack_require__(38) + ");\n}\n\n.WAS {\n\tbackground-image: url(" + __webpack_require__(39) + ");\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 12 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "58c01737dec8ed7be31860667cbed415.gif"
 
 /***/ },
-/* 13 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "2050c1aefedfa46c7ca7492efa753930.gif"
 
 /***/ },
-/* 14 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c62fd8f3da002b774b3cd338ca137929.gif"
 
 /***/ },
-/* 15 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "cb6c6110e90c51c7c561ce6bfb24beaa.gif"
 
 /***/ },
-/* 16 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "e588e78d4647c97b8a6de6b884195712.gif"
 
 /***/ },
-/* 17 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d991b7016622983cf066e8982fa6e2c7.gif"
 
 /***/ },
-/* 18 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "33027116179612f8b6136358fa703254.gif"
 
 /***/ },
-/* 19 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "eba8f397dab101dcdc79c352eb895018.gif"
 
 /***/ },
-/* 20 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "5f194b573fa0160373a65888b77e616f.gif"
 
 /***/ },
-/* 21 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "5f77ca343176e810bf08bca01b230bc2.gif"
 
 /***/ },
-/* 22 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "306ba8e67a5d32c834a4d6e7de8a491a.gif"
 
 /***/ },
-/* 23 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "718f1b47e55a3e9e4886b5883ad2395c.gif"
 
 /***/ },
-/* 24 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "bcbb882e32f07237eb78ea8c3a342cdc.gif"
 
 /***/ },
-/* 25 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "2947e6bcf1057eae4bc80fc95a54eed6.gif"
 
 /***/ },
-/* 26 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "eea1b730f7c4639ceca0fb654c61d2ef.gif"
 
 /***/ },
-/* 27 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b9c9a43aaff7deac60550eae69866a90.gif"
 
 /***/ },
-/* 28 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "769251070cb5bd7528a7ba6c4e0b1cf8.gif"
 
 /***/ },
-/* 29 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "dd29d257a5cd92b70cacd4c80596dd6a.gif"
 
 /***/ },
-/* 30 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "215e56b34832c0273b2c1e88d020898d.gif"
 
 /***/ },
-/* 31 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "9d8635fdb8b15b14b5ebbc49fd6d6ccc.gif"
 
 /***/ },
-/* 32 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "33eda8144fe01deac573ce70ab4d9f0f.gif"
 
 /***/ },
-/* 33 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "1424e512a2c36dc9a17b8bb12a78bcbe.gif"
 
 /***/ },
-/* 34 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "7aee5bbb65bece7f35c031f44db39e42.gif"
 
 /***/ },
-/* 35 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "dcc915bf16e7abd40b485ad67f277128.gif"
 
 /***/ },
-/* 36 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c40dbd0491a5011c33df648b5b5dd64b.gif"
 
 /***/ },
-/* 37 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "9ec8234cd4ab0b5decfe1c4a5ad01cf9.gif"
 
 /***/ },
-/* 38 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "8b217900b5e936eef853bb84948dd31d.gif"
 
 /***/ },
-/* 39 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "99b9100d6b29bafb66683ac8d12c166d.gif"
 
 /***/ },
-/* 40 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "efe8ad8ecdfaf1b46af45bf2fb55e557.gif"
 
 /***/ },
-/* 41 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b0f67515b584179106d8b3e001063e1e.gif"
 
 /***/ },
-/* 42 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "48cd560da9eae6ab92218bb7e9888bd4.gif"
 
 /***/ },
-/* 43 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(44);
+	var content = __webpack_require__(41);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -29562,10 +29503,10 @@
 	}
 
 /***/ },
-/* 44 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
@@ -29576,16 +29517,16 @@
 
 
 /***/ },
-/* 45 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(46);
+	var content = __webpack_require__(43);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -29602,36 +29543,36 @@
 	}
 
 /***/ },
-/* 46 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "body {\n\tbackground-image:url(" + __webpack_require__(47) + ");\n\tbackground-position: center;\n\tbackground-attachment: fixed;\n\tbackground-repeat: no-repeat;\n\tbackground-size: 100%;\n  height: 100%;\n  width: 100%;\n\tmargin: 0;\n}\n\n.page {\n  background-color: rgba(255,255,255,0.85);\n  height: 1120px;\n  margin: 0 auto;\n}\n\n/*\n  960 Grid System ~ Core CSS.\n  Learn more ~ http://960.gs/\n\n  Licensed under GPL and MIT.\n*/\n\n/*\n  Forces backgrounds to span full width,\n  even if there is horizontal scrolling.\n  Increase this if your layout is wider.\n\n  Note: IE6 works fine without this fix.\n*/\n\nbody {\n  min-width: 960px;\n}\n\n/* Container\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 {\n  margin-left: auto;\n  margin-right: auto;\n  width: 960px;\n}\n\n/* Grid >> Global\n----------------------------------------------------------------------------------------------------*/\n\n.grid_1,\n.grid_2,\n.grid_3,\n.grid_4,\n.grid_5,\n.grid_6,\n.grid_7,\n.grid_8,\n.grid_9,\n.grid_10,\n.grid_11,\n.grid_12,\n.grid_13,\n.grid_14,\n.grid_15,\n.grid_16 {\n  display: inline;\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n\n.push_1, .pull_1,\n.push_2, .pull_2,\n.push_3, .pull_3,\n.push_4, .pull_4,\n.push_5, .pull_5,\n.push_6, .pull_6,\n.push_7, .pull_7,\n.push_8, .pull_8,\n.push_9, .pull_9,\n.push_10, .pull_10,\n.push_11, .pull_11,\n.push_12, .pull_12,\n.push_13, .pull_13,\n.push_14, .pull_14,\n.push_15, .pull_15,\n.push_16, .pull_16 {\n  position: relative;\n}\n\n/* Grid >> Children (Alpha ~ First, Omega ~ Last)\n----------------------------------------------------------------------------------------------------*/\n\n.alpha {\n  margin-left: 0;\n}\n\n.omega {\n  margin-right: 0;\n}\n\n/* Grid >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .grid_1 {\n  width: 40px;\n}\n\n.container_16 .grid_2 {\n  width: 100px;\n}\n\n.container_16 .grid_3 {\n  width: 160px;\n}\n\n.container_16 .grid_4 {\n  width: 220px;\n}\n\n.container_16 .grid_5 {\n  width: 280px;\n}\n\n.container_16 .grid_6 {\n  width: 340px;\n}\n\n.container_16 .grid_7 {\n  width: 400px;\n}\n\n.container_16 .grid_8 {\n  width: 460px;\n}\n\n.container_16 .grid_9 {\n  width: 520px;\n}\n\n.container_16 .grid_10 {\n  width: 580px;\n}\n\n.container_16 .grid_11 {\n  width: 640px;\n}\n\n.container_16 .grid_12 {\n  width: 700px;\n}\n\n.container_16 .grid_13 {\n  width: 760px;\n}\n\n.container_16 .grid_14 {\n  width: 820px;\n}\n\n.container_16 .grid_15 {\n  width: 880px;\n}\n\n.container_16 .grid_16 {\n  width: 940px;\n}\n\n/* Prefix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .prefix_1 {\n  padding-left: 60px;\n}\n\n.container_16 .prefix_2 {\n  padding-left: 120px;\n}\n\n.container_16 .prefix_3 {\n  padding-left: 180px;\n}\n\n.container_16 .prefix_4 {\n  padding-left: 240px;\n}\n\n.container_16 .prefix_5 {\n  padding-left: 300px;\n}\n\n.container_16 .prefix_6 {\n  padding-left: 360px;\n}\n\n.container_16 .prefix_7 {\n  padding-left: 420px;\n}\n\n.container_16 .prefix_8 {\n  padding-left: 480px;\n}\n\n.container_16 .prefix_9 {\n  padding-left: 540px;\n}\n\n.container_16 .prefix_10 {\n  padding-left: 600px;\n}\n\n.container_16 .prefix_11 {\n  padding-left: 660px;\n}\n\n.container_16 .prefix_12 {\n  padding-left: 720px;\n}\n\n.container_16 .prefix_13 {\n  padding-left: 780px;\n}\n\n.container_16 .prefix_14 {\n  padding-left: 840px;\n}\n\n.container_16 .prefix_15 {\n  padding-left: 900px;\n}\n\n/* Suffix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .suffix_1 {\n  padding-right: 60px;\n}\n\n.container_16 .suffix_2 {\n  padding-right: 120px;\n}\n\n.container_16 .suffix_3 {\n  padding-right: 180px;\n}\n\n.container_16 .suffix_4 {\n  padding-right: 240px;\n}\n\n.container_16 .suffix_5 {\n  padding-right: 300px;\n}\n\n.container_16 .suffix_6 {\n  padding-right: 360px;\n}\n\n.container_16 .suffix_7 {\n  padding-right: 420px;\n}\n\n.container_16 .suffix_8 {\n  padding-right: 480px;\n}\n\n.container_16 .suffix_9 {\n  padding-right: 540px;\n}\n\n.container_16 .suffix_10 {\n  padding-right: 600px;\n}\n\n.container_16 .suffix_11 {\n  padding-right: 660px;\n}\n\n.container_16 .suffix_12 {\n  padding-right: 720px;\n}\n\n.container_16 .suffix_13 {\n  padding-right: 780px;\n}\n\n.container_16 .suffix_14 {\n  padding-right: 840px;\n}\n\n.container_16 .suffix_15 {\n  padding-right: 900px;\n}\n\n/* Push Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .push_1 {\n  left: 60px;\n}\n\n.container_16 .push_2 {\n  left: 120px;\n}\n\n.container_16 .push_3 {\n  left: 180px;\n}\n\n.container_16 .push_4 {\n  left: 240px;\n}\n\n.container_16 .push_5 {\n  left: 300px;\n}\n\n.container_16 .push_6 {\n  left: 360px;\n}\n\n.container_16 .push_7 {\n  left: 420px;\n}\n\n.container_16 .push_8 {\n  left: 480px;\n}\n\n.container_16 .push_9 {\n  left: 540px;\n}\n\n.container_16 .push_10 {\n  left: 600px;\n}\n\n.container_16 .push_11 {\n  left: 660px;\n}\n\n.container_16 .push_12 {\n  left: 720px;\n}\n\n.container_16 .push_13 {\n  left: 780px;\n}\n\n.container_16 .push_14 {\n  left: 840px;\n}\n\n.container_16 .push_15 {\n  left: 900px;\n}\n\n/* Pull Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .pull_1 {\n  left: -60px;\n}\n\n.container_16 .pull_2 {\n  left: -120px;\n}\n\n.container_16 .pull_3 {\n  left: -180px;\n}\n\n.container_16 .pull_4 {\n  left: -240px;\n}\n\n.container_16 .pull_5 {\n  left: -300px;\n}\n\n.container_16 .pull_6 {\n  left: -360px;\n}\n\n.container_16 .pull_7 {\n  left: -420px;\n}\n\n.container_16 .pull_8 {\n  left: -480px;\n}\n\n.container_16 .pull_9 {\n  left: -540px;\n}\n\n.container_16 .pull_10 {\n  left: -600px;\n}\n\n.container_16 .pull_11 {\n  left: -660px;\n}\n\n.container_16 .pull_12 {\n  left: -720px;\n}\n\n.container_16 .pull_13 {\n  left: -780px;\n}\n\n.container_16 .pull_14 {\n  left: -840px;\n}\n\n.container_16 .pull_15 {\n  left: -900px;\n}\n\n/* `Clear Floated Elements\n----------------------------------------------------------------------------------------------------*/\n\n/* http://sonspring.com/journal/clearing-floats */\n\n.clear {\n  clear: both;\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  width: 0;\n  height: 0;\n}\n\n/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */\n\n.clearfix:before,\n.clearfix:after,\n.container_16:before,\n.container_16:after {\n  content: '.';\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  font-size: 0;\n  line-height: 0;\n  width: 0;\n  height: 0;\n}\n\n.clearfix:after,\n.container_16:after {\n  clear: both;\n}\n\n/*\n  The following zoom:1 rule is specifically for IE6 + IE7.\n  Move to separate stylesheet if invalid CSS is a problem.\n*/\n\n.clearfix,\n.container_16 {\n  zoom: 1;\n}\n", ""]);
+	exports.push([module.id, "body {\n\tbackground-image:url(" + __webpack_require__(44) + ");\n\tbackground-position: center;\n\tbackground-attachment: fixed;\n\tbackground-repeat: no-repeat;\n\tbackground-size: 100%;\n  height: 100%;\n  width: 100%;\n\tmargin: 0;\n}\n\n.page {\n  background-color: rgba(255,255,255,0.85);\n  height: 1120px;\n  margin: 0 auto;\n}\n\n/*\n  960 Grid System ~ Core CSS.\n  Learn more ~ http://960.gs/\n\n  Licensed under GPL and MIT.\n*/\n\n/*\n  Forces backgrounds to span full width,\n  even if there is horizontal scrolling.\n  Increase this if your layout is wider.\n\n  Note: IE6 works fine without this fix.\n*/\n\nbody {\n  min-width: 960px;\n}\n\n/* Container\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 {\n  margin-left: auto;\n  margin-right: auto;\n  width: 960px;\n}\n\n/* Grid >> Global\n----------------------------------------------------------------------------------------------------*/\n\n.grid_1,\n.grid_2,\n.grid_3,\n.grid_4,\n.grid_5,\n.grid_6,\n.grid_7,\n.grid_8,\n.grid_9,\n.grid_10,\n.grid_11,\n.grid_12,\n.grid_13,\n.grid_14,\n.grid_15,\n.grid_16 {\n  display: inline;\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n\n.push_1, .pull_1,\n.push_2, .pull_2,\n.push_3, .pull_3,\n.push_4, .pull_4,\n.push_5, .pull_5,\n.push_6, .pull_6,\n.push_7, .pull_7,\n.push_8, .pull_8,\n.push_9, .pull_9,\n.push_10, .pull_10,\n.push_11, .pull_11,\n.push_12, .pull_12,\n.push_13, .pull_13,\n.push_14, .pull_14,\n.push_15, .pull_15,\n.push_16, .pull_16 {\n  position: relative;\n}\n\n/* Grid >> Children (Alpha ~ First, Omega ~ Last)\n----------------------------------------------------------------------------------------------------*/\n\n.alpha {\n  margin-left: 0;\n}\n\n.omega {\n  margin-right: 0;\n}\n\n/* Grid >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .grid_1 {\n  width: 40px;\n}\n\n.container_16 .grid_2 {\n  width: 100px;\n}\n\n.container_16 .grid_3 {\n  width: 160px;\n}\n\n.container_16 .grid_4 {\n  width: 220px;\n}\n\n.container_16 .grid_5 {\n  width: 280px;\n}\n\n.container_16 .grid_6 {\n  width: 340px;\n}\n\n.container_16 .grid_7 {\n  width: 400px;\n}\n\n.container_16 .grid_8 {\n  width: 460px;\n}\n\n.container_16 .grid_9 {\n  width: 520px;\n}\n\n.container_16 .grid_10 {\n  width: 580px;\n}\n\n.container_16 .grid_11 {\n  width: 640px;\n}\n\n.container_16 .grid_12 {\n  width: 700px;\n}\n\n.container_16 .grid_13 {\n  width: 760px;\n}\n\n.container_16 .grid_14 {\n  width: 820px;\n}\n\n.container_16 .grid_15 {\n  width: 880px;\n}\n\n.container_16 .grid_16 {\n  width: 940px;\n}\n\n/* Prefix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .prefix_1 {\n  padding-left: 60px;\n}\n\n.container_16 .prefix_2 {\n  padding-left: 120px;\n}\n\n.container_16 .prefix_3 {\n  padding-left: 180px;\n}\n\n.container_16 .prefix_4 {\n  padding-left: 240px;\n}\n\n.container_16 .prefix_5 {\n  padding-left: 300px;\n}\n\n.container_16 .prefix_6 {\n  padding-left: 360px;\n}\n\n.container_16 .prefix_7 {\n  padding-left: 420px;\n}\n\n.container_16 .prefix_8 {\n  padding-left: 480px;\n}\n\n.container_16 .prefix_9 {\n  padding-left: 540px;\n}\n\n.container_16 .prefix_10 {\n  padding-left: 600px;\n}\n\n.container_16 .prefix_11 {\n  padding-left: 660px;\n}\n\n.container_16 .prefix_12 {\n  padding-left: 720px;\n}\n\n.container_16 .prefix_13 {\n  padding-left: 780px;\n}\n\n.container_16 .prefix_14 {\n  padding-left: 840px;\n}\n\n.container_16 .prefix_15 {\n  padding-left: 900px;\n}\n\n/* Suffix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .suffix_1 {\n  padding-right: 60px;\n}\n\n.container_16 .suffix_2 {\n  padding-right: 120px;\n}\n\n.container_16 .suffix_3 {\n  padding-right: 180px;\n}\n\n.container_16 .suffix_4 {\n  padding-right: 240px;\n}\n\n.container_16 .suffix_5 {\n  padding-right: 300px;\n}\n\n.container_16 .suffix_6 {\n  padding-right: 360px;\n}\n\n.container_16 .suffix_7 {\n  padding-right: 420px;\n}\n\n.container_16 .suffix_8 {\n  padding-right: 480px;\n}\n\n.container_16 .suffix_9 {\n  padding-right: 540px;\n}\n\n.container_16 .suffix_10 {\n  padding-right: 600px;\n}\n\n.container_16 .suffix_11 {\n  padding-right: 660px;\n}\n\n.container_16 .suffix_12 {\n  padding-right: 720px;\n}\n\n.container_16 .suffix_13 {\n  padding-right: 780px;\n}\n\n.container_16 .suffix_14 {\n  padding-right: 840px;\n}\n\n.container_16 .suffix_15 {\n  padding-right: 900px;\n}\n\n/* Push Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .push_1 {\n  left: 60px;\n}\n\n.container_16 .push_2 {\n  left: 120px;\n}\n\n.container_16 .push_3 {\n  left: 180px;\n}\n\n.container_16 .push_4 {\n  left: 240px;\n}\n\n.container_16 .push_5 {\n  left: 300px;\n}\n\n.container_16 .push_6 {\n  left: 360px;\n}\n\n.container_16 .push_7 {\n  left: 420px;\n}\n\n.container_16 .push_8 {\n  left: 480px;\n}\n\n.container_16 .push_9 {\n  left: 540px;\n}\n\n.container_16 .push_10 {\n  left: 600px;\n}\n\n.container_16 .push_11 {\n  left: 660px;\n}\n\n.container_16 .push_12 {\n  left: 720px;\n}\n\n.container_16 .push_13 {\n  left: 780px;\n}\n\n.container_16 .push_14 {\n  left: 840px;\n}\n\n.container_16 .push_15 {\n  left: 900px;\n}\n\n/* Pull Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .pull_1 {\n  left: -60px;\n}\n\n.container_16 .pull_2 {\n  left: -120px;\n}\n\n.container_16 .pull_3 {\n  left: -180px;\n}\n\n.container_16 .pull_4 {\n  left: -240px;\n}\n\n.container_16 .pull_5 {\n  left: -300px;\n}\n\n.container_16 .pull_6 {\n  left: -360px;\n}\n\n.container_16 .pull_7 {\n  left: -420px;\n}\n\n.container_16 .pull_8 {\n  left: -480px;\n}\n\n.container_16 .pull_9 {\n  left: -540px;\n}\n\n.container_16 .pull_10 {\n  left: -600px;\n}\n\n.container_16 .pull_11 {\n  left: -660px;\n}\n\n.container_16 .pull_12 {\n  left: -720px;\n}\n\n.container_16 .pull_13 {\n  left: -780px;\n}\n\n.container_16 .pull_14 {\n  left: -840px;\n}\n\n.container_16 .pull_15 {\n  left: -900px;\n}\n\n/* `Clear Floated Elements\n----------------------------------------------------------------------------------------------------*/\n\n/* http://sonspring.com/journal/clearing-floats */\n\n.clear {\n  clear: both;\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  width: 0;\n  height: 0;\n}\n\n/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */\n\n.clearfix:before,\n.clearfix:after,\n.container_16:before,\n.container_16:after {\n  content: '.';\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  font-size: 0;\n  line-height: 0;\n  width: 0;\n  height: 0;\n}\n\n.clearfix:after,\n.container_16:after {\n  clear: both;\n}\n\n/*\n  The following zoom:1 rule is specifically for IE6 + IE7.\n  Move to separate stylesheet if invalid CSS is a problem.\n*/\n\n.clearfix,\n.container_16 {\n  zoom: 1;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 47 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a7f2daddf1724af836ea708104640651.jpg"
 
 /***/ },
-/* 48 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(49);
+	var content = __webpack_require__(46);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -29648,10 +29589,10 @@
 	}
 
 /***/ },
-/* 49 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
@@ -29662,190 +29603,249 @@
 
 
 /***/ },
-/* 50 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a11f20e35bc10a3fae20b31d0a8d2966.jpg"
 
 /***/ },
-/* 51 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "4413b04dbef88a217104b5580b0f7b40.gif"
 
 /***/ },
-/* 52 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d0bcbf144a5bba0b82a0ec66b4987dcd.gif"
 
 /***/ },
-/* 53 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "9eea1679dc1bdeee1efc3472ceb8f081.gif"
 
 /***/ },
-/* 54 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d9f5eacf2e8a948ee652b55c426f5f7a.gif"
 
 /***/ },
-/* 55 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a07eace54cbbbd172f842374e9e28a6b.gif"
 
 /***/ },
-/* 56 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b136ed7331fa3c6e8aa1742fb7151662.gif"
 
 /***/ },
-/* 57 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "eef94d06a3343da118a67f2e1e83cc5a.gif"
 
 /***/ },
-/* 58 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "de26d8ce040f04086189bac258a94533.gif"
 
 /***/ },
-/* 59 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "88655967bc5c70743bfc9179a69ebae5.gif"
 
 /***/ },
-/* 60 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "241d0584235536152b389ab790fde02f.gif"
 
 /***/ },
-/* 61 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "315592927a04f351305b76dedb92f565.gif"
 
 /***/ },
-/* 62 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "babd8cea9da8b4918affa0143d93b23b.gif"
 
 /***/ },
-/* 63 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0ca513060f673885b6e9d16dbe840880.gif"
 
 /***/ },
-/* 64 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a88035760742479ae022b0ab26752052.gif"
 
 /***/ },
-/* 65 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c08af163a14b948fe4024f7ddee6b0e3.gif"
 
 /***/ },
-/* 66 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "be8f5de0861d37b26961386005de5ac8.gif"
 
 /***/ },
-/* 67 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "5dabc568a66288d54f9cfca529ff2415.gif"
 
 /***/ },
-/* 68 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "911e6bea58f22e2ce19be4b70fbc201f.gif"
 
 /***/ },
-/* 69 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "7ef65e678090b2141d7f917c8b855528.gif"
 
 /***/ },
-/* 70 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c44e410299be2419d4e47dea544c2196.gif"
 
 /***/ },
-/* 71 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "5cafa0e8cec211ec0ee11de6e33b987a.gif"
 
 /***/ },
-/* 72 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b7e5833fe29849d1b00bb4f8f0e0e3f4.gif"
 
 /***/ },
-/* 73 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "481ee49845ea370b95ff2a550b6a8f03.gif"
 
 /***/ },
-/* 74 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0171fe13d92ee7019604bd90c7a134fe.gif"
 
 /***/ },
-/* 75 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "2ce398c6b181590873b4844867004efe.gif"
 
 /***/ },
-/* 76 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "bd5c2cf54ece10bb550379e6ce35ee07.gif"
 
 /***/ },
-/* 77 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "46d1a157b473b223b615b8424cd0866c.gif"
 
 /***/ },
-/* 78 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d000c77d2064906900299fcacc30cfbc.gif"
 
 /***/ },
-/* 79 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "44fddfec51e728cf7fc260a7026df12f.gif"
 
 /***/ },
-/* 80 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0ad82a9a5d7a6b01020714ecc3f54d5f.gif"
+
+/***/ },
+/* 78 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var directives = angular.module('directives', []);
+
+	//requires
+
+	__webpack_require__(79)(directives);
+	__webpack_require__(80)(directives);
+
+/***/ },
+/* 79 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function(app) {
+	  app.directive('navDirective', function() {
+	    return {
+
+	      //directive can only contain one outer, parent element - cannot have siblings
+
+	      restrict: 'AEC',
+	      replace: true, //replaces placement element
+	      templateUrl: 'js/games/templates/nav-directive-template.html',
+	      scope: {} //scope specific to this directive, can set default values inside
+	    };
+	  });
+	};
+
+/***/ },
+/* 80 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function(app) {
+	  app.directive('formDirective', function() {
+	    return {
+
+	      //directive can only contain one outer, parent element - cannot have siblings
+
+	      restrict: 'AEC',
+	      replace: true, //replaces placement element
+	      templateUrl: 'js/games/templates/form-directive-template.html',
+	     //scope specific to this directive, can set default values inside
+	      scope: {
+	        formClassName: '@',
+	        listName: '@',
+	        dropdownTitle: '@',
+	        dropdownLists: '=',
+	      }
+	    };
+	  });
+	};
 
 /***/ },
 /* 81 */

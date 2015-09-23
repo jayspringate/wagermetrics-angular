@@ -66,7 +66,7 @@ module.exports = function(grunt) {
         module: {
           loaders: [
           { test: /\.css$/, loader: "style-loader!css-loader" },
-          { test: /\.(jpg|gif)$/, loader: "file-loader" }
+          { test: /\.(gif|jpg)$/, loader: "file-loader" }
           ]
         }
       }
