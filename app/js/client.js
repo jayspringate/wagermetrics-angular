@@ -1,8 +1,8 @@
 'use strict';
 
-require('angular/angular');
-
 require('./requirements');
+
+require('angular/angular');
 
 require('./games/directives/directives.js');
 
