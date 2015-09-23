@@ -6,6 +6,7 @@ module.exports = function(app) {
 
     $scope.games = [];
     $scope.selected = {};
+    $scope.hideResultsTable = true;
     $scope.dropdownLists = require('../dropdown-lists/dropdown-lists.js');
 
       $http.get('/api/games')
@@ -45,7 +46,7 @@ module.exports = function(app) {
       }
     });
     });
-
+      $scope.hideResultsTable = false;
       console.log($scope.filteredGames[0]);
   };
 
