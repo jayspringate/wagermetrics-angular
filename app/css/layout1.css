@@ -9,7 +9,7 @@ body {
 	margin: 0;
 }
 
-main {
+.page {
   background-color: rgba(255,255,255,0.85);
   height: 1120px;
   margin: 0 auto;
