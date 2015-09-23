@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="no-js" lang="eng">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wagermetrics</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Yesteryear' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.iu.edu/style.css?family=BentonSans:bold' rel='stylesheet' type='text/css'>
+  </head>
+  <body data-ng-app='wagerApp' class="container_16 clearfix">
+    <main data-ng-controller='gamesController'>
+      <section class="page">
+        <header class="header">
+            Wagermetrics
+        </header>
+        <div data-nav-directive></div>
+        <h1 class="grid_5 push_6 subheading">Trend Analyzer</h1>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="team" data-dropdown-title="Team">
+        </div>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="teamCourt" data-dropdown-title="Court" data-form-class-name='dropDown'>
+        </div>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="opponent" data-dropdown-title="Opponent" data-form-class-name='dropDown'>
+        </div>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="gameType" data-dropdown-title="Game Type" data-form-class-name='dropDown'>
+        </div>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="season" data-dropdown-title="Season" data-form-class-name='dropDown'>
+        </div>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="status" data-dropdown-title="Spread Status" data-form-class-name='dropDown'>
+        </div>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="spreadMove" data-dropdown-title="Spread Move" data-form-class-name='dropDown'>
+        </div>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="totalMove" data-dropdown-title="Total Move" data-form-class-name='dropDown'>
+        </div>
+        <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="spreadClose" data-dropdown-title="Spread" data-form-class-name='dropDown'>
+        </div>
+        <button data-ng-click="filterGames()" class="grid_2 push_7">Get Results</button>
+        <div id="teamLogo" class ='nba'></div>
+        <table class="resultsTable" id='winLossTable'>
+          <tr>
+            <td>Record</td>
+            <td>Win %</td>
+            <td>ROI</td>
+          </tr>
+          <tr>
+            <td id='record'>{{winCount + "-" + lossCount + "-" + pushCount}}</td>
+            <td id='winPercent'>{{percentWin}}</td>
+            <td data-ng-class="spreadRoi.colorBool" id='spreadRoi'>{{spreadRoi.val}}</td>
+          </tr>
+        </table>
+        <table class='resultsTable' id='overUnderTable'>
+          <tr>
+            <td>Over</td>
+            <td>Under</td>
+            <td>Over %</td>
+            <td>Under %</td>
+            <td>Push</td>
+            <td>Over ROI</td>
+            <td>Under ROI</td>
+          </tr>
+          <tr>
+            <td id='overCount'>{{overCount}}</td>
+            <td id='underCount'>{{underCount}}</td>
+            <td id='pushCount'>{{pushTotalCount}}</td>
+            <td id='overPercent'>{{percentOver}}</td>
+            <td id='underPercent'>{{percentUnder}}</td>
+            <td data-ng-class="overRoi.colorBool" id='overRoi'>{{overRoi.val}}</td>
+            <td data-ng-class="underRoi.colorBool" id='underRoi'>{{underRoi.val}}</td>
+          </tr>
+        </table>
+        <h1 class="break-even grid_5 push_4"> -110 break-even: 52.4% </h1>
+        <h1 class="break-even grid_5 push_3"> -105 break-even: 51.2% </h1>
+      </section>
+      <section data-ng-if="resultsTable">
+        <table id='gamesTable' class='resultsTable'>
+          <tr>
+            <td>Date</td>
+            <td>Team</td>
+            <td>Court</td>
+            <td>Opponent</td>
+            <td>Score</td>
+            <td>Result</td>
+            <td>Spread</td>
+            <td>Spread Move</td>
+            <td>Spread Grade</td>
+            <td>Total</td>
+            <td>Total Move</td>
+            <td>Total Grade</td>
+          </tr>
+          <tr data-ng-repeat="game in resultsTableGames">
+            <td>{{game.date.split('T')[0]}}</td>
+            <td>{{game.team}}</td>
+            <td>{{game.teamCourt.toUpperCase()}}</td>
+            <td>{{game.opponent}}</td>
+            <td>{{game.teamScore + '-' + game.opponentScore}}</td>
+            <td>{{game.suGrade}}</td>
+            <td>{{game.spreadClose + ' (' + game.spreadOpen + ')'}}</td>
+            <td>{{game.spreadMove}}</td>
+            <td>{{game.atsGrade}}</td>
+            <td>{{game.totalClose + ' (' + game.totalOpen + ')'}}</td>
+            <td>{{game.totalMove}}</td>
+            <td>{{game.totalGrade}}</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+  <script src="bundle.js"></script>
+  </body>
+</html>
