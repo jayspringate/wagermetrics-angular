@@ -6,7 +6,7 @@ module.exports = function(app) {
 
       //directive can only contain one outer, parent element - cannot have siblings
 
-      restrict: 'AC',
+      restrict: 'AEC',
       replace: true, //replaces placement element
       templateUrl: 'js/games/templates/form-directive-template.html',
      //scope specific to this directive, can set default values inside

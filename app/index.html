@@ -10,12 +10,13 @@
     <link href='https://fonts.iu.edu/style.css?family=BentonSans:bold' rel='stylesheet' type='text/css'>
   </head>
   <body data-ng-app='wagerApp' class="container_16 clearfix">
-    <main data-ng-controller='gamesController' data-ng-init='getAll()'>
+    <main data-ng-controller='gamesController'>
       <header class="header">
           Wagermetrics
       </header>
       <div data-nav-directive></div>
       <h1 class="grid_5 push_6 subheading">Trend Analyzer</h1>
+      <div>{{selected.team}}</div>
       <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="team" data-dropdown-title="Team">
       </div>
       <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="teamCourt" data-dropdown-title="Court" data-form-class-name='dropDown'>
@@ -34,9 +35,9 @@
       </div>
       <div data-form-directive data-dropdown-lists="dropdownLists" data-list-name="spreadClose" data-dropdown-title="Spread" data-form-class-name='dropDown'>
       </div>
-      <button data-ng-click='getResultsClick()' getid='testClick' class="grid_2 push_7">Get Results</button>
+      <button data-ng-click="filterGames()" class="grid_2 push_7">Get Results</button>
       <div id="teamLogo" class ='nba'></div>
-      <table class="resultsTable" id='winLossTable'>
+      <table data-ng-hide="" class="resultsTable" id='winLossTable'>
         <tr>
           <td>Record</td>
           <td>Win %</td>
