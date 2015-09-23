@@ -6,14 +6,13 @@ module.exports = function(app) {
 
     $scope.games = [];
     $scope.selected = {};
-    $scope.hideResultsTable = true;
+    $scope.resultsTable = false;
     $scope.dropdownLists = require('../dropdown-lists/dropdown-lists.js');
 
     $http.get('/api/games')
       .then(function(res) {
         //success
         $scope.games = res.data;
-        console.log($scope.games[0]);
       }, function(res) {
         //error
         $scope.errors.push({
@@ -47,9 +46,6 @@ module.exports = function(app) {
           $scope.selection.push($scope.selected[prop].value);
         }
       }
-
-      console.log($scope.property);
-      console.log($scope.selection);
 
       $scope.property.forEach(function(propElement, propIndex, propArr) {
 
@@ -123,8 +119,8 @@ module.exports = function(app) {
       }
 
       $scope.percentWin = runCalcs($scope.winCount, $scope.winCount, $scope.lossCount);
-      $scope.percentOver = runCalcs($scope.overCount, $scope.overCount, $scope.overCount);
-      $scope.percentUnder = runCalcs($scope.overCount, $scope.overCount, $scope.overCount);
+      $scope.percentOver = runCalcs($scope.overCount, $scope.overCount, $scope.underCount);
+      $scope.percentUnder = runCalcs($scope.underCount, $scope.underCount, $scope.overCount);
       $scope.spreadRoi.val = runCalcs($scope.roiSpreadNet, $scope.roiTotalWagered, 0);
       $scope.overRoi.val = runCalcs($scope.roiOverNet, $scope.roiTotalWagered, 0);
       $scope.underRoi.val = runCalcs($scope.roiUnderNet, $scope.roiTotalWagered, 0);
@@ -141,8 +137,9 @@ module.exports = function(app) {
       roiColor($scope.overRoi);
       roiColor($scope.underRoi);
 
-      // $scope.hideResultsTable = false;
-      console.log($scope.filteredGames[0]);
+      $scope.resultsTableGames = $scope.filteredGames.slice(0,99);
+
+      $scope.resultsTable = true;
     };
 
   }]);
