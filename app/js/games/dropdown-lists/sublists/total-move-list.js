@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = [
-          {value:"UP", name:'Up'},
-          {value:"DOWN", name:'Down'},
-          {value:"NONE", name:'None'}
+          {value:"UP", fullName:'Up'},
+          {value:"DOWN", fullName:'Down'},
+          {value:"NONE", fullName:'None'}
           ];

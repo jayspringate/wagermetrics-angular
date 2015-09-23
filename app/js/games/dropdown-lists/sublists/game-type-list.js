@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = [
-          {value:"reg", name:'Regular Season'},
-          {value:"playoff", name:'Playoffs'}
+          {value:"reg", fullName:'Regular Season'},
+          {value:"playoff", fullName:'Playoffs'}
           ];

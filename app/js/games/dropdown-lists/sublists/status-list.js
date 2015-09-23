@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = [
-          {value:"favorite", name:'Favorite'},
-          {value:"underdog", name:'Underdog'}
+          {value:"favorite", fullName:'Favorite'},
+          {value:"underdog", fullName:'Underdog'}
           ];
