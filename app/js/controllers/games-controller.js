@@ -14,7 +14,7 @@ module.exports = function(app) {
 
     if ($scope.path === '/nba') {
       $scope.nbaPath = true;
-    } else if($scope.path === '/nfl') {
+    } else if($scope.path === '/nfl' || '/') {
       $scope.nflPath = true;
     } else if($scope.path === '/cfb') {
       $scope.cfbPath = true;
