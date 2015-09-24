@@ -49,6 +49,22 @@ module.exports = function(router) {
       });
   });
 
+  router.get('/', function(req, res) {
+    sql.sync()
+      .then(function() {
+        nflGame.all()
+          .then(function(data) {
+            res.json(data);
+          })
+          .error(function(err) {
+            console.log(err);
+            res.status(500).json({
+              msg: 'server error'
+            });
+          });
+      });
+  });
+
   router.get('/cfb', function(req, res) {
     sql.sync()
       .then(function() {
