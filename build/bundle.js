@@ -48,13 +48,38 @@
 
 	__webpack_require__(1);
 
-	__webpack_require__(77);
-
 	__webpack_require__(78);
+	__webpack_require__(79);
 
-	var wagerApp = angular.module('wagerApp', ['directives']);
+	__webpack_require__(81);
 
-	__webpack_require__(81)(wagerApp);
+	var wagerApp = angular.module('wagerApp', ['directives', 'ngRoute']);
+
+	__webpack_require__(84)(wagerApp);
+
+	wagerApp.config(['$routeProvider', function($route) {
+	  $route
+	    .when('/', {
+	      templateUrl: '/html/templates/nfl.html',
+	      controller: 'gamesController'
+	    })
+	    .when('/nba', {
+	      templateUrl: '/html/templates/nba.html',
+	      controller: 'gamesController'
+	    })
+	    .when('/nfl', {
+	      templateUrl: '/html/templates/nfl.html',
+	      controller: 'gamesController'
+	    })
+	    .when('/cfb', {
+	      templateUrl: '/html/templates/cfb.html',
+	      controller: 'gamesController'
+	    })
+	    .when('/about', {
+	      templateUrl: '/html/about.html',
+	      controller: 'gamesController'
+	    });
+	  }]);
 
 
 /***/ },
@@ -63,10 +88,9 @@
 
 	__webpack_require__(2);
 	__webpack_require__(6);
-	__webpack_require__(39);
-	__webpack_require__(41);
-	__webpack_require__(44);
-	__webpack_require__(46);
+	__webpack_require__(40);
+	__webpack_require__(42);
+	__webpack_require__(45);
 	__webpack_require__(47);
 	__webpack_require__(48);
 	__webpack_require__(49);
@@ -97,6 +121,7 @@
 	__webpack_require__(74);
 	__webpack_require__(75);
 	__webpack_require__(76);
+	__webpack_require__(77);
 
 /***/ },
 /* 2 */
@@ -454,7 +479,7 @@
 
 
 	// module
-	exports.push([module.id, ".header {\n\tfont-family: 'Yesteryear';\n\tfont-size: 80px;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n \tfont-size: 32px;\n \tfont-family: arial;\n \tmargin-top: 20px;\n \tmargin-left: 37%;\n \tfont-weight: bold;\n \ttext-decoration: underline;\n \tmargin-right: -10px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .leftNavHeader {\n \tmargin-left: 320px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \tcolor: #FFE0B2;\n }\n\n .midNavHeader {\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n }\n\n .comingSoon {\n \tfont-size: 11px;\n \twidth: 20px;\n\tdisplay: inline-block;\n }\n\n .break-even {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.dropDown {\n\tpadding-top: 15px;\n\tclear: both;\n\theight: 20px;\n}\n\n#team {\nmargin-top: 20px;\nfont-size: 20px;\nclear: both;\nheight: 40px;\n}\n\nselect {\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n}\n\nbutton {\n\tclear: both;\n\tmargin-top: 15px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 14px;\n\tfont-weight: bold;\n\tmargin-bottom: 20px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n\n}\n.resultsTable {\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: #729ea5;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\n}\n\n.resultsTable tr {\n\tbackground-color: #DBDBDB;\n\n}\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n.resultsTable tr:hover {\n\tbackground-color:#deb887;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 30px;\n\twidth: 50%;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .85;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tmargin: 0 auto;\n\tmargin-top: 20px;\n\tclear: both;\n\tmargin-top: 50px;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\nsection {\n\tmargin-top: 20px;\n}\n\n.ATL {\n\tbackground-image: url(" + __webpack_require__(8) + ");\n}\n\n.BK {\n\tbackground-image: url(" + __webpack_require__(9) + ");\n}\n\n.BOS {\n\tbackground-image: url(" + __webpack_require__(10) + ");\n}\n\n.CHAR {\n\tbackground-image: url(" + __webpack_require__(11) + ");\n}\n\n.CHI {\n\tbackground-image: url(" + __webpack_require__(12) + ");\n}\n\n.CLE {\n\tbackground-image: url(" + __webpack_require__(13) + ");\n}\n\n.DAL {\n\tbackground-image: url(" + __webpack_require__(14) + ");\n}\n\n.DEN {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.DET {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.GS {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n.HOU {\n\tbackground-image: url(" + __webpack_require__(18) + ");\n}\n\n.IND {\n\tbackground-image: url(" + __webpack_require__(19) + ");\n}\n\n.LAC {\n\tbackground-image: url(" + __webpack_require__(20) + ");\n}\n\n.LAL {\n\tbackground-image: url(" + __webpack_require__(21) + ");\n}\n\n.MEM {\n\tbackground-image: url(" + __webpack_require__(22) + ");\n}\n\n.MIA {\n\tbackground-image: url(" + __webpack_require__(23) + ");\n}\n\n.MIL {\n\tbackground-image: url(" + __webpack_require__(24) + ");\n}\n\n.MIN {\n\tbackground-image: url(" + __webpack_require__(25) + ");\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(26) + ");\n}\n.NO {\n\tbackground-image: url(" + __webpack_require__(27) + ");\n}\n\n.NY {\n\tbackground-image: url(" + __webpack_require__(28) + ");\n}\n\n.OKC {\n\tbackground-image: url(" + __webpack_require__(29) + ");\n}\n\n.ORL {\n\tbackground-image: url(" + __webpack_require__(30) + ");\n}\n\n.PHI {\n\tbackground-image: url(" + __webpack_require__(31) + ");\n}\n\n.PHO {\n\tbackground-image: url(" + __webpack_require__(32) + ");\n}\n\n.POR {\n\tbackground-image: url(" + __webpack_require__(33) + ");\n}\n\n.SA {\n\tbackground-image: url(" + __webpack_require__(34) + ");\n}\n\n.SAC {\n\tbackground-image: url(" + __webpack_require__(35) + ");\n}\n\n.TOR {\n\tbackground-image: url(" + __webpack_require__(36) + ");\n}\n\n.UTA {\n\tbackground-image: url(" + __webpack_require__(37) + ");\n}\n\n.WAS {\n\tbackground-image: url(" + __webpack_require__(38) + ");\n}\n", ""]);
+	exports.push([module.id, ".header {\n\tfont-family: 'Yesteryear';\n\tfont-size: 80px;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n \tfont-size: 32px;\n \tfont-family: arial;\n \tmargin-top: 20px;\n \tmargin-left: 37%;\n \tfont-weight: bold;\n \ttext-decoration: underline;\n \tmargin-right: -10px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .nav {\n \tcolor: white;\n }\n\n.currentNav {\n \tcolor: #FFE0B2;\n }\n\n #nbaNav {\n\tmargin-left: 320px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \ttext-decoration: none;\n }\n\n #nflNav, #cfbNav {\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n\ttext-decoration: none;\n }\n\n .comingSoon {\n \tfont-size: 11px;\n \twidth: 20px;\n\tdisplay: inline-block;\n }\n\n .break-even {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.dropDown {\n\tpadding-top: 15px;\n\tclear: both;\n\theight: 20px;\n}\n\n#team, #teamAbbrev {\nmargin-top: 20px;\nfont-size: 20px;\nclear: both;\nheight: 40px;\n}\n\nselect {\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n}\n\nbutton {\n\tclear: both;\n\tmargin-top: 15px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 14px;\n\tfont-weight: bold;\n\tmargin-bottom: 20px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n\n}\n.resultsTable {\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: #729ea5;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\n}\n\n.resultsTable tr {\n\tbackground-color: #DBDBDB;\n\n}\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n.resultsTable tr:hover {\n\tbackground-color:#deb887;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 30px;\n\twidth: 50%;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .85;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tmargin: 0 auto;\n\tmargin-top: 20px;\n\tclear: both;\n\tmargin-top: 50px;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\nsection {\n\tmargin-top: 20px;\n}\n\n.ATL {\n\tbackground-image: url(" + __webpack_require__(8) + ");\n}\n\n.BK {\n\tbackground-image: url(" + __webpack_require__(9) + ");\n}\n\n.BOS {\n\tbackground-image: url(" + __webpack_require__(10) + ");\n}\n\n.CHAR {\n\tbackground-image: url(" + __webpack_require__(11) + ");\n}\n\n.CHI {\n\tbackground-image: url(" + __webpack_require__(12) + ");\n}\n\n.CLE {\n\tbackground-image: url(" + __webpack_require__(13) + ");\n}\n\n.DAL {\n\tbackground-image: url(" + __webpack_require__(14) + ");\n}\n\n.DEN {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.DET {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.GS {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n.HOU {\n\tbackground-image: url(" + __webpack_require__(18) + ");\n}\n\n.IND {\n\tbackground-image: url(" + __webpack_require__(19) + ");\n}\n\n.LAC {\n\tbackground-image: url(" + __webpack_require__(20) + ");\n}\n\n.LAL {\n\tbackground-image: url(" + __webpack_require__(21) + ");\n}\n\n.MEM {\n\tbackground-image: url(" + __webpack_require__(22) + ");\n}\n\n.MIA {\n\tbackground-image: url(" + __webpack_require__(23) + ");\n}\n\n.MIL {\n\tbackground-image: url(" + __webpack_require__(24) + ");\n}\n\n.MIN {\n\tbackground-image: url(" + __webpack_require__(25) + ");\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(26) + ");\n}\n.nfl {\n\tbackground-image: url(" + __webpack_require__(27) + ");\n}\n.NO {\n\tbackground-image: url(" + __webpack_require__(28) + ");\n}\n\n.NY {\n\tbackground-image: url(" + __webpack_require__(29) + ");\n}\n\n.OKC {\n\tbackground-image: url(" + __webpack_require__(30) + ");\n}\n\n.ORL {\n\tbackground-image: url(" + __webpack_require__(31) + ");\n}\n\n.PHI {\n\tbackground-image: url(" + __webpack_require__(32) + ");\n}\n\n.PHO {\n\tbackground-image: url(" + __webpack_require__(33) + ");\n}\n\n.POR {\n\tbackground-image: url(" + __webpack_require__(34) + ");\n}\n\n.SA {\n\tbackground-image: url(" + __webpack_require__(35) + ");\n}\n\n.SAC {\n\tbackground-image: url(" + __webpack_require__(36) + ");\n}\n\n.TOR {\n\tbackground-image: url(" + __webpack_require__(37) + ");\n}\n\n.UTA {\n\tbackground-image: url(" + __webpack_require__(38) + ");\n}\n\n.WAS {\n\tbackground-image: url(" + __webpack_require__(39) + ");\n}\n", ""]);
 
 	// exports
 
@@ -577,82 +602,88 @@
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "9d8635fdb8b15b14b5ebbc49fd6d6ccc.gif"
+	module.exports = __webpack_require__.p + "2b3e492baab7365aa1d188db19c3eb8b.gif"
 
 /***/ },
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "33eda8144fe01deac573ce70ab4d9f0f.gif"
+	module.exports = __webpack_require__.p + "9d8635fdb8b15b14b5ebbc49fd6d6ccc.gif"
 
 /***/ },
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "1424e512a2c36dc9a17b8bb12a78bcbe.gif"
+	module.exports = __webpack_require__.p + "33eda8144fe01deac573ce70ab4d9f0f.gif"
 
 /***/ },
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "7aee5bbb65bece7f35c031f44db39e42.gif"
+	module.exports = __webpack_require__.p + "1424e512a2c36dc9a17b8bb12a78bcbe.gif"
 
 /***/ },
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dcc915bf16e7abd40b485ad67f277128.gif"
+	module.exports = __webpack_require__.p + "7aee5bbb65bece7f35c031f44db39e42.gif"
 
 /***/ },
 /* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "c40dbd0491a5011c33df648b5b5dd64b.gif"
+	module.exports = __webpack_require__.p + "dcc915bf16e7abd40b485ad67f277128.gif"
 
 /***/ },
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "9ec8234cd4ab0b5decfe1c4a5ad01cf9.gif"
+	module.exports = __webpack_require__.p + "c40dbd0491a5011c33df648b5b5dd64b.gif"
 
 /***/ },
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "8b217900b5e936eef853bb84948dd31d.gif"
+	module.exports = __webpack_require__.p + "9ec8234cd4ab0b5decfe1c4a5ad01cf9.gif"
 
 /***/ },
 /* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "99b9100d6b29bafb66683ac8d12c166d.gif"
+	module.exports = __webpack_require__.p + "8b217900b5e936eef853bb84948dd31d.gif"
 
 /***/ },
 /* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "efe8ad8ecdfaf1b46af45bf2fb55e557.gif"
+	module.exports = __webpack_require__.p + "99b9100d6b29bafb66683ac8d12c166d.gif"
 
 /***/ },
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "b0f67515b584179106d8b3e001063e1e.gif"
+	module.exports = __webpack_require__.p + "efe8ad8ecdfaf1b46af45bf2fb55e557.gif"
 
 /***/ },
 /* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "48cd560da9eae6ab92218bb7e9888bd4.gif"
+	module.exports = __webpack_require__.p + "b0f67515b584179106d8b3e001063e1e.gif"
 
 /***/ },
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__.p + "48cd560da9eae6ab92218bb7e9888bd4.gif"
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(40);
+	var content = __webpack_require__(41);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -672,7 +703,7 @@
 	}
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -686,13 +717,13 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(42);
+	var content = __webpack_require__(43);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -712,7 +743,7 @@
 	}
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -720,25 +751,25 @@
 
 
 	// module
-	exports.push([module.id, "body {\n\tbackground-image:url(" + __webpack_require__(43) + ");\n\tbackground-position: center;\n\tbackground-attachment: fixed;\n\tbackground-repeat: no-repeat;\n\tbackground-size: 100%;\n  height: 100%;\n  width: 100%;\n\tmargin: 0;\n}\n\n.page {\n  background-color: rgba(255,255,255,0.85);\n  height: 1120px;\n  margin: 0 auto;\n}\n\n/*\n  960 Grid System ~ Core CSS.\n  Learn more ~ http://960.gs/\n\n  Licensed under GPL and MIT.\n*/\n\n/*\n  Forces backgrounds to span full width,\n  even if there is horizontal scrolling.\n  Increase this if your layout is wider.\n\n  Note: IE6 works fine without this fix.\n*/\n\nbody {\n  min-width: 960px;\n}\n\n/* Container\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 {\n  margin-left: auto;\n  margin-right: auto;\n  width: 960px;\n}\n\n/* Grid >> Global\n----------------------------------------------------------------------------------------------------*/\n\n.grid_1,\n.grid_2,\n.grid_3,\n.grid_4,\n.grid_5,\n.grid_6,\n.grid_7,\n.grid_8,\n.grid_9,\n.grid_10,\n.grid_11,\n.grid_12,\n.grid_13,\n.grid_14,\n.grid_15,\n.grid_16 {\n  display: inline;\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n\n.push_1, .pull_1,\n.push_2, .pull_2,\n.push_3, .pull_3,\n.push_4, .pull_4,\n.push_5, .pull_5,\n.push_6, .pull_6,\n.push_7, .pull_7,\n.push_8, .pull_8,\n.push_9, .pull_9,\n.push_10, .pull_10,\n.push_11, .pull_11,\n.push_12, .pull_12,\n.push_13, .pull_13,\n.push_14, .pull_14,\n.push_15, .pull_15,\n.push_16, .pull_16 {\n  position: relative;\n}\n\n/* Grid >> Children (Alpha ~ First, Omega ~ Last)\n----------------------------------------------------------------------------------------------------*/\n\n.alpha {\n  margin-left: 0;\n}\n\n.omega {\n  margin-right: 0;\n}\n\n/* Grid >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .grid_1 {\n  width: 40px;\n}\n\n.container_16 .grid_2 {\n  width: 100px;\n}\n\n.container_16 .grid_3 {\n  width: 160px;\n}\n\n.container_16 .grid_4 {\n  width: 220px;\n}\n\n.container_16 .grid_5 {\n  width: 280px;\n}\n\n.container_16 .grid_6 {\n  width: 340px;\n}\n\n.container_16 .grid_7 {\n  width: 400px;\n}\n\n.container_16 .grid_8 {\n  width: 460px;\n}\n\n.container_16 .grid_9 {\n  width: 520px;\n}\n\n.container_16 .grid_10 {\n  width: 580px;\n}\n\n.container_16 .grid_11 {\n  width: 640px;\n}\n\n.container_16 .grid_12 {\n  width: 700px;\n}\n\n.container_16 .grid_13 {\n  width: 760px;\n}\n\n.container_16 .grid_14 {\n  width: 820px;\n}\n\n.container_16 .grid_15 {\n  width: 880px;\n}\n\n.container_16 .grid_16 {\n  width: 940px;\n}\n\n/* Prefix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .prefix_1 {\n  padding-left: 60px;\n}\n\n.container_16 .prefix_2 {\n  padding-left: 120px;\n}\n\n.container_16 .prefix_3 {\n  padding-left: 180px;\n}\n\n.container_16 .prefix_4 {\n  padding-left: 240px;\n}\n\n.container_16 .prefix_5 {\n  padding-left: 300px;\n}\n\n.container_16 .prefix_6 {\n  padding-left: 360px;\n}\n\n.container_16 .prefix_7 {\n  padding-left: 420px;\n}\n\n.container_16 .prefix_8 {\n  padding-left: 480px;\n}\n\n.container_16 .prefix_9 {\n  padding-left: 540px;\n}\n\n.container_16 .prefix_10 {\n  padding-left: 600px;\n}\n\n.container_16 .prefix_11 {\n  padding-left: 660px;\n}\n\n.container_16 .prefix_12 {\n  padding-left: 720px;\n}\n\n.container_16 .prefix_13 {\n  padding-left: 780px;\n}\n\n.container_16 .prefix_14 {\n  padding-left: 840px;\n}\n\n.container_16 .prefix_15 {\n  padding-left: 900px;\n}\n\n/* Suffix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .suffix_1 {\n  padding-right: 60px;\n}\n\n.container_16 .suffix_2 {\n  padding-right: 120px;\n}\n\n.container_16 .suffix_3 {\n  padding-right: 180px;\n}\n\n.container_16 .suffix_4 {\n  padding-right: 240px;\n}\n\n.container_16 .suffix_5 {\n  padding-right: 300px;\n}\n\n.container_16 .suffix_6 {\n  padding-right: 360px;\n}\n\n.container_16 .suffix_7 {\n  padding-right: 420px;\n}\n\n.container_16 .suffix_8 {\n  padding-right: 480px;\n}\n\n.container_16 .suffix_9 {\n  padding-right: 540px;\n}\n\n.container_16 .suffix_10 {\n  padding-right: 600px;\n}\n\n.container_16 .suffix_11 {\n  padding-right: 660px;\n}\n\n.container_16 .suffix_12 {\n  padding-right: 720px;\n}\n\n.container_16 .suffix_13 {\n  padding-right: 780px;\n}\n\n.container_16 .suffix_14 {\n  padding-right: 840px;\n}\n\n.container_16 .suffix_15 {\n  padding-right: 900px;\n}\n\n/* Push Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .push_1 {\n  left: 60px;\n}\n\n.container_16 .push_2 {\n  left: 120px;\n}\n\n.container_16 .push_3 {\n  left: 180px;\n}\n\n.container_16 .push_4 {\n  left: 240px;\n}\n\n.container_16 .push_5 {\n  left: 300px;\n}\n\n.container_16 .push_6 {\n  left: 360px;\n}\n\n.container_16 .push_7 {\n  left: 420px;\n}\n\n.container_16 .push_8 {\n  left: 480px;\n}\n\n.container_16 .push_9 {\n  left: 540px;\n}\n\n.container_16 .push_10 {\n  left: 600px;\n}\n\n.container_16 .push_11 {\n  left: 660px;\n}\n\n.container_16 .push_12 {\n  left: 720px;\n}\n\n.container_16 .push_13 {\n  left: 780px;\n}\n\n.container_16 .push_14 {\n  left: 840px;\n}\n\n.container_16 .push_15 {\n  left: 900px;\n}\n\n/* Pull Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .pull_1 {\n  left: -60px;\n}\n\n.container_16 .pull_2 {\n  left: -120px;\n}\n\n.container_16 .pull_3 {\n  left: -180px;\n}\n\n.container_16 .pull_4 {\n  left: -240px;\n}\n\n.container_16 .pull_5 {\n  left: -300px;\n}\n\n.container_16 .pull_6 {\n  left: -360px;\n}\n\n.container_16 .pull_7 {\n  left: -420px;\n}\n\n.container_16 .pull_8 {\n  left: -480px;\n}\n\n.container_16 .pull_9 {\n  left: -540px;\n}\n\n.container_16 .pull_10 {\n  left: -600px;\n}\n\n.container_16 .pull_11 {\n  left: -660px;\n}\n\n.container_16 .pull_12 {\n  left: -720px;\n}\n\n.container_16 .pull_13 {\n  left: -780px;\n}\n\n.container_16 .pull_14 {\n  left: -840px;\n}\n\n.container_16 .pull_15 {\n  left: -900px;\n}\n\n/* `Clear Floated Elements\n----------------------------------------------------------------------------------------------------*/\n\n/* http://sonspring.com/journal/clearing-floats */\n\n.clear {\n  clear: both;\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  width: 0;\n  height: 0;\n}\n\n/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */\n\n.clearfix:before,\n.clearfix:after,\n.container_16:before,\n.container_16:after {\n  content: '.';\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  font-size: 0;\n  line-height: 0;\n  width: 0;\n  height: 0;\n}\n\n.clearfix:after,\n.container_16:after {\n  clear: both;\n}\n\n/*\n  The following zoom:1 rule is specifically for IE6 + IE7.\n  Move to separate stylesheet if invalid CSS is a problem.\n*/\n\n.clearfix,\n.container_16 {\n  zoom: 1;\n}\n", ""]);
+	exports.push([module.id, "body {\n\tbackground-image:url(" + __webpack_require__(44) + ");\n\tbackground-position: center;\n\tbackground-attachment: fixed;\n\tbackground-repeat: no-repeat;\n\tbackground-size: 100%;\n  height: 100%;\n  width: 100%;\n\tmargin: 0;\n}\n\n.page {\n  background-color: rgba(255,255,255,0.85);\n  height: 1140px;\n  margin: 0 auto;\n}\n\n/*\n  960 Grid System ~ Core CSS.\n  Learn more ~ http://960.gs/\n\n  Licensed under GPL and MIT.\n*/\n\n/*\n  Forces backgrounds to span full width,\n  even if there is horizontal scrolling.\n  Increase this if your layout is wider.\n\n  Note: IE6 works fine without this fix.\n*/\n\nbody {\n  min-width: 960px;\n}\n\n/* Container\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 {\n  margin-left: auto;\n  margin-right: auto;\n  width: 960px;\n}\n\n/* Grid >> Global\n----------------------------------------------------------------------------------------------------*/\n\n.grid_1,\n.grid_2,\n.grid_3,\n.grid_4,\n.grid_5,\n.grid_6,\n.grid_7,\n.grid_8,\n.grid_9,\n.grid_10,\n.grid_11,\n.grid_12,\n.grid_13,\n.grid_14,\n.grid_15,\n.grid_16 {\n  display: inline;\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n\n.push_1, .pull_1,\n.push_2, .pull_2,\n.push_3, .pull_3,\n.push_4, .pull_4,\n.push_5, .pull_5,\n.push_6, .pull_6,\n.push_7, .pull_7,\n.push_8, .pull_8,\n.push_9, .pull_9,\n.push_10, .pull_10,\n.push_11, .pull_11,\n.push_12, .pull_12,\n.push_13, .pull_13,\n.push_14, .pull_14,\n.push_15, .pull_15,\n.push_16, .pull_16 {\n  position: relative;\n}\n\n/* Grid >> Children (Alpha ~ First, Omega ~ Last)\n----------------------------------------------------------------------------------------------------*/\n\n.alpha {\n  margin-left: 0;\n}\n\n.omega {\n  margin-right: 0;\n}\n\n/* Grid >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .grid_1 {\n  width: 40px;\n}\n\n.container_16 .grid_2 {\n  width: 100px;\n}\n\n.container_16 .grid_3 {\n  width: 160px;\n}\n\n.container_16 .grid_4 {\n  width: 220px;\n}\n\n.container_16 .grid_5 {\n  width: 280px;\n}\n\n.container_16 .grid_6 {\n  width: 340px;\n}\n\n.container_16 .grid_7 {\n  width: 400px;\n}\n\n.container_16 .grid_8 {\n  width: 460px;\n}\n\n.container_16 .grid_9 {\n  width: 520px;\n}\n\n.container_16 .grid_10 {\n  width: 580px;\n}\n\n.container_16 .grid_11 {\n  width: 640px;\n}\n\n.container_16 .grid_12 {\n  width: 700px;\n}\n\n.container_16 .grid_13 {\n  width: 760px;\n}\n\n.container_16 .grid_14 {\n  width: 820px;\n}\n\n.container_16 .grid_15 {\n  width: 880px;\n}\n\n.container_16 .grid_16 {\n  width: 940px;\n}\n\n/* Prefix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .prefix_1 {\n  padding-left: 60px;\n}\n\n.container_16 .prefix_2 {\n  padding-left: 120px;\n}\n\n.container_16 .prefix_3 {\n  padding-left: 180px;\n}\n\n.container_16 .prefix_4 {\n  padding-left: 240px;\n}\n\n.container_16 .prefix_5 {\n  padding-left: 300px;\n}\n\n.container_16 .prefix_6 {\n  padding-left: 360px;\n}\n\n.container_16 .prefix_7 {\n  padding-left: 420px;\n}\n\n.container_16 .prefix_8 {\n  padding-left: 480px;\n}\n\n.container_16 .prefix_9 {\n  padding-left: 540px;\n}\n\n.container_16 .prefix_10 {\n  padding-left: 600px;\n}\n\n.container_16 .prefix_11 {\n  padding-left: 660px;\n}\n\n.container_16 .prefix_12 {\n  padding-left: 720px;\n}\n\n.container_16 .prefix_13 {\n  padding-left: 780px;\n}\n\n.container_16 .prefix_14 {\n  padding-left: 840px;\n}\n\n.container_16 .prefix_15 {\n  padding-left: 900px;\n}\n\n/* Suffix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .suffix_1 {\n  padding-right: 60px;\n}\n\n.container_16 .suffix_2 {\n  padding-right: 120px;\n}\n\n.container_16 .suffix_3 {\n  padding-right: 180px;\n}\n\n.container_16 .suffix_4 {\n  padding-right: 240px;\n}\n\n.container_16 .suffix_5 {\n  padding-right: 300px;\n}\n\n.container_16 .suffix_6 {\n  padding-right: 360px;\n}\n\n.container_16 .suffix_7 {\n  padding-right: 420px;\n}\n\n.container_16 .suffix_8 {\n  padding-right: 480px;\n}\n\n.container_16 .suffix_9 {\n  padding-right: 540px;\n}\n\n.container_16 .suffix_10 {\n  padding-right: 600px;\n}\n\n.container_16 .suffix_11 {\n  padding-right: 660px;\n}\n\n.container_16 .suffix_12 {\n  padding-right: 720px;\n}\n\n.container_16 .suffix_13 {\n  padding-right: 780px;\n}\n\n.container_16 .suffix_14 {\n  padding-right: 840px;\n}\n\n.container_16 .suffix_15 {\n  padding-right: 900px;\n}\n\n/* Push Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .push_1 {\n  left: 60px;\n}\n\n.container_16 .push_2 {\n  left: 120px;\n}\n\n.container_16 .push_3 {\n  left: 180px;\n}\n\n.container_16 .push_4 {\n  left: 240px;\n}\n\n.container_16 .push_5 {\n  left: 300px;\n}\n\n.container_16 .push_6 {\n  left: 360px;\n}\n\n.container_16 .push_7 {\n  left: 420px;\n}\n\n.container_16 .push_8 {\n  left: 480px;\n}\n\n.container_16 .push_9 {\n  left: 540px;\n}\n\n.container_16 .push_10 {\n  left: 600px;\n}\n\n.container_16 .push_11 {\n  left: 660px;\n}\n\n.container_16 .push_12 {\n  left: 720px;\n}\n\n.container_16 .push_13 {\n  left: 780px;\n}\n\n.container_16 .push_14 {\n  left: 840px;\n}\n\n.container_16 .push_15 {\n  left: 900px;\n}\n\n/* Pull Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .pull_1 {\n  left: -60px;\n}\n\n.container_16 .pull_2 {\n  left: -120px;\n}\n\n.container_16 .pull_3 {\n  left: -180px;\n}\n\n.container_16 .pull_4 {\n  left: -240px;\n}\n\n.container_16 .pull_5 {\n  left: -300px;\n}\n\n.container_16 .pull_6 {\n  left: -360px;\n}\n\n.container_16 .pull_7 {\n  left: -420px;\n}\n\n.container_16 .pull_8 {\n  left: -480px;\n}\n\n.container_16 .pull_9 {\n  left: -540px;\n}\n\n.container_16 .pull_10 {\n  left: -600px;\n}\n\n.container_16 .pull_11 {\n  left: -660px;\n}\n\n.container_16 .pull_12 {\n  left: -720px;\n}\n\n.container_16 .pull_13 {\n  left: -780px;\n}\n\n.container_16 .pull_14 {\n  left: -840px;\n}\n\n.container_16 .pull_15 {\n  left: -900px;\n}\n\n/* `Clear Floated Elements\n----------------------------------------------------------------------------------------------------*/\n\n/* http://sonspring.com/journal/clearing-floats */\n\n.clear {\n  clear: both;\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  width: 0;\n  height: 0;\n}\n\n/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */\n\n.clearfix:before,\n.clearfix:after,\n.container_16:before,\n.container_16:after {\n  content: '.';\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  font-size: 0;\n  line-height: 0;\n  width: 0;\n  height: 0;\n}\n\n.clearfix:after,\n.container_16:after {\n  clear: both;\n}\n\n/*\n  The following zoom:1 rule is specifically for IE6 + IE7.\n  Move to separate stylesheet if invalid CSS is a problem.\n*/\n\n.clearfix,\n.container_16 {\n  zoom: 1;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a7f2daddf1724af836ea708104640651.jpg"
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(45);
+	var content = __webpack_require__(46);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -758,7 +789,7 @@
 	}
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -772,193 +803,193 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a11f20e35bc10a3fae20b31d0a8d2966.jpg"
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "4413b04dbef88a217104b5580b0f7b40.gif"
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d0bcbf144a5bba0b82a0ec66b4987dcd.gif"
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "9eea1679dc1bdeee1efc3472ceb8f081.gif"
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d9f5eacf2e8a948ee652b55c426f5f7a.gif"
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a07eace54cbbbd172f842374e9e28a6b.gif"
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b136ed7331fa3c6e8aa1742fb7151662.gif"
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "eef94d06a3343da118a67f2e1e83cc5a.gif"
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "de26d8ce040f04086189bac258a94533.gif"
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "88655967bc5c70743bfc9179a69ebae5.gif"
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "241d0584235536152b389ab790fde02f.gif"
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "315592927a04f351305b76dedb92f565.gif"
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "babd8cea9da8b4918affa0143d93b23b.gif"
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0ca513060f673885b6e9d16dbe840880.gif"
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a88035760742479ae022b0ab26752052.gif"
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c08af163a14b948fe4024f7ddee6b0e3.gif"
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "be8f5de0861d37b26961386005de5ac8.gif"
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "5dabc568a66288d54f9cfca529ff2415.gif"
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "911e6bea58f22e2ce19be4b70fbc201f.gif"
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "7ef65e678090b2141d7f917c8b855528.gif"
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c44e410299be2419d4e47dea544c2196.gif"
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "5cafa0e8cec211ec0ee11de6e33b987a.gif"
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b7e5833fe29849d1b00bb4f8f0e0e3f4.gif"
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "481ee49845ea370b95ff2a550b6a8f03.gif"
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0171fe13d92ee7019604bd90c7a134fe.gif"
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "2ce398c6b181590873b4844867004efe.gif"
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "bd5c2cf54ece10bb550379e6ce35ee07.gif"
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "46d1a157b473b223b615b8424cd0866c.gif"
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d000c77d2064906900299fcacc30cfbc.gif"
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "44fddfec51e728cf7fc260a7026df12f.gif"
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0ad82a9a5d7a6b01020714ecc3f54d5f.gif"
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports) {
 
 	/**
@@ -29789,7 +29820,1012 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 78 */
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(80);
+	module.exports = 'ngRoute';
+
+
+/***/ },
+/* 80 */
+/***/ function(module, exports) {
+
+	/**
+	 * @license AngularJS v1.4.6
+	 * (c) 2010-2015 Google, Inc. http://angularjs.org
+	 * License: MIT
+	 */
+	(function(window, angular, undefined) {'use strict';
+
+	/**
+	 * @ngdoc module
+	 * @name ngRoute
+	 * @description
+	 *
+	 * # ngRoute
+	 *
+	 * The `ngRoute` module provides routing and deeplinking services and directives for angular apps.
+	 *
+	 * ## Example
+	 * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
+	 *
+	 *
+	 * <div doc-module-components="ngRoute"></div>
+	 */
+	 /* global -ngRouteModule */
+	var ngRouteModule = angular.module('ngRoute', ['ng']).
+	                        provider('$route', $RouteProvider),
+	    $routeMinErr = angular.$$minErr('ngRoute');
+
+	/**
+	 * @ngdoc provider
+	 * @name $routeProvider
+	 *
+	 * @description
+	 *
+	 * Used for configuring routes.
+	 *
+	 * ## Example
+	 * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
+	 *
+	 * ## Dependencies
+	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
+	 */
+	function $RouteProvider() {
+	  function inherit(parent, extra) {
+	    return angular.extend(Object.create(parent), extra);
+	  }
+
+	  var routes = {};
+
+	  /**
+	   * @ngdoc method
+	   * @name $routeProvider#when
+	   *
+	   * @param {string} path Route path (matched against `$location.path`). If `$location.path`
+	   *    contains redundant trailing slash or is missing one, the route will still match and the
+	   *    `$location.path` will be updated to add or drop the trailing slash to exactly match the
+	   *    route definition.
+	   *
+	   *    * `path` can contain named groups starting with a colon: e.g. `:name`. All characters up
+	   *        to the next slash are matched and stored in `$routeParams` under the given `name`
+	   *        when the route matches.
+	   *    * `path` can contain named groups starting with a colon and ending with a star:
+	   *        e.g.`:name*`. All characters are eagerly stored in `$routeParams` under the given `name`
+	   *        when the route matches.
+	   *    * `path` can contain optional named groups with a question mark: e.g.`:name?`.
+	   *
+	   *    For example, routes like `/color/:color/largecode/:largecode*\/edit` will match
+	   *    `/color/brown/largecode/code/with/slashes/edit` and extract:
+	   *
+	   *    * `color: brown`
+	   *    * `largecode: code/with/slashes`.
+	   *
+	   *
+	   * @param {Object} route Mapping information to be assigned to `$route.current` on route
+	   *    match.
+	   *
+	   *    Object properties:
+	   *
+	   *    - `controller` – `{(string|function()=}` – Controller fn that should be associated with
+	   *      newly created scope or the name of a {@link angular.Module#controller registered
+	   *      controller} if passed as a string.
+	   *    - `controllerAs` – `{string=}` – An identifier name for a reference to the controller.
+	   *      If present, the controller will be published to scope under the `controllerAs` name.
+	   *    - `template` – `{string=|function()=}` – html template as a string or a function that
+	   *      returns an html template as a string which should be used by {@link
+	   *      ngRoute.directive:ngView ngView} or {@link ng.directive:ngInclude ngInclude} directives.
+	   *      This property takes precedence over `templateUrl`.
+	   *
+	   *      If `template` is a function, it will be called with the following parameters:
+	   *
+	   *      - `{Array.<Object>}` - route parameters extracted from the current
+	   *        `$location.path()` by applying the current route
+	   *
+	   *    - `templateUrl` – `{string=|function()=}` – path or function that returns a path to an html
+	   *      template that should be used by {@link ngRoute.directive:ngView ngView}.
+	   *
+	   *      If `templateUrl` is a function, it will be called with the following parameters:
+	   *
+	   *      - `{Array.<Object>}` - route parameters extracted from the current
+	   *        `$location.path()` by applying the current route
+	   *
+	   *    - `resolve` - `{Object.<string, function>=}` - An optional map of dependencies which should
+	   *      be injected into the controller. If any of these dependencies are promises, the router
+	   *      will wait for them all to be resolved or one to be rejected before the controller is
+	   *      instantiated.
+	   *      If all the promises are resolved successfully, the values of the resolved promises are
+	   *      injected and {@link ngRoute.$route#$routeChangeSuccess $routeChangeSuccess} event is
+	   *      fired. If any of the promises are rejected the
+	   *      {@link ngRoute.$route#$routeChangeError $routeChangeError} event is fired. The map object
+	   *      is:
+	   *
+	   *      - `key` – `{string}`: a name of a dependency to be injected into the controller.
+	   *      - `factory` - `{string|function}`: If `string` then it is an alias for a service.
+	   *        Otherwise if function, then it is {@link auto.$injector#invoke injected}
+	   *        and the return value is treated as the dependency. If the result is a promise, it is
+	   *        resolved before its value is injected into the controller. Be aware that
+	   *        `ngRoute.$routeParams` will still refer to the previous route within these resolve
+	   *        functions.  Use `$route.current.params` to access the new route parameters, instead.
+	   *
+	   *    - `redirectTo` – {(string|function())=} – value to update
+	   *      {@link ng.$location $location} path with and trigger route redirection.
+	   *
+	   *      If `redirectTo` is a function, it will be called with the following parameters:
+	   *
+	   *      - `{Object.<string>}` - route parameters extracted from the current
+	   *        `$location.path()` by applying the current route templateUrl.
+	   *      - `{string}` - current `$location.path()`
+	   *      - `{Object}` - current `$location.search()`
+	   *
+	   *      The custom `redirectTo` function is expected to return a string which will be used
+	   *      to update `$location.path()` and `$location.search()`.
+	   *
+	   *    - `[reloadOnSearch=true]` - {boolean=} - reload route when only `$location.search()`
+	   *      or `$location.hash()` changes.
+	   *
+	   *      If the option is set to `false` and url in the browser changes, then
+	   *      `$routeUpdate` event is broadcasted on the root scope.
+	   *
+	   *    - `[caseInsensitiveMatch=false]` - {boolean=} - match routes without being case sensitive
+	   *
+	   *      If the option is set to `true`, then the particular route can be matched without being
+	   *      case sensitive
+	   *
+	   * @returns {Object} self
+	   *
+	   * @description
+	   * Adds a new route definition to the `$route` service.
+	   */
+	  this.when = function(path, route) {
+	    //copy original route object to preserve params inherited from proto chain
+	    var routeCopy = angular.copy(route);
+	    if (angular.isUndefined(routeCopy.reloadOnSearch)) {
+	      routeCopy.reloadOnSearch = true;
+	    }
+	    if (angular.isUndefined(routeCopy.caseInsensitiveMatch)) {
+	      routeCopy.caseInsensitiveMatch = this.caseInsensitiveMatch;
+	    }
+	    routes[path] = angular.extend(
+	      routeCopy,
+	      path && pathRegExp(path, routeCopy)
+	    );
+
+	    // create redirection for trailing slashes
+	    if (path) {
+	      var redirectPath = (path[path.length - 1] == '/')
+	            ? path.substr(0, path.length - 1)
+	            : path + '/';
+
+	      routes[redirectPath] = angular.extend(
+	        {redirectTo: path},
+	        pathRegExp(redirectPath, routeCopy)
+	      );
+	    }
+
+	    return this;
+	  };
+
+	  /**
+	   * @ngdoc property
+	   * @name $routeProvider#caseInsensitiveMatch
+	   * @description
+	   *
+	   * A boolean property indicating if routes defined
+	   * using this provider should be matched using a case insensitive
+	   * algorithm. Defaults to `false`.
+	   */
+	  this.caseInsensitiveMatch = false;
+
+	   /**
+	    * @param path {string} path
+	    * @param opts {Object} options
+	    * @return {?Object}
+	    *
+	    * @description
+	    * Normalizes the given path, returning a regular expression
+	    * and the original path.
+	    *
+	    * Inspired by pathRexp in visionmedia/express/lib/utils.js.
+	    */
+	  function pathRegExp(path, opts) {
+	    var insensitive = opts.caseInsensitiveMatch,
+	        ret = {
+	          originalPath: path,
+	          regexp: path
+	        },
+	        keys = ret.keys = [];
+
+	    path = path
+	      .replace(/([().])/g, '\\$1')
+	      .replace(/(\/)?:(\w+)([\?\*])?/g, function(_, slash, key, option) {
+	        var optional = option === '?' ? option : null;
+	        var star = option === '*' ? option : null;
+	        keys.push({ name: key, optional: !!optional });
+	        slash = slash || '';
+	        return ''
+	          + (optional ? '' : slash)
+	          + '(?:'
+	          + (optional ? slash : '')
+	          + (star && '(.+?)' || '([^/]+)')
+	          + (optional || '')
+	          + ')'
+	          + (optional || '');
+	      })
+	      .replace(/([\/$\*])/g, '\\$1');
+
+	    ret.regexp = new RegExp('^' + path + '$', insensitive ? 'i' : '');
+	    return ret;
+	  }
+
+	  /**
+	   * @ngdoc method
+	   * @name $routeProvider#otherwise
+	   *
+	   * @description
+	   * Sets route definition that will be used on route change when no other route definition
+	   * is matched.
+	   *
+	   * @param {Object|string} params Mapping information to be assigned to `$route.current`.
+	   * If called with a string, the value maps to `redirectTo`.
+	   * @returns {Object} self
+	   */
+	  this.otherwise = function(params) {
+	    if (typeof params === 'string') {
+	      params = {redirectTo: params};
+	    }
+	    this.when(null, params);
+	    return this;
+	  };
+
+
+	  this.$get = ['$rootScope',
+	               '$location',
+	               '$routeParams',
+	               '$q',
+	               '$injector',
+	               '$templateRequest',
+	               '$sce',
+	      function($rootScope, $location, $routeParams, $q, $injector, $templateRequest, $sce) {
+
+	    /**
+	     * @ngdoc service
+	     * @name $route
+	     * @requires $location
+	     * @requires $routeParams
+	     *
+	     * @property {Object} current Reference to the current route definition.
+	     * The route definition contains:
+	     *
+	     *   - `controller`: The controller constructor as define in route definition.
+	     *   - `locals`: A map of locals which is used by {@link ng.$controller $controller} service for
+	     *     controller instantiation. The `locals` contain
+	     *     the resolved values of the `resolve` map. Additionally the `locals` also contain:
+	     *
+	     *     - `$scope` - The current route scope.
+	     *     - `$template` - The current route template HTML.
+	     *
+	     * @property {Object} routes Object with all route configuration Objects as its properties.
+	     *
+	     * @description
+	     * `$route` is used for deep-linking URLs to controllers and views (HTML partials).
+	     * It watches `$location.url()` and tries to map the path to an existing route definition.
+	     *
+	     * Requires the {@link ngRoute `ngRoute`} module to be installed.
+	     *
+	     * You can define routes through {@link ngRoute.$routeProvider $routeProvider}'s API.
+	     *
+	     * The `$route` service is typically used in conjunction with the
+	     * {@link ngRoute.directive:ngView `ngView`} directive and the
+	     * {@link ngRoute.$routeParams `$routeParams`} service.
+	     *
+	     * @example
+	     * This example shows how changing the URL hash causes the `$route` to match a route against the
+	     * URL, and the `ngView` pulls in the partial.
+	     *
+	     * <example name="$route-service" module="ngRouteExample"
+	     *          deps="angular-route.js" fixBase="true">
+	     *   <file name="index.html">
+	     *     <div ng-controller="MainController">
+	     *       Choose:
+	     *       <a href="Book/Moby">Moby</a> |
+	     *       <a href="Book/Moby/ch/1">Moby: Ch1</a> |
+	     *       <a href="Book/Gatsby">Gatsby</a> |
+	     *       <a href="Book/Gatsby/ch/4?key=value">Gatsby: Ch4</a> |
+	     *       <a href="Book/Scarlet">Scarlet Letter</a><br/>
+	     *
+	     *       <div ng-view></div>
+	     *
+	     *       <hr />
+	     *
+	     *       <pre>$location.path() = {{$location.path()}}</pre>
+	     *       <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+	     *       <pre>$route.current.params = {{$route.current.params}}</pre>
+	     *       <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+	     *       <pre>$routeParams = {{$routeParams}}</pre>
+	     *     </div>
+	     *   </file>
+	     *
+	     *   <file name="book.html">
+	     *     controller: {{name}}<br />
+	     *     Book Id: {{params.bookId}}<br />
+	     *   </file>
+	     *
+	     *   <file name="chapter.html">
+	     *     controller: {{name}}<br />
+	     *     Book Id: {{params.bookId}}<br />
+	     *     Chapter Id: {{params.chapterId}}
+	     *   </file>
+	     *
+	     *   <file name="script.js">
+	     *     angular.module('ngRouteExample', ['ngRoute'])
+	     *
+	     *      .controller('MainController', function($scope, $route, $routeParams, $location) {
+	     *          $scope.$route = $route;
+	     *          $scope.$location = $location;
+	     *          $scope.$routeParams = $routeParams;
+	     *      })
+	     *
+	     *      .controller('BookController', function($scope, $routeParams) {
+	     *          $scope.name = "BookController";
+	     *          $scope.params = $routeParams;
+	     *      })
+	     *
+	     *      .controller('ChapterController', function($scope, $routeParams) {
+	     *          $scope.name = "ChapterController";
+	     *          $scope.params = $routeParams;
+	     *      })
+	     *
+	     *     .config(function($routeProvider, $locationProvider) {
+	     *       $routeProvider
+	     *        .when('/Book/:bookId', {
+	     *         templateUrl: 'book.html',
+	     *         controller: 'BookController',
+	     *         resolve: {
+	     *           // I will cause a 1 second delay
+	     *           delay: function($q, $timeout) {
+	     *             var delay = $q.defer();
+	     *             $timeout(delay.resolve, 1000);
+	     *             return delay.promise;
+	     *           }
+	     *         }
+	     *       })
+	     *       .when('/Book/:bookId/ch/:chapterId', {
+	     *         templateUrl: 'chapter.html',
+	     *         controller: 'ChapterController'
+	     *       });
+	     *
+	     *       // configure html5 to get links working on jsfiddle
+	     *       $locationProvider.html5Mode(true);
+	     *     });
+	     *
+	     *   </file>
+	     *
+	     *   <file name="protractor.js" type="protractor">
+	     *     it('should load and compile correct template', function() {
+	     *       element(by.linkText('Moby: Ch1')).click();
+	     *       var content = element(by.css('[ng-view]')).getText();
+	     *       expect(content).toMatch(/controller\: ChapterController/);
+	     *       expect(content).toMatch(/Book Id\: Moby/);
+	     *       expect(content).toMatch(/Chapter Id\: 1/);
+	     *
+	     *       element(by.partialLinkText('Scarlet')).click();
+	     *
+	     *       content = element(by.css('[ng-view]')).getText();
+	     *       expect(content).toMatch(/controller\: BookController/);
+	     *       expect(content).toMatch(/Book Id\: Scarlet/);
+	     *     });
+	     *   </file>
+	     * </example>
+	     */
+
+	    /**
+	     * @ngdoc event
+	     * @name $route#$routeChangeStart
+	     * @eventType broadcast on root scope
+	     * @description
+	     * Broadcasted before a route change. At this  point the route services starts
+	     * resolving all of the dependencies needed for the route change to occur.
+	     * Typically this involves fetching the view template as well as any dependencies
+	     * defined in `resolve` route property. Once  all of the dependencies are resolved
+	     * `$routeChangeSuccess` is fired.
+	     *
+	     * The route change (and the `$location` change that triggered it) can be prevented
+	     * by calling `preventDefault` method of the event. See {@link ng.$rootScope.Scope#$on}
+	     * for more details about event object.
+	     *
+	     * @param {Object} angularEvent Synthetic event object.
+	     * @param {Route} next Future route information.
+	     * @param {Route} current Current route information.
+	     */
+
+	    /**
+	     * @ngdoc event
+	     * @name $route#$routeChangeSuccess
+	     * @eventType broadcast on root scope
+	     * @description
+	     * Broadcasted after a route change has happened successfully.
+	     * The `resolve` dependencies are now available in the `current.locals` property.
+	     *
+	     * {@link ngRoute.directive:ngView ngView} listens for the directive
+	     * to instantiate the controller and render the view.
+	     *
+	     * @param {Object} angularEvent Synthetic event object.
+	     * @param {Route} current Current route information.
+	     * @param {Route|Undefined} previous Previous route information, or undefined if current is
+	     * first route entered.
+	     */
+
+	    /**
+	     * @ngdoc event
+	     * @name $route#$routeChangeError
+	     * @eventType broadcast on root scope
+	     * @description
+	     * Broadcasted if any of the resolve promises are rejected.
+	     *
+	     * @param {Object} angularEvent Synthetic event object
+	     * @param {Route} current Current route information.
+	     * @param {Route} previous Previous route information.
+	     * @param {Route} rejection Rejection of the promise. Usually the error of the failed promise.
+	     */
+
+	    /**
+	     * @ngdoc event
+	     * @name $route#$routeUpdate
+	     * @eventType broadcast on root scope
+	     * @description
+	     * The `reloadOnSearch` property has been set to false, and we are reusing the same
+	     * instance of the Controller.
+	     *
+	     * @param {Object} angularEvent Synthetic event object
+	     * @param {Route} current Current/previous route information.
+	     */
+
+	    var forceReload = false,
+	        preparedRoute,
+	        preparedRouteIsUpdateOnly,
+	        $route = {
+	          routes: routes,
+
+	          /**
+	           * @ngdoc method
+	           * @name $route#reload
+	           *
+	           * @description
+	           * Causes `$route` service to reload the current route even if
+	           * {@link ng.$location $location} hasn't changed.
+	           *
+	           * As a result of that, {@link ngRoute.directive:ngView ngView}
+	           * creates new scope and reinstantiates the controller.
+	           */
+	          reload: function() {
+	            forceReload = true;
+	            $rootScope.$evalAsync(function() {
+	              // Don't support cancellation of a reload for now...
+	              prepareRoute();
+	              commitRoute();
+	            });
+	          },
+
+	          /**
+	           * @ngdoc method
+	           * @name $route#updateParams
+	           *
+	           * @description
+	           * Causes `$route` service to update the current URL, replacing
+	           * current route parameters with those specified in `newParams`.
+	           * Provided property names that match the route's path segment
+	           * definitions will be interpolated into the location's path, while
+	           * remaining properties will be treated as query params.
+	           *
+	           * @param {!Object<string, string>} newParams mapping of URL parameter names to values
+	           */
+	          updateParams: function(newParams) {
+	            if (this.current && this.current.$$route) {
+	              newParams = angular.extend({}, this.current.params, newParams);
+	              $location.path(interpolate(this.current.$$route.originalPath, newParams));
+	              // interpolate modifies newParams, only query params are left
+	              $location.search(newParams);
+	            } else {
+	              throw $routeMinErr('norout', 'Tried updating route when with no current route');
+	            }
+	          }
+	        };
+
+	    $rootScope.$on('$locationChangeStart', prepareRoute);
+	    $rootScope.$on('$locationChangeSuccess', commitRoute);
+
+	    return $route;
+
+	    /////////////////////////////////////////////////////
+
+	    /**
+	     * @param on {string} current url
+	     * @param route {Object} route regexp to match the url against
+	     * @return {?Object}
+	     *
+	     * @description
+	     * Check if the route matches the current url.
+	     *
+	     * Inspired by match in
+	     * visionmedia/express/lib/router/router.js.
+	     */
+	    function switchRouteMatcher(on, route) {
+	      var keys = route.keys,
+	          params = {};
+
+	      if (!route.regexp) return null;
+
+	      var m = route.regexp.exec(on);
+	      if (!m) return null;
+
+	      for (var i = 1, len = m.length; i < len; ++i) {
+	        var key = keys[i - 1];
+
+	        var val = m[i];
+
+	        if (key && val) {
+	          params[key.name] = val;
+	        }
+	      }
+	      return params;
+	    }
+
+	    function prepareRoute($locationEvent) {
+	      var lastRoute = $route.current;
+
+	      preparedRoute = parseRoute();
+	      preparedRouteIsUpdateOnly = preparedRoute && lastRoute && preparedRoute.$$route === lastRoute.$$route
+	          && angular.equals(preparedRoute.pathParams, lastRoute.pathParams)
+	          && !preparedRoute.reloadOnSearch && !forceReload;
+
+	      if (!preparedRouteIsUpdateOnly && (lastRoute || preparedRoute)) {
+	        if ($rootScope.$broadcast('$routeChangeStart', preparedRoute, lastRoute).defaultPrevented) {
+	          if ($locationEvent) {
+	            $locationEvent.preventDefault();
+	          }
+	        }
+	      }
+	    }
+
+	    function commitRoute() {
+	      var lastRoute = $route.current;
+	      var nextRoute = preparedRoute;
+
+	      if (preparedRouteIsUpdateOnly) {
+	        lastRoute.params = nextRoute.params;
+	        angular.copy(lastRoute.params, $routeParams);
+	        $rootScope.$broadcast('$routeUpdate', lastRoute);
+	      } else if (nextRoute || lastRoute) {
+	        forceReload = false;
+	        $route.current = nextRoute;
+	        if (nextRoute) {
+	          if (nextRoute.redirectTo) {
+	            if (angular.isString(nextRoute.redirectTo)) {
+	              $location.path(interpolate(nextRoute.redirectTo, nextRoute.params)).search(nextRoute.params)
+	                       .replace();
+	            } else {
+	              $location.url(nextRoute.redirectTo(nextRoute.pathParams, $location.path(), $location.search()))
+	                       .replace();
+	            }
+	          }
+	        }
+
+	        $q.when(nextRoute).
+	          then(function() {
+	            if (nextRoute) {
+	              var locals = angular.extend({}, nextRoute.resolve),
+	                  template, templateUrl;
+
+	              angular.forEach(locals, function(value, key) {
+	                locals[key] = angular.isString(value) ?
+	                    $injector.get(value) : $injector.invoke(value, null, null, key);
+	              });
+
+	              if (angular.isDefined(template = nextRoute.template)) {
+	                if (angular.isFunction(template)) {
+	                  template = template(nextRoute.params);
+	                }
+	              } else if (angular.isDefined(templateUrl = nextRoute.templateUrl)) {
+	                if (angular.isFunction(templateUrl)) {
+	                  templateUrl = templateUrl(nextRoute.params);
+	                }
+	                if (angular.isDefined(templateUrl)) {
+	                  nextRoute.loadedTemplateUrl = $sce.valueOf(templateUrl);
+	                  template = $templateRequest(templateUrl);
+	                }
+	              }
+	              if (angular.isDefined(template)) {
+	                locals['$template'] = template;
+	              }
+	              return $q.all(locals);
+	            }
+	          }).
+	          then(function(locals) {
+	            // after route change
+	            if (nextRoute == $route.current) {
+	              if (nextRoute) {
+	                nextRoute.locals = locals;
+	                angular.copy(nextRoute.params, $routeParams);
+	              }
+	              $rootScope.$broadcast('$routeChangeSuccess', nextRoute, lastRoute);
+	            }
+	          }, function(error) {
+	            if (nextRoute == $route.current) {
+	              $rootScope.$broadcast('$routeChangeError', nextRoute, lastRoute, error);
+	            }
+	          });
+	      }
+	    }
+
+
+	    /**
+	     * @returns {Object} the current active route, by matching it against the URL
+	     */
+	    function parseRoute() {
+	      // Match a route
+	      var params, match;
+	      angular.forEach(routes, function(route, path) {
+	        if (!match && (params = switchRouteMatcher($location.path(), route))) {
+	          match = inherit(route, {
+	            params: angular.extend({}, $location.search(), params),
+	            pathParams: params});
+	          match.$$route = route;
+	        }
+	      });
+	      // No route matched; fallback to "otherwise" route
+	      return match || routes[null] && inherit(routes[null], {params: {}, pathParams:{}});
+	    }
+
+	    /**
+	     * @returns {string} interpolation of the redirect path with the parameters
+	     */
+	    function interpolate(string, params) {
+	      var result = [];
+	      angular.forEach((string || '').split(':'), function(segment, i) {
+	        if (i === 0) {
+	          result.push(segment);
+	        } else {
+	          var segmentMatch = segment.match(/(\w+)(?:[?*])?(.*)/);
+	          var key = segmentMatch[1];
+	          result.push(params[key]);
+	          result.push(segmentMatch[2] || '');
+	          delete params[key];
+	        }
+	      });
+	      return result.join('');
+	    }
+	  }];
+	}
+
+	ngRouteModule.provider('$routeParams', $RouteParamsProvider);
+
+
+	/**
+	 * @ngdoc service
+	 * @name $routeParams
+	 * @requires $route
+	 *
+	 * @description
+	 * The `$routeParams` service allows you to retrieve the current set of route parameters.
+	 *
+	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
+	 *
+	 * The route parameters are a combination of {@link ng.$location `$location`}'s
+	 * {@link ng.$location#search `search()`} and {@link ng.$location#path `path()`}.
+	 * The `path` parameters are extracted when the {@link ngRoute.$route `$route`} path is matched.
+	 *
+	 * In case of parameter name collision, `path` params take precedence over `search` params.
+	 *
+	 * The service guarantees that the identity of the `$routeParams` object will remain unchanged
+	 * (but its properties will likely change) even when a route change occurs.
+	 *
+	 * Note that the `$routeParams` are only updated *after* a route change completes successfully.
+	 * This means that you cannot rely on `$routeParams` being correct in route resolve functions.
+	 * Instead you can use `$route.current.params` to access the new route's parameters.
+	 *
+	 * @example
+	 * ```js
+	 *  // Given:
+	 *  // URL: http://server.com/index.html#/Chapter/1/Section/2?search=moby
+	 *  // Route: /Chapter/:chapterId/Section/:sectionId
+	 *  //
+	 *  // Then
+	 *  $routeParams ==> {chapterId:'1', sectionId:'2', search:'moby'}
+	 * ```
+	 */
+	function $RouteParamsProvider() {
+	  this.$get = function() { return {}; };
+	}
+
+	ngRouteModule.directive('ngView', ngViewFactory);
+	ngRouteModule.directive('ngView', ngViewFillContentFactory);
+
+
+	/**
+	 * @ngdoc directive
+	 * @name ngView
+	 * @restrict ECA
+	 *
+	 * @description
+	 * # Overview
+	 * `ngView` is a directive that complements the {@link ngRoute.$route $route} service by
+	 * including the rendered template of the current route into the main layout (`index.html`) file.
+	 * Every time the current route changes, the included view changes with it according to the
+	 * configuration of the `$route` service.
+	 *
+	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
+	 *
+	 * @animations
+	 * enter - animation is used to bring new content into the browser.
+	 * leave - animation is used to animate existing content away.
+	 *
+	 * The enter and leave animation occur concurrently.
+	 *
+	 * @scope
+	 * @priority 400
+	 * @param {string=} onload Expression to evaluate whenever the view updates.
+	 *
+	 * @param {string=} autoscroll Whether `ngView` should call {@link ng.$anchorScroll
+	 *                  $anchorScroll} to scroll the viewport after the view is updated.
+	 *
+	 *                  - If the attribute is not set, disable scrolling.
+	 *                  - If the attribute is set without value, enable scrolling.
+	 *                  - Otherwise enable scrolling only if the `autoscroll` attribute value evaluated
+	 *                    as an expression yields a truthy value.
+	 * @example
+	    <example name="ngView-directive" module="ngViewExample"
+	             deps="angular-route.js;angular-animate.js"
+	             animations="true" fixBase="true">
+	      <file name="index.html">
+	        <div ng-controller="MainCtrl as main">
+	          Choose:
+	          <a href="Book/Moby">Moby</a> |
+	          <a href="Book/Moby/ch/1">Moby: Ch1</a> |
+	          <a href="Book/Gatsby">Gatsby</a> |
+	          <a href="Book/Gatsby/ch/4?key=value">Gatsby: Ch4</a> |
+	          <a href="Book/Scarlet">Scarlet Letter</a><br/>
+
+	          <div class="view-animate-container">
+	            <div ng-view class="view-animate"></div>
+	          </div>
+	          <hr />
+
+	          <pre>$location.path() = {{main.$location.path()}}</pre>
+	          <pre>$route.current.templateUrl = {{main.$route.current.templateUrl}}</pre>
+	          <pre>$route.current.params = {{main.$route.current.params}}</pre>
+	          <pre>$routeParams = {{main.$routeParams}}</pre>
+	        </div>
+	      </file>
+
+	      <file name="book.html">
+	        <div>
+	          controller: {{book.name}}<br />
+	          Book Id: {{book.params.bookId}}<br />
+	        </div>
+	      </file>
+
+	      <file name="chapter.html">
+	        <div>
+	          controller: {{chapter.name}}<br />
+	          Book Id: {{chapter.params.bookId}}<br />
+	          Chapter Id: {{chapter.params.chapterId}}
+	        </div>
+	      </file>
+
+	      <file name="animations.css">
+	        .view-animate-container {
+	          position:relative;
+	          height:100px!important;
+	          background:white;
+	          border:1px solid black;
+	          height:40px;
+	          overflow:hidden;
+	        }
+
+	        .view-animate {
+	          padding:10px;
+	        }
+
+	        .view-animate.ng-enter, .view-animate.ng-leave {
+	          transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+
+	          display:block;
+	          width:100%;
+	          border-left:1px solid black;
+
+	          position:absolute;
+	          top:0;
+	          left:0;
+	          right:0;
+	          bottom:0;
+	          padding:10px;
+	        }
+
+	        .view-animate.ng-enter {
+	          left:100%;
+	        }
+	        .view-animate.ng-enter.ng-enter-active {
+	          left:0;
+	        }
+	        .view-animate.ng-leave.ng-leave-active {
+	          left:-100%;
+	        }
+	      </file>
+
+	      <file name="script.js">
+	        angular.module('ngViewExample', ['ngRoute', 'ngAnimate'])
+	          .config(['$routeProvider', '$locationProvider',
+	            function($routeProvider, $locationProvider) {
+	              $routeProvider
+	                .when('/Book/:bookId', {
+	                  templateUrl: 'book.html',
+	                  controller: 'BookCtrl',
+	                  controllerAs: 'book'
+	                })
+	                .when('/Book/:bookId/ch/:chapterId', {
+	                  templateUrl: 'chapter.html',
+	                  controller: 'ChapterCtrl',
+	                  controllerAs: 'chapter'
+	                });
+
+	              $locationProvider.html5Mode(true);
+	          }])
+	          .controller('MainCtrl', ['$route', '$routeParams', '$location',
+	            function($route, $routeParams, $location) {
+	              this.$route = $route;
+	              this.$location = $location;
+	              this.$routeParams = $routeParams;
+	          }])
+	          .controller('BookCtrl', ['$routeParams', function($routeParams) {
+	            this.name = "BookCtrl";
+	            this.params = $routeParams;
+	          }])
+	          .controller('ChapterCtrl', ['$routeParams', function($routeParams) {
+	            this.name = "ChapterCtrl";
+	            this.params = $routeParams;
+	          }]);
+
+	      </file>
+
+	      <file name="protractor.js" type="protractor">
+	        it('should load and compile correct template', function() {
+	          element(by.linkText('Moby: Ch1')).click();
+	          var content = element(by.css('[ng-view]')).getText();
+	          expect(content).toMatch(/controller\: ChapterCtrl/);
+	          expect(content).toMatch(/Book Id\: Moby/);
+	          expect(content).toMatch(/Chapter Id\: 1/);
+
+	          element(by.partialLinkText('Scarlet')).click();
+
+	          content = element(by.css('[ng-view]')).getText();
+	          expect(content).toMatch(/controller\: BookCtrl/);
+	          expect(content).toMatch(/Book Id\: Scarlet/);
+	        });
+	      </file>
+	    </example>
+	 */
+
+
+	/**
+	 * @ngdoc event
+	 * @name ngView#$viewContentLoaded
+	 * @eventType emit on the current ngView scope
+	 * @description
+	 * Emitted every time the ngView content is reloaded.
+	 */
+	ngViewFactory.$inject = ['$route', '$anchorScroll', '$animate'];
+	function ngViewFactory($route, $anchorScroll, $animate) {
+	  return {
+	    restrict: 'ECA',
+	    terminal: true,
+	    priority: 400,
+	    transclude: 'element',
+	    link: function(scope, $element, attr, ctrl, $transclude) {
+	        var currentScope,
+	            currentElement,
+	            previousLeaveAnimation,
+	            autoScrollExp = attr.autoscroll,
+	            onloadExp = attr.onload || '';
+
+	        scope.$on('$routeChangeSuccess', update);
+	        update();
+
+	        function cleanupLastView() {
+	          if (previousLeaveAnimation) {
+	            $animate.cancel(previousLeaveAnimation);
+	            previousLeaveAnimation = null;
+	          }
+
+	          if (currentScope) {
+	            currentScope.$destroy();
+	            currentScope = null;
+	          }
+	          if (currentElement) {
+	            previousLeaveAnimation = $animate.leave(currentElement);
+	            previousLeaveAnimation.then(function() {
+	              previousLeaveAnimation = null;
+	            });
+	            currentElement = null;
+	          }
+	        }
+
+	        function update() {
+	          var locals = $route.current && $route.current.locals,
+	              template = locals && locals.$template;
+
+	          if (angular.isDefined(template)) {
+	            var newScope = scope.$new();
+	            var current = $route.current;
+
+	            // Note: This will also link all children of ng-view that were contained in the original
+	            // html. If that content contains controllers, ... they could pollute/change the scope.
+	            // However, using ng-view on an element with additional content does not make sense...
+	            // Note: We can't remove them in the cloneAttchFn of $transclude as that
+	            // function is called before linking the content, which would apply child
+	            // directives to non existing elements.
+	            var clone = $transclude(newScope, function(clone) {
+	              $animate.enter(clone, null, currentElement || $element).then(function onNgViewEnter() {
+	                if (angular.isDefined(autoScrollExp)
+	                  && (!autoScrollExp || scope.$eval(autoScrollExp))) {
+	                  $anchorScroll();
+	                }
+	              });
+	              cleanupLastView();
+	            });
+
+	            currentElement = clone;
+	            currentScope = current.scope = newScope;
+	            currentScope.$emit('$viewContentLoaded');
+	            currentScope.$eval(onloadExp);
+	          } else {
+	            cleanupLastView();
+	          }
+	        }
+	    }
+	  };
+	}
+
+	// This directive is called during the $transclude call of the first `ngView` directive.
+	// It will replace and compile the content of the element with the loaded template.
+	// We need this directive so that the element content is already filled when
+	// the link function of another directive on the same element as ngView
+	// is called.
+	ngViewFillContentFactory.$inject = ['$compile', '$controller', '$route'];
+	function ngViewFillContentFactory($compile, $controller, $route) {
+	  return {
+	    restrict: 'ECA',
+	    priority: -400,
+	    link: function(scope, $element) {
+	      var current = $route.current,
+	          locals = current.locals;
+
+	      $element.html(locals.$template);
+
+	      var link = $compile($element.contents());
+
+	      if (current.controller) {
+	        locals.$scope = scope;
+	        var controller = $controller(current.controller, locals);
+	        if (current.controllerAs) {
+	          scope[current.controllerAs] = controller;
+	        }
+	        $element.data('$ngControllerController', controller);
+	        $element.children().data('$ngControllerController', controller);
+	      }
+
+	      link(scope);
+	    }
+	  };
+	}
+
+
+	})(window, window.angular);
+
+
+/***/ },
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29798,11 +30834,11 @@
 
 	//requires
 
-	__webpack_require__(79)(directives);
-	__webpack_require__(80)(directives);
+	__webpack_require__(82)(directives);
+	__webpack_require__(83)(directives);
 
 /***/ },
-/* 79 */
+/* 82 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29815,14 +30851,18 @@
 
 	      restrict: 'AEC',
 	      replace: true, //replaces placement element
-	      templateUrl: 'js/games/templates/nav-directive-template.html',
-	      scope: {} //scope specific to this directive, can set default values inside
+	      templateUrl: 'html/templates/nav-directive-template.html',
+	      scope: {
+	        nbaPath: '=',
+	        nflPath: '=',
+	        cfbPath: '='
+	      } //scope specific to this directive, can set default values inside
 	    };
 	  });
 	};
 
 /***/ },
-/* 80 */
+/* 83 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29835,44 +30875,58 @@
 
 	      restrict: 'AEC',
 	      replace: true, //replaces placement element
-	      templateUrl: 'js/games/templates/form-directive-template.html',
+	      templateUrl: 'html/templates/form-directive-template.html',
 	     //scope specific to this directive, can set default values inside
 	      scope: {
 	        formClassName: '@',
 	        listName: '@',
 	        dropdownTitle: '@',
 	        dropdownLists: '=',
+	        sportName: '@'
 	      }
 	    };
 	  });
 	};
 
 /***/ },
-/* 81 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = function(app) {
-	  __webpack_require__(82)(app);
+	  __webpack_require__(85)(app);
 	};
 
 /***/ },
-/* 82 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = function(app) {
 
-	  app.controller('gamesController', ['$scope', '$http', function($scope, $http) {
+	  app.controller('gamesController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
 	    $scope.games = [];
 	    $scope.selected = {};
 	    $scope.resultsTable = false;
-	    $scope.dropdownLists = __webpack_require__(83);
+	    $scope.path = $location.path();
+	    $scope.nbaPath = false;
+	    $scope.nflPath = false;
+	    $scope.ncfbPath = false;
 
-	    $http.get('/api/games')
+	    if ($scope.path === '/nba') {
+	      $scope.nbaPath = true;
+	    } else if($scope.path === '/nfl') {
+	      $scope.nflPath = true;
+	    } else if($scope.path === '/cfb') {
+	      $scope.cfbPath = true;
+	    }
+
+	    $scope.dropdownLists = __webpack_require__(86);
+
+	      $http.get('/api' + $scope.path)
 	      .then(function(res) {
 	        //success
 	        $scope.games = res.data;
@@ -30009,21 +31063,39 @@
 	};
 
 /***/ },
-/* 83 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(84);
-	var courtList = __webpack_require__(85);
-	var gameTypeList = __webpack_require__(86);
-	var seasonList = __webpack_require__(87);
-	var spreadList = __webpack_require__(88);
-	var spreadMoveList = __webpack_require__(89);
-	var statusList = __webpack_require__(90);
-	var totalMoveList = __webpack_require__(91);
+	var nbaList = __webpack_require__(87);
+	var cfbList = __webpack_require__(96);
+	var nflList = __webpack_require__(105);
 
 	module.exports = {
+
+	          nba: nbaList,
+	          nfl: nflList,
+	          cfb: cfbList
+	};
+
+/***/ },
+/* 87 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var teamList = __webpack_require__(88);
+	var courtList = __webpack_require__(89);
+	var gameTypeList = __webpack_require__(90);
+	var seasonList = __webpack_require__(91);
+	var spreadList = __webpack_require__(92);
+	var spreadMoveList = __webpack_require__(93);
+	var statusList = __webpack_require__(94);
+	var totalMoveList = __webpack_require__(95);
+
+	module.exports = {
+
 	          team: teamList,
 	          teamCourt: courtList,
 	          opponent: teamList,
@@ -30033,10 +31105,10 @@
 	          spreadClose: spreadList,
 	          spreadMove: spreadMoveList,
 	          totalMove: totalMoveList
-	        };
+	};
 
 /***/ },
-/* 84 */
+/* 88 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30075,7 +31147,7 @@
 	          ];
 
 /***/ },
-/* 85 */
+/* 89 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30086,7 +31158,7 @@
 	          ];
 
 /***/ },
-/* 86 */
+/* 90 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30097,7 +31169,7 @@
 	          ];
 
 /***/ },
-/* 87 */
+/* 91 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30110,7 +31182,7 @@
 	          ];
 
 /***/ },
-/* 88 */
+/* 92 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30198,7 +31270,7 @@
 	       ];
 
 /***/ },
-/* 89 */
+/* 93 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30210,7 +31282,7 @@
 	          ];
 
 /***/ },
-/* 90 */
+/* 94 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30221,7 +31293,506 @@
 	          ];
 
 /***/ },
-/* 91 */
+/* 95 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"UP", fullName:'Up'},
+	          {value:"DOWN", fullName:'Down'},
+	          {value:"NONE", fullName:'None'}
+	          ];
+
+/***/ },
+/* 96 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var teamList = __webpack_require__(97);
+	var courtList = __webpack_require__(98);
+	var gameTypeList = __webpack_require__(99);
+	var seasonList = __webpack_require__(100);
+	var spreadList = __webpack_require__(101);
+	var spreadMoveList = __webpack_require__(102);
+	var statusList = __webpack_require__(103);
+	var totalMoveList = __webpack_require__(104);
+
+	module.exports = {
+
+	          team: teamList,
+	          teamSite: courtList,
+	          opponent: teamList,
+	          gameType: gameTypeList,
+	          season: seasonList,
+	          status: statusList,
+	          spreadClose: spreadList,
+	          spreadMove: spreadMoveList,
+	          totalMove: totalMoveList
+	};
+
+/***/ },
+/* 97 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"ATL", fullName:'Atlanta Hawks'},
+	          {value:"BOS", fullName:'Boston Celtics'},
+	          {value:"BK", fullName:'Brooklyn Nets'},
+	          {value:"CHAR", fullName:'Charlotte Hornets'},
+	          {value:"CHI", fullName:'Chicago Bulls'},
+	          {value:"CLE", fullName:'Cleveland Cavaliers'},
+	          {value:"DAL", fullName:'Dallas Mavericks'},
+	          {value:"DEN", fullName:'Denver Nuggets'},
+	          {value:"DET", fullName:'Detroit Pistons'},
+	          {value:"GS", fullName:'Golden State Warriors'},
+	          {value:"HOU", fullName:'Houston Rockets'},
+	          {value:"IND", fullName:'Indiana Pacers'},
+	          {value:"LAC", fullName:'Los Angeles Clippers'},
+	          {value:"LAL", fullName:'Los Angeles Lakers'},
+	          {value:"MEM", fullName:'Memphis Grizzlies'},
+	          {value:"MIA", fullName:'Miami Heat'},
+	          {value:"MIL", fullName:'Milwaukee Bucks'},
+	          {value:"MIN", fullName:'Minnesota Timberwolves'},
+	          {value:"NO", fullName:'New Orleans Pelicans'},
+	          {value:"NY", fullName:'New York Knicks'},
+	          {value:"OKC", fullName:'Oklahoma City Thunder'},
+	          {value:"ORL", fullName:'Orlando Magic'},
+	          {value:"PHI", fullName:'Philadelphia 76ers'},
+	          {value:"PHO", fullName:'Phoenix Suns'},
+	          {value:"POR", fullName:'Portland Trail Blazers'},
+	          {value:"SAC", fullName:'Sacramento Kings'},
+	          {value:"SA", fullName:'San Antonio Spurs'},
+	          {value:"TOR", fullName:'Toronto Raptors'},
+	          {value:"UTA", fullName:'Utah Jazz'},
+	          {value:"WAS", fullName:'Washington Wizards'}
+	          ];
+
+/***/ },
+/* 98 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"home", fullName:'Home'},
+	          {value:"road", fullName:'Road'}
+	          ];
+
+/***/ },
+/* 99 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"reg", fullName:'Regular Season'},
+	          {value:"playoff", fullName:'Playoffs'}
+	          ];
+
+/***/ },
+/* 100 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"2014-15", fullName:'2014-15'},
+	          {value:"2013-14", fullName:'2013-14'},
+	          {value:"2012-13", fullName:'2012-13'},
+	          {value:"2011-12", fullName:'2011-12'}
+	          ];
+
+/***/ },
+/* 101 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	       {value:"-20", fullName:"-20"},
+	       {value:"-19.5", fullName:"-19.5"},
+	       {value:"-19", fullName:"-19"},
+	       {value:"-18.5", fullName:"-18.5"},
+	       {value:"-18", fullName:"-18"},
+	       {value:"-17.5", fullName:"-17.5"},
+	       {value:"-17", fullName:"-17"},
+	       {value:"-16.5", fullName:"-16.5"},
+	       {value:"-16", fullName:"-16"},
+	       {value:"-15.5", fullName:"-15.5"},
+	       {value:"-15", fullName:"-15"},
+	       {value:"-14.5", fullName:"-14.5"},
+	       {value:"-14", fullName:"-14"},
+	       {value:"-13.5", fullName:"-13.5"},
+	       {value:"-13", fullName:"-13"},
+	       {value:"-12.5", fullName:"-12.5"},
+	       {value:"-12", fullName:"-12"},
+	       {value:"-11.5", fullName:"-11.5"},
+	       {value:"-11", fullName:"-11"},
+	       {value:"-10.5", fullName:"-10.5"},
+	       {value:"-10", fullName:"-10"},
+	       {value:"-9.5", fullName:"-9.5"},
+	       {value:"-9", fullName:"-9"},
+	       {value:"-8.5", fullName:"-8.5"},
+	       {value:"-8", fullName:"-8"},
+	       {value:"-7.5", fullName:"-7.5"},
+	       {value:"-7", fullName:"-7"},
+	       {value:"-6.5", fullName:"-6.5"},
+	       {value:"-6", fullName:"-6"},
+	       {value:"-5.5", fullName:"-5.5"},
+	       {value:"-5", fullName:"-5"},
+	       {value:"-4.5", fullName:"-4.5"},
+	       {value:"-4", fullName:"-4"},
+	       {value:"-3.5", fullName:"-3.5"},
+	       {value:"-3", fullName:"-3"},
+	       {value:"-2.5", fullName:"-2.5"},
+	       {value:"-2", fullName:"-2"},
+	       {value:"-1.5", fullName:"-1.5"},
+	       {value:"-1", fullName:"-1"},
+	       {value:"0", fullName:"0"},
+	       {value:"1", fullName:"1"},
+	       {value:"1.5", fullName:"1.5"},
+	       {value:"2", fullName:"2"},
+	       {value:"2.5", fullName:"2.5"},
+	       {value:"3", fullName:"3"},
+	       {value:"3.5", fullName:"3.5"},
+	       {value:"4", fullName:"4"},
+	       {value:"4.5", fullName:"4.5"},
+	       {value:"5", fullName:"5"},
+	       {value:"5.5", fullName:"5.5"},
+	       {value:"6", fullName:"6"},
+	       {value:"6.5", fullName:"6.5"},
+	       {value:"7", fullName:"7"},
+	       {value:"7.5", fullName:"7.5"},
+	       {value:"8", fullName:"8"},
+	       {value:"8.5", fullName:"8.5"},
+	       {value:"9", fullName:"9"},
+	       {value:"9.5", fullName:"9.5"},
+	       {value:"10", fullName:"10"},
+	       {value:"10.5", fullName:"10.5"},
+	       {value:"11", fullName:"11"},
+	       {value:"11.5", fullName:"11.5"},
+	       {value:"12", fullName:"12"},
+	       {value:"12.5", fullName:"12.5"},
+	       {value:"13", fullName:"13"},
+	       {value:"13.5", fullName:"13.5"},
+	       {value:"14", fullName:"14"},
+	       {value:"14.5", fullName:"14.5"},
+	       {value:"15", fullName:"15"},
+	       {value:"15.5", fullName:"15.5"},
+	       {value:"16", fullName:"16"},
+	       {value:"16.5", fullName:"16.5"},
+	       {value:"17", fullName:"17"},
+	       {value:"17.5", fullName:"17.5"},
+	       {value:"18", fullName:"18"},
+	       {value:"18.5", fullName:"18.5"},
+	       {value:"19", fullName:"19"},
+	       {value:"19.5", fullName:"19.5"},
+	       {value:"20", fullName:"20"}
+	       ];
+
+/***/ },
+/* 102 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"FOR", fullName:'For'},
+	          {value:"AGAINST", fullName:'Against'},
+	          {value:"NONE", fullName:'None'}
+	          ];
+
+/***/ },
+/* 103 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"favorite", fullName:'Favorite'},
+	          {value:"underdog", fullName:'Underdog'}
+	          ];
+
+/***/ },
+/* 104 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"UP", fullName:'Up'},
+	          {value:"DOWN", fullName:'Down'},
+	          {value:"NONE", fullName:'None'}
+	          ];
+
+/***/ },
+/* 105 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var teamList = __webpack_require__(106);
+	var teamSiteList = __webpack_require__(107);
+	var weekList = __webpack_require__(108);
+	var gameTypeList = __webpack_require__(109);
+	var seasonList = __webpack_require__(110);
+	var spreadList = __webpack_require__(111);
+	var spreadMoveList = __webpack_require__(112);
+	var statusList = __webpack_require__(113);
+	var totalMoveList = __webpack_require__(114);
+
+	module.exports = {
+
+	          teamAbbrev: teamList,
+	          teamSite: teamSiteList,
+	          opponent: teamList,
+	          week: weekList,
+	          gameType: gameTypeList,
+	          season: seasonList,
+	          status: statusList,
+	          spreadClose: spreadList,
+	          spreadMove: spreadMoveList,
+	          totalMove: totalMoveList
+	};
+
+/***/ },
+/* 106 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"ARI", fullName: "Arizona"},
+	          {value:"ATL", fullName: "Atlanta"},
+	          {value:"BAL", fullName: "Baltimore"},
+	          {value:"BUF", fullName: "Buffalo"},
+	          {value:"CAR", fullName: "Carolina"},
+	          {value:"CHI", fullName: "Chicago"},
+	          {value:"CIN", fullName: "Cincinnati"},
+	          {value:"CLE", fullName: "Cleveland"},
+	          {value:"DAL", fullName: "Dallas"},
+	          {value:"DEN", fullName: "Denver"},
+	          {value:"DET", fullName: "Detroit"},
+	          {value:"GB", fullName: "Green Bay"},
+	          {value:"HOU", fullName: "Houston"},
+	          {value:"IND", fullName: "Indianapolis"},
+	          {value:"JAC", fullName: "Jacksonville"},
+	          {value:"KC", fullName: "Kansas City"},
+	          {value:"MIA", fullName: "Miami"},
+	          {value:"MIN", fullName: "Minnesota"},
+	          {value:"NE", fullName: "New England"},
+	          {value:"NO", fullName: "New Orleans"},
+	          {value:"NYG", fullName: "N.Y. Giants"},
+	          {value:"NYJ", fullName: "N.Y. Jets"},
+	          {value:"OAK", fullName: "Oakland"},
+	          {value:"PHI", fullName: "Philadelphia"},
+	          {value:"PIT", fullName: "Pittsburgh"},
+	          {value:"SD", fullName: "San Diego"},
+	          {value:"SF", fullName: "San Francisco"},
+	          {value:"SEA", fullName: "Seattle"},
+	          {value:"STL", fullName: "St. Louis"},
+	          {value:"TB", fullName: "Tampa Bay"},
+	          {value:"TEN", fullName: "Tennessee"},
+	          {value:"WAS", fullName: "Washington"}
+	          ];
+
+/***/ },
+/* 107 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"home", fullName:'Home'},
+	          {value:"road", fullName:'Road'},
+	          {value:"neutral", fullName:'Neutral'}
+	          ];
+
+/***/ },
+/* 108 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+
+	        {value:"1", fullName:"1"},
+	        {value:"2", fullName:"2"},
+	        {value:"3", fullName:"3"},
+	        {value:"4", fullName:"4"},
+	        {value:"5", fullName:"5"},
+	        {value:"6", fullName:"6"},
+	        {value:"7", fullName:"7"},
+	        {value:"8", fullName:"8"},
+	        {value:"9", fullName:"9"},
+	        {value:"10", fullName:"10"},
+	        {value:"11", fullName:"11"},
+	        {value:"12", fullName:"12"},
+	        {value:"13", fullName:"13"},
+	        {value:"14", fullName:"14"},
+	        {value:"15", fullName:"15"},
+	        {value:"16", fullName:"16"},
+	        {value:"17", fullName:"17"},
+	        {value:"Wildcard", fullName:"Wild-Card"},
+	        {value:"Divisional", fullName:"Divisional"},
+	        {value:"Conference", fullName:"Conference Championship"},
+	        {value:"Superbowl", fullName:"Super Bowl"}
+	        ];
+
+/***/ },
+/* 109 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"reg", fullName:'Regular Season'},
+	          {value:"playoff", fullName:'Playoffs'}
+	          ];
+
+/***/ },
+/* 110 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"2015-16", fullName:'2015-16'},
+	          {value:"2014-15", fullName:'2014-15'},
+	          {value:"2013-14", fullName:'2013-14'},
+	          {value:"2012-13", fullName:'2012-13'},
+	          {value:"2011-12", fullName:'2011-12'}
+	          ];
+
+/***/ },
+/* 111 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	       {value:"-23", fullName:"-23"},
+	       {value:"-22.5", fullName:"-22.5"},
+	       {value:"-22", fullName:"-22"},
+	       {value:"-21.5", fullName:"-21.5"},
+	       {value:"-21", fullName:"-21"},
+	       {value:"-20.5", fullName:"-20.5"},
+	       {value:"-20", fullName:"-20"},
+	       {value:"-19.5", fullName:"-19.5"},
+	       {value:"-19", fullName:"-19"},
+	       {value:"-18.5", fullName:"-18.5"},
+	       {value:"-18", fullName:"-18"},
+	       {value:"-17.5", fullName:"-17.5"},
+	       {value:"-17", fullName:"-17"},
+	       {value:"-16.5", fullName:"-16.5"},
+	       {value:"-16", fullName:"-16"},
+	       {value:"-15.5", fullName:"-15.5"},
+	       {value:"-15", fullName:"-15"},
+	       {value:"-14.5", fullName:"-14.5"},
+	       {value:"-14", fullName:"-14"},
+	       {value:"-13.5", fullName:"-13.5"},
+	       {value:"-13", fullName:"-13"},
+	       {value:"-12.5", fullName:"-12.5"},
+	       {value:"-12", fullName:"-12"},
+	       {value:"-11.5", fullName:"-11.5"},
+	       {value:"-11", fullName:"-11"},
+	       {value:"-10.5", fullName:"-10.5"},
+	       {value:"-10", fullName:"-10"},
+	       {value:"-9.5", fullName:"-9.5"},
+	       {value:"-9", fullName:"-9"},
+	       {value:"-8.5", fullName:"-8.5"},
+	       {value:"-8", fullName:"-8"},
+	       {value:"-7.5", fullName:"-7.5"},
+	       {value:"-7", fullName:"-7"},
+	       {value:"-6.5", fullName:"-6.5"},
+	       {value:"-6", fullName:"-6"},
+	       {value:"-5.5", fullName:"-5.5"},
+	       {value:"-5", fullName:"-5"},
+	       {value:"-4.5", fullName:"-4.5"},
+	       {value:"-4", fullName:"-4"},
+	       {value:"-3.5", fullName:"-3.5"},
+	       {value:"-3", fullName:"-3"},
+	       {value:"-2.5", fullName:"-2.5"},
+	       {value:"-2", fullName:"-2"},
+	       {value:"-1.5", fullName:"-1.5"},
+	       {value:"-1", fullName:"-1"},
+	       {value:"0", fullName:"0"},
+	       {value:"1", fullName:"1"},
+	       {value:"1.5", fullName:"1.5"},
+	       {value:"2", fullName:"2"},
+	       {value:"2.5", fullName:"2.5"},
+	       {value:"3", fullName:"3"},
+	       {value:"3.5", fullName:"3.5"},
+	       {value:"4", fullName:"4"},
+	       {value:"4.5", fullName:"4.5"},
+	       {value:"5", fullName:"5"},
+	       {value:"5.5", fullName:"5.5"},
+	       {value:"6", fullName:"6"},
+	       {value:"6.5", fullName:"6.5"},
+	       {value:"7", fullName:"7"},
+	       {value:"7.5", fullName:"7.5"},
+	       {value:"8", fullName:"8"},
+	       {value:"8.5", fullName:"8.5"},
+	       {value:"9", fullName:"9"},
+	       {value:"9.5", fullName:"9.5"},
+	       {value:"10", fullName:"10"},
+	       {value:"10.5", fullName:"10.5"},
+	       {value:"11", fullName:"11"},
+	       {value:"11.5", fullName:"11.5"},
+	       {value:"12", fullName:"12"},
+	       {value:"12.5", fullName:"12.5"},
+	       {value:"13", fullName:"13"},
+	       {value:"13.5", fullName:"13.5"},
+	       {value:"14", fullName:"14"},
+	       {value:"14.5", fullName:"14.5"},
+	       {value:"15", fullName:"15"},
+	       {value:"15.5", fullName:"15.5"},
+	       {value:"16", fullName:"16"},
+	       {value:"16.5", fullName:"16.5"},
+	       {value:"17", fullName:"17"},
+	       {value:"17.5", fullName:"17.5"},
+	       {value:"18", fullName:"18"},
+	       {value:"18.5", fullName:"18.5"},
+	       {value:"19", fullName:"19"},
+	       {value:"19.5", fullName:"19.5"},
+	       {value:"20", fullName:"20"},
+	       {value:"20.5", fullName:"20.5"},
+	       {value:"21", fullName:"21"},
+	       {value:"21.5", fullName:"21.5"},
+	       {value:"22", fullName:"22"},
+	       {value:"22.5", fullName:"22.5"},
+	       {value:"23", fullName:"23"}
+	       ];
+
+/***/ },
+/* 112 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"FOR", fullName:'For'},
+	          {value:"AGAINST", fullName:'Against'},
+	          {value:"NONE", fullName:'None'}
+	          ];
+
+/***/ },
+/* 113 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"favorite", fullName:'Favorite'},
+	          {value:"underdog", fullName:'Underdog'}
+	          ];
+
+/***/ },
+/* 114 */
 /***/ function(module, exports) {
 
 	'use strict';

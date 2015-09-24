@@ -2,14 +2,27 @@
 
 module.exports = function(app) {
 
-  app.controller('gamesController', ['$scope', '$http', function($scope, $http) {
+  app.controller('gamesController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
     $scope.games = [];
     $scope.selected = {};
     $scope.resultsTable = false;
+    $scope.path = $location.path();
+    $scope.nbaPath = false;
+    $scope.nflPath = false;
+    $scope.ncfbPath = false;
+
+    if ($scope.path === '/nba') {
+      $scope.nbaPath = true;
+    } else if($scope.path === '/nfl') {
+      $scope.nflPath = true;
+    } else if($scope.path === '/cfb') {
+      $scope.cfbPath = true;
+    }
+
     $scope.dropdownLists = require('../dropdown-lists/dropdown-lists.js');
 
-    $http.get('/api/games')
+      $http.get('/api' + $scope.path)
       .then(function(res) {
         //success
         $scope.games = res.data;
