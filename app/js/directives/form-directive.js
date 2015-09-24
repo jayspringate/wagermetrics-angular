@@ -8,13 +8,14 @@ module.exports = function(app) {
 
       restrict: 'AEC',
       replace: true, //replaces placement element
-      templateUrl: 'js/games/templates/form-directive-template.html',
+      templateUrl: 'html/templates/form-directive-template.html',
      //scope specific to this directive, can set default values inside
       scope: {
         formClassName: '@',
         listName: '@',
         dropdownTitle: '@',
         dropdownLists: '=',
+        sportName: '@'
       }
     };
   });
