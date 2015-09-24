@@ -60,6 +60,16 @@ module.exports = function(app) {
         }
       }
 
+if (($scope.path === '/nfl' || '/') && ($scope.property.indexOf('status') !== -1)) {
+        $scope.filteredGames.forEach(function (game, gameIndex, gameArr) {
+          if(game.spreadClose > 0) {
+            game.status = 'underdog';
+          } else if (game.spreadClose < 0) {
+            game.status = 'favorite';
+          }
+        });
+      }
+
       $scope.property.forEach(function(propElement, propIndex, propArr) {
 
         $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
