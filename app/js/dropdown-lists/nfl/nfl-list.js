@@ -14,7 +14,7 @@ module.exports = {
 
           teamAbbrev: teamList,
           teamSite: teamSiteList,
-          opponent: teamList,
+          opponentAbbrev: teamList,
           week: weekList,
           gameType: gameTypeList,
           season: seasonList,
