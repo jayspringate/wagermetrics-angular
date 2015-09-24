@@ -1,5 +1,5 @@
 body {
-	background-image:url(../img/basketball.jpg);
+  background-image:url(../img/football.jpg);
 	background-position: center;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -13,6 +13,14 @@ body {
   background-color: rgba(255,255,255,0.85);
   height: 1140px;
   margin: 0 auto;
+}
+
+.nbaImg {
+  background-image:url(../img/basketball.jpg);
+}
+
+.nflImg {
+  background-image:url(../img/football.jpg);
 }
 
 /*
