@@ -25,7 +25,7 @@ var Game = module.exports = sql.define ('Game', {
   totalGrade: Sql.STRING,
   spreadMove: Sql.STRING,
   totalMove: Sql.STRING,
-  status: Sql.STRING
+  spreadStatus: Sql.STRING
 },
 
 {
