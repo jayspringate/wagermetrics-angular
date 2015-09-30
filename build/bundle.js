@@ -30970,16 +30970,6 @@
 	        }
 	      }
 
-	if (($scope.path === '/nfl' || '/') && ($scope.property.indexOf('status') !== -1)) {
-	        $scope.filteredGames.forEach(function (game, gameIndex, gameArr) {
-	          if(game.spreadClose > 0) {
-	            game.status = 'underdog';
-	          } else if (game.spreadClose < 0) {
-	            game.status = 'favorite';
-	          }
-	        });
-	      }
-
 	      $scope.property.forEach(function(propElement, propIndex, propArr) {
 
 	        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
@@ -31107,7 +31097,7 @@
 	var seasonList = __webpack_require__(92);
 	var spreadList = __webpack_require__(93);
 	var spreadMoveList = __webpack_require__(94);
-	var statusList = __webpack_require__(95);
+	var spreadStatusList = __webpack_require__(95);
 	var totalMoveList = __webpack_require__(96);
 
 	module.exports = {
@@ -31117,7 +31107,7 @@
 	          opponent: teamList,
 	          gameType: gameTypeList,
 	          season: seasonList,
-	          status: statusList,
+	          spreadStatus: spreadStatusList,
 	          spreadClose: spreadList,
 	          spreadMove: spreadMoveList,
 	          totalMove: totalMoveList
@@ -31332,7 +31322,7 @@
 	var seasonList = __webpack_require__(101);
 	var spreadList = __webpack_require__(102);
 	var spreadMoveList = __webpack_require__(103);
-	var statusList = __webpack_require__(104);
+	var spreadStatusList = __webpack_require__(104);
 	var totalMoveList = __webpack_require__(105);
 
 	module.exports = {
@@ -31342,7 +31332,7 @@
 	          opponent: teamList,
 	          gameType: gameTypeList,
 	          season: seasonList,
-	          status: statusList,
+	          spreadStatus: spreadStatusList,
 	          spreadClose: spreadList,
 	          spreadMove: spreadMoveList,
 	          totalMove: totalMoveList
@@ -31558,7 +31548,7 @@
 	var seasonList = __webpack_require__(111);
 	var spreadList = __webpack_require__(112);
 	var spreadMoveList = __webpack_require__(113);
-	var statusList = __webpack_require__(114);
+	var spreadStatusList = __webpack_require__(114);
 	var totalMoveList = __webpack_require__(115);
 
 	module.exports = {
@@ -31569,7 +31559,7 @@
 	          week: weekList,
 	          gameType: gameTypeList,
 	          season: seasonList,
-	          status: statusList,
+	          spreadStatus: spreadStatusList,
 	          spreadClose: spreadList,
 	          spreadMove: spreadMoveList,
 	          totalMove: totalMoveList
