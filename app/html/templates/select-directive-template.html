@@ -1,0 +1,5 @@
+<h1 class="{{className}}">
+  <select data-ng-model="$parent.selected[listName]" data-ng-options="listName.fullName for listName in dropdownLists[sportName][listName]" autocomplete="off" id="{{listName}}">
+    <option value ="" selected="selected">{{dropdownTitle}}</option>
+  </select>
+</h1>

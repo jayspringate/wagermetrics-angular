@@ -10,11 +10,11 @@ module.exports = function(app) {
     $scope.path = $location.path();
     $scope.nbaPath = false;
     $scope.nflPath = false;
-    $scope.ncfbPath = false;
+    $scope.cfbPath = false;
 
     if ($scope.path === '/nba') {
       $scope.nbaPath = true;
-    } else if($scope.path === '/nfl' || '/') {
+    } else if($scope.path === '/nfl' || $scope.path === '/') {
       $scope.nflPath = true;
     } else if($scope.path === '/cfb') {
       $scope.cfbPath = true;
@@ -69,6 +69,21 @@ module.exports = function(app) {
         });
       });
 
+      $scope.filteredGames.forEach(function(el, i, arr) {
+        if (el.spreadOpen === 99 || el.spreadOpen === -99) {
+          el.spreadOpen = 'OFF';
+        }
+        if (el.spreadClose === 99 || el.spreadClose === -99) {
+          el.spreadClose = 'OFF';
+        }
+        if (el.totalOpen === 99) {
+          el.totalOpen = 'OFF';
+        }
+        if (el.totalClose === 99) {
+          el.totalClose = 'OFF';
+        }
+      });
+
       $scope.filteredGames = $scope.filteredGames.sort(function(a, b) {
         a = new Date(a.date);
         b = new Date(b.date);
@@ -91,7 +106,7 @@ module.exports = function(app) {
             $scope.lossCount++;
             $scope.roiSpreadNet -= 1.1;
             $scope.roiTotalWagered += 1.1;
-          } else {
+          } else if ($scope.filteredGames[i].atsGrade == "P") {
             $scope.pushCount++;
             $scope.roiTotalWagered += 1.1;
           }
@@ -110,7 +125,7 @@ module.exports = function(app) {
             $scope.underCount++;
             $scope.roiUnderNet++;
             $scope.roiOverNet -= 1.1;
-          } else {
+          } else if ($scope.filteredGames[i].totalGrade == "P") {
             $scope.pushTotalCount++;
           }
         }
