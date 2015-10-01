@@ -1,17 +1,17 @@
 'use strict';
 
 module.exports = function(app) {
-  app.directive('formDirective', function() {
+  app.directive('selectDirective', function() {
     return {
 
       //directive can only contain one outer, parent element - cannot have siblings
 
       restrict: 'AEC',
       replace: true, //replaces placement element
-      templateUrl: 'html/templates/form-directive-template.html',
+      templateUrl: 'html/templates/select-directive-template.html',
      //scope specific to this directive, can set default values inside
       scope: {
-        formClassName: '@',
+        className: '@',
         listName: '@',
         dropdownTitle: '@',
         dropdownLists: '=',
