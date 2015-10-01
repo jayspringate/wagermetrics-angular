@@ -47,12 +47,6 @@
 	text-decoration: none;
  }
 
- .comingSoon {
- 	font-size: 11px;
- 	width: 20px;
-	display: inline-block;
- }
-
  .break-even {
  	font-size: 18px;
  	padding-left: 12px;
@@ -62,12 +56,21 @@
 
 .dropDown {
 	padding-top: 15px;
+	display: inline-block;
+}
+
+.dropDownSection {
 	clear: both;
-	height: 20px;
+}
+
+#cfbTeam {
+margin-top: 80px;
+font-size: 20px;
+height: 40px;
 }
 
 #team, #teamAbbrev {
-margin-top: 20px;
+margin-top: 80px;
 font-size: 20px;
 clear: both;
 height: 40px;
@@ -77,18 +80,19 @@ select {
 	height: 30px;
 	font-size: 18px;
 	background-color: #FFFFFF;
+	width: 340px;
 }
 
 button {
 	clear: both;
-	margin-top: 15px;
+	margin-top: 40px;
 	height: 50px;
 	width: 150px;
 	border-radius: 5px;
 	background-color: #E37527;
 	font-size: 14px;
 	font-weight: bold;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	margin-right: 10px;
 }
 
@@ -153,10 +157,8 @@ button:hover {
 	height: 110px;
 	width: 150px;
 	background-repeat: no-repeat;
-	margin: 0 auto;
-	margin-top: 20px;
 	clear: both;
-	margin-top: 50px;
+	margin: 0 auto;
 	-webkit-animation-duration: 2s;
   -webkit-animation-delay: 0s;
   -webkit-animation-iteration-count: 1;
@@ -170,8 +172,16 @@ button:hover {
 	color: red;
 }
 
-section {
-	margin-top: 20px;
+.nba {
+	background-image: url(../img/nba.gif);
+}
+
+.nfl {
+	background-image: url(../img/nfl.gif);
+}
+
+.cfb {
+	background-image: url(../img/cfb.gif);
 }
 
 .ATL {
@@ -246,12 +256,6 @@ section {
 	background-image: url(../img/min.gif);
 }
 
-.nba {
-	background-image: url(../img/nba.gif);
-}
-.nfl {
-	background-image: url(../img/nfl.gif);
-}
 .NO {
 	background-image: url(../img/no.gif);
 }

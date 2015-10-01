@@ -1,18 +1,6 @@
 'use strict';
 
 module.exports = [
-       {value:"-23", fullName:"-23"},
-       {value:"-22.5", fullName:"-22.5"},
-       {value:"-22", fullName:"-22"},
-       {value:"-21.5", fullName:"-21.5"},
-       {value:"-21", fullName:"-21"},
-       {value:"-20.5", fullName:"-20.5"},
-       {value:"-20", fullName:"-20"},
-       {value:"-19.5", fullName:"-19.5"},
-       {value:"-19", fullName:"-19"},
-       {value:"-18.5", fullName:"-18.5"},
-       {value:"-18", fullName:"-18"},
-       {value:"-17.5", fullName:"-17.5"},
        {value:"-17", fullName:"-17"},
        {value:"-16.5", fullName:"-16.5"},
        {value:"-16", fullName:"-16"},
@@ -80,16 +68,4 @@ module.exports = [
        {value:"16", fullName:"16"},
        {value:"16.5", fullName:"16.5"},
        {value:"17", fullName:"17"},
-       {value:"17.5", fullName:"17.5"},
-       {value:"18", fullName:"18"},
-       {value:"18.5", fullName:"18.5"},
-       {value:"19", fullName:"19"},
-       {value:"19.5", fullName:"19.5"},
-       {value:"20", fullName:"20"},
-       {value:"20.5", fullName:"20.5"},
-       {value:"21", fullName:"21"},
-       {value:"21.5", fullName:"21.5"},
-       {value:"22", fullName:"22"},
-       {value:"22.5", fullName:"22.5"},
-       {value:"23", fullName:"23"}
        ];

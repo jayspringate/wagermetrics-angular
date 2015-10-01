@@ -2,5 +2,5 @@
 
 module.exports = [
           {value:"reg", fullName:'Regular Season'},
-          {value:"playoff", fullName:'Playoffs'}
+          {value:"bowl", fullName:'Bowl'}
           ];

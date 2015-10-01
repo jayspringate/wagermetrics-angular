@@ -48,14 +48,14 @@
 
 	__webpack_require__(1);
 
-	__webpack_require__(79);
 	__webpack_require__(80);
+	__webpack_require__(81);
 
-	__webpack_require__(82);
+	__webpack_require__(83);
 
 	var wagerApp = angular.module('wagerApp', ['directives', 'ngRoute']);
 
-	__webpack_require__(85)(wagerApp);
+	__webpack_require__(86)(wagerApp);
 
 	wagerApp.config(['$routeProvider', function($route) {
 	  $route
@@ -88,10 +88,9 @@
 
 	__webpack_require__(2);
 	__webpack_require__(6);
-	__webpack_require__(40);
-	__webpack_require__(42);
-	__webpack_require__(46);
-	__webpack_require__(48);
+	__webpack_require__(41);
+	__webpack_require__(43);
+	__webpack_require__(47);
 	__webpack_require__(49);
 	__webpack_require__(50);
 	__webpack_require__(51);
@@ -122,6 +121,7 @@
 	__webpack_require__(76);
 	__webpack_require__(77);
 	__webpack_require__(78);
+	__webpack_require__(79);
 
 /***/ },
 /* 2 */
@@ -479,7 +479,7 @@
 
 
 	// module
-	exports.push([module.id, ".header {\n\tfont-family: 'Yesteryear';\n\tfont-size: 80px;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n \tfont-size: 32px;\n \tfont-family: arial;\n \tmargin-top: 20px;\n \tmargin-left: 37%;\n \tfont-weight: bold;\n \ttext-decoration: underline;\n \tmargin-right: -10px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .nav {\n \tcolor: white;\n }\n\n.currentNav {\n \tcolor: #FFE0B2;\n }\n\n #nbaNav {\n\tmargin-left: 320px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \ttext-decoration: none;\n }\n\n #nflNav, #cfbNav {\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n\ttext-decoration: none;\n }\n\n .comingSoon {\n \tfont-size: 11px;\n \twidth: 20px;\n\tdisplay: inline-block;\n }\n\n .break-even {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.dropDown {\n\tpadding-top: 15px;\n\tclear: both;\n\theight: 20px;\n}\n\n#team, #teamAbbrev {\nmargin-top: 20px;\nfont-size: 20px;\nclear: both;\nheight: 40px;\n}\n\nselect {\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n}\n\nbutton {\n\tclear: both;\n\tmargin-top: 15px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 14px;\n\tfont-weight: bold;\n\tmargin-bottom: 20px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n\n}\n.resultsTable {\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: #729ea5;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\n}\n\n.resultsTable tr {\n\tbackground-color: #DBDBDB;\n\n}\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n.resultsTable tr:hover {\n\tbackground-color:#deb887;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 30px;\n\twidth: 50%;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .85;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tmargin: 0 auto;\n\tmargin-top: 20px;\n\tclear: both;\n\tmargin-top: 50px;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\nsection {\n\tmargin-top: 20px;\n}\n\n.ATL {\n\tbackground-image: url(" + __webpack_require__(8) + ");\n}\n\n.BK {\n\tbackground-image: url(" + __webpack_require__(9) + ");\n}\n\n.BOS {\n\tbackground-image: url(" + __webpack_require__(10) + ");\n}\n\n.CHAR {\n\tbackground-image: url(" + __webpack_require__(11) + ");\n}\n\n.CHI {\n\tbackground-image: url(" + __webpack_require__(12) + ");\n}\n\n.CLE {\n\tbackground-image: url(" + __webpack_require__(13) + ");\n}\n\n.DAL {\n\tbackground-image: url(" + __webpack_require__(14) + ");\n}\n\n.DEN {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.DET {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.GS {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n.HOU {\n\tbackground-image: url(" + __webpack_require__(18) + ");\n}\n\n.IND {\n\tbackground-image: url(" + __webpack_require__(19) + ");\n}\n\n.LAC {\n\tbackground-image: url(" + __webpack_require__(20) + ");\n}\n\n.LAL {\n\tbackground-image: url(" + __webpack_require__(21) + ");\n}\n\n.MEM {\n\tbackground-image: url(" + __webpack_require__(22) + ");\n}\n\n.MIA {\n\tbackground-image: url(" + __webpack_require__(23) + ");\n}\n\n.MIL {\n\tbackground-image: url(" + __webpack_require__(24) + ");\n}\n\n.MIN {\n\tbackground-image: url(" + __webpack_require__(25) + ");\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(26) + ");\n}\n.nfl {\n\tbackground-image: url(" + __webpack_require__(27) + ");\n}\n.NO {\n\tbackground-image: url(" + __webpack_require__(28) + ");\n}\n\n.NY {\n\tbackground-image: url(" + __webpack_require__(29) + ");\n}\n\n.OKC {\n\tbackground-image: url(" + __webpack_require__(30) + ");\n}\n\n.ORL {\n\tbackground-image: url(" + __webpack_require__(31) + ");\n}\n\n.PHI {\n\tbackground-image: url(" + __webpack_require__(32) + ");\n}\n\n.PHO {\n\tbackground-image: url(" + __webpack_require__(33) + ");\n}\n\n.POR {\n\tbackground-image: url(" + __webpack_require__(34) + ");\n}\n\n.SA {\n\tbackground-image: url(" + __webpack_require__(35) + ");\n}\n\n.SAC {\n\tbackground-image: url(" + __webpack_require__(36) + ");\n}\n\n.TOR {\n\tbackground-image: url(" + __webpack_require__(37) + ");\n}\n\n.UTA {\n\tbackground-image: url(" + __webpack_require__(38) + ");\n}\n\n.WAS {\n\tbackground-image: url(" + __webpack_require__(39) + ");\n}\n", ""]);
+	exports.push([module.id, ".header {\n\tfont-family: 'Yesteryear';\n\tfont-size: 80px;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n \tfont-size: 32px;\n \tfont-family: arial;\n \tmargin-top: 20px;\n \tmargin-left: 37%;\n \tfont-weight: bold;\n \ttext-decoration: underline;\n \tmargin-right: -10px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .nav {\n \tcolor: white;\n }\n\n.currentNav {\n \tcolor: #FFE0B2;\n }\n\n #nbaNav {\n\tmargin-left: 320px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \ttext-decoration: none;\n }\n\n #nflNav, #cfbNav {\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n\ttext-decoration: none;\n }\n\n .break-even {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.dropDown {\n\tpadding-top: 15px;\n\tdisplay: inline-block;\n}\n\n.dropDownSection {\n\tclear: both;\n}\n\n#cfbTeam {\nmargin-top: 80px;\nfont-size: 20px;\nheight: 40px;\n}\n\n#team, #teamAbbrev {\nmargin-top: 80px;\nfont-size: 20px;\nclear: both;\nheight: 40px;\n}\n\nselect {\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n\twidth: 340px;\n}\n\nbutton {\n\tclear: both;\n\tmargin-top: 40px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 14px;\n\tfont-weight: bold;\n\tmargin-bottom: 15px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n\n}\n.resultsTable {\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: #729ea5;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\n}\n\n.resultsTable tr {\n\tbackground-color: #DBDBDB;\n\n}\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n.resultsTable tr:hover {\n\tbackground-color:#deb887;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 30px;\n\twidth: 50%;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-weight: bold;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .85;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tclear: both;\n\tmargin: 0 auto;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(8) + ");\n}\n\n.nfl {\n\tbackground-image: url(" + __webpack_require__(9) + ");\n}\n\n.cfb {\n\tbackground-image: url(" + __webpack_require__(10) + ");\n}\n\n.ATL {\n\tbackground-image: url(" + __webpack_require__(11) + ");\n}\n\n.BK {\n\tbackground-image: url(" + __webpack_require__(12) + ");\n}\n\n.BOS {\n\tbackground-image: url(" + __webpack_require__(13) + ");\n}\n\n.CHAR {\n\tbackground-image: url(" + __webpack_require__(14) + ");\n}\n\n.CHI {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.CLE {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.DAL {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n.DEN {\n\tbackground-image: url(" + __webpack_require__(18) + ");\n}\n\n.DET {\n\tbackground-image: url(" + __webpack_require__(19) + ");\n}\n\n.GS {\n\tbackground-image: url(" + __webpack_require__(20) + ");\n}\n\n.HOU {\n\tbackground-image: url(" + __webpack_require__(21) + ");\n}\n\n.IND {\n\tbackground-image: url(" + __webpack_require__(22) + ");\n}\n\n.LAC {\n\tbackground-image: url(" + __webpack_require__(23) + ");\n}\n\n.LAL {\n\tbackground-image: url(" + __webpack_require__(24) + ");\n}\n\n.MEM {\n\tbackground-image: url(" + __webpack_require__(25) + ");\n}\n\n.MIA {\n\tbackground-image: url(" + __webpack_require__(26) + ");\n}\n\n.MIL {\n\tbackground-image: url(" + __webpack_require__(27) + ");\n}\n\n.MIN {\n\tbackground-image: url(" + __webpack_require__(28) + ");\n}\n\n.NO {\n\tbackground-image: url(" + __webpack_require__(29) + ");\n}\n\n.NY {\n\tbackground-image: url(" + __webpack_require__(30) + ");\n}\n\n.OKC {\n\tbackground-image: url(" + __webpack_require__(31) + ");\n}\n\n.ORL {\n\tbackground-image: url(" + __webpack_require__(32) + ");\n}\n\n.PHI {\n\tbackground-image: url(" + __webpack_require__(33) + ");\n}\n\n.PHO {\n\tbackground-image: url(" + __webpack_require__(34) + ");\n}\n\n.POR {\n\tbackground-image: url(" + __webpack_require__(35) + ");\n}\n\n.SA {\n\tbackground-image: url(" + __webpack_require__(36) + ");\n}\n\n.SAC {\n\tbackground-image: url(" + __webpack_require__(37) + ");\n}\n\n.TOR {\n\tbackground-image: url(" + __webpack_require__(38) + ");\n}\n\n.UTA {\n\tbackground-image: url(" + __webpack_require__(39) + ");\n}\n\n.WAS {\n\tbackground-image: url(" + __webpack_require__(40) + ");\n}\n", ""]);
 
 	// exports
 
@@ -488,202 +488,208 @@
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "58c01737dec8ed7be31860667cbed415.gif"
+	module.exports = __webpack_require__.p + "215e56b34832c0273b2c1e88d020898d.gif"
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "2050c1aefedfa46c7ca7492efa753930.gif"
+	module.exports = __webpack_require__.p + "2b3e492baab7365aa1d188db19c3eb8b.gif"
 
 /***/ },
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "c62fd8f3da002b774b3cd338ca137929.gif"
+	module.exports = __webpack_require__.p + "e69e8ecb09d5ea01927c7706709e3ebc.gif"
 
 /***/ },
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "cb6c6110e90c51c7c561ce6bfb24beaa.gif"
+	module.exports = __webpack_require__.p + "58c01737dec8ed7be31860667cbed415.gif"
 
 /***/ },
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "e588e78d4647c97b8a6de6b884195712.gif"
+	module.exports = __webpack_require__.p + "2050c1aefedfa46c7ca7492efa753930.gif"
 
 /***/ },
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "d991b7016622983cf066e8982fa6e2c7.gif"
+	module.exports = __webpack_require__.p + "c62fd8f3da002b774b3cd338ca137929.gif"
 
 /***/ },
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "33027116179612f8b6136358fa703254.gif"
+	module.exports = __webpack_require__.p + "cb6c6110e90c51c7c561ce6bfb24beaa.gif"
 
 /***/ },
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "eba8f397dab101dcdc79c352eb895018.gif"
+	module.exports = __webpack_require__.p + "e588e78d4647c97b8a6de6b884195712.gif"
 
 /***/ },
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "5f194b573fa0160373a65888b77e616f.gif"
+	module.exports = __webpack_require__.p + "d991b7016622983cf066e8982fa6e2c7.gif"
 
 /***/ },
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "5f77ca343176e810bf08bca01b230bc2.gif"
+	module.exports = __webpack_require__.p + "33027116179612f8b6136358fa703254.gif"
 
 /***/ },
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "306ba8e67a5d32c834a4d6e7de8a491a.gif"
+	module.exports = __webpack_require__.p + "eba8f397dab101dcdc79c352eb895018.gif"
 
 /***/ },
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "718f1b47e55a3e9e4886b5883ad2395c.gif"
+	module.exports = __webpack_require__.p + "5f194b573fa0160373a65888b77e616f.gif"
 
 /***/ },
 /* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "bcbb882e32f07237eb78ea8c3a342cdc.gif"
+	module.exports = __webpack_require__.p + "5f77ca343176e810bf08bca01b230bc2.gif"
 
 /***/ },
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "2947e6bcf1057eae4bc80fc95a54eed6.gif"
+	module.exports = __webpack_require__.p + "306ba8e67a5d32c834a4d6e7de8a491a.gif"
 
 /***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "eea1b730f7c4639ceca0fb654c61d2ef.gif"
+	module.exports = __webpack_require__.p + "718f1b47e55a3e9e4886b5883ad2395c.gif"
 
 /***/ },
 /* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "b9c9a43aaff7deac60550eae69866a90.gif"
+	module.exports = __webpack_require__.p + "bcbb882e32f07237eb78ea8c3a342cdc.gif"
 
 /***/ },
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "769251070cb5bd7528a7ba6c4e0b1cf8.gif"
+	module.exports = __webpack_require__.p + "2947e6bcf1057eae4bc80fc95a54eed6.gif"
 
 /***/ },
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dd29d257a5cd92b70cacd4c80596dd6a.gif"
+	module.exports = __webpack_require__.p + "eea1b730f7c4639ceca0fb654c61d2ef.gif"
 
 /***/ },
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "215e56b34832c0273b2c1e88d020898d.gif"
+	module.exports = __webpack_require__.p + "b9c9a43aaff7deac60550eae69866a90.gif"
 
 /***/ },
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "2b3e492baab7365aa1d188db19c3eb8b.gif"
+	module.exports = __webpack_require__.p + "769251070cb5bd7528a7ba6c4e0b1cf8.gif"
 
 /***/ },
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "9d8635fdb8b15b14b5ebbc49fd6d6ccc.gif"
+	module.exports = __webpack_require__.p + "dd29d257a5cd92b70cacd4c80596dd6a.gif"
 
 /***/ },
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "33eda8144fe01deac573ce70ab4d9f0f.gif"
+	module.exports = __webpack_require__.p + "9d8635fdb8b15b14b5ebbc49fd6d6ccc.gif"
 
 /***/ },
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "1424e512a2c36dc9a17b8bb12a78bcbe.gif"
+	module.exports = __webpack_require__.p + "33eda8144fe01deac573ce70ab4d9f0f.gif"
 
 /***/ },
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "7aee5bbb65bece7f35c031f44db39e42.gif"
+	module.exports = __webpack_require__.p + "1424e512a2c36dc9a17b8bb12a78bcbe.gif"
 
 /***/ },
 /* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dcc915bf16e7abd40b485ad67f277128.gif"
+	module.exports = __webpack_require__.p + "7aee5bbb65bece7f35c031f44db39e42.gif"
 
 /***/ },
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "c40dbd0491a5011c33df648b5b5dd64b.gif"
+	module.exports = __webpack_require__.p + "dcc915bf16e7abd40b485ad67f277128.gif"
 
 /***/ },
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "9ec8234cd4ab0b5decfe1c4a5ad01cf9.gif"
+	module.exports = __webpack_require__.p + "c40dbd0491a5011c33df648b5b5dd64b.gif"
 
 /***/ },
 /* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "8b217900b5e936eef853bb84948dd31d.gif"
+	module.exports = __webpack_require__.p + "9ec8234cd4ab0b5decfe1c4a5ad01cf9.gif"
 
 /***/ },
 /* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "99b9100d6b29bafb66683ac8d12c166d.gif"
+	module.exports = __webpack_require__.p + "8b217900b5e936eef853bb84948dd31d.gif"
 
 /***/ },
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "efe8ad8ecdfaf1b46af45bf2fb55e557.gif"
+	module.exports = __webpack_require__.p + "99b9100d6b29bafb66683ac8d12c166d.gif"
 
 /***/ },
 /* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "b0f67515b584179106d8b3e001063e1e.gif"
+	module.exports = __webpack_require__.p + "efe8ad8ecdfaf1b46af45bf2fb55e557.gif"
 
 /***/ },
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "48cd560da9eae6ab92218bb7e9888bd4.gif"
+	module.exports = __webpack_require__.p + "b0f67515b584179106d8b3e001063e1e.gif"
 
 /***/ },
 /* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__.p + "48cd560da9eae6ab92218bb7e9888bd4.gif"
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(41);
+	var content = __webpack_require__(42);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -703,7 +709,7 @@
 	}
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -717,13 +723,13 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(43);
+	var content = __webpack_require__(44);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -743,7 +749,7 @@
 	}
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -751,31 +757,31 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background-image:url(" + __webpack_require__(44) + ");\n\tbackground-position: center;\n\tbackground-attachment: fixed;\n\tbackground-repeat: no-repeat;\n\tbackground-size: 100%;\n  height: 100%;\n  width: 100%;\n\tmargin: 0;\n}\n\n.page {\n  background-color: rgba(255,255,255,0.85);\n  height: 1200px;\n  margin: 0 auto;\n}\n\n.nbaImg {\n  background-image:url(" + __webpack_require__(45) + ");\n}\n\n.nflImg {\n  background-image:url(" + __webpack_require__(44) + ");\n}\n\n/*\n  960 Grid System ~ Core CSS.\n  Learn more ~ http://960.gs/\n\n  Licensed under GPL and MIT.\n*/\n\n/*\n  Forces backgrounds to span full width,\n  even if there is horizontal scrolling.\n  Increase this if your layout is wider.\n\n  Note: IE6 works fine without this fix.\n*/\n\nbody {\n  min-width: 960px;\n}\n\n/* Container\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 {\n  margin-left: auto;\n  margin-right: auto;\n  width: 960px;\n}\n\n/* Grid >> Global\n----------------------------------------------------------------------------------------------------*/\n\n.grid_1,\n.grid_2,\n.grid_3,\n.grid_4,\n.grid_5,\n.grid_6,\n.grid_7,\n.grid_8,\n.grid_9,\n.grid_10,\n.grid_11,\n.grid_12,\n.grid_13,\n.grid_14,\n.grid_15,\n.grid_16 {\n  display: inline;\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n\n.push_1, .pull_1,\n.push_2, .pull_2,\n.push_3, .pull_3,\n.push_4, .pull_4,\n.push_5, .pull_5,\n.push_6, .pull_6,\n.push_7, .pull_7,\n.push_8, .pull_8,\n.push_9, .pull_9,\n.push_10, .pull_10,\n.push_11, .pull_11,\n.push_12, .pull_12,\n.push_13, .pull_13,\n.push_14, .pull_14,\n.push_15, .pull_15,\n.push_16, .pull_16 {\n  position: relative;\n}\n\n/* Grid >> Children (Alpha ~ First, Omega ~ Last)\n----------------------------------------------------------------------------------------------------*/\n\n.alpha {\n  margin-left: 0;\n}\n\n.omega {\n  margin-right: 0;\n}\n\n/* Grid >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .grid_1 {\n  width: 40px;\n}\n\n.container_16 .grid_2 {\n  width: 100px;\n}\n\n.container_16 .grid_3 {\n  width: 160px;\n}\n\n.container_16 .grid_4 {\n  width: 220px;\n}\n\n.container_16 .grid_5 {\n  width: 280px;\n}\n\n.container_16 .grid_6 {\n  width: 340px;\n}\n\n.container_16 .grid_7 {\n  width: 400px;\n}\n\n.container_16 .grid_8 {\n  width: 460px;\n}\n\n.container_16 .grid_9 {\n  width: 520px;\n}\n\n.container_16 .grid_10 {\n  width: 580px;\n}\n\n.container_16 .grid_11 {\n  width: 640px;\n}\n\n.container_16 .grid_12 {\n  width: 700px;\n}\n\n.container_16 .grid_13 {\n  width: 760px;\n}\n\n.container_16 .grid_14 {\n  width: 820px;\n}\n\n.container_16 .grid_15 {\n  width: 880px;\n}\n\n.container_16 .grid_16 {\n  width: 940px;\n}\n\n/* Prefix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .prefix_1 {\n  padding-left: 60px;\n}\n\n.container_16 .prefix_2 {\n  padding-left: 120px;\n}\n\n.container_16 .prefix_3 {\n  padding-left: 180px;\n}\n\n.container_16 .prefix_4 {\n  padding-left: 240px;\n}\n\n.container_16 .prefix_5 {\n  padding-left: 300px;\n}\n\n.container_16 .prefix_6 {\n  padding-left: 360px;\n}\n\n.container_16 .prefix_7 {\n  padding-left: 420px;\n}\n\n.container_16 .prefix_8 {\n  padding-left: 480px;\n}\n\n.container_16 .prefix_9 {\n  padding-left: 540px;\n}\n\n.container_16 .prefix_10 {\n  padding-left: 600px;\n}\n\n.container_16 .prefix_11 {\n  padding-left: 660px;\n}\n\n.container_16 .prefix_12 {\n  padding-left: 720px;\n}\n\n.container_16 .prefix_13 {\n  padding-left: 780px;\n}\n\n.container_16 .prefix_14 {\n  padding-left: 840px;\n}\n\n.container_16 .prefix_15 {\n  padding-left: 900px;\n}\n\n/* Suffix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .suffix_1 {\n  padding-right: 60px;\n}\n\n.container_16 .suffix_2 {\n  padding-right: 120px;\n}\n\n.container_16 .suffix_3 {\n  padding-right: 180px;\n}\n\n.container_16 .suffix_4 {\n  padding-right: 240px;\n}\n\n.container_16 .suffix_5 {\n  padding-right: 300px;\n}\n\n.container_16 .suffix_6 {\n  padding-right: 360px;\n}\n\n.container_16 .suffix_7 {\n  padding-right: 420px;\n}\n\n.container_16 .suffix_8 {\n  padding-right: 480px;\n}\n\n.container_16 .suffix_9 {\n  padding-right: 540px;\n}\n\n.container_16 .suffix_10 {\n  padding-right: 600px;\n}\n\n.container_16 .suffix_11 {\n  padding-right: 660px;\n}\n\n.container_16 .suffix_12 {\n  padding-right: 720px;\n}\n\n.container_16 .suffix_13 {\n  padding-right: 780px;\n}\n\n.container_16 .suffix_14 {\n  padding-right: 840px;\n}\n\n.container_16 .suffix_15 {\n  padding-right: 900px;\n}\n\n/* Push Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .push_1 {\n  left: 60px;\n}\n\n.container_16 .push_2 {\n  left: 120px;\n}\n\n.container_16 .push_3 {\n  left: 180px;\n}\n\n.container_16 .push_4 {\n  left: 240px;\n}\n\n.container_16 .push_5 {\n  left: 300px;\n}\n\n.container_16 .push_6 {\n  left: 360px;\n}\n\n.container_16 .push_7 {\n  left: 420px;\n}\n\n.container_16 .push_8 {\n  left: 480px;\n}\n\n.container_16 .push_9 {\n  left: 540px;\n}\n\n.container_16 .push_10 {\n  left: 600px;\n}\n\n.container_16 .push_11 {\n  left: 660px;\n}\n\n.container_16 .push_12 {\n  left: 720px;\n}\n\n.container_16 .push_13 {\n  left: 780px;\n}\n\n.container_16 .push_14 {\n  left: 840px;\n}\n\n.container_16 .push_15 {\n  left: 900px;\n}\n\n/* Pull Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .pull_1 {\n  left: -60px;\n}\n\n.container_16 .pull_2 {\n  left: -120px;\n}\n\n.container_16 .pull_3 {\n  left: -180px;\n}\n\n.container_16 .pull_4 {\n  left: -240px;\n}\n\n.container_16 .pull_5 {\n  left: -300px;\n}\n\n.container_16 .pull_6 {\n  left: -360px;\n}\n\n.container_16 .pull_7 {\n  left: -420px;\n}\n\n.container_16 .pull_8 {\n  left: -480px;\n}\n\n.container_16 .pull_9 {\n  left: -540px;\n}\n\n.container_16 .pull_10 {\n  left: -600px;\n}\n\n.container_16 .pull_11 {\n  left: -660px;\n}\n\n.container_16 .pull_12 {\n  left: -720px;\n}\n\n.container_16 .pull_13 {\n  left: -780px;\n}\n\n.container_16 .pull_14 {\n  left: -840px;\n}\n\n.container_16 .pull_15 {\n  left: -900px;\n}\n\n/* `Clear Floated Elements\n----------------------------------------------------------------------------------------------------*/\n\n/* http://sonspring.com/journal/clearing-floats */\n\n.clear {\n  clear: both;\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  width: 0;\n  height: 0;\n}\n\n/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */\n\n.clearfix:before,\n.clearfix:after,\n.container_16:before,\n.container_16:after {\n  content: '.';\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  font-size: 0;\n  line-height: 0;\n  width: 0;\n  height: 0;\n}\n\n.clearfix:after,\n.container_16:after {\n  clear: both;\n}\n\n/*\n  The following zoom:1 rule is specifically for IE6 + IE7.\n  Move to separate stylesheet if invalid CSS is a problem.\n*/\n\n.clearfix,\n.container_16 {\n  zoom: 1;\n}\n", ""]);
+	exports.push([module.id, "body {\n  background-image:url(" + __webpack_require__(45) + ");\n\tbackground-position: center;\n\tbackground-attachment: fixed;\n\tbackground-repeat: no-repeat;\n\tbackground-size: 100%;\n  height: 100%;\n  width: 100%;\n\tmargin: 0;\n}\n\n.page {\n  background-color: rgba(255,255,255,0.85);\n  height: 1040px;\n  margin: 0 auto;\n}\n\n.nbaImg {\n  background-image:url(" + __webpack_require__(46) + ");\n}\n\n.nflImg {\n  background-image:url(" + __webpack_require__(45) + ");\n}\n\n/*\n  960 Grid System ~ Core CSS.\n  Learn more ~ http://960.gs/\n\n  Licensed under GPL and MIT.\n*/\n\n/*\n  Forces backgrounds to span full width,\n  even if there is horizontal scrolling.\n  Increase this if your layout is wider.\n\n  Note: IE6 works fine without this fix.\n*/\n\nbody {\n  min-width: 960px;\n}\n\n/* Container\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 {\n  margin-left: auto;\n  margin-right: auto;\n  width: 960px;\n}\n\n/* Grid >> Global\n----------------------------------------------------------------------------------------------------*/\n\n.grid_1,\n.grid_2,\n.grid_3,\n.grid_4,\n.grid_5,\n.grid_6,\n.grid_7,\n.grid_8,\n.grid_9,\n.grid_10,\n.grid_11,\n.grid_12,\n.grid_13,\n.grid_14,\n.grid_15,\n.grid_16 {\n  display: inline;\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n\n.push_1, .pull_1,\n.push_2, .pull_2,\n.push_3, .pull_3,\n.push_4, .pull_4,\n.push_5, .pull_5,\n.push_6, .pull_6,\n.push_7, .pull_7,\n.push_8, .pull_8,\n.push_9, .pull_9,\n.push_10, .pull_10,\n.push_11, .pull_11,\n.push_12, .pull_12,\n.push_13, .pull_13,\n.push_14, .pull_14,\n.push_15, .pull_15,\n.push_16, .pull_16 {\n  position: relative;\n}\n\n/* Grid >> Children (Alpha ~ First, Omega ~ Last)\n----------------------------------------------------------------------------------------------------*/\n\n.alpha {\n  margin-left: 0;\n}\n\n.omega {\n  margin-right: 0;\n}\n\n/* Grid >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .grid_1 {\n  width: 40px;\n}\n\n.container_16 .grid_2 {\n  width: 100px;\n}\n\n.container_16 .grid_3 {\n  width: 160px;\n}\n\n.container_16 .grid_4 {\n  width: 220px;\n}\n\n.container_16 .grid_5 {\n  width: 280px;\n}\n\n.container_16 .grid_6 {\n  width: 340px;\n}\n\n.container_16 .grid_7 {\n  width: 400px;\n}\n\n.container_16 .grid_8 {\n  width: 460px;\n}\n\n.container_16 .grid_9 {\n  width: 520px;\n}\n\n.container_16 .grid_10 {\n  width: 580px;\n}\n\n.container_16 .grid_11 {\n  width: 640px;\n}\n\n.container_16 .grid_12 {\n  width: 700px;\n}\n\n.container_16 .grid_13 {\n  width: 760px;\n}\n\n.container_16 .grid_14 {\n  width: 820px;\n}\n\n.container_16 .grid_15 {\n  width: 880px;\n}\n\n.container_16 .grid_16 {\n  width: 940px;\n}\n\n/* Prefix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .prefix_1 {\n  padding-left: 60px;\n}\n\n.container_16 .prefix_2 {\n  padding-left: 120px;\n}\n\n.container_16 .prefix_3 {\n  padding-left: 180px;\n}\n\n.container_16 .prefix_4 {\n  padding-left: 240px;\n}\n\n.container_16 .prefix_5 {\n  padding-left: 300px;\n}\n\n.container_16 .prefix_6 {\n  padding-left: 360px;\n}\n\n.container_16 .prefix_7 {\n  padding-left: 420px;\n}\n\n.container_16 .prefix_8 {\n  padding-left: 480px;\n}\n\n.container_16 .prefix_9 {\n  padding-left: 540px;\n}\n\n.container_16 .prefix_10 {\n  padding-left: 600px;\n}\n\n.container_16 .prefix_11 {\n  padding-left: 660px;\n}\n\n.container_16 .prefix_12 {\n  padding-left: 720px;\n}\n\n.container_16 .prefix_13 {\n  padding-left: 780px;\n}\n\n.container_16 .prefix_14 {\n  padding-left: 840px;\n}\n\n.container_16 .prefix_15 {\n  padding-left: 900px;\n}\n\n/* Suffix Extra Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .suffix_1 {\n  padding-right: 60px;\n}\n\n.container_16 .suffix_2 {\n  padding-right: 120px;\n}\n\n.container_16 .suffix_3 {\n  padding-right: 180px;\n}\n\n.container_16 .suffix_4 {\n  padding-right: 240px;\n}\n\n.container_16 .suffix_5 {\n  padding-right: 300px;\n}\n\n.container_16 .suffix_6 {\n  padding-right: 360px;\n}\n\n.container_16 .suffix_7 {\n  padding-right: 420px;\n}\n\n.container_16 .suffix_8 {\n  padding-right: 480px;\n}\n\n.container_16 .suffix_9 {\n  padding-right: 540px;\n}\n\n.container_16 .suffix_10 {\n  padding-right: 600px;\n}\n\n.container_16 .suffix_11 {\n  padding-right: 660px;\n}\n\n.container_16 .suffix_12 {\n  padding-right: 720px;\n}\n\n.container_16 .suffix_13 {\n  padding-right: 780px;\n}\n\n.container_16 .suffix_14 {\n  padding-right: 840px;\n}\n\n.container_16 .suffix_15 {\n  padding-right: 900px;\n}\n\n/* Push Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .push_1 {\n  left: 60px;\n}\n\n.container_16 .push_2 {\n  left: 120px;\n}\n\n.container_16 .push_3 {\n  left: 180px;\n}\n\n.container_16 .push_4 {\n  left: 240px;\n}\n\n.container_16 .push_5 {\n  left: 300px;\n}\n\n.container_16 .push_6 {\n  left: 360px;\n}\n\n.container_16 .push_7 {\n  left: 420px;\n}\n\n.container_16 .push_8 {\n  left: 480px;\n}\n\n.container_16 .push_9 {\n  left: 540px;\n}\n\n.container_16 .push_10 {\n  left: 600px;\n}\n\n.container_16 .push_11 {\n  left: 660px;\n}\n\n.container_16 .push_12 {\n  left: 720px;\n}\n\n.container_16 .push_13 {\n  left: 780px;\n}\n\n.container_16 .push_14 {\n  left: 840px;\n}\n\n.container_16 .push_15 {\n  left: 900px;\n}\n\n/* Pull Space >> 16 Columns\n----------------------------------------------------------------------------------------------------*/\n\n.container_16 .pull_1 {\n  left: -60px;\n}\n\n.container_16 .pull_2 {\n  left: -120px;\n}\n\n.container_16 .pull_3 {\n  left: -180px;\n}\n\n.container_16 .pull_4 {\n  left: -240px;\n}\n\n.container_16 .pull_5 {\n  left: -300px;\n}\n\n.container_16 .pull_6 {\n  left: -360px;\n}\n\n.container_16 .pull_7 {\n  left: -420px;\n}\n\n.container_16 .pull_8 {\n  left: -480px;\n}\n\n.container_16 .pull_9 {\n  left: -540px;\n}\n\n.container_16 .pull_10 {\n  left: -600px;\n}\n\n.container_16 .pull_11 {\n  left: -660px;\n}\n\n.container_16 .pull_12 {\n  left: -720px;\n}\n\n.container_16 .pull_13 {\n  left: -780px;\n}\n\n.container_16 .pull_14 {\n  left: -840px;\n}\n\n.container_16 .pull_15 {\n  left: -900px;\n}\n\n/* `Clear Floated Elements\n----------------------------------------------------------------------------------------------------*/\n\n/* http://sonspring.com/journal/clearing-floats */\n\n.clear {\n  clear: both;\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  width: 0;\n  height: 0;\n}\n\n/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */\n\n.clearfix:before,\n.clearfix:after,\n.container_16:before,\n.container_16:after {\n  content: '.';\n  display: block;\n  overflow: hidden;\n  visibility: hidden;\n  font-size: 0;\n  line-height: 0;\n  width: 0;\n  height: 0;\n}\n\n.clearfix:after,\n.container_16:after {\n  clear: both;\n}\n\n/*\n  The following zoom:1 rule is specifically for IE6 + IE7.\n  Move to separate stylesheet if invalid CSS is a problem.\n*/\n\n.clearfix,\n.container_16 {\n  zoom: 1;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "8ec536b20208583c63e82b3c0dc73497.jpg"
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a7f2daddf1724af836ea708104640651.jpg"
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(47);
+	var content = __webpack_require__(48);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -795,7 +801,7 @@
 	}
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -809,193 +815,193 @@
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a11f20e35bc10a3fae20b31d0a8d2966.jpg"
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "4413b04dbef88a217104b5580b0f7b40.gif"
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d0bcbf144a5bba0b82a0ec66b4987dcd.gif"
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "9eea1679dc1bdeee1efc3472ceb8f081.gif"
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d9f5eacf2e8a948ee652b55c426f5f7a.gif"
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a07eace54cbbbd172f842374e9e28a6b.gif"
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b136ed7331fa3c6e8aa1742fb7151662.gif"
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "eef94d06a3343da118a67f2e1e83cc5a.gif"
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "de26d8ce040f04086189bac258a94533.gif"
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "88655967bc5c70743bfc9179a69ebae5.gif"
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "241d0584235536152b389ab790fde02f.gif"
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "315592927a04f351305b76dedb92f565.gif"
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "babd8cea9da8b4918affa0143d93b23b.gif"
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0ca513060f673885b6e9d16dbe840880.gif"
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a88035760742479ae022b0ab26752052.gif"
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c08af163a14b948fe4024f7ddee6b0e3.gif"
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "be8f5de0861d37b26961386005de5ac8.gif"
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "5dabc568a66288d54f9cfca529ff2415.gif"
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "911e6bea58f22e2ce19be4b70fbc201f.gif"
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "7ef65e678090b2141d7f917c8b855528.gif"
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c44e410299be2419d4e47dea544c2196.gif"
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "5cafa0e8cec211ec0ee11de6e33b987a.gif"
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b7e5833fe29849d1b00bb4f8f0e0e3f4.gif"
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "481ee49845ea370b95ff2a550b6a8f03.gif"
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0171fe13d92ee7019604bd90c7a134fe.gif"
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "2ce398c6b181590873b4844867004efe.gif"
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "bd5c2cf54ece10bb550379e6ce35ee07.gif"
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "46d1a157b473b223b615b8424cd0866c.gif"
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "d000c77d2064906900299fcacc30cfbc.gif"
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "44fddfec51e728cf7fc260a7026df12f.gif"
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0ad82a9a5d7a6b01020714ecc3f54d5f.gif"
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports) {
 
 	/**
@@ -29826,15 +29832,15 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(81);
+	__webpack_require__(82);
 	module.exports = 'ngRoute';
 
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports) {
 
 	/**
@@ -30831,7 +30837,7 @@
 
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30840,11 +30846,11 @@
 
 	//requires
 
-	__webpack_require__(83)(directives);
 	__webpack_require__(84)(directives);
+	__webpack_require__(85)(directives);
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30868,23 +30874,23 @@
 	};
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	module.exports = function(app) {
-	  app.directive('formDirective', function() {
+	  app.directive('selectDirective', function() {
 	    return {
 
 	      //directive can only contain one outer, parent element - cannot have siblings
 
 	      restrict: 'AEC',
 	      replace: true, //replaces placement element
-	      templateUrl: 'html/templates/form-directive-template.html',
+	      templateUrl: 'html/templates/select-directive-template.html',
 	     //scope specific to this directive, can set default values inside
 	      scope: {
-	        formClassName: '@',
+	        className: '@',
 	        listName: '@',
 	        dropdownTitle: '@',
 	        dropdownLists: '=',
@@ -30895,17 +30901,17 @@
 	};
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = function(app) {
-	  __webpack_require__(86)(app);
+	  __webpack_require__(87)(app);
 	};
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30920,17 +30926,17 @@
 	    $scope.path = $location.path();
 	    $scope.nbaPath = false;
 	    $scope.nflPath = false;
-	    $scope.ncfbPath = false;
+	    $scope.cfbPath = false;
 
 	    if ($scope.path === '/nba') {
 	      $scope.nbaPath = true;
-	    } else if($scope.path === '/nfl' || '/') {
+	    } else if($scope.path === '/nfl' || $scope.path === '/') {
 	      $scope.nflPath = true;
 	    } else if($scope.path === '/cfb') {
 	      $scope.cfbPath = true;
 	    }
 
-	    $scope.dropdownLists = __webpack_require__(87);
+	    $scope.dropdownLists = __webpack_require__(88);
 
 	      $http.get('/api' + $scope.path)
 	      .then(function(res) {
@@ -30979,6 +30985,21 @@
 	        });
 	      });
 
+	      $scope.filteredGames.forEach(function(el, i, arr) {
+	        if (el.spreadOpen === 99 || el.spreadOpen === -99) {
+	          el.spreadOpen = 'OFF';
+	        }
+	        if (el.spreadClose === 99 || el.spreadClose === -99) {
+	          el.spreadClose = 'OFF';
+	        }
+	        if (el.totalOpen === 99) {
+	          el.totalOpen = 'OFF';
+	        }
+	        if (el.totalClose === 99) {
+	          el.totalClose = 'OFF';
+	        }
+	      });
+
 	      $scope.filteredGames = $scope.filteredGames.sort(function(a, b) {
 	        a = new Date(a.date);
 	        b = new Date(b.date);
@@ -31001,7 +31022,7 @@
 	            $scope.lossCount++;
 	            $scope.roiSpreadNet -= 1.1;
 	            $scope.roiTotalWagered += 1.1;
-	          } else {
+	          } else if ($scope.filteredGames[i].atsGrade == "P") {
 	            $scope.pushCount++;
 	            $scope.roiTotalWagered += 1.1;
 	          }
@@ -31020,7 +31041,7 @@
 	            $scope.underCount++;
 	            $scope.roiUnderNet++;
 	            $scope.roiOverNet -= 1.1;
-	          } else {
+	          } else if ($scope.filteredGames[i].totalGrade == "P") {
 	            $scope.pushTotalCount++;
 	          }
 	        }
@@ -31069,14 +31090,14 @@
 	};
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var nbaList = __webpack_require__(88);
-	var cfbList = __webpack_require__(97);
-	var nflList = __webpack_require__(106);
+	var nbaList = __webpack_require__(89);
+	var cfbList = __webpack_require__(98);
+	var nflList = __webpack_require__(110);
 
 	module.exports = {
 
@@ -31086,19 +31107,19 @@
 	};
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(89);
-	var courtList = __webpack_require__(90);
-	var gameTypeList = __webpack_require__(91);
-	var seasonList = __webpack_require__(92);
-	var spreadList = __webpack_require__(93);
-	var spreadMoveList = __webpack_require__(94);
-	var spreadStatusList = __webpack_require__(95);
-	var totalMoveList = __webpack_require__(96);
+	var teamList = __webpack_require__(90);
+	var courtList = __webpack_require__(91);
+	var gameTypeList = __webpack_require__(92);
+	var seasonList = __webpack_require__(93);
+	var spreadList = __webpack_require__(94);
+	var spreadMoveList = __webpack_require__(95);
+	var spreadStatusList = __webpack_require__(96);
+	var totalMoveList = __webpack_require__(97);
 
 	module.exports = {
 
@@ -31114,7 +31135,7 @@
 	};
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31150,17 +31171,6 @@
 	          {value:"TOR", fullName:'Toronto Raptors'},
 	          {value:"UTA", fullName:'Utah Jazz'},
 	          {value:"WAS", fullName:'Washington Wizards'}
-	          ];
-
-/***/ },
-/* 90 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = [
-	          {value:"home", fullName:'Home'},
-	          {value:"road", fullName:'Road'}
 	          ];
 
 /***/ },
@@ -31170,8 +31180,8 @@
 	'use strict';
 
 	module.exports = [
-	          {value:"reg", fullName:'Regular Season'},
-	          {value:"playoff", fullName:'Playoffs'}
+	          {value:"home", fullName:'Home'},
+	          {value:"road", fullName:'Road'}
 	          ];
 
 /***/ },
@@ -31181,10 +31191,8 @@
 	'use strict';
 
 	module.exports = [
-	          {value:"2014-15", fullName:'2014-15'},
-	          {value:"2013-14", fullName:'2013-14'},
-	          {value:"2012-13", fullName:'2012-13'},
-	          {value:"2011-12", fullName:'2011-12'}
+	          {value:"reg", fullName:'Regular Season'},
+	          {value:"playoff", fullName:'Playoffs'}
 	          ];
 
 /***/ },
@@ -31194,6 +31202,19 @@
 	'use strict';
 
 	module.exports = [
+	          {value:"2014-15", fullName:'2014-15'},
+	          {value:"2013-14", fullName:'2013-14'},
+	          {value:"2012-13", fullName:'2012-13'},
+	          {value:"2011-12", fullName:'2011-12'}
+	          ];
+
+/***/ },
+/* 94 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
 	       {value:"-20", fullName:"-20"},
 	       {value:"-19.5", fullName:"-19.5"},
 	       {value:"-19", fullName:"-19"},
@@ -31276,7 +31297,7 @@
 	       ];
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31285,17 +31306,6 @@
 	          {value:"FOR", fullName:'For'},
 	          {value:"AGAINST", fullName:'Against'},
 	          {value:"NONE", fullName:'None'}
-	          ];
-
-/***/ },
-/* 95 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = [
-	          {value:"favorite", fullName:'Favorite'},
-	          {value:"underdog", fullName:'Underdog'}
 	          ];
 
 /***/ },
@@ -31305,31 +31315,49 @@
 	'use strict';
 
 	module.exports = [
+	          {value:"favorite", fullName:'Favorite'},
+	          {value:"underdog", fullName:'Underdog'}
+	          ];
+
+/***/ },
+/* 97 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
 	          {value:"UP", fullName:'Up'},
 	          {value:"DOWN", fullName:'Down'},
 	          {value:"NONE", fullName:'None'}
 	          ];
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(98);
-	var courtList = __webpack_require__(99);
-	var gameTypeList = __webpack_require__(100);
-	var seasonList = __webpack_require__(101);
-	var spreadList = __webpack_require__(102);
-	var spreadMoveList = __webpack_require__(103);
-	var spreadStatusList = __webpack_require__(104);
-	var totalMoveList = __webpack_require__(105);
+	var teamList = __webpack_require__(99);
+	var teamSiteList = __webpack_require__(100);
+	var weekList = __webpack_require__(101);
+	var gameTypeList = __webpack_require__(102);
+	var seasonList = __webpack_require__(103);
+	var spreadList = __webpack_require__(104);
+	var spreadMoveList = __webpack_require__(105);
+	var spreadStatusList = __webpack_require__(106);
+	var totalMoveList = __webpack_require__(107);
+	var conferenceList = __webpack_require__(108);
+	var divisionList = __webpack_require__(109);
 
 	module.exports = {
 
-	          team: teamList,
-	          teamSite: courtList,
-	          opponent: teamList,
+	          teamAbbrev: teamList,
+	          teamSite: teamSiteList,
+	          teamConference: conferenceList,
+	          opponentAbbrev: teamList,
+	          opponentConference: conferenceList,
+	          opponentDivision: divisionList,
+	          week: weekList,
 	          gameType: gameTypeList,
 	          season: seasonList,
 	          spreadStatus: spreadStatusList,
@@ -31339,54 +31367,241 @@
 	};
 
 /***/ },
-/* 98 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = [
-	          {value:"ATL", fullName:'Atlanta Hawks'},
-	          {value:"BOS", fullName:'Boston Celtics'},
-	          {value:"BK", fullName:'Brooklyn Nets'},
-	          {value:"CHAR", fullName:'Charlotte Hornets'},
-	          {value:"CHI", fullName:'Chicago Bulls'},
-	          {value:"CLE", fullName:'Cleveland Cavaliers'},
-	          {value:"DAL", fullName:'Dallas Mavericks'},
-	          {value:"DEN", fullName:'Denver Nuggets'},
-	          {value:"DET", fullName:'Detroit Pistons'},
-	          {value:"GS", fullName:'Golden State Warriors'},
-	          {value:"HOU", fullName:'Houston Rockets'},
-	          {value:"IND", fullName:'Indiana Pacers'},
-	          {value:"LAC", fullName:'Los Angeles Clippers'},
-	          {value:"LAL", fullName:'Los Angeles Lakers'},
-	          {value:"MEM", fullName:'Memphis Grizzlies'},
-	          {value:"MIA", fullName:'Miami Heat'},
-	          {value:"MIL", fullName:'Milwaukee Bucks'},
-	          {value:"MIN", fullName:'Minnesota Timberwolves'},
-	          {value:"NO", fullName:'New Orleans Pelicans'},
-	          {value:"NY", fullName:'New York Knicks'},
-	          {value:"OKC", fullName:'Oklahoma City Thunder'},
-	          {value:"ORL", fullName:'Orlando Magic'},
-	          {value:"PHI", fullName:'Philadelphia 76ers'},
-	          {value:"PHO", fullName:'Phoenix Suns'},
-	          {value:"POR", fullName:'Portland Trail Blazers'},
-	          {value:"SAC", fullName:'Sacramento Kings'},
-	          {value:"SA", fullName:'San Antonio Spurs'},
-	          {value:"TOR", fullName:'Toronto Raptors'},
-	          {value:"UTA", fullName:'Utah Jazz'},
-	          {value:"WAS", fullName:'Washington Wizards'}
-	          ];
-
-/***/ },
 /* 99 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	module.exports = [
-	          {value:"home", fullName:'Home'},
-	          {value:"road", fullName:'Road'}
+	 {fullName: 'Abilene Christian', value: 'ACU'},
+	 {fullName: 'Air Force', value: 'AFA'},
+	 {fullName: 'Akron', value: 'AKR'},
+	 {fullName: 'Alabama', value: 'ALA'},
+	 {fullName: 'Alabama A&M', value: 'AAMU'},
+	 {fullName: 'Alabama-Birmingham', value: 'UAB'},
+	 {fullName: 'Alabama State', value: 'ALST'},
+	 {fullName: 'Albany', value: 'ALBY'},
+	 {fullName: 'Alcorn State', value: 'ALCN'},
+	 {fullName: 'Appalachian State', value: 'APP'},
+	 {fullName: 'Arizona', value: 'ARIZ'},
+	 {fullName: 'Arizona State', value: 'ASU'},
+	 {fullName: 'Arkansas', value: 'ARK'},
+	 {fullName: 'Arkansas-Pine Bluff', value: 'ARPB'},
+	 {fullName: 'Arkansas State', value: 'ARST'},
+	 {fullName: 'Army', value: 'ARMY'},
+	 {fullName: 'Auburn', value: 'AUB'},
+	 {fullName: 'Austin Peay', value: 'PEAY'},
+	 {fullName: 'Ball State', value: 'BALL'},
+	 {fullName: 'Baylor', value: 'BAY'},
+	 {fullName: 'Bethune Cookman', value: 'COOK'},
+	 {fullName: 'Boise State', value: 'BSU'},
+	 {fullName: 'Boston College', value: 'BC'},
+	 {fullName: 'Bowling Green', value: 'BGSU'},
+	 {fullName: 'Brigham Young', value: 'BYU'},
+	 {fullName: 'Buffalo', value: 'BUFF'},
+	 {fullName: 'California', value: 'CAL'},
+	 {fullName: 'Cal. Poly - SLO', value: 'CP'},
+	 {fullName: 'Campbell', value: 'CAMP'},
+	 {fullName: 'Central Arkansas', value: 'CARK'},
+	 {fullName: 'Central Florida', value: 'UCF'},
+	 {fullName: 'Central Michigan', value: 'CMU'},
+	 {fullName: 'Charleston Southern', value: 'CHSO'},
+	 {fullName: 'Charlotte', value: 'CHAR'},
+	 {fullName: 'Chattanooga', value: 'CHAT'},
+	 {fullName: 'Cincinnati', value: 'CIN'},
+	 {fullName: 'Clemson', value: 'CLEM'},
+	 {fullName: 'Coastal Carolina', value: 'CCAR'},
+	 {fullName: 'Colgate', value: 'COLG'},
+	 {fullName: 'Colorado', value: 'COLO'},
+	 {fullName: 'Colorado State', value: 'CSU'},
+	 {fullName: 'Connecticut', value: 'CONN'},
+	 {fullName: 'Delaware', value: 'DEL'},
+	 {fullName: 'Delaware State', value: 'DSU'},
+	 {fullName: 'Duke', value: 'DUKE'},
+	 {fullName: 'Duquesne', value: 'DUQ'},
+	 {fullName: 'East Carolina', value: 'ECU'},
+	 {fullName: 'Eastern Illinois', value: 'EIU'},
+	 {fullName: 'Eastern Kentucky', value: 'EKY'},
+	 {fullName: 'Eastern Michigan', value: 'EMU'},
+	 {fullName: 'Eastern Washington', value: 'EWU'},
+	 {fullName: 'Elon University', value: 'ELON'},
+	 {fullName: 'Florida', value: 'FLA'},
+	 {fullName: 'Florida A&M', value: 'FAMU'},
+	 {fullName: 'Florida Atlantic', value: 'FAU'},
+	 {fullName: 'Florida International', value: 'FIU'},
+	 {fullName: 'Florida State', value: 'FSU'},
+	 {fullName: 'Fordham', value: 'FOR'},
+	 {fullName: 'Fresno State', value: 'FRES'},
+	 {fullName: 'Furman', value: 'FUR'},
+	 {fullName: 'Gardner Webb', value: 'WEBB'},
+	 {fullName: 'Georgia', value: 'UGA'},
+	 {fullName: 'Georgia Southern', value: 'GASO'},
+	 {fullName: 'Georgia State', value: 'GSU'},
+	 {fullName: 'Georgia Tech', value: 'GT'},
+	 {fullName: 'Grambling State', value: 'GRAM'},
+	 {fullName: 'Hampton', value: 'HAMP'},
+	 {fullName: 'Hawaii', value: 'HAW'},
+	 {fullName: 'Houston', value: 'HOU'},
+	 {fullName: 'Howard', value: 'HOW'},
+	 {fullName: 'Idaho', value: 'IDHO'},
+	 {fullName: 'Idaho State', value: 'IDST'},
+	 {fullName: 'Illinois', value: 'ILL'},
+	 {fullName: 'Illinois State', value: 'ILST'},
+	 {fullName: 'Incarnate Word', value: 'IW'},
+	 {fullName: 'Indiana', value: 'IND'},
+	 {fullName: 'Indiana State', value: 'INST'},
+	 {fullName: 'Iowa', value: 'IOWA'},
+	 {fullName: 'Iowa State', value: 'ISU'},
+	 {fullName: 'Jackson State', value: 'JKST'},
+	 {fullName: 'Jacksonville State', value: 'JVST'},
+	 {fullName: 'James Madison', value: 'JMU'},
+	 {fullName: 'Kansas', value: 'KU'},
+	 {fullName: 'Kansas State', value: 'KSU'},
+	 {fullName: 'Kent State', value: 'KENT'},
+	 {fullName: 'Kentucky', value: 'UK'},
+	 {fullName: 'Lamar', value: 'LAM'},
+	 {fullName: 'Liberty', value: 'LIB'},
+	 {fullName: 'Louisiana State', value: 'LSU'},
+	 {fullName: 'Louisiana Tech', value: 'LT'},
+	 {fullName: 'Louisville', value: 'LOU'},
+	 {fullName: 'Maine', value: 'ME'},
+	 {fullName: 'Marshall', value: 'MRSH'},
+	 {fullName: 'Maryland', value: 'MD'},
+	 {fullName: 'Massachusetts', value: 'MASS'},
+	 {fullName: 'McNeese State', value: 'MCNS'},
+	 {fullName: 'Memphis', value: 'MEM'},
+	 {fullName: 'Miami', value: 'MIA'},
+	 {fullName: 'Miami (Ohio)', value: 'M-OH'},
+	 {fullName: 'Michigan', value: 'MICH'},
+	 {fullName: 'Michigan State', value: 'MSU'},
+	 {fullName: 'Middle Tennessee', value: 'MTU'},
+	 {fullName: 'Minnesota', value: 'MINN'},
+	 {fullName: 'Mississippi', value: 'MISS'},
+	 {fullName: 'Mississippi State', value: 'MSST'},
+	 {fullName: 'Mississippi Valley State', value: 'MVSU'},
+	 {fullName: 'Missouri', value: 'MIZZ'},
+	 {fullName: 'Missouri State', value: 'MOSU'},
+	{fullName: 'Monmouth', value: 'MONM'},
+	 {fullName: 'Montana', value: 'MONT'},
+	 {fullName: 'Montana State', value: 'MTST'},
+	 {fullName: 'Morgan State', value: 'MORG'},
+	 {fullName: 'Murray State', value: 'MURR'},
+	 {fullName: 'Navy', value: 'NAVY'},
+	 {fullName: 'Nebraska', value: 'NEB'},
+	 {fullName: 'Nevada', value: 'NEV'},
+	 {fullName: 'New Hampshire', value: 'UNH'},
+	 {fullName: 'New Mexico', value: 'UNM'},
+	 {fullName: 'New Mexico State', value: 'NMSU'},
+	 {fullName: 'Nicholls State', value: 'NICH'},
+	 {fullName: 'Norfolk State', value: 'NORF'},
+	 {fullName: 'North Carolina', value: 'UNC'},
+	 {fullName: 'North Carolina A&T', value: 'NCAT'},
+	 {fullName: 'North Carolina Central', value: 'NCCU'},
+	 {fullName: 'North Carolina State', value: 'NCST'},
+	 {fullName: 'North Dakota', value: 'UND'},
+	 {fullName: 'North Dakota State', value: 'NDSU'},
+	 {fullName: 'Northern Arizona', value: 'NAU'},
+	 {fullName: 'Northern Colorado', value: 'UNCO'},
+	 {fullName: 'Northern Illinois', value: 'NIU'},
+	 {fullName: 'Northern Iowa', value: 'UNI'},
+	 {fullName: 'North Texas', value: 'UNT'},
+	 {fullName: 'Northwestern', value: 'NW'},
+	 {fullName: 'Northwestern Oklahoma State', value: 'NWOK'},
+	 {fullName: 'Northwestern State', value: 'NWST'},
+	 {fullName: 'Notre Dame', value: 'ND'},
+	 {fullName: 'Ohio', value: 'OHIO'},
+	 {fullName: 'Ohio State', value: 'OSU'},
+	 {fullName: 'Oklahoma', value: 'OKLA'},
+	 {fullName: 'Oklahoma State', value: 'OKST'},
+	 {fullName: 'Old Dominion', value: 'ODU'},
+	 {fullName: 'Oregon', value: 'ORE'},
+	 {fullName: 'Oregon State', value: 'ORST'},
+	 {fullName: 'Penn State', value: 'PSU'},
+	 {fullName: 'Pittsburgh', value: 'PITT'},
+	 {fullName: 'Portland State', value: 'PRST'},
+	 {fullName: 'Prairie View A&M', value: 'PV'},
+	 {fullName: 'Presbyterian', value: 'PRE'},
+	 {fullName: 'Purdue', value: 'PUR'},
+	 {fullName: 'Rhode Island', value: 'URI'},
+	 {fullName: 'Rice', value: 'RICE'},
+	 {fullName: 'Richmond', value: 'RICH'},
+	 {fullName: 'Rutgers', value: 'RUTG'},
+	 {fullName: 'Sacramento State', value: 'CSUS'},
+	 {fullName: 'Samford', value: 'SAM'},
+	 {fullName: 'Sam Houston State', value: 'SHSU'},
+	 {fullName: 'San Diego', value: 'USD'},
+	 {fullName: 'San Diego State', value: 'SDSU'},
+	 {fullName: 'San Jose State', value: 'SJSU'},
+	 {fullName: 'Savannah State', value: 'SAV'},
+	 {fullName: 'SE Missouri State', value: 'SEMST'},
+	 {fullName: 'South Alabama', value: 'USA'},
+	{fullName: 'South Carolina', value: 'SOCAR'},
+	 {fullName: 'South Carolina State', value: 'SCST'},
+	 {fullName: 'South Dakota', value: 'SDAK'},
+	 {fullName: 'South Dakota State', value: 'SDST'},
+	 {fullName: 'Southeastern Louisiana', value: 'SELA'},
+	 {fullName: 'Southern', value: 'SOUTH'},
+	 {fullName: 'Southern California', value: 'USC'},
+	 {fullName: 'Southern Illinois', value: 'SIU'},
+	 {fullName: 'Southern Methodist', value: 'SMU'},
+	 {fullName: 'Southern Mississippi', value: 'SOMIS'},
+	 {fullName: 'Southern Utah', value: 'SUU'},
+	 {fullName: 'South Florida', value: 'USF'},
+	 {fullName: 'Stanford', value: 'STAN'},
+	 {fullName: 'Stephen F. Austin', value: 'SFA'},
+	 {fullName: 'Stony Brook', value: 'STON'},
+	 {fullName: 'Syracuse', value: 'SYR'},
+	 {fullName: 'Temple', value: 'TEM'},
+	 {fullName: 'Tennessee', value: 'TENN'},
+	 {fullName: 'Tennessee-Martin', value: 'UTM'},
+	 {fullName: 'Tennessee State', value: 'TNST'},
+	 {fullName: 'Tennessee Tech', value: 'TNTC'},
+	 {fullName: 'Texas', value: 'TEX'},
+	 {fullName: 'Texas A&M', value: 'TAM'},
+	 {fullName: 'Texas A&M-Commerce', value: 'TXAM-C'},
+	 {fullName: 'Texas Christian', value: 'TCU'},
+	 {fullName: 'Texas El Paso', value: 'UTEP'},
+	 {fullName: 'Texas-San Antonio', value: 'UTSA'},
+	 {fullName: 'Texas Southern', value: 'TXSO'},
+	 {fullName: 'Texas State', value: 'TXST'},
+	 {fullName: 'Texas Tech', value: 'TTU'},
+	 {fullName: 'The Citadel', value: 'CIT'},
+	 {fullName: 'Toledo', value: 'TOL'},
+	 {fullName: 'Towson', value: 'TOWS'},
+	 {fullName: 'Troy', value: 'TROY'},
+	 {fullName: 'Tulane', value: 'TULN'},
+	 {fullName: 'Tulsa', value: 'TLSA'},
+	 {fullName: 'UC - Davis', value: 'UCD'},
+	 {fullName: 'UCLA', value: 'UCLA'},
+	 {fullName: 'UL Lafayette', value: 'ULL'},
+	 {fullName: 'UL Monroe', value: 'ULM'},
+	 {fullName: 'UNLV', value: 'UNLV'},
+	 {fullName: 'Utah', value: 'UTAH'},
+	 {fullName: 'Utah State', value: 'USU'},
+	 {fullName: 'Vanderbilt', value: 'VAN'},
+	 {fullName: 'Villanova', value: 'VILL'},
+	 {fullName: 'Virginia', value: 'UVA'},
+	 {fullName: 'Virginia Military', value: 'VMI'},
+	 {fullName: 'Virginia Tech', value: 'VT'},
+	 {fullName: 'Wagner', value: 'WAG'},
+	 {fullName: 'Wake Forest', value: 'WAKE'},
+	 {fullName: 'Washington', value: 'WASH'},
+	 {fullName: 'Washington State', value: 'WSU'},
+	 {fullName: 'Weber State', value: 'WEB'},
+	 {fullName: 'Western Carolina', value: 'WCU'},
+	 {fullName: 'Western Illinois', value: 'WIU'},
+	 {fullName: 'Western Kentucky', value: 'WKU'},
+	 {fullName: 'Western Michigan', value: 'WMU'},
+	 {fullName: 'West Virginia', value: 'WVU'},
+	 {fullName: 'William & Mary', value: 'CWM'},
+	 {fullName: 'Wisconsin', value: 'WIS'},
+	 {fullName: 'Wofford', value: 'WOF'},
+	 {fullName: 'Wyoming', value: 'WYO'},
+	 {fullName: 'Yale', value: 'YALE'},
+	 {fullName: 'Youngstown State', value: 'YSU'}
 	          ];
+
+
 
 /***/ },
 /* 100 */
@@ -31395,8 +31610,9 @@
 	'use strict';
 
 	module.exports = [
-	          {value:"reg", fullName:'Regular Season'},
-	          {value:"playoff", fullName:'Playoffs'}
+	          {value:"home", fullName:'Home'},
+	          {value:"road", fullName:'Road'},
+	          {value:"neutral", fullName:'Neutral'}
 	          ];
 
 /***/ },
@@ -31406,11 +31622,25 @@
 	'use strict';
 
 	module.exports = [
-	          {value:"2014-15", fullName:'2014-15'},
-	          {value:"2013-14", fullName:'2013-14'},
-	          {value:"2012-13", fullName:'2012-13'},
-	          {value:"2011-12", fullName:'2011-12'}
-	          ];
+
+	        {value:"1", fullName:"1"},
+	        {value:"2", fullName:"2"},
+	        {value:"3", fullName:"3"},
+	        {value:"4", fullName:"4"},
+	        {value:"5", fullName:"5"},
+	        {value:"6", fullName:"6"},
+	        {value:"7", fullName:"7"},
+	        {value:"8", fullName:"8"},
+	        {value:"9", fullName:"9"},
+	        {value:"10", fullName:"10"},
+	        {value:"11", fullName:"11"},
+	        {value:"12", fullName:"12"},
+	        {value:"13", fullName:"13"},
+	        {value:"14", fullName:"14"},
+	        {value:"15", fullName:"15"},
+	        {value:"16", fullName:"16"}
+
+	        ];
 
 /***/ },
 /* 102 */
@@ -31419,89 +31649,260 @@
 	'use strict';
 
 	module.exports = [
-	       {value:"-20", fullName:"-20"},
-	       {value:"-19.5", fullName:"-19.5"},
-	       {value:"-19", fullName:"-19"},
-	       {value:"-18.5", fullName:"-18.5"},
-	       {value:"-18", fullName:"-18"},
-	       {value:"-17.5", fullName:"-17.5"},
-	       {value:"-17", fullName:"-17"},
-	       {value:"-16.5", fullName:"-16.5"},
-	       {value:"-16", fullName:"-16"},
-	       {value:"-15.5", fullName:"-15.5"},
-	       {value:"-15", fullName:"-15"},
-	       {value:"-14.5", fullName:"-14.5"},
-	       {value:"-14", fullName:"-14"},
-	       {value:"-13.5", fullName:"-13.5"},
-	       {value:"-13", fullName:"-13"},
-	       {value:"-12.5", fullName:"-12.5"},
-	       {value:"-12", fullName:"-12"},
-	       {value:"-11.5", fullName:"-11.5"},
-	       {value:"-11", fullName:"-11"},
-	       {value:"-10.5", fullName:"-10.5"},
-	       {value:"-10", fullName:"-10"},
-	       {value:"-9.5", fullName:"-9.5"},
-	       {value:"-9", fullName:"-9"},
-	       {value:"-8.5", fullName:"-8.5"},
-	       {value:"-8", fullName:"-8"},
-	       {value:"-7.5", fullName:"-7.5"},
-	       {value:"-7", fullName:"-7"},
-	       {value:"-6.5", fullName:"-6.5"},
-	       {value:"-6", fullName:"-6"},
-	       {value:"-5.5", fullName:"-5.5"},
-	       {value:"-5", fullName:"-5"},
-	       {value:"-4.5", fullName:"-4.5"},
-	       {value:"-4", fullName:"-4"},
-	       {value:"-3.5", fullName:"-3.5"},
-	       {value:"-3", fullName:"-3"},
-	       {value:"-2.5", fullName:"-2.5"},
-	       {value:"-2", fullName:"-2"},
-	       {value:"-1.5", fullName:"-1.5"},
-	       {value:"-1", fullName:"-1"},
-	       {value:"0", fullName:"0"},
-	       {value:"1", fullName:"1"},
-	       {value:"1.5", fullName:"1.5"},
-	       {value:"2", fullName:"2"},
-	       {value:"2.5", fullName:"2.5"},
-	       {value:"3", fullName:"3"},
-	       {value:"3.5", fullName:"3.5"},
-	       {value:"4", fullName:"4"},
-	       {value:"4.5", fullName:"4.5"},
-	       {value:"5", fullName:"5"},
-	       {value:"5.5", fullName:"5.5"},
-	       {value:"6", fullName:"6"},
-	       {value:"6.5", fullName:"6.5"},
-	       {value:"7", fullName:"7"},
-	       {value:"7.5", fullName:"7.5"},
-	       {value:"8", fullName:"8"},
-	       {value:"8.5", fullName:"8.5"},
-	       {value:"9", fullName:"9"},
-	       {value:"9.5", fullName:"9.5"},
-	       {value:"10", fullName:"10"},
-	       {value:"10.5", fullName:"10.5"},
-	       {value:"11", fullName:"11"},
-	       {value:"11.5", fullName:"11.5"},
-	       {value:"12", fullName:"12"},
-	       {value:"12.5", fullName:"12.5"},
-	       {value:"13", fullName:"13"},
-	       {value:"13.5", fullName:"13.5"},
-	       {value:"14", fullName:"14"},
-	       {value:"14.5", fullName:"14.5"},
-	       {value:"15", fullName:"15"},
-	       {value:"15.5", fullName:"15.5"},
-	       {value:"16", fullName:"16"},
-	       {value:"16.5", fullName:"16.5"},
-	       {value:"17", fullName:"17"},
-	       {value:"17.5", fullName:"17.5"},
-	       {value:"18", fullName:"18"},
-	       {value:"18.5", fullName:"18.5"},
-	       {value:"19", fullName:"19"},
-	       {value:"19.5", fullName:"19.5"},
-	       {value:"20", fullName:"20"}
-	       ];
+	          {value:"reg", fullName:'Regular Season'},
+	          {value:"bowl", fullName:'Bowl'}
+	          ];
 
 /***/ },
 /* 103 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"2015-16", fullName:'2015-16'},
+	          {value:"2014-15", fullName:'2014-15'},
+	          {value:"2013-14", fullName:'2013-14'},
+	          {value:"2012-13", fullName:'2012-13'},
+	          {value:"2011-12", fullName:'2011-12'}
+	          ];
+
+/***/ },
+/* 104 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	  { value: '-56', fullName: '-56' },
+	  { value: '-55.5', fullName: '-55.5' },
+	  { value: '-55', fullName: '-55' },
+	  { value: '-54.5', fullName: '-54.5' },
+	  { value: '-54', fullName: '-54' },
+	  { value: '-53.5', fullName: '-53.5' },
+	  { value: '-53', fullName: '-53' },
+	  { value: '-52.5', fullName: '-52.5' },
+	  { value: '-52', fullName: '-52' },
+	  { value: '-51.5', fullName: '-51.5' },
+	  { value: '-51', fullName: '-51' },
+	  { value: '-50.5', fullName: '-50.5' },
+	  { value: '-50', fullName: '-50' },
+	  { value: '-49.5', fullName: '-49.5' },
+	  { value: '-49', fullName: '-49' },
+	  { value: '-48.5', fullName: '-48.5' },
+	  { value: '-48', fullName: '-48' },
+	  { value: '-47.5', fullName: '-47.5' },
+	  { value: '-47', fullName: '-47' },
+	  { value: '-46.5', fullName: '-46.5' },
+	  { value: '-46', fullName: '-46' },
+	  { value: '-45.5', fullName: '-45.5' },
+	  { value: '-45', fullName: '-45' },
+	  { value: '-44.5', fullName: '-44.5' },
+	  { value: '-44', fullName: '-44' },
+	  { value: '-43.5', fullName: '-43.5' },
+	  { value: '-43', fullName: '-43' },
+	  { value: '-42.5', fullName: '-42.5' },
+	  { value: '-42', fullName: '-42' },
+	  { value: '-41.5', fullName: '-41.5' },
+	  { value: '-41', fullName: '-41' },
+	  { value: '-40.5', fullName: '-40.5' },
+	  { value: '-40', fullName: '-40' },
+	  { value: '-39.5', fullName: '-39.5' },
+	  { value: '-39', fullName: '-39' },
+	  { value: '-38.5', fullName: '-38.5' },
+	  { value: '-38', fullName: '-38' },
+	  { value: '-37.5', fullName: '-37.5' },
+	  { value: '-37', fullName: '-37' },
+	  { value: '-36.5', fullName: '-36.5' },
+	  { value: '-36', fullName: '-36' },
+	  { value: '-35.5', fullName: '-35.5' },
+	  { value: '-35', fullName: '-35' },
+	  { value: '-34.5', fullName: '-34.5' },
+	  { value: '-34', fullName: '-34' },
+	  { value: '-33.5', fullName: '-33.5' },
+	  { value: '-33', fullName: '-33' },
+	  { value: '-32.5', fullName: '-32.5' },
+	  { value: '-32', fullName: '-32' },
+	  { value: '-31.5', fullName: '-31.5' },
+	  { value: '-31', fullName: '-31' },
+	  { value: '-30.5', fullName: '-30.5' },
+	  { value: '-30', fullName: '-30' },
+	  { value: '-29.5', fullName: '-29.5' },
+	  { value: '-29', fullName: '-29' },
+	  { value: '-28.5', fullName: '-28.5' },
+	  { value: '-28', fullName: '-28' },
+	  { value: '-27.5', fullName: '-27.5' },
+	  { value: '-27', fullName: '-27' },
+	  { value: '-26.5', fullName: '-26.5' },
+	  { value: '-26', fullName: '-26' },
+	  { value: '-25.5', fullName: '-25.5' },
+	  { value: '-25', fullName: '-25' },
+	  { value: '-24.5', fullName: '-24.5' },
+	  { value: '-24', fullName: '-24' },
+	  { value: '-23.5', fullName: '-23.5' },
+	  { value: '-23', fullName: '-23' },
+	  { value: '-22.5', fullName: '-22.5' },
+	  { value: '-22', fullName: '-22' },
+	  { value: '-21.5', fullName: '-21.5' },
+	  { value: '-21', fullName: '-21' },
+	  { value: '-20.5', fullName: '-20.5' },
+	  { value: '-20', fullName: '-20' },
+	  { value: '-19.5', fullName: '-19.5' },
+	  { value: '-19', fullName: '-19' },
+	  { value: '-18.5', fullName: '-18.5' },
+	  { value: '-18', fullName: '-18' },
+	  { value: '-17.5', fullName: '-17.5' },
+	  { value: '-17', fullName: '-17' },
+	  { value: '-16.5', fullName: '-16.5' },
+	  { value: '-16', fullName: '-16' },
+	  { value: '-15.5', fullName: '-15.5' },
+	  { value: '-15', fullName: '-15' },
+	  { value: '-14.5', fullName: '-14.5' },
+	  { value: '-14', fullName: '-14' },
+	  { value: '-13.5', fullName: '-13.5' },
+	  { value: '-13', fullName: '-13' },
+	  { value: '-12.5', fullName: '-12.5' },
+	  { value: '-12', fullName: '-12' },
+	  { value: '-11.5', fullName: '-11.5' },
+	  { value: '-11', fullName: '-11' },
+	  { value: '-10.5', fullName: '-10.5' },
+	  { value: '-10', fullName: '-10' },
+	  { value: '-9.5', fullName: '-9.5' },
+	  { value: '-9', fullName: '-9' },
+	  { value: '-8.5', fullName: '-8.5' },
+	  { value: '-8', fullName: '-8' },
+	  { value: '-7.5', fullName: '-7.5' },
+	  { value: '-7', fullName: '-7' },
+	  { value: '-6.5', fullName: '-6.5' },
+	  { value: '-6', fullName: '-6' },
+	  { value: '-5.5', fullName: '-5.5' },
+	  { value: '-5', fullName: '-5' },
+	  { value: '-4.5', fullName: '-4.5' },
+	  { value: '-4', fullName: '-4' },
+	  { value: '-3.5', fullName: '-3.5' },
+	  { value: '-3', fullName: '-3' },
+	  { value: '-2.5', fullName: '-2.5' },
+	  { value: '-2', fullName: '-2' },
+	  { value: '-1.5', fullName: '-1.5' },
+	  { value: '-1', fullName: '-1' },
+	  { value: '0', fullName: '0' },
+	  { value: '1', fullName: '1' },
+	  { value: '1.5', fullName: '1.5' },
+	  { value: '2', fullName: '2' },
+	  { value: '2.5', fullName: '2.5' },
+	  { value: '3', fullName: '3' },
+	  { value: '3.5', fullName: '3.5' },
+	  { value: '4', fullName: '4' },
+	  { value: '4.5', fullName: '4.5' },
+	  { value: '5', fullName: '5' },
+	  { value: '5.5', fullName: '5.5' },
+	  { value: '6', fullName: '6' },
+	  { value: '6.5', fullName: '6.5' },
+	  { value: '7', fullName: '7' },
+	  { value: '7.5', fullName: '7.5' },
+	  { value: '8', fullName: '8' },
+	  { value: '8.5', fullName: '8.5' },
+	  { value: '9', fullName: '9' },
+	  { value: '9.5', fullName: '9.5' },
+	  { value: '10', fullName: '10' },
+	  { value: '10.5', fullName: '10.5' },
+	  { value: '11', fullName: '11' },
+	  { value: '11.5', fullName: '11.5' },
+	  { value: '12', fullName: '12' },
+	  { value: '12.5', fullName: '12.5' },
+	  { value: '13', fullName: '13' },
+	  { value: '13.5', fullName: '13.5' },
+	  { value: '14', fullName: '14' },
+	  { value: '14.5', fullName: '14.5' },
+	  { value: '15', fullName: '15' },
+	  { value: '15.5', fullName: '15.5' },
+	  { value: '16', fullName: '16' },
+	  { value: '16.5', fullName: '16.5' },
+	  { value: '17', fullName: '17' },
+	  { value: '17.5', fullName: '17.5' },
+	  { value: '18', fullName: '18' },
+	  { value: '18.5', fullName: '18.5' },
+	  { value: '19', fullName: '19' },
+	  { value: '19.5', fullName: '19.5' },
+	  { value: '20', fullName: '20' },
+	  { value: '20.5', fullName: '20.5' },
+	  { value: '21', fullName: '21' },
+	  { value: '21.5', fullName: '21.5' },
+	  { value: '22', fullName: '22' },
+	  { value: '22.5', fullName: '22.5' },
+	  { value: '23', fullName: '23' },
+	  { value: '23.5', fullName: '23.5' },
+	  { value: '24', fullName: '24' },
+	  { value: '24.5', fullName: '24.5' },
+	  { value: '25', fullName: '25' },
+	  { value: '25.5', fullName: '25.5' },
+	  { value: '26', fullName: '26' },
+	  { value: '26.5', fullName: '26.5' },
+	  { value: '27', fullName: '27' },
+	  { value: '27.5', fullName: '27.5' },
+	  { value: '28', fullName: '28' },
+	  { value: '28.5', fullName: '28.5' },
+	  { value: '29', fullName: '29' },
+	  { value: '29.5', fullName: '29.5' },
+	  { value: '30', fullName: '30' },
+	  { value: '30.5', fullName: '30.5' },
+	  { value: '31', fullName: '31' },
+	  { value: '31.5', fullName: '31.5' },
+	  { value: '32', fullName: '32' },
+	  { value: '32.5', fullName: '32.5' },
+	  { value: '33', fullName: '33' },
+	  { value: '33.5', fullName: '33.5' },
+	  { value: '34', fullName: '34' },
+	  { value: '34.5', fullName: '34.5' },
+	  { value: '35', fullName: '35' },
+	  { value: '35.5', fullName: '35.5' },
+	  { value: '36', fullName: '36' },
+	  { value: '36.5', fullName: '36.5' },
+	  { value: '37', fullName: '37' },
+	  { value: '37.5', fullName: '37.5' },
+	  { value: '38', fullName: '38' },
+	  { value: '38.5', fullName: '38.5' },
+	  { value: '39', fullName: '39' },
+	  { value: '39.5', fullName: '39.5' },
+	  { value: '40', fullName: '40' },
+	  { value: '40.5', fullName: '40.5' },
+	  { value: '41', fullName: '41' },
+	  { value: '41.5', fullName: '41.5' },
+	  { value: '42', fullName: '42' },
+	  { value: '42.5', fullName: '42.5' },
+	  { value: '43', fullName: '43' },
+	  { value: '43.5', fullName: '43.5' },
+	  { value: '44', fullName: '44' },
+	  { value: '44.5', fullName: '44.5' },
+	  { value: '45', fullName: '45' },
+	  { value: '45.5', fullName: '45.5' },
+	  { value: '46', fullName: '46' },
+	  { value: '46.5', fullName: '46.5' },
+	  { value: '47', fullName: '47' },
+	  { value: '47.5', fullName: '47.5' },
+	  { value: '48', fullName: '48' },
+	  { value: '48.5', fullName: '48.5' },
+	  { value: '49', fullName: '49' },
+	  { value: '49.5', fullName: '49.5' },
+	  { value: '50', fullName: '50' },
+	  { value: '50.5', fullName: '50.5' },
+	  { value: '51', fullName: '51' },
+	  { value: '51.5', fullName: '51.5' },
+	  { value: '52', fullName: '52' },
+	  { value: '52.5', fullName: '52.5' },
+	  { value: '53', fullName: '53' },
+	  { value: '53.5', fullName: '53.5' },
+	  { value: '54', fullName: '54' },
+	  { value: '54.5', fullName: '54.5' },
+	  { value: '55', fullName: '55' },
+	  { value: '55.5', fullName: '55.5' },
+	  { value: '56', fullName: '56' },
+
+	  ];
+
+
+/***/ },
+/* 105 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31513,7 +31914,7 @@
 	          ];
 
 /***/ },
-/* 104 */
+/* 106 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31524,7 +31925,7 @@
 	          ];
 
 /***/ },
-/* 105 */
+/* 107 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31536,20 +31937,64 @@
 	          ];
 
 /***/ },
-/* 106 */
+/* 108 */
+/***/ function(module, exports) {
+
+	 'use strict';
+
+	 module.exports = [
+
+	 {value: 'American Athletic', fullName: 'AAC'},
+	 {value: 'Atlantic Coast', fullName: 'ACC'},
+	 {value: 'Big 12', fullName: 'Big 12'},
+	 {value: 'Big Sky', fullName: 'Big Sky'},
+	 {value: 'Big South', fullName: 'Big South'},
+	 {value: 'Big Ten', fullName: 'Big Ten'},
+	 {value: 'Colonial Athletic Association', fullName: 'CAA'},
+	 {value: 'Conference USA', fullName: 'C-USA'},
+	 {value: 'Independents I-A', fullName: 'Independents'},
+	 {value: 'Ivy', fullName: 'Ivy League'},
+	 {value: 'MEAC', fullName: 'MEAC'},
+	 {value: 'Mid-American', fullName: 'MAC'},
+	 {value: 'Missouri Valley', fullName: 'MVC'},
+	 {value: 'Mountain West', fullName: 'MWC'},
+	 {value: 'Ohio Valley', fullName: 'OVC'},
+	 {value: 'Pacific-12', fullName: 'Pac-12'},
+	 {value: 'Patriot League', fullName: 'Patriot'},
+	 {value: 'Southeastern', fullName: 'SEC'},
+	 {value: 'Southern', fullName: 'Southern'},
+	 {value: 'Southland', fullName: 'Southland'},
+	 {value: 'Sun Belt', fullName: 'Sun Belt'},
+	 {value: 'SWAC', fullName: 'SWAC'}
+
+	];
+
+/***/ },
+/* 109 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"FBS", fullName:"FBS"},
+	          {value:"FCS", fullName:"FCS"}
+	          ];
+
+/***/ },
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(107);
-	var teamSiteList = __webpack_require__(108);
-	var weekList = __webpack_require__(109);
-	var gameTypeList = __webpack_require__(110);
-	var seasonList = __webpack_require__(111);
-	var spreadList = __webpack_require__(112);
-	var spreadMoveList = __webpack_require__(113);
-	var spreadStatusList = __webpack_require__(114);
-	var totalMoveList = __webpack_require__(115);
+	var teamList = __webpack_require__(111);
+	var teamSiteList = __webpack_require__(112);
+	var weekList = __webpack_require__(113);
+	var gameTypeList = __webpack_require__(114);
+	var seasonList = __webpack_require__(115);
+	var spreadList = __webpack_require__(116);
+	var spreadMoveList = __webpack_require__(117);
+	var spreadStatusList = __webpack_require__(118);
+	var totalMoveList = __webpack_require__(119);
 
 	module.exports = {
 
@@ -31566,7 +32011,7 @@
 	};
 
 /***/ },
-/* 107 */
+/* 111 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31607,7 +32052,7 @@
 	          ];
 
 /***/ },
-/* 108 */
+/* 112 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31619,7 +32064,7 @@
 	          ];
 
 /***/ },
-/* 109 */
+/* 113 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31650,7 +32095,7 @@
 	        ];
 
 /***/ },
-/* 110 */
+/* 114 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31661,7 +32106,7 @@
 	          ];
 
 /***/ },
-/* 111 */
+/* 115 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31675,24 +32120,12 @@
 	          ];
 
 /***/ },
-/* 112 */
+/* 116 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	module.exports = [
-	       {value:"-23", fullName:"-23"},
-	       {value:"-22.5", fullName:"-22.5"},
-	       {value:"-22", fullName:"-22"},
-	       {value:"-21.5", fullName:"-21.5"},
-	       {value:"-21", fullName:"-21"},
-	       {value:"-20.5", fullName:"-20.5"},
-	       {value:"-20", fullName:"-20"},
-	       {value:"-19.5", fullName:"-19.5"},
-	       {value:"-19", fullName:"-19"},
-	       {value:"-18.5", fullName:"-18.5"},
-	       {value:"-18", fullName:"-18"},
-	       {value:"-17.5", fullName:"-17.5"},
 	       {value:"-17", fullName:"-17"},
 	       {value:"-16.5", fullName:"-16.5"},
 	       {value:"-16", fullName:"-16"},
@@ -31760,22 +32193,10 @@
 	       {value:"16", fullName:"16"},
 	       {value:"16.5", fullName:"16.5"},
 	       {value:"17", fullName:"17"},
-	       {value:"17.5", fullName:"17.5"},
-	       {value:"18", fullName:"18"},
-	       {value:"18.5", fullName:"18.5"},
-	       {value:"19", fullName:"19"},
-	       {value:"19.5", fullName:"19.5"},
-	       {value:"20", fullName:"20"},
-	       {value:"20.5", fullName:"20.5"},
-	       {value:"21", fullName:"21"},
-	       {value:"21.5", fullName:"21.5"},
-	       {value:"22", fullName:"22"},
-	       {value:"22.5", fullName:"22.5"},
-	       {value:"23", fullName:"23"}
 	       ];
 
 /***/ },
-/* 113 */
+/* 117 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31787,7 +32208,7 @@
 	          ];
 
 /***/ },
-/* 114 */
+/* 118 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31798,7 +32219,7 @@
 	          ];
 
 /***/ },
-/* 115 */
+/* 119 */
 /***/ function(module, exports) {
 
 	'use strict';
