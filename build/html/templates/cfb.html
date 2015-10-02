@@ -35,7 +35,7 @@
     </section>
     <button data-ng-click="filterGames()" class="grid_2 push_7">Get Results</button>
     <div id="teamLogo" class="cfb"></div>
-    <table class="resultsTable" id='winLossTable'>
+    <table class="table-bordered resultsTable" id='winLossTable'>
       <tr>
         <td>Record</td>
         <td>Win %</td>
@@ -47,7 +47,7 @@
         <td data-ng-class="spreadRoi.colorBool" id='spreadRoi'>{{spreadRoi.val}}</td>
       </tr>
     </table>
-    <table class='resultsTable' id='overUnderTable'>
+    <table class='table-bordered resultsTable' id='overUnderTable'>
       <tr>
         <td>Over</td>
         <td>Under</td>
@@ -71,7 +71,7 @@
     <h1 class="break-even grid_5 push_3"> -105 break-even: 51.2% </h1>
   </section>
   <section data-ng-if="resultsTable">
-    <table id='gamesTable' class='resultsTable'>
+    <table id='gamesTable' class='table resultsTable'>
       <tr>
         <td>Date</td>
         <td>Week</td>
@@ -87,7 +87,7 @@
         <td>Total Move</td>
         <td>Total Grade</td>
       </tr>
-      <tr data-ng-repeat="game in resultsTableGames">
+      <tr data-ng-repeat="game in resultsTableGames" data-ng-class="{W: 'success', L: 'danger'}[game.atsGrade]">
         <td>{{game.date.split('T')[0]}}</td>
         <td>{{game.week}}</td>
         <td>{{game.teamAbbrev}}</td>

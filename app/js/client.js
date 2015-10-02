@@ -1,7 +1,6 @@
 'use strict';
 
 require('./requirements');
-
 require('angular/angular');
 require('angular-route');
 

@@ -9,12 +9,12 @@
 
 }
  .subheading {
+  font-family: arial;
+  text-decoration: underline;
+  font-weight: bold;
  	font-size: 32px;
- 	font-family: arial;
  	margin-top: 20px;
  	margin-left: 37%;
- 	font-weight: bold;
- 	text-decoration: underline;
  	margin-right: -10px;
  }
 
@@ -77,6 +77,7 @@ height: 40px;
 }
 
 select {
+	font-family: 'BentonSansRegular';
 	height: 30px;
 	font-size: 18px;
 	background-color: #FFFFFF;
@@ -84,13 +85,14 @@ select {
 }
 
 button {
+  font-family: 'BentonSansRegular';
 	clear: both;
 	margin-top: 40px;
 	height: 50px;
 	width: 150px;
 	border-radius: 5px;
 	background-color: #E37527;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 	margin-bottom: 15px;
 	margin-right: 10px;
@@ -98,25 +100,24 @@ button {
 
 button:hover {
 	background-color:#deb887;
-
 }
+
 .resultsTable {
+	font-family: 'BentonSansBold';
 	font-size:12px;
 	width:50%;
 	border-width: 1px;
-	border-color: #729ea5;
+	border-color: black;
 	border-collapse: collapse;
 	margin:auto;
 	clear: both;
 	margin-right: 25%;
 	margin-bottom: 15px;
-
+	border-style: solid;
+	border-top-color: black;
+	border-top-style: solid;
 }
 
-.resultsTable tr {
-	background-color: #DBDBDB;
-
-}
 .resultsTable td {
 	font-size: 12px;
 	border-width: 1px;
@@ -124,33 +125,41 @@ button:hover {
 	border-style: solid;
 	border-color: black;
 }
-.resultsTable tr:hover {
-	background-color:#deb887;
-}
 
 #winLossTable td {
 	font-size: 25px;
 	text-align: center;
-	font-weight: bold;
 	height: 30px;
 	width: 50%;
+	border-color: black;
 }
 
 #overUnderTable td {
 	font-size: 18px;
 	text-align: center;
-	font-weight: bold;
 	height: 20px;
 	width: 20%;
+	border-color: black;
+}
+
+#gamesTable tr {
+	background-color: #EEEEEE;
+	opacity: .90;
+}
+
+#gamesTable tr:nth-child(1) {
+	border-color: black;
+	background-color: #003366;
+	color: white;
+	opacity: 1;
 }
 
 #gamesTable td {
 	font-size: 18px;
 	text-align: center;
-	font-weight: bold;
 	height: 20px;
 	width: 20%;
-	opacity: .85;
+	opacity: .90;
 }
 
 #teamLogo {
@@ -184,7 +193,7 @@ button:hover {
 	background-image: url(../img/cfb.gif);
 }
 
-.ATL {
+/*.ATL {
 	background-image: url(../img/atl.gif);
 }
 
@@ -303,3 +312,4 @@ button:hover {
 .WAS {
 	background-image: url(../img/was.gif);
 }
+	*/
