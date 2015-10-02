@@ -169,6 +169,5 @@ module.exports = function(app) {
 
       $scope.resultsTable = true;
     };
-
   }]);
 };
