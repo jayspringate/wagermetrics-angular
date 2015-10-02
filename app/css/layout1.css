@@ -15,13 +15,17 @@ body {
   margin: 0 auto;
 }
 
-.nbaImg {
+/*.nbaImg {
   background-image:url(../img/basketball.jpg);
-}
+}*/
 
 .nflImg {
   background-image:url(../img/football.jpg);
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+/*above is for angular bootstrap*/
 
 /*
   960 Grid System ~ Core CSS.
