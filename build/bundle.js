@@ -30575,6 +30575,9 @@
 	      replace: true, //replaces placement element
 	      templateUrl: 'html/templates/header-directive-template.html',
 	      scope: {
+	        nbaPath: '=',
+	        nflPath: '=',
+	        cfbPath: '='
 	      } //scope specific to this directive, can set default values inside
 	    };
 	  });
@@ -30607,6 +30610,7 @@
 	    $scope.nbaPath = false;
 	    $scope.nflPath = false;
 	    $scope.cfbPath = false;
+	    $scope.errors = [];
 
 	    if ($scope.path === '/nba') {
 	      $scope.nbaPath = true;
