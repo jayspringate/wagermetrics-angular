@@ -11,6 +11,7 @@ module.exports = function(app) {
     $scope.nbaPath = false;
     $scope.nflPath = false;
     $scope.cfbPath = false;
+    $scope.errors = [];
 
     if ($scope.path === '/nba') {
       $scope.nbaPath = true;
@@ -32,6 +33,14 @@ module.exports = function(app) {
           msg: 'could not retrieve games from server'
         });
       });
+
+    $scope.highlightSelected = function () {
+      if (this.value !== '') {
+        this.style.backgroundColor='#FFFF94';
+      } else {
+        this.style.backgroundColor='#FFFFFF';
+      }
+    };
 
     $scope.filterGames = function() {
 
