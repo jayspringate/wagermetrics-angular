@@ -1,6 +1,7 @@
 .header {
-	font-family: 'Yesteryear';
-	font-size: 80px;
+	font-family: 'BentonSansBold';
+	font-size: 64px;
+	font-style: italic;
 	text-align: center;
 	padding:15px 0;
 	margin: auto;
@@ -61,6 +62,10 @@
 
 .dropDownSection {
 	clear: both;
+}
+
+.optionTitle {
+	font-weight: bold;
 }
 
 #cfbTeam {

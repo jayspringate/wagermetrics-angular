@@ -6,3 +6,4 @@ var directives = angular.module('directives', []);
 
 require('./nav-directive')(directives);
 require('./select-directive')(directives);
+require('./header-directive')(directives);
