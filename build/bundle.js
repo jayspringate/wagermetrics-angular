@@ -54,7 +54,7 @@
 
 	var wagerApp = angular.module('wagerApp', ['directives', 'ngRoute']);
 
-	__webpack_require__(30)(wagerApp);
+	__webpack_require__(32)(wagerApp);
 
 	wagerApp.config(['$routeProvider', function($route) {
 	  $route
@@ -30507,6 +30507,8 @@
 	__webpack_require__(27)(directives);
 	__webpack_require__(28)(directives);
 	__webpack_require__(29)(directives);
+	__webpack_require__(30)(directives);
+	__webpack_require__(31)(directives);
 
 /***/ },
 /* 27 */
@@ -30585,16 +30587,56 @@
 
 /***/ },
 /* 30 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function(app) {
+	  app.directive('buttonDirective', function() {
+	    return {
+
+	      //directive can only contain one outer, parent element - cannot have siblings
+
+	      restrict: 'AEC',
+	      replace: true, //replaces placement element
+	      templateUrl: 'html/templates/button-directive-template.html',
+	      scope: true
+	    };
+	  });
+	};
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function(app) {
+	  app.directive('topTableDirective', function() {
+	    return {
+
+	      //directive can only contain one outer, parent element - cannot have siblings
+
+	      restrict: 'AEC',
+	      replace: true, //replaces placement element
+	      templateUrl: 'html/templates/top-table-directive-template.html',
+	      scope: true
+	    };
+	  });
+	};
+
+/***/ },
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = function(app) {
-	  __webpack_require__(31)(app);
+	  __webpack_require__(33)(app);
 	};
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30620,7 +30662,7 @@
 	      $scope.cfbPath = true;
 	    }
 
-	    $scope.dropdownLists = __webpack_require__(32);
+	    $scope.dropdownLists = __webpack_require__(34);
 
 	      $http.get('/api' + $scope.path)
 	      .then(function(res) {
@@ -30781,14 +30823,14 @@
 	};
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var nbaList = __webpack_require__(33);
-	var cfbList = __webpack_require__(42);
-	var nflList = __webpack_require__(54);
+	var nbaList = __webpack_require__(35);
+	var cfbList = __webpack_require__(44);
+	var nflList = __webpack_require__(56);
 
 	module.exports = {
 
@@ -30798,19 +30840,19 @@
 	};
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(34);
-	var teamSiteList = __webpack_require__(35);
-	var gameTypeList = __webpack_require__(36);
-	var seasonList = __webpack_require__(37);
-	var spreadList = __webpack_require__(38);
-	var spreadMoveList = __webpack_require__(39);
-	var spreadStatusList = __webpack_require__(40);
-	var totalMoveList = __webpack_require__(41);
+	var teamList = __webpack_require__(36);
+	var teamSiteList = __webpack_require__(37);
+	var gameTypeList = __webpack_require__(38);
+	var seasonList = __webpack_require__(39);
+	var spreadList = __webpack_require__(40);
+	var spreadMoveList = __webpack_require__(41);
+	var spreadStatusList = __webpack_require__(42);
+	var totalMoveList = __webpack_require__(43);
 
 	module.exports = {
 
@@ -30826,7 +30868,7 @@
 	};
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30865,7 +30907,7 @@
 	          ];
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30876,7 +30918,7 @@
 	          ];
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30887,7 +30929,7 @@
 	          ];
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30900,7 +30942,7 @@
 	          ];
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30988,7 +31030,7 @@
 	       ];
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31000,7 +31042,7 @@
 	          ];
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31011,7 +31053,7 @@
 	          ];
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31023,22 +31065,22 @@
 	          ];
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(43);
-	var teamSiteList = __webpack_require__(44);
-	var weekList = __webpack_require__(45);
-	var gameTypeList = __webpack_require__(46);
-	var seasonList = __webpack_require__(47);
-	var spreadList = __webpack_require__(48);
-	var spreadMoveList = __webpack_require__(49);
-	var spreadStatusList = __webpack_require__(50);
-	var totalMoveList = __webpack_require__(51);
-	var conferenceList = __webpack_require__(52);
-	var divisionList = __webpack_require__(53);
+	var teamList = __webpack_require__(45);
+	var teamSiteList = __webpack_require__(46);
+	var weekList = __webpack_require__(47);
+	var gameTypeList = __webpack_require__(48);
+	var seasonList = __webpack_require__(49);
+	var spreadList = __webpack_require__(50);
+	var spreadMoveList = __webpack_require__(51);
+	var spreadStatusList = __webpack_require__(52);
+	var totalMoveList = __webpack_require__(53);
+	var conferenceList = __webpack_require__(54);
+	var divisionList = __webpack_require__(55);
 
 	module.exports = {
 
@@ -31058,7 +31100,7 @@
 	};
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31295,7 +31337,7 @@
 
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31307,7 +31349,7 @@
 	          ];
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31334,7 +31376,7 @@
 	        ];
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31345,7 +31387,7 @@
 	          ];
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31359,7 +31401,7 @@
 	          ];
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31593,7 +31635,7 @@
 
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31605,7 +31647,7 @@
 	          ];
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31616,7 +31658,7 @@
 	          ];
 
 /***/ },
-/* 51 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31628,7 +31670,7 @@
 	          ];
 
 /***/ },
-/* 52 */
+/* 54 */
 /***/ function(module, exports) {
 
 	 'use strict';
@@ -31661,7 +31703,7 @@
 	];
 
 /***/ },
-/* 53 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31672,20 +31714,20 @@
 	          ];
 
 /***/ },
-/* 54 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(55);
-	var teamSiteList = __webpack_require__(56);
-	var weekList = __webpack_require__(57);
-	var gameTypeList = __webpack_require__(58);
-	var seasonList = __webpack_require__(59);
-	var spreadList = __webpack_require__(60);
-	var spreadMoveList = __webpack_require__(61);
-	var spreadStatusList = __webpack_require__(62);
-	var totalMoveList = __webpack_require__(63);
+	var teamList = __webpack_require__(57);
+	var teamSiteList = __webpack_require__(58);
+	var weekList = __webpack_require__(59);
+	var gameTypeList = __webpack_require__(60);
+	var seasonList = __webpack_require__(61);
+	var spreadList = __webpack_require__(62);
+	var spreadMoveList = __webpack_require__(63);
+	var spreadStatusList = __webpack_require__(64);
+	var totalMoveList = __webpack_require__(65);
 
 	module.exports = {
 
@@ -31702,7 +31744,7 @@
 	};
 
 /***/ },
-/* 55 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31743,7 +31785,7 @@
 	          ];
 
 /***/ },
-/* 56 */
+/* 58 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31755,7 +31797,7 @@
 	          ];
 
 /***/ },
-/* 57 */
+/* 59 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31786,7 +31828,7 @@
 	        ];
 
 /***/ },
-/* 58 */
+/* 60 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31797,7 +31839,7 @@
 	          ];
 
 /***/ },
-/* 59 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31811,7 +31853,7 @@
 	          ];
 
 /***/ },
-/* 60 */
+/* 62 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31887,7 +31929,7 @@
 	       ];
 
 /***/ },
-/* 61 */
+/* 63 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31899,7 +31941,7 @@
 	          ];
 
 /***/ },
-/* 62 */
+/* 64 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31910,7 +31952,7 @@
 	          ];
 
 /***/ },
-/* 63 */
+/* 65 */
 /***/ function(module, exports) {
 
 	'use strict';
