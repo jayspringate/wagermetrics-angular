@@ -55,7 +55,7 @@
  	font-style: italic;
  }
 
-.dropDown {
+.dropdown {
 	padding-top: 15px;
 	display: inline-block;
 }
@@ -81,12 +81,20 @@ clear: both;
 height: 40px;
 }
 
-select {
+.selectWithoutRange {
 	font-family: 'BentonSansRegular';
 	height: 30px;
 	font-size: 18px;
 	background-color: #FFFFFF;
 	width: 340px;
+}
+
+.selectWithRange {
+	font-family: 'BentonSansRegular';
+	height: 30px;
+	font-size: 18px;
+	background-color: #FFFFFF;
+	width: 60px;
 }
 
 button {
