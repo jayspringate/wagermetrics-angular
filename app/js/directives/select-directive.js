@@ -11,7 +11,8 @@ module.exports = function(app) {
       templateUrl: 'html/templates/select-directive-template.html',
      //scope specific to this directive, can set default values inside
       scope: {
-        className: '@',
+        containerClassName: '@',
+        selectClassName: '@',
         listName: '@',
         dropdownTitle: '@',
         dropdownLists: '=',
