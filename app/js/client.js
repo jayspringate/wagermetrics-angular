@@ -2,11 +2,12 @@
 
 require('./requirements');
 require('angular/angular');
+require('angular-bootstrap-npm');
 require('angular-route');
 
 require('./directives/directives.js');
 
-var wagerApp = angular.module('wagerApp', ['directives', 'ngRoute']);
+var wagerApp = angular.module('wagerApp', ['directives', 'ngRoute', 'ui.bootstrap']);
 
 require('./games.js')(wagerApp);
 
