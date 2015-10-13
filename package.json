@@ -44,6 +44,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "angular-bootstrap-npm": "^0.14.1",
     "body-parser": "^1.13.3",
     "bootstrap": "^3.3.5",
     "express": "^4.12.3",
