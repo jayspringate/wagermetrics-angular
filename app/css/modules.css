@@ -48,12 +48,16 @@
 	text-decoration: none;
  }
 
- .break-even {
+.breakEven {
  	font-size: 18px;
  	padding-left: 12px;
  	padding-top: 10px;
  	font-style: italic;
  }
+
+.breakEvenSection {
+	height: 43px;
+}
 
 .dropdown {
 	padding-top: 15px;
