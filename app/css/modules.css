@@ -62,6 +62,7 @@
 .dropdown {
 	padding-top: 15px;
 	display: inline-block;
+	width: 340px;
 }
 
 .dropDownSection {
@@ -93,12 +94,33 @@ height: 40px;
 	width: 340px;
 }
 
-.selectWithRange {
+.selectRangeEnabled {
 	font-family: 'BentonSansRegular';
 	height: 30px;
 	font-size: 18px;
 	background-color: #FFFFFF;
-	width: 60px;
+	width: auto;
+}
+
+select[disabled="disabled"] {
+	font-family: 'BentonSansRegular';
+	height: 30px;
+	font-size: 18px;
+	background-color: #E6E6E6;
+	width: auto;
+}
+
+.selectRangeSelected {
+	font-family: 'BentonSansRegular';
+	height: 30px;
+	font-size: 18px;
+	background-color: #FFFF94;
+	width: auto;
+}
+
+.rangeInput {
+	padding-left: 5px;
+	width: 80px;
 }
 
 button {

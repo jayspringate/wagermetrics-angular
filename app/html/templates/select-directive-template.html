@@ -1,5 +1,5 @@
 <h1 class="{{containerClassName}}">
-  <select class="{{selectClassName}}" data-ng-model="$parent.selected[listName]" data-ng-options="listName.fullName for listName in dropdownLists[sportName][listName] track by listName.fullName" autocomplete="off" onchange="if (this.value !== '') {this.style.backgroundColor='#FFFF94'} else {this.style.backgroundColor='#FFFFFF'}" id="{{listName}}">
+  <select class="selectWithoutRange" data-ng-model="$parent.selected[listName]" data-ng-options="listName.fullName for listName in dropdownLists[sportName][listName] track by listName.fullName" autocomplete="off" onchange="if (this.value !== '') {this.style.backgroundColor='#FFFF94'} else {this.style.backgroundColor='#FFFFFF'}" id="{{listName}}">
     <option class='optionTitle' value="">{{dropdownTitle}}</option>
   </select>
 </h1>
