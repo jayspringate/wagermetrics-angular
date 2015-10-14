@@ -9,3 +9,4 @@ require('./select-directive')(directives);
 require('./header-directive')(directives);
 require('./button-directive')(directives);
 require('./top-table-directive')(directives);
+require('./select-range-directive')(directives);
