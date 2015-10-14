@@ -6,12 +6,18 @@ module.exports = function(app) {
 
     $scope.games = [];
     $scope.selected = {};
+    $scope.selectedLess = {};
+    $scope.selectedGreater = {};
+    $scope.equalsDisabled = {};
+    $scope.rangeDisabled = {};
     $scope.resultsTable = false;
     $scope.path = $location.path();
     $scope.nbaPath = false;
     $scope.nflPath = false;
     $scope.cfbPath = false;
     $scope.errors = [];
+
+    $scope.stuff = true;
 
     if ($scope.path === '/nba') {
       $scope.nbaPath = true;
@@ -34,11 +40,24 @@ module.exports = function(app) {
         });
       });
 
-    $scope.highlightSelected = function () {
-      if (this.value !== '') {
-        this.style.backgroundColor='#FFFF94';
+    $scope.rangeDisableCheck = function (listName) {
+
+      if (!!$scope.selected[listName]) {
+        $scope.rangeDisabled[listName] = true;
       } else {
-        this.style.backgroundColor='#FFFFFF';
+        $scope.equalsDisabled[listName] = false;
+        $scope.rangeDisabled[listName] = false;
+      }
+
+    };
+
+    $scope.equalsDisableCheck = function (listName, lessListName, greaterListName) {
+
+      if (!!$scope.selectedGreater[greaterListName] || !!$scope.selectedLess[lessListName]) {
+        $scope.equalsDisabled[listName] = true;
+      } else {
+        $scope.equalsDisabled[listName] = false;
+        $scope.rangeDisabled[listName] = false;
       }
     };
 
@@ -47,7 +66,11 @@ module.exports = function(app) {
       $scope.filteredGames = $scope.games;
       $scope.errors = [];
       $scope.property = [];
+      $scope.propertyGreater = [];
+      $scope.propertyLess = [];
       $scope.selection = [];
+      $scope.selectionGreater = [];
+      $scope.selectionLess = [];
       $scope.winCount = 0;
       $scope.lossCount = 0;
       $scope.pushCount = 0;
@@ -69,10 +92,42 @@ module.exports = function(app) {
         }
       }
 
+      for (var propGreater in $scope.selectedGreater) {
+        if (!!$scope.selectedGreater[propGreater]) {
+          $scope.propertyGreater.push(propGreater.split('Greater')[0]);
+          $scope.selectionGreater.push(parseFloat($scope.selectedGreater[propGreater].value.split('>=')[1]));
+        }
+      }
+
+      for (var propLess in $scope.selectedLess) {
+        if (!!$scope.selectedLess[propLess]) {
+          $scope.propertyLess.push(propLess.split('Less')[0]);
+          $scope.selectionLess.push(parseFloat($scope.selectedLess[propLess].value.split('<=')[1]));
+        }
+      }
+
       $scope.property.forEach(function(propElement, propIndex, propArr) {
 
         $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
           if (game[propElement] == $scope.selection[propIndex]) {
+            return game;
+          }
+        });
+      });
+
+      $scope.propertyGreater.forEach(function(propElement, propIndex, propArr) {
+
+        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
+          if (game[propElement] >= $scope.selectionGreater[propIndex]) {
+            return game;
+          }
+        });
+      });
+
+      $scope.propertyLess.forEach(function(propElement, propIndex, propArr) {
+
+        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
+          if (game[propElement] <= $scope.selectionLess[propIndex]) {
             return game;
           }
         });

@@ -55,7 +55,7 @@
 
 	var wagerApp = angular.module('wagerApp', ['directives', 'ngRoute', 'ui.bootstrap']);
 
-	__webpack_require__(33)(wagerApp);
+	__webpack_require__(34)(wagerApp);
 
 	wagerApp.config(['$routeProvider', function($route) {
 	  $route
@@ -550,7 +550,7 @@
 
 
 	// module
-	exports.push([module.id, ".header {\n\tfont-family: 'BentonSansBold';\n\tfont-size: 64px;\n\tfont-style: italic;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n  font-family: arial;\n  text-decoration: underline;\n  font-weight: bold;\n \tfont-size: 32px;\n \tmargin-top: 20px;\n \tmargin-left: 37%;\n \tmargin-right: -10px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .nav {\n \tcolor: white;\n }\n\n.currentNav {\n \tcolor: #FFE0B2;\n }\n\n #nbaNav {\n\tmargin-left: 320px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \ttext-decoration: none;\n }\n\n #nflNav, #cfbNav {\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n\ttext-decoration: none;\n }\n\n.breakEven {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.breakEvenSection {\n\theight: 43px;\n}\n\n.dropdown {\n\tpadding-top: 15px;\n\tdisplay: inline-block;\n}\n\n.dropDownSection {\n\tclear: both;\n}\n\n.optionTitle {\n\tfont-weight: bold;\n}\n\n#cfbTeam {\nmargin-top: 80px;\nfont-size: 20px;\nheight: 40px;\n}\n\n#team, #teamAbbrev {\nmargin-top: 80px;\nfont-size: 20px;\nclear: both;\nheight: 40px;\n}\n\n.selectWithoutRange {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n\twidth: 340px;\n}\n\n.selectWithRange {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n\twidth: 60px;\n}\n\nbutton {\n  font-family: 'BentonSansRegular';\n\tclear: both;\n\tmargin-top: 40px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tmargin-bottom: 15px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n}\n\n.resultsTable {\n\tfont-family: 'BentonSansBold';\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: black;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\tborder-style: solid;\n\tborder-top-color: black;\n\tborder-top-style: solid;\n}\n\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\theight: 30px;\n\twidth: 50%;\n\tborder-color: black;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\theight: 20px;\n\twidth: 20%;\n\tborder-color: black;\n}\n\n#gamesTable tr {\n\tbackground-color: #EEEEEE;\n\topacity: .90;\n}\n\n#gamesTable tr:nth-child(1) {\n\tborder-color: black;\n\tbackground-color: #003366;\n\tcolor: white;\n\topacity: 1;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .90;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tclear: both;\n\tmargin: 0 auto;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.nfl {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.cfb {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n/*.ATL {\n\tbackground-image: url(../img/atl.gif);\n}\n\n.BK {\n\tbackground-image: url(../img/bk.gif);\n}\n\n.BOS {\n\tbackground-image: url(../img/bos.gif);\n}\n\n.CHAR {\n\tbackground-image: url(../img/cha.gif);\n}\n\n.CHI {\n\tbackground-image: url(../img/chi.gif);\n}\n\n.CLE {\n\tbackground-image: url(../img/cle.gif);\n}\n\n.DAL {\n\tbackground-image: url(../img/dal.gif);\n}\n\n.DEN {\n\tbackground-image: url(../img/den.gif);\n}\n\n.DET {\n\tbackground-image: url(../img/det.gif);\n}\n\n.GS {\n\tbackground-image: url(../img/gs.gif);\n}\n\n.HOU {\n\tbackground-image: url(../img/hou.gif);\n}\n\n.IND {\n\tbackground-image: url(../img/ind.gif);\n}\n\n.LAC {\n\tbackground-image: url(../img/lac.gif);\n}\n\n.LAL {\n\tbackground-image: url(../img/lal.gif);\n}\n\n.MEM {\n\tbackground-image: url(../img/mem.gif);\n}\n\n.MIA {\n\tbackground-image: url(../img/mia.gif);\n}\n\n.MIL {\n\tbackground-image: url(../img/mil.gif);\n}\n\n.MIN {\n\tbackground-image: url(../img/min.gif);\n}\n\n.NO {\n\tbackground-image: url(../img/no.gif);\n}\n\n.NY {\n\tbackground-image: url(../img/ny.gif);\n}\n\n.OKC {\n\tbackground-image: url(../img/okc.gif);\n}\n\n.ORL {\n\tbackground-image: url(../img/orl.gif);\n}\n\n.PHI {\n\tbackground-image: url(../img/phi.gif);\n}\n\n.PHO {\n\tbackground-image: url(../img/phx.gif);\n}\n\n.POR {\n\tbackground-image: url(../img/por.gif);\n}\n\n.SA {\n\tbackground-image: url(../img/sa.gif);\n}\n\n.SAC {\n\tbackground-image: url(../img/sac.gif);\n}\n\n.TOR {\n\tbackground-image: url(../img/tor.gif);\n}\n\n.UTA {\n\tbackground-image: url(../img/uta.gif);\n}\n\n.WAS {\n\tbackground-image: url(../img/was.gif);\n}\n\t*/\n", ""]);
+	exports.push([module.id, ".header {\n\tfont-family: 'BentonSansBold';\n\tfont-size: 64px;\n\tfont-style: italic;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n  font-family: arial;\n  text-decoration: underline;\n  font-weight: bold;\n \tfont-size: 32px;\n \tmargin-top: 20px;\n \tmargin-left: 37%;\n \tmargin-right: -10px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .nav {\n \tcolor: white;\n }\n\n.currentNav {\n \tcolor: #FFE0B2;\n }\n\n #nbaNav {\n\tmargin-left: 320px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \ttext-decoration: none;\n }\n\n #nflNav, #cfbNav {\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n\ttext-decoration: none;\n }\n\n.breakEven {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.breakEvenSection {\n\theight: 43px;\n}\n\n.dropdown {\n\tpadding-top: 15px;\n\tdisplay: inline-block;\n\twidth: 340px;\n}\n\n.dropDownSection {\n\tclear: both;\n}\n\n.optionTitle {\n\tfont-weight: bold;\n}\n\n#cfbTeam {\nmargin-top: 80px;\nfont-size: 20px;\nheight: 40px;\n}\n\n#team, #teamAbbrev {\nmargin-top: 80px;\nfont-size: 20px;\nclear: both;\nheight: 40px;\n}\n\n.selectWithoutRange {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n\twidth: 340px;\n}\n\n.selectRangeEnabled {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n\twidth: auto;\n}\n\nselect[disabled=\"disabled\"] {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #E6E6E6;\n\twidth: auto;\n}\n\n.selectRangeSelected {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFF94;\n\twidth: auto;\n}\n\n.rangeInput {\n\tpadding-left: 5px;\n\twidth: 80px;\n}\n\nbutton {\n  font-family: 'BentonSansRegular';\n\tclear: both;\n\tmargin-top: 40px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tmargin-bottom: 15px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n}\n\n.resultsTable {\n\tfont-family: 'BentonSansBold';\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: black;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\tborder-style: solid;\n\tborder-top-color: black;\n\tborder-top-style: solid;\n}\n\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\theight: 30px;\n\twidth: 50%;\n\tborder-color: black;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\theight: 20px;\n\twidth: 20%;\n\tborder-color: black;\n}\n\n#gamesTable tr {\n\tbackground-color: #EEEEEE;\n\topacity: .90;\n}\n\n#gamesTable tr:nth-child(1) {\n\tborder-color: black;\n\tbackground-color: #003366;\n\tcolor: white;\n\topacity: 1;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .90;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tclear: both;\n\tmargin: 0 auto;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.nfl {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.cfb {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n/*.ATL {\n\tbackground-image: url(../img/atl.gif);\n}\n\n.BK {\n\tbackground-image: url(../img/bk.gif);\n}\n\n.BOS {\n\tbackground-image: url(../img/bos.gif);\n}\n\n.CHAR {\n\tbackground-image: url(../img/cha.gif);\n}\n\n.CHI {\n\tbackground-image: url(../img/chi.gif);\n}\n\n.CLE {\n\tbackground-image: url(../img/cle.gif);\n}\n\n.DAL {\n\tbackground-image: url(../img/dal.gif);\n}\n\n.DEN {\n\tbackground-image: url(../img/den.gif);\n}\n\n.DET {\n\tbackground-image: url(../img/det.gif);\n}\n\n.GS {\n\tbackground-image: url(../img/gs.gif);\n}\n\n.HOU {\n\tbackground-image: url(../img/hou.gif);\n}\n\n.IND {\n\tbackground-image: url(../img/ind.gif);\n}\n\n.LAC {\n\tbackground-image: url(../img/lac.gif);\n}\n\n.LAL {\n\tbackground-image: url(../img/lal.gif);\n}\n\n.MEM {\n\tbackground-image: url(../img/mem.gif);\n}\n\n.MIA {\n\tbackground-image: url(../img/mia.gif);\n}\n\n.MIL {\n\tbackground-image: url(../img/mil.gif);\n}\n\n.MIN {\n\tbackground-image: url(../img/min.gif);\n}\n\n.NO {\n\tbackground-image: url(../img/no.gif);\n}\n\n.NY {\n\tbackground-image: url(../img/ny.gif);\n}\n\n.OKC {\n\tbackground-image: url(../img/okc.gif);\n}\n\n.ORL {\n\tbackground-image: url(../img/orl.gif);\n}\n\n.PHI {\n\tbackground-image: url(../img/phi.gif);\n}\n\n.PHO {\n\tbackground-image: url(../img/phx.gif);\n}\n\n.POR {\n\tbackground-image: url(../img/por.gif);\n}\n\n.SA {\n\tbackground-image: url(../img/sa.gif);\n}\n\n.SAC {\n\tbackground-image: url(../img/sac.gif);\n}\n\n.TOR {\n\tbackground-image: url(../img/tor.gif);\n}\n\n.UTA {\n\tbackground-image: url(../img/uta.gif);\n}\n\n.WAS {\n\tbackground-image: url(../img/was.gif);\n}\n\t*/\n", ""]);
 
 	// exports
 
@@ -38987,6 +38987,7 @@
 	__webpack_require__(30)(directives);
 	__webpack_require__(31)(directives);
 	__webpack_require__(32)(directives);
+	__webpack_require__(33)(directives);
 
 /***/ },
 /* 28 */
@@ -39106,16 +39107,48 @@
 
 /***/ },
 /* 33 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function(app) {
+	  app.directive('selectRangeDirective', function() {
+	    return {
+
+	      //directive can only contain one outer, parent element - cannot have siblings
+
+	      restrict: 'AEC',
+	      replace: true, //replaces placement element
+	      templateUrl: 'html/templates/select-range-directive-template.html',
+	     //scope specific to this directive, can set default values inside
+	      scope: {
+	        listName: '@',
+	        lessListName: '@',
+	        greaterListName: '@',
+	        rangeDisabled: '=',
+	        equalsDisabled: '=',
+	        equalsDisableCheck: '=',
+	        rangeDisableCheck: '=',
+	        dropdownTitle: '@',
+	        dropdownLists: '=',
+	        sportName: '@'
+	      }
+	    };
+	  });
+	};
+
+/***/ },
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = function(app) {
-	  __webpack_require__(34)(app);
+	  __webpack_require__(35)(app);
 	};
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39126,12 +39159,18 @@
 
 	    $scope.games = [];
 	    $scope.selected = {};
+	    $scope.selectedLess = {};
+	    $scope.selectedGreater = {};
+	    $scope.equalsDisabled = {};
+	    $scope.rangeDisabled = {};
 	    $scope.resultsTable = false;
 	    $scope.path = $location.path();
 	    $scope.nbaPath = false;
 	    $scope.nflPath = false;
 	    $scope.cfbPath = false;
 	    $scope.errors = [];
+
+	    $scope.stuff = true;
 
 	    if ($scope.path === '/nba') {
 	      $scope.nbaPath = true;
@@ -39141,7 +39180,7 @@
 	      $scope.cfbPath = true;
 	    }
 
-	    $scope.dropdownLists = __webpack_require__(35);
+	    $scope.dropdownLists = __webpack_require__(36);
 
 	      $http.get('/api' + $scope.path)
 	      .then(function(res) {
@@ -39154,11 +39193,24 @@
 	        });
 	      });
 
-	    $scope.highlightSelected = function () {
-	      if (this.value !== '') {
-	        this.style.backgroundColor='#FFFF94';
+	    $scope.rangeDisableCheck = function (listName) {
+
+	      if (!!$scope.selected[listName]) {
+	        $scope.rangeDisabled[listName] = true;
 	      } else {
-	        this.style.backgroundColor='#FFFFFF';
+	        $scope.equalsDisabled[listName] = false;
+	        $scope.rangeDisabled[listName] = false;
+	      }
+
+	    };
+
+	    $scope.equalsDisableCheck = function (listName, lessListName, greaterListName) {
+
+	      if (!!$scope.selectedGreater[greaterListName] || !!$scope.selectedLess[lessListName]) {
+	        $scope.equalsDisabled[listName] = true;
+	      } else {
+	        $scope.equalsDisabled[listName] = false;
+	        $scope.rangeDisabled[listName] = false;
 	      }
 	    };
 
@@ -39167,7 +39219,11 @@
 	      $scope.filteredGames = $scope.games;
 	      $scope.errors = [];
 	      $scope.property = [];
+	      $scope.propertyGreater = [];
+	      $scope.propertyLess = [];
 	      $scope.selection = [];
+	      $scope.selectionGreater = [];
+	      $scope.selectionLess = [];
 	      $scope.winCount = 0;
 	      $scope.lossCount = 0;
 	      $scope.pushCount = 0;
@@ -39189,10 +39245,42 @@
 	        }
 	      }
 
+	      for (var propGreater in $scope.selectedGreater) {
+	        if (!!$scope.selectedGreater[propGreater]) {
+	          $scope.propertyGreater.push(propGreater.split('Greater')[0]);
+	          $scope.selectionGreater.push(parseFloat($scope.selectedGreater[propGreater].value.split('>=')[1]));
+	        }
+	      }
+
+	      for (var propLess in $scope.selectedLess) {
+	        if (!!$scope.selectedLess[propLess]) {
+	          $scope.propertyLess.push(propLess.split('Less')[0]);
+	          $scope.selectionLess.push(parseFloat($scope.selectedLess[propLess].value.split('<=')[1]));
+	        }
+	      }
+
 	      $scope.property.forEach(function(propElement, propIndex, propArr) {
 
 	        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
 	          if (game[propElement] == $scope.selection[propIndex]) {
+	            return game;
+	          }
+	        });
+	      });
+
+	      $scope.propertyGreater.forEach(function(propElement, propIndex, propArr) {
+
+	        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
+	          if (game[propElement] >= $scope.selectionGreater[propIndex]) {
+	            return game;
+	          }
+	        });
+	      });
+
+	      $scope.propertyLess.forEach(function(propElement, propIndex, propArr) {
+
+	        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
+	          if (game[propElement] <= $scope.selectionLess[propIndex]) {
 	            return game;
 	          }
 	        });
@@ -39302,14 +39390,14 @@
 	};
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var nbaList = __webpack_require__(36);
-	var cfbList = __webpack_require__(45);
-	var nflList = __webpack_require__(57);
+	var nbaList = __webpack_require__(37);
+	var cfbList = __webpack_require__(46);
+	var nflList = __webpack_require__(58);
 
 	module.exports = {
 
@@ -39319,19 +39407,19 @@
 	};
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(37);
-	var teamSiteList = __webpack_require__(38);
-	var gameTypeList = __webpack_require__(39);
-	var seasonList = __webpack_require__(40);
-	var spreadList = __webpack_require__(41);
-	var spreadMoveList = __webpack_require__(42);
-	var spreadStatusList = __webpack_require__(43);
-	var totalMoveList = __webpack_require__(44);
+	var teamList = __webpack_require__(38);
+	var teamSiteList = __webpack_require__(39);
+	var gameTypeList = __webpack_require__(40);
+	var seasonList = __webpack_require__(41);
+	var spreadList = __webpack_require__(42);
+	var spreadMoveList = __webpack_require__(43);
+	var spreadStatusList = __webpack_require__(44);
+	var totalMoveList = __webpack_require__(45);
 
 	module.exports = {
 
@@ -39347,7 +39435,7 @@
 	};
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39386,7 +39474,7 @@
 	          ];
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39397,7 +39485,7 @@
 	          ];
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39408,7 +39496,7 @@
 	          ];
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39421,7 +39509,7 @@
 	          ];
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39509,7 +39597,7 @@
 	       ];
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39521,7 +39609,7 @@
 	          ];
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39532,7 +39620,7 @@
 	          ];
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39544,22 +39632,22 @@
 	          ];
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(46);
-	var teamSiteList = __webpack_require__(47);
-	var weekList = __webpack_require__(48);
-	var gameTypeList = __webpack_require__(49);
-	var seasonList = __webpack_require__(50);
-	var spreadList = __webpack_require__(51);
-	var spreadMoveList = __webpack_require__(52);
-	var spreadStatusList = __webpack_require__(53);
-	var totalMoveList = __webpack_require__(54);
-	var conferenceList = __webpack_require__(55);
-	var divisionList = __webpack_require__(56);
+	var teamList = __webpack_require__(47);
+	var teamSiteList = __webpack_require__(48);
+	var weekList = __webpack_require__(49);
+	var gameTypeList = __webpack_require__(50);
+	var seasonList = __webpack_require__(51);
+	var spreadList = __webpack_require__(52);
+	var spreadMoveList = __webpack_require__(53);
+	var spreadStatusList = __webpack_require__(54);
+	var totalMoveList = __webpack_require__(55);
+	var conferenceList = __webpack_require__(56);
+	var divisionList = __webpack_require__(57);
 
 	module.exports = {
 
@@ -39579,7 +39667,7 @@
 	};
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39816,7 +39904,7 @@
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39828,7 +39916,7 @@
 	          ];
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39855,7 +39943,7 @@
 	        ];
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39866,7 +39954,7 @@
 	          ];
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39880,7 +39968,7 @@
 	          ];
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40114,7 +40202,7 @@
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40126,7 +40214,7 @@
 	          ];
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40137,7 +40225,7 @@
 	          ];
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40149,7 +40237,7 @@
 	          ];
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports) {
 
 	 'use strict';
@@ -40182,7 +40270,7 @@
 	];
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40193,20 +40281,22 @@
 	          ];
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(58);
-	var teamSiteList = __webpack_require__(59);
-	var weekList = __webpack_require__(60);
-	var gameTypeList = __webpack_require__(61);
-	var seasonList = __webpack_require__(62);
-	var spreadList = __webpack_require__(63);
-	var spreadMoveList = __webpack_require__(64);
-	var spreadStatusList = __webpack_require__(65);
-	var totalMoveList = __webpack_require__(66);
+	var teamList = __webpack_require__(59);
+	var teamSiteList = __webpack_require__(60);
+	var weekList = __webpack_require__(61);
+	var gameTypeList = __webpack_require__(62);
+	var seasonList = __webpack_require__(63);
+	var spreadList = __webpack_require__(64);
+	var spreadGreaterList = __webpack_require__(65);
+	var spreadLessList = __webpack_require__(66);
+	var spreadMoveList = __webpack_require__(67);
+	var spreadStatusList = __webpack_require__(68);
+	var totalMoveList = __webpack_require__(69);
 
 	module.exports = {
 
@@ -40218,12 +40308,14 @@
 	          season: seasonList,
 	          spreadStatus: spreadStatusList,
 	          spreadClose: spreadList,
+	          spreadCloseGreater: spreadGreaterList,
+	          spreadCloseLess: spreadLessList,
 	          spreadMove: spreadMoveList,
 	          totalMove: totalMoveList
 	};
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40264,7 +40356,7 @@
 	          ];
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40276,7 +40368,7 @@
 	          ];
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40307,7 +40399,7 @@
 	        ];
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40318,7 +40410,7 @@
 	          ];
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40332,7 +40424,7 @@
 	          ];
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40408,7 +40500,159 @@
 	       ];
 
 /***/ },
-/* 64 */
+/* 65 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	       {value:">=-17", fullName:">=-17"},
+	       {value:">=-16.5", fullName:">=-16.5"},
+	       {value:">=-16", fullName:">=-16"},
+	       {value:">=-15.5", fullName:">=-15.5"},
+	       {value:">=-15", fullName:">=-15"},
+	       {value:">=-14.5", fullName:">=-14.5"},
+	       {value:">=-14", fullName:">=-14"},
+	       {value:">=-13.5", fullName:">=-13.5"},
+	       {value:">=-13", fullName:">=-13"},
+	       {value:">=-12.5", fullName:">=-12.5"},
+	       {value:">=-12", fullName:">=-12"},
+	       {value:">=-11.5", fullName:">=-11.5"},
+	       {value:">=-11", fullName:">=-11"},
+	       {value:">=-10.5", fullName:">=-10.5"},
+	       {value:">=-10", fullName:">=-10"},
+	       {value:">=-9.5", fullName:">=-9.5"},
+	       {value:">=-9", fullName:">=-9"},
+	       {value:">=-8.5", fullName:">=-8.5"},
+	       {value:">=-8", fullName:">=-8"},
+	       {value:">=-7.5", fullName:">=-7.5"},
+	       {value:">=-7", fullName:">=-7"},
+	       {value:">=-6.5", fullName:">=-6.5"},
+	       {value:">=-6", fullName:">=-6"},
+	       {value:">=-5.5", fullName:">=-5.5"},
+	       {value:">=-5", fullName:">=-5"},
+	       {value:">=-4.5", fullName:">=-4.5"},
+	       {value:">=-4", fullName:">=-4"},
+	       {value:">=-3.5", fullName:">=-3.5"},
+	       {value:">=-3", fullName:">=-3"},
+	       {value:">=-2.5", fullName:">=-2.5"},
+	       {value:">=-2", fullName:">=-2"},
+	       {value:">=-1.5", fullName:">=-1.5"},
+	       {value:">=-1", fullName:">=-1"},
+	       {value:">=0", fullName:">=0"},
+	       {value:">=1", fullName:">=1"},
+	       {value:">=1.5", fullName:">=1.5"},
+	       {value:">=2", fullName:">=2"},
+	       {value:">=2.5", fullName:">=2.5"},
+	       {value:">=3", fullName:">=3"},
+	       {value:">=3.5", fullName:">=3.5"},
+	       {value:">=4", fullName:">=4"},
+	       {value:">=4.5", fullName:">=4.5"},
+	       {value:">=5", fullName:">=5"},
+	       {value:">=5.5", fullName:">=5.5"},
+	       {value:">=6", fullName:">=6"},
+	       {value:">=6.5", fullName:">=6.5"},
+	       {value:">=7", fullName:">=7"},
+	       {value:">=7.5", fullName:">=7.5"},
+	       {value:">=8", fullName:">=8"},
+	       {value:">=8.5", fullName:">=8.5"},
+	       {value:">=9", fullName:">=9"},
+	       {value:">=9.5", fullName:">=9.5"},
+	       {value:">=10", fullName:">=10"},
+	       {value:">=10.5", fullName:">=10.5"},
+	       {value:">=11", fullName:">=11"},
+	       {value:">=11.5", fullName:">=11.5"},
+	       {value:">=12", fullName:">=12"},
+	       {value:">=12.5", fullName:">=12.5"},
+	       {value:">=13", fullName:">=13"},
+	       {value:">=13.5", fullName:">=13.5"},
+	       {value:">=14", fullName:">=14"},
+	       {value:">=14.5", fullName:">=14.5"},
+	       {value:">=15", fullName:">=15"},
+	       {value:">=15.5", fullName:">=15.5"},
+	       {value:">=16", fullName:">=16"},
+	       {value:">=16.5", fullName:">=16.5"},
+	       {value:">=17", fullName:">=17"},
+	       ];
+
+/***/ },
+/* 66 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	       {value:"<=-17", fullName:"<=-17"},
+	       {value:"<=-16.5", fullName:"<=-16.5"},
+	       {value:"<=-16", fullName:"<=-16"},
+	       {value:"<=-15.5", fullName:"<=-15.5"},
+	       {value:"<=-15", fullName:"<=-15"},
+	       {value:"<=-14.5", fullName:"<=-14.5"},
+	       {value:"<=-14", fullName:"<=-14"},
+	       {value:"<=-13.5", fullName:"<=-13.5"},
+	       {value:"<=-13", fullName:"<=-13"},
+	       {value:"<=-12.5", fullName:"<=-12.5"},
+	       {value:"<=-12", fullName:"<=-12"},
+	       {value:"<=-11.5", fullName:"<=-11.5"},
+	       {value:"<=-11", fullName:"<=-11"},
+	       {value:"<=-10.5", fullName:"<=-10.5"},
+	       {value:"<=-10", fullName:"<=-10"},
+	       {value:"<=-9.5", fullName:"<=-9.5"},
+	       {value:"<=-9", fullName:"<=-9"},
+	       {value:"<=-8.5", fullName:"<=-8.5"},
+	       {value:"<=-8", fullName:"<=-8"},
+	       {value:"<=-7.5", fullName:"<=-7.5"},
+	       {value:"<=-7", fullName:"<=-7"},
+	       {value:"<=-6.5", fullName:"<=-6.5"},
+	       {value:"<=-6", fullName:"<=-6"},
+	       {value:"<=-5.5", fullName:"<=-5.5"},
+	       {value:"<=-5", fullName:"<=-5"},
+	       {value:"<=-4.5", fullName:"<=-4.5"},
+	       {value:"<=-4", fullName:"<=-4"},
+	       {value:"<=-3.5", fullName:"<=-3.5"},
+	       {value:"<=-3", fullName:"<=-3"},
+	       {value:"<=-2.5", fullName:"<=-2.5"},
+	       {value:"<=-2", fullName:"<=-2"},
+	       {value:"<=-1.5", fullName:"<=-1.5"},
+	       {value:"<=-1", fullName:"<=-1"},
+	       {value:"<=0", fullName:"<=0"},
+	       {value:"<=1", fullName:"<=1"},
+	       {value:"<=1.5", fullName:"<=1.5"},
+	       {value:"<=2", fullName:"<=2"},
+	       {value:"<=2.5", fullName:"<=2.5"},
+	       {value:"<=3", fullName:"<=3"},
+	       {value:"<=3.5", fullName:"<=3.5"},
+	       {value:"<=4", fullName:"<=4"},
+	       {value:"<=4.5", fullName:"<=4.5"},
+	       {value:"<=5", fullName:"<=5"},
+	       {value:"<=5.5", fullName:"<=5.5"},
+	       {value:"<=6", fullName:"<=6"},
+	       {value:"<=6.5", fullName:"<=6.5"},
+	       {value:"<=7", fullName:"<=7"},
+	       {value:"<=7.5", fullName:"<=7.5"},
+	       {value:"<=8", fullName:"<=8"},
+	       {value:"<=8.5", fullName:"<=8.5"},
+	       {value:"<=9", fullName:"<=9"},
+	       {value:"<=9.5", fullName:"<=9.5"},
+	       {value:"<=10", fullName:"<=10"},
+	       {value:"<=10.5", fullName:"<=10.5"},
+	       {value:"<=11", fullName:"<=11"},
+	       {value:"<=11.5", fullName:"<=11.5"},
+	       {value:"<=12", fullName:"<=12"},
+	       {value:"<=12.5", fullName:"<=12.5"},
+	       {value:"<=13", fullName:"<=13"},
+	       {value:"<=13.5", fullName:"<=13.5"},
+	       {value:"<=14", fullName:"<=14"},
+	       {value:"<=14.5", fullName:"<=14.5"},
+	       {value:"<=15", fullName:"<=15"},
+	       {value:"<=15.5", fullName:"<=15.5"},
+	       {value:"<=16", fullName:"<=16"},
+	       {value:"<=16.5", fullName:"<=16.5"},
+	       {value:"<=17", fullName:"<=17"},
+	       ];
+
+/***/ },
+/* 67 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40420,7 +40664,7 @@
 	          ];
 
 /***/ },
-/* 65 */
+/* 68 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40431,7 +40675,7 @@
 	          ];
 
 /***/ },
-/* 66 */
+/* 69 */
 /***/ function(module, exports) {
 
 	'use strict';
