@@ -118,6 +118,14 @@ select[disabled="disabled"] {
 	width: auto;
 }
 
+.equals {
+	width: 67px;
+}
+
+.range {
+	width: 89px;
+}
+
 .rangeInput {
 	padding-left: 5px;
 	width: 80px;
