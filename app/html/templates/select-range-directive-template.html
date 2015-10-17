@@ -1,16 +1,14 @@
-<section>
-  <section class="dropdown push_2">
-    <input class="selectWithRange rangeInput" value="{{dropdownTitle}}"></input>
-      <select class="selectWithRange enabled equals" data-ng-model="$parent.selected[listName]" data-ng-options="listName.fullName for listName in dropdownLists[sportName][listName] track by listName.fullName" autocomplete="off" data-ng-disabled="equalsDisabled[listName]" data-ng-change="rangeDisableCheck(listName)" data-ng-class="{'rangeSelected':!!$parent.selected[listName]}" id="{{listName}}">
-        <option class='optionTitle' value="">{{"="}}</option>
-      </select>
-      <select class="selectWithRange enabled greaterLess" data-ng-model="$parent.selectedGreater[greaterListName]" data-ng-options="greaterListName.fullName for greaterListName in dropdownLists[sportName][greaterListName] track by greaterListName.fullName" autocomplete="off" data-ng-disabled="rangeDisabled[listName]" data-ng-change="equalsDisableCheck(listName, lessListName, greaterListName)" data-ng-class="{'rangeSelected':!!$parent.selectedGreater[greaterListName]}" id="{{greaterListName}}">
-        <option class='optionTitle' value="">{{">="}}</option>
-      </select>
-      <select class="selectWithRange enabled greaterLess" data-ng-model="$parent.selectedLess[lessListName]" data-ng-options="lessListName.fullName for lessListName in dropdownLists[sportName][lessListName] track by lessListName.fullName" autocomplete="off" data-ng-disabled="rangeDisabled[listName]" data-ng-change="equalsDisableCheck(listName, lessListName, greaterListName)" data-ng-class="{'rangeSelected':!!$parent.selectedLess[lessListName]}" id="{{lessListName}}">
-        <option class='optionTitle' value="">{{"<="}}</option>
-      </select>
-  </section>
+<section class="dropdown push_2">
+  <input class="selectWithRange rangeInput" value="{{dropdownTitle}}"></input>
+    <select class="selectWithRange enabled equals" data-ng-model="$parent.selected[listName]" data-ng-options="listName.fullName for listName in dropdownLists[sportName][listName] track by listName.fullName" autocomplete="off" data-ng-disabled="equalsDisabled[listName]" data-ng-change="rangeDisableCheck(listName)" data-ng-class="{'rangeSelected':!!$parent.selected[listName]}" id="{{listName}}">
+      <option class='optionTitle' value="">{{"="}}</option>
+    </select>
+    <select class="selectWithRange enabled greaterLess" data-ng-model="$parent.selectedGreater[greaterListName]" data-ng-options="greaterListName.fullName for greaterListName in dropdownLists[sportName][greaterListName] track by greaterListName.fullName" autocomplete="off" data-ng-disabled="rangeDisabled[listName]" data-ng-change="equalsDisableCheck(listName, lessListName, greaterListName)" data-ng-class="{'rangeSelected':!!$parent.selectedGreater[greaterListName]}" id="{{greaterListName}}">
+      <option class='optionTitle' value="">{{">="}}</option>
+    </select>
+    <select class="selectWithRange enabled greaterLess" data-ng-model="$parent.selectedLess[lessListName]" data-ng-options="lessListName.fullName for lessListName in dropdownLists[sportName][lessListName] track by lessListName.fullName" autocomplete="off" data-ng-disabled="rangeDisabled[listName]" data-ng-change="equalsDisableCheck(listName, lessListName, greaterListName)" data-ng-class="{'rangeSelected':!!$parent.selectedLess[lessListName]}" id="{{lessListName}}">
+      <option class='optionTitle' value="">{{"<="}}</option>
+    </select>
 </section>
 
 
