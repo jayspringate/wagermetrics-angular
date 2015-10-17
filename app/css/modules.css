@@ -94,27 +94,25 @@ height: 40px;
 	width: 340px;
 }
 
-.selectRangeEnabled {
+.selectWithRange {
 	font-family: 'BentonSansRegular';
 	height: 30px;
 	font-size: 18px;
-	background-color: #FFFFFF;
-	width: auto;
 }
+
+.enabled {
+	background-color: #FFFFFF;
+	}
 
 select[disabled="disabled"] {
-	font-family: 'BentonSansRegular';
-	height: 30px;
-	font-size: 18px;
 	background-color: #E6E6E6;
-	width: auto;
 }
 
-.selectRangeSelected {
-	font-family: 'BentonSansRegular';
-	height: 30px;
-	font-size: 18px;
+.rangeSelected {
 	background-color: #FFFF94;
+}
+
+.rangeHeader {
 	width: auto;
 }
 
@@ -122,12 +120,13 @@ select[disabled="disabled"] {
 	width: 67px;
 }
 
-.range {
+.greaterLess {
 	width: 89px;
 }
 
 .rangeInput {
 	padding-left: 5px;
+	background-color: #FFFFFF;
 	width: 80px;
 }
 
