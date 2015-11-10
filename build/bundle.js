@@ -38996,7 +38996,7 @@
 	'use strict';
 
 	module.exports = function(app) {
-	  app.directive('navDirective', function() {
+	  app.directive('navDirective', ['$location', function(location) {
 	    return {
 
 	      //directive can only contain one outer, parent element - cannot have siblings
@@ -39004,13 +39004,22 @@
 	      restrict: 'AEC',
 	      replace: true, //replaces placement element
 	      templateUrl: 'html/templates/nav-directive-template.html',
-	      scope: {
+	      link: function (scope, element) {
+	        if (location.path() === '/nba') {
+	          scope.nbaPath = true;
+	        } else if(location.path() === '/nfl' || location.path() === '/') {
+	          scope.nflPath = true;
+	        } else if(location.path() === '/cfb') {
+	          scope.cfbPath = true;
+	        }
+	      },
+	      scope: {       //scope specific to this directive, can set default values inside
 	        nbaPath: '=',
 	        nflPath: '=',
-	        cfbPath: '='
-	      } //scope specific to this directive, can set default values inside
+	        cfbPath: '=',
+	      }
 	    };
-	  });
+	  }]);
 	};
 
 /***/ },
@@ -39165,21 +39174,10 @@
 	    $scope.rangeDisabled = {};
 	    $scope.resultsTable = false;
 	    $scope.path = $location.path();
-	    $scope.nbaPath = false;
-	    $scope.nflPath = false;
-	    $scope.cfbPath = false;
 	    $scope.errors = [];
-
-	    $scope.stuff = true;
-
-	    if ($scope.path === '/nba') {
-	      $scope.nbaPath = true;
-	    } else if($scope.path === '/nfl' || $scope.path === '/') {
-	      $scope.nflPath = true;
-	    } else if($scope.path === '/cfb') {
-	      $scope.cfbPath = true;
-	    }
-
+	    $scope.nbaPath = false;
+	    $scope.cfbPath = false;
+	    $scope.nflPath = false;
 	    $scope.dropdownLists = __webpack_require__(36);
 
 	      $http.get('/api' + $scope.path)
@@ -39382,7 +39380,7 @@
 	      roiColor($scope.overRoi);
 	      roiColor($scope.underRoi);
 
-	      $scope.resultsTableGames = $scope.filteredGames.slice(0,99);
+	      $scope.resultsTableGames = $scope.filteredGames.slice(0,49);
 
 	      $scope.resultsTable = true;
 	    };
