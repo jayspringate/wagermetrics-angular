@@ -42,19 +42,19 @@
         <td>Total Move</td>
         <td>Total Grade</td>
       </tr>
-      <tr data-ng-repeat="game in resultsTableGames" data-ng-class="{W: 'success', L: 'danger'}[game.atsGrade]">
-        <td>{{game.date.split('T')[0]}}</td>
-        <td>{{game.team}}</td>
-        <td>{{game.teamSite.toUpperCase()}}</td>
-        <td>{{game.opponent}}</td>
-        <td>{{game.teamScore + '-' + game.opponentScore}}</td>
-        <td>{{game.suGrade}}</td>
-        <td>{{game.spreadClose + ' (' + game.spreadOpen + ')'}}</td>
-        <td>{{game.spreadMove}}</td>
-        <td>{{game.atsGrade}}</td>
-        <td>{{game.totalClose + ' (' + game.totalOpen + ')'}}</td>
-        <td>{{game.totalMove}}</td>
-        <td>{{game.totalGrade}}</td>
+      <tr data-ng-repeat="game in resultsTableGames track by game.eventId" data-ng-class="{W: 'success', L: 'danger'}[game.atsGrade]">
+        <td>{{::game.date.split('T')[0]}}</td>
+        <td>{{::game.team}}</td>
+        <td>{{::game.teamSite.toUpperCase()}}</td>
+        <td>{{::game.opponent}}</td>
+        <td>{{::game.teamScore + '-' + game.opponentScore}}</td>
+        <td>{{::game.suGrade}}</td>
+        <td>{{::game.spreadClose + ' (' + game.spreadOpen + ')'}}</td>
+        <td>{{::game.spreadMove}}</td>
+        <td>{{::game.atsGrade}}</td>
+        <td>{{::game.totalClose + ' (' + game.totalOpen + ')'}}</td>
+        <td>{{::game.totalMove}}</td>
+        <td>{{::game.totalGrade}}</td>
       </tr>
     </table>
   </section>

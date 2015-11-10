@@ -12,21 +12,10 @@ module.exports = function(app) {
     $scope.rangeDisabled = {};
     $scope.resultsTable = false;
     $scope.path = $location.path();
-    $scope.nbaPath = false;
-    $scope.nflPath = false;
-    $scope.cfbPath = false;
     $scope.errors = [];
-
-    $scope.stuff = true;
-
-    if ($scope.path === '/nba') {
-      $scope.nbaPath = true;
-    } else if($scope.path === '/nfl' || $scope.path === '/') {
-      $scope.nflPath = true;
-    } else if($scope.path === '/cfb') {
-      $scope.cfbPath = true;
-    }
-
+    $scope.nbaPath = false;
+    $scope.cfbPath = false;
+    $scope.nflPath = false;
     $scope.dropdownLists = require('../dropdown-lists/dropdown-lists.js');
 
       $http.get('/api' + $scope.path)
@@ -229,7 +218,7 @@ module.exports = function(app) {
       roiColor($scope.overRoi);
       roiColor($scope.underRoi);
 
-      $scope.resultsTableGames = $scope.filteredGames.slice(0,99);
+      $scope.resultsTableGames = $scope.filteredGames.slice(0,49);
 
       $scope.resultsTable = true;
     };
