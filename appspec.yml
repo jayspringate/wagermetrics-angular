@@ -41,7 +41,7 @@ files:
 #   may cause associated deployments to fail.
 hooks:
   ApplicationStart:
-    - location: server.js
+    - location: /server.js
       timeout: 5
 # For each deployment lifecycle event, specify multiple "location" entries
 #   if you want to run multiple scripts during that event.
