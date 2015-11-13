@@ -40,9 +40,12 @@ files:
 #   the "hooks" section altogether. A blank or incomplete "hooks" section
 #   may cause associated deployments to fail.
 hooks:
+  BeforeInstall:
+    - location: ./npminstall.js
+      timeout: 120
   ApplicationStart:
-    - location: ./server.js
-      timeout: 5
+    - location: ./runserver.js
+      timeout: 10
 # For each deployment lifecycle event, specify multiple "location" entries
 #   if you want to run multiple scripts during that event.
 # You can specify "timeout" as the number of seconds to wait until failing the deployment
