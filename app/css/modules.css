@@ -55,6 +55,14 @@
  	font-style: italic;
  }
 
+ .openerNote {
+	font-size: 18px;
+	font-weight: bold;
+ 	padding-left: 12px;
+ 	padding-top: 10px;
+ 	font-style: italic;
+ }
+
 .breakEvenSection {
 	height: 43px;
 }
