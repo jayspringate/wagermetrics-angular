@@ -16,12 +16,14 @@ module.exports = function(app) {
     $scope.nbaPath = false;
     $scope.cfbPath = false;
     $scope.nflPath = false;
+    $scope.buttonText = 'Loading Games...';
     $scope.dropdownLists = require('../dropdown-lists/dropdown-lists.js');
 
       $http.get('/api' + $scope.path)
       .then(function(res) {
         //success
         $scope.games = res.data;
+        $scope.buttonText = 'Get Results';
       }, function(res) {
         //error
         $scope.errors.push({
