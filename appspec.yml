@@ -41,10 +41,10 @@ files:
 #   may cause associated deployments to fail.
 hooks:
   BeforeInstall:
-    - location: ./npminstall.js
+    - location: ./npminstall.sh
       timeout: 120
   ApplicationStart:
-    - location: ./runserver.js
+    - location: ./runserver.sh
       timeout: 10
 # For each deployment lifecycle event, specify multiple "location" entries
 #   if you want to run multiple scripts during that event.
