@@ -22,9 +22,6 @@ os: linux
 # If you are not copying any files to the instance, then remove the
 #   "files" section altogether. A blank or incomplete "files" section
 #   may cause associated deployments to fail.
-files:
-  - source: ./
-    destination: projects/wagermetrics-angular
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions"
 #   section here that describes special permissions to apply to the files
@@ -40,6 +37,7 @@ files:
 #   the "hooks" section altogether. A blank or incomplete "hooks" section
 #   may cause associated deployments to fail.
 hooks:
+  BeforeInstall:
   ApplicationStart:
     - location: npminstall.sh
       timeout: 300
