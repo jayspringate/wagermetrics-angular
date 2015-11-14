@@ -40,10 +40,10 @@ files:
 #   may cause associated deployments to fail.
 hooks:
   ApplicationStart:
-    - location: npminstall.sh
+    - location: /home/ec2-user/projects/wagermetrics-angular/npminstall.sh
       timeout: 300
   ApplicationStart:
-    - location: runserver.sh
+    - location: /home/ec2-user/projects/wagermetrics-angular/runserver.sh
       timeout: 60
 # For each deployment lifecycle event, specify multiple "location" entries
 #   if you want to run multiple scripts during that event.
