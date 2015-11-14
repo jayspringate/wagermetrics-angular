@@ -39448,7 +39448,7 @@
 	          {value:"ATL", fullName:'Atlanta Hawks'},
 	          {value:"BOS", fullName:'Boston Celtics'},
 	          {value:"BK", fullName:'Brooklyn Nets'},
-	          {value:"CHAR", fullName:'Charlotte Hornets'},
+	          {value:"CHA", fullName:'Charlotte Hornets'},
 	          {value:"CHI", fullName:'Chicago Bulls'},
 	          {value:"CLE", fullName:'Cleveland Cavaliers'},
 	          {value:"DAL", fullName:'Dallas Mavericks'},
