@@ -42,6 +42,7 @@ hooks:
   BeforeInstall:
     - location: clean.sh
       timeout: 300
+      runas: root
   ApplicationStart:
     - location: npminstall.sh
       timeout: 300
