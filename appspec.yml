@@ -23,8 +23,8 @@ os: linux
 #   "files" section altogether. A blank or incomplete "files" section
 #   may cause associated deployments to fail.
 files:
-  - source: /
-    destination: /
+  - source: source
+    destination: projects/wagermetrics-angular
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions"
 #   section here that describes special permissions to apply to the files
@@ -41,11 +41,11 @@ files:
 #   may cause associated deployments to fail.
 hooks:
   BeforeInstall:
-    - location: ./npminstall.sh
-      timeout: 120
+    - location: npminstall.sh
+      timeout: 300
   ApplicationStart:
-    - location: ./runserver.sh
-      timeout: 10
+    - location: runserver.sh
+      timeout: 60
 # For each deployment lifecycle event, specify multiple "location" entries
 #   if you want to run multiple scripts during that event.
 # You can specify "timeout" as the number of seconds to wait until failing the deployment
