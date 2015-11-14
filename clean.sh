@@ -2,4 +2,6 @@
 
 cd
 
-sudo rm -rf projects
+rm -rf projects
+
+mkdir -p projects/wagermetrics-angular
