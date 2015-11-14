@@ -1,5 +1,3 @@
-cd $HOME
-
-ls -a
+cd $HOME/projects/wagermetrics-angular
 
 npm install
