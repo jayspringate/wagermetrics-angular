@@ -40,7 +40,7 @@ files:
 #   the "hooks" section altogether. A blank or incomplete "hooks" section
 #   may cause associated deployments to fail.
 hooks:
-  BeforeInstall:
+  AfterInstall:
     - location: npminstall.sh
       timeout: 300
   ApplicationStart:
