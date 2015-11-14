@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd
-
-cd projects/wagermetrics-angular
+cd /home/ec2-user/projects/wagermetrics-angular
 
 node server
