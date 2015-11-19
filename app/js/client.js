@@ -29,8 +29,12 @@ wagerApp.config(['$routeProvider', function($route) {
       templateUrl: '/html/templates/cfb.html',
       controller: 'gamesController'
     })
+    .when('/cbb', {
+      templateUrl: '/html/templates/cbb.html',
+      controller: 'gamesController'
+    })
     .when('/about', {
-      templateUrl: '/html/about.html',
+      templateUrl: '/html/templates/about.html',
       controller: 'gamesController'
     });
   }]);
