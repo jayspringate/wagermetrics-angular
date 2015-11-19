@@ -16,6 +16,8 @@ module.exports = function(app) {
     $scope.nbaPath = false;
     $scope.cfbPath = false;
     $scope.nflPath = false;
+    $scope.aboutPath = false;
+    $scope.cbbPath = false;
     $scope.buttonText = 'Loading Games...';
     $scope.dropdownLists = require('../dropdown-lists/dropdown-lists.js');
 

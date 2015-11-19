@@ -16,12 +16,18 @@ module.exports = function(app) {
           scope.nflPath = true;
         } else if(location.path() === '/cfb') {
           scope.cfbPath = true;
+        } else if(location.path() === '/cbb') {
+          scope.cbbPath = true;
+        } else if(location.path() === '/about') {
+          scope.aboutPath = true;
         }
       },
       scope: {       //scope specific to this directive, can set default values inside
         nbaPath: '=',
         nflPath: '=',
         cfbPath: '=',
+        cbbPath: '=',
+        aboutPath: '=',
       }
     };
   }]);
