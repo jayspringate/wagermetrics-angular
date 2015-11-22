@@ -1,7 +1,5 @@
 'use strict';
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-webpack');
@@ -65,7 +63,6 @@ module.exports = function(grunt) {
           path: 'build/',
           file: 'bundle.js'
         },
-        plugins: [new HtmlWebpackPlugin()],
         module: {
           loaders: [
           { test: /\.css$/, loader: "style-loader!css-loader" },
