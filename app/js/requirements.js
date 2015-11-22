@@ -3,6 +3,7 @@ require('./../css/base.css');
 require('./../css/modules.css');
 require('./../css/reset.css');
 require('./../css/layout1.css');
+require('file!./../img/favicon.ico');
 // require('./../css/animate.min.css');
 // require('file!./../img/basketball.jpg');
 // require('file!./../img/bk.gif');
