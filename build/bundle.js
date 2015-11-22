@@ -47,15 +47,15 @@
 	'use strict';
 
 	__webpack_require__(1);
-	__webpack_require__(23);
 	__webpack_require__(24);
 	__webpack_require__(25);
+	__webpack_require__(26);
 
-	__webpack_require__(27);
+	__webpack_require__(28);
 
 	var wagerApp = angular.module('wagerApp', ['directives', 'ngRoute', 'ui.bootstrap']);
 
-	__webpack_require__(34)(wagerApp);
+	__webpack_require__(35)(wagerApp);
 
 	wagerApp.config(['$routeProvider', function($route) {
 	  $route
@@ -95,6 +95,7 @@
 	__webpack_require__(13);
 	__webpack_require__(18);
 	__webpack_require__(20);
+	__webpack_require__(23);
 	// require('./../css/animate.min.css');
 	// require('file!./../img/basketball.jpg');
 	// require('file!./../img/bk.gif');
@@ -665,6 +666,12 @@
 
 /***/ },
 /* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "29a41c84a41e2a5d2d9af3dd9aa1f720.ico"
+
+/***/ },
+/* 24 */
 /***/ function(module, exports) {
 
 	/**
@@ -29495,7 +29502,7 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -37972,15 +37979,15 @@
 	!angular.$$csp() && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>');if(true)module.exports='ui.bootstrap';
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(26);
+	__webpack_require__(27);
 	module.exports = 'ngRoute';
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	/**
@@ -38977,7 +38984,7 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38986,15 +38993,15 @@
 
 	//requires
 
-	__webpack_require__(28)(directives);
 	__webpack_require__(29)(directives);
 	__webpack_require__(30)(directives);
 	__webpack_require__(31)(directives);
 	__webpack_require__(32)(directives);
 	__webpack_require__(33)(directives);
+	__webpack_require__(34)(directives);
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39033,7 +39040,7 @@
 	};
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39061,7 +39068,7 @@
 	};
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39081,7 +39088,7 @@
 	};
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39101,7 +39108,7 @@
 	};
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39121,7 +39128,7 @@
 	};
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39153,17 +39160,17 @@
 	};
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = function(app) {
-	  __webpack_require__(35)(app);
+	  __webpack_require__(36)(app);
 	};
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39187,7 +39194,7 @@
 	    $scope.aboutPath = false;
 	    $scope.cbbPath = false;
 	    $scope.buttonText = 'Loading Games...';
-	    $scope.dropdownLists = __webpack_require__(36);
+	    $scope.dropdownLists = __webpack_require__(37);
 
 	      $http.get('/api' + $scope.path)
 	      .then(function(res) {
@@ -39398,14 +39405,14 @@
 	};
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var nbaList = __webpack_require__(37);
-	var cfbList = __webpack_require__(48);
-	var nflList = __webpack_require__(62);
+	var nbaList = __webpack_require__(38);
+	var cfbList = __webpack_require__(49);
+	var nflList = __webpack_require__(63);
 
 	module.exports = {
 
@@ -39415,21 +39422,21 @@
 	};
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(38);
-	var teamSiteList = __webpack_require__(39);
-	var gameTypeList = __webpack_require__(40);
-	var seasonList = __webpack_require__(41);
-	var spreadList = __webpack_require__(42);
-	var spreadGreaterList = __webpack_require__(43);
-	var spreadLessList = __webpack_require__(44);
-	var spreadMoveList = __webpack_require__(45);
-	var spreadStatusList = __webpack_require__(46);
-	var totalMoveList = __webpack_require__(47);
+	var teamList = __webpack_require__(39);
+	var teamSiteList = __webpack_require__(40);
+	var gameTypeList = __webpack_require__(41);
+	var seasonList = __webpack_require__(42);
+	var spreadList = __webpack_require__(43);
+	var spreadGreaterList = __webpack_require__(44);
+	var spreadLessList = __webpack_require__(45);
+	var spreadMoveList = __webpack_require__(46);
+	var spreadStatusList = __webpack_require__(47);
+	var totalMoveList = __webpack_require__(48);
 
 	module.exports = {
 
@@ -39447,7 +39454,7 @@
 	};
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39486,7 +39493,7 @@
 	          ];
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39497,7 +39504,7 @@
 	          ];
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39508,7 +39515,7 @@
 	          ];
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39522,7 +39529,7 @@
 	          ];
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39610,7 +39617,7 @@
 	       ];
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39698,7 +39705,7 @@
 	       ];
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39786,7 +39793,7 @@
 	       ];
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39798,7 +39805,7 @@
 	          ];
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39809,7 +39816,7 @@
 	          ];
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39821,24 +39828,24 @@
 	          ];
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(49);
-	var teamSiteList = __webpack_require__(50);
-	var weekList = __webpack_require__(51);
-	var gameTypeList = __webpack_require__(52);
-	var seasonList = __webpack_require__(53);
-	var spreadList = __webpack_require__(54);
-	var spreadGreaterList = __webpack_require__(55);
-	var spreadLessList = __webpack_require__(56);
-	var spreadMoveList = __webpack_require__(57);
-	var spreadStatusList = __webpack_require__(58);
-	var totalMoveList = __webpack_require__(59);
-	var conferenceList = __webpack_require__(60);
-	var divisionList = __webpack_require__(61);
+	var teamList = __webpack_require__(50);
+	var teamSiteList = __webpack_require__(51);
+	var weekList = __webpack_require__(52);
+	var gameTypeList = __webpack_require__(53);
+	var seasonList = __webpack_require__(54);
+	var spreadList = __webpack_require__(55);
+	var spreadGreaterList = __webpack_require__(56);
+	var spreadLessList = __webpack_require__(57);
+	var spreadMoveList = __webpack_require__(58);
+	var spreadStatusList = __webpack_require__(59);
+	var totalMoveList = __webpack_require__(60);
+	var conferenceList = __webpack_require__(61);
+	var divisionList = __webpack_require__(62);
 
 	module.exports = {
 
@@ -39860,7 +39867,7 @@
 	};
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40097,7 +40104,7 @@
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40109,7 +40116,7 @@
 	          ];
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40136,7 +40143,7 @@
 	        ];
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40147,7 +40154,7 @@
 	          ];
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40161,7 +40168,7 @@
 	          ];
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40395,7 +40402,7 @@
 
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40630,7 +40637,7 @@
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40865,7 +40872,7 @@
 
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40877,7 +40884,7 @@
 	          ];
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40888,7 +40895,7 @@
 	          ];
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40900,7 +40907,7 @@
 	          ];
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	 'use strict';
@@ -40933,7 +40940,7 @@
 	];
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40944,22 +40951,22 @@
 	          ];
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var teamList = __webpack_require__(63);
-	var teamSiteList = __webpack_require__(64);
-	var weekList = __webpack_require__(65);
-	var gameTypeList = __webpack_require__(66);
-	var seasonList = __webpack_require__(67);
-	var spreadList = __webpack_require__(68);
-	var spreadGreaterList = __webpack_require__(69);
-	var spreadLessList = __webpack_require__(70);
-	var spreadMoveList = __webpack_require__(71);
-	var spreadStatusList = __webpack_require__(72);
-	var totalMoveList = __webpack_require__(73);
+	var teamList = __webpack_require__(64);
+	var teamSiteList = __webpack_require__(65);
+	var weekList = __webpack_require__(66);
+	var gameTypeList = __webpack_require__(67);
+	var seasonList = __webpack_require__(68);
+	var spreadList = __webpack_require__(69);
+	var spreadGreaterList = __webpack_require__(70);
+	var spreadLessList = __webpack_require__(71);
+	var spreadMoveList = __webpack_require__(72);
+	var spreadStatusList = __webpack_require__(73);
+	var totalMoveList = __webpack_require__(74);
 
 	module.exports = {
 
@@ -40978,7 +40985,7 @@
 	};
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41019,7 +41026,7 @@
 	          ];
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41031,7 +41038,7 @@
 	          ];
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41062,7 +41069,7 @@
 	        ];
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41073,7 +41080,7 @@
 	          ];
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41087,7 +41094,7 @@
 	          ];
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41163,7 +41170,7 @@
 	       ];
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41239,7 +41246,7 @@
 	       ];
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41315,7 +41322,7 @@
 	       ];
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41327,7 +41334,7 @@
 	          ];
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41338,7 +41345,7 @@
 	          ];
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	'use strict';
