@@ -668,7 +668,7 @@
 /* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "29a41c84a41e2a5d2d9af3dd9aa1f720.ico"
+	module.exports = __webpack_require__.p + "1a2b305299de3c7b506ff0a1221b3563.ico"
 
 /***/ },
 /* 24 */

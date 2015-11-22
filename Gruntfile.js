@@ -66,7 +66,8 @@ module.exports = function(grunt) {
         module: {
           loaders: [
           { test: /\.css$/, loader: "style-loader!css-loader" },
-          { test: /\.(gif|jpg|ico)$/, loader: "file-loader" },
+          { test: /\.(gif|jpg)$/, loader: "file-loader" },
+          { test: /\.(ico)$/, loader: "file-loader?name=favicon.ico" },
           { test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,   loader: "url-loader?limit=10000&mimetype=application/font-woff" },
           { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
           { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
