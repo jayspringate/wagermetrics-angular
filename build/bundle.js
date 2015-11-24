@@ -675,7 +675,7 @@
 /***/ function(module, exports) {
 
 	/**
-	 * @license AngularJS v1.4.6
+	 * @license AngularJS v1.4.8
 	 * (c) 2010-2015 Google, Inc. http://angularjs.org
 	 * License: MIT
 	 */
@@ -733,7 +733,7 @@
 	      return match;
 	    });
 
-	    message += '\nhttp://errors.angularjs.org/1.4.6/' +
+	    message += '\nhttp://errors.angularjs.org/1.4.8/' +
 	      (module ? module + '/' : '') + code;
 
 	    for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -943,20 +943,24 @@
 	 *                   String ...)
 	 */
 	function isArrayLike(obj) {
-	  if (obj == null || isWindow(obj)) {
-	    return false;
-	  }
+
+	  // `null`, `undefined` and `window` are not array-like
+	  if (obj == null || isWindow(obj)) return false;
+
+	  // arrays, strings and jQuery/jqLite objects are array like
+	  // * jqLite is either the jQuery or jqLite constructor function
+	  // * we have to check the existance of jqLite first as this method is called
+	  //   via the forEach method when constructing the jqLite object in the first place
+	  if (isArray(obj) || isString(obj) || (jqLite && obj instanceof jqLite)) return true;
 
 	  // Support: iOS 8.2 (not reproducible in simulator)
 	  // "length" in obj used to prevent JIT error (gh-11508)
 	  var length = "length" in Object(obj) && obj.length;
 
-	  if (obj.nodeType === NODE_TYPE_ELEMENT && length) {
-	    return true;
-	  }
-
-	  return isString(obj) || isArray(obj) || length === 0 ||
-	         typeof length === 'number' && length > 0 && (length - 1) in obj;
+	  // NodeList objects (with `item` method) and
+	  // other objects with suitable length characteristics are array-like
+	  return isNumber(length) &&
+	    (length >= 0 && (length - 1) in obj || typeof obj.item == 'function');
 	}
 
 	/**
@@ -1101,6 +1105,10 @@
 	          dst[key] = new Date(src.valueOf());
 	        } else if (isRegExp(src)) {
 	          dst[key] = new RegExp(src);
+	        } else if (src.nodeName) {
+	          dst[key] = src.cloneNode(true);
+	        } else if (isElement(src)) {
+	          dst[key] = src.clone();
 	        } else {
 	          if (!isObject(dst[key])) dst[key] = isArray(src) ? [] : {};
 	          baseExtend(dst[key], [src], true);
@@ -1216,7 +1224,7 @@
 	function valueFn(value) {return function() {return value;};}
 
 	function hasCustomToString(obj) {
-	  return isFunction(obj.toString) && obj.toString !== Object.prototype.toString;
+	  return isFunction(obj.toString) && obj.toString !== toString;
 	}
 
 
@@ -1415,9 +1423,9 @@
 	}
 
 
-	var TYPED_ARRAY_REGEXP = /^\[object (Uint8(Clamped)?)|(Uint16)|(Uint32)|(Int8)|(Int16)|(Int32)|(Float(32)|(64))Array\]$/;
+	var TYPED_ARRAY_REGEXP = /^\[object (?:Uint8|Uint8Clamped|Uint16|Uint32|Int8|Int16|Int32|Float32|Float64)Array\]$/;
 	function isTypedArray(value) {
-	  return TYPED_ARRAY_REGEXP.test(toString.call(value));
+	  return value && isNumber(value.length) && TYPED_ARRAY_REGEXP.test(toString.call(value));
 	}
 
 
@@ -1539,100 +1547,111 @@
 	 </file>
 	 </example>
 	 */
-	function copy(source, destination, stackSource, stackDest) {
-	  if (isWindow(source) || isScope(source)) {
-	    throw ngMinErr('cpws',
-	      "Can't copy! Making copies of Window or Scope instances is not supported.");
-	  }
-	  if (isTypedArray(destination)) {
-	    throw ngMinErr('cpta',
-	      "Can't copy! TypedArray destination cannot be mutated.");
-	  }
+	function copy(source, destination) {
+	  var stackSource = [];
+	  var stackDest = [];
 
-	  if (!destination) {
-	    destination = source;
-	    if (isObject(source)) {
-	      var index;
-	      if (stackSource && (index = stackSource.indexOf(source)) !== -1) {
-	        return stackDest[index];
-	      }
-
-	      // TypedArray, Date and RegExp have specific copy functionality and must be
-	      // pushed onto the stack before returning.
-	      // Array and other objects create the base object and recurse to copy child
-	      // objects. The array/object will be pushed onto the stack when recursed.
-	      if (isArray(source)) {
-	        return copy(source, [], stackSource, stackDest);
-	      } else if (isTypedArray(source)) {
-	        destination = new source.constructor(source);
-	      } else if (isDate(source)) {
-	        destination = new Date(source.getTime());
-	      } else if (isRegExp(source)) {
-	        destination = new RegExp(source.source, source.toString().match(/[^\/]*$/)[0]);
-	        destination.lastIndex = source.lastIndex;
-	      } else if (isFunction(source.cloneNode)) {
-	          destination = source.cloneNode(true);
-	      } else {
-	        var emptyObject = Object.create(getPrototypeOf(source));
-	        return copy(source, emptyObject, stackSource, stackDest);
-	      }
-
-	      if (stackDest) {
-	        stackSource.push(source);
-	        stackDest.push(destination);
-	      }
+	  if (destination) {
+	    if (isTypedArray(destination)) {
+	      throw ngMinErr('cpta', "Can't copy! TypedArray destination cannot be mutated.");
 	    }
-	  } else {
-	    if (source === destination) throw ngMinErr('cpi',
-	      "Can't copy! Source and destination are identical.");
-
-	    stackSource = stackSource || [];
-	    stackDest = stackDest || [];
-
-	    if (isObject(source)) {
-	      stackSource.push(source);
-	      stackDest.push(destination);
+	    if (source === destination) {
+	      throw ngMinErr('cpi', "Can't copy! Source and destination are identical.");
 	    }
 
+	    // Empty the destination object
+	    if (isArray(destination)) {
+	      destination.length = 0;
+	    } else {
+	      forEach(destination, function(value, key) {
+	        if (key !== '$$hashKey') {
+	          delete destination[key];
+	        }
+	      });
+	    }
+
+	    stackSource.push(source);
+	    stackDest.push(destination);
+	    return copyRecurse(source, destination);
+	  }
+
+	  return copyElement(source);
+
+	  function copyRecurse(source, destination) {
+	    var h = destination.$$hashKey;
 	    var result, key;
 	    if (isArray(source)) {
-	      destination.length = 0;
-	      for (var i = 0; i < source.length; i++) {
-	        destination.push(copy(source[i], null, stackSource, stackDest));
+	      for (var i = 0, ii = source.length; i < ii; i++) {
+	        destination.push(copyElement(source[i]));
+	      }
+	    } else if (isBlankObject(source)) {
+	      // createMap() fast path --- Safe to avoid hasOwnProperty check because prototype chain is empty
+	      for (key in source) {
+	        destination[key] = copyElement(source[key]);
+	      }
+	    } else if (source && typeof source.hasOwnProperty === 'function') {
+	      // Slow path, which must rely on hasOwnProperty
+	      for (key in source) {
+	        if (source.hasOwnProperty(key)) {
+	          destination[key] = copyElement(source[key]);
+	        }
 	      }
 	    } else {
-	      var h = destination.$$hashKey;
-	      if (isArray(destination)) {
-	        destination.length = 0;
-	      } else {
-	        forEach(destination, function(value, key) {
-	          delete destination[key];
-	        });
-	      }
-	      if (isBlankObject(source)) {
-	        // createMap() fast path --- Safe to avoid hasOwnProperty check because prototype chain is empty
-	        for (key in source) {
-	          destination[key] = copy(source[key], null, stackSource, stackDest);
-	        }
-	      } else if (source && typeof source.hasOwnProperty === 'function') {
-	        // Slow path, which must rely on hasOwnProperty
-	        for (key in source) {
-	          if (source.hasOwnProperty(key)) {
-	            destination[key] = copy(source[key], null, stackSource, stackDest);
-	          }
-	        }
-	      } else {
-	        // Slowest path --- hasOwnProperty can't be called as a method
-	        for (key in source) {
-	          if (hasOwnProperty.call(source, key)) {
-	            destination[key] = copy(source[key], null, stackSource, stackDest);
-	          }
+	      // Slowest path --- hasOwnProperty can't be called as a method
+	      for (key in source) {
+	        if (hasOwnProperty.call(source, key)) {
+	          destination[key] = copyElement(source[key]);
 	        }
 	      }
-	      setHashKey(destination,h);
 	    }
+	    setHashKey(destination, h);
+	    return destination;
 	  }
-	  return destination;
+
+	  function copyElement(source) {
+	    // Simple values
+	    if (!isObject(source)) {
+	      return source;
+	    }
+
+	    // Already copied values
+	    var index = stackSource.indexOf(source);
+	    if (index !== -1) {
+	      return stackDest[index];
+	    }
+
+	    if (isWindow(source) || isScope(source)) {
+	      throw ngMinErr('cpws',
+	        "Can't copy! Making copies of Window or Scope instances is not supported.");
+	    }
+
+	    var needsRecurse = false;
+	    var destination;
+
+	    if (isArray(source)) {
+	      destination = [];
+	      needsRecurse = true;
+	    } else if (isTypedArray(source)) {
+	      destination = new source.constructor(source);
+	    } else if (isDate(source)) {
+	      destination = new Date(source.getTime());
+	    } else if (isRegExp(source)) {
+	      destination = new RegExp(source.source, source.toString().match(/[^\/]*$/)[0]);
+	      destination.lastIndex = source.lastIndex;
+	    } else if (isFunction(source.cloneNode)) {
+	        destination = source.cloneNode(true);
+	    } else {
+	      destination = Object.create(getPrototypeOf(source));
+	      needsRecurse = true;
+	    }
+
+	    stackSource.push(source);
+	    stackDest.push(destination);
+
+	    return needsRecurse
+	      ? copyRecurse(source, destination)
+	      : destination;
+	  }
 	}
 
 	/**
@@ -2756,7 +2775,7 @@
 	           * @param {string} name constant name
 	           * @param {*} object Constant value.
 	           * @description
-	           * Because the constant are fixed, they get applied before other provide methods.
+	           * Because the constants are fixed, they get applied before other provide methods.
 	           * See {@link auto.$provide#constant $provide.constant()}.
 	           */
 	          constant: invokeLater('$provide', 'constant', 'unshift'),
@@ -3017,6 +3036,7 @@
 	  $HttpParamSerializerProvider,
 	  $HttpParamSerializerJQLikeProvider,
 	  $HttpBackendProvider,
+	  $xhrFactoryProvider,
 	  $LocationProvider,
 	  $LogProvider,
 	  $ParseProvider,
@@ -3054,11 +3074,11 @@
 	 * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
 	 */
 	var version = {
-	  full: '1.4.6',    // all of these placeholder strings will be replaced by grunt's
+	  full: '1.4.8',    // all of these placeholder strings will be replaced by grunt's
 	  major: 1,    // package task
 	  minor: 4,
-	  dot: 6,
-	  codeName: 'multiplicative-elevation'
+	  dot: 8,
+	  codeName: 'ice-manipulation'
 	};
 
 
@@ -3175,6 +3195,7 @@
 	        $httpParamSerializer: $HttpParamSerializerProvider,
 	        $httpParamSerializerJQLike: $HttpParamSerializerJQLikeProvider,
 	        $httpBackend: $HttpBackendProvider,
+	        $xhrFactory: $xhrFactoryProvider,
 	        $location: $LocationProvider,
 	        $log: $LogProvider,
 	        $parse: $ParseProvider,
@@ -3349,10 +3370,10 @@
 	    replace(MOZ_HACK_REGEXP, 'Moz$1');
 	}
 
-	var SINGLE_TAG_REGEXP = /^<(\w+)\s*\/?>(?:<\/\1>|)$/;
+	var SINGLE_TAG_REGEXP = /^<([\w-]+)\s*\/?>(?:<\/\1>|)$/;
 	var HTML_REGEXP = /<|&#?\w+;/;
-	var TAG_NAME_REGEXP = /<([\w:]+)/;
-	var XHTML_TAG_REGEXP = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi;
+	var TAG_NAME_REGEXP = /<([\w:-]+)/;
+	var XHTML_TAG_REGEXP = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:-]+)[^>]*)\/>/gi;
 
 	var wrapMap = {
 	  'option': [1, '<select multiple="multiple">', '</select>'],
@@ -3439,6 +3460,14 @@
 	  return [];
 	}
 
+
+	// IE9-11 has no method "contains" in SVG element and in Node.prototype. Bug #10259.
+	var jqLiteContains = Node.prototype.contains || function(arg) {
+	  // jshint bitwise: false
+	  return !!(this.compareDocumentPosition(arg) & 16);
+	  // jshint bitwise: true
+	};
+
 	/////////////////////////////////////////////
 	function JQLite(element) {
 	  if (element instanceof JQLite) {
@@ -3497,17 +3526,23 @@
 	      delete events[type];
 	    }
 	  } else {
-	    forEach(type.split(' '), function(type) {
-	      if (isDefined(fn)) {
-	        var listenerFns = events[type];
-	        arrayRemove(listenerFns || [], fn);
-	        if (listenerFns && listenerFns.length > 0) {
-	          return;
-	        }
-	      }
 
-	      removeEventListenerFn(element, type, handle);
-	      delete events[type];
+	    var removeHandler = function(type) {
+	      var listenerFns = events[type];
+	      if (isDefined(fn)) {
+	        arrayRemove(listenerFns || [], fn);
+	      }
+	      if (!(isDefined(fn) && listenerFns && listenerFns.length > 0)) {
+	        removeEventListenerFn(element, type, handle);
+	        delete events[type];
+	      }
+	    };
+
+	    forEach(type.split(' '), function(type) {
+	      removeHandler(type);
+	      if (MOUSE_EVENT_MAP[type]) {
+	        removeHandler(MOUSE_EVENT_MAP[type]);
+	      }
 	    });
 	  }
 	}
@@ -3962,6 +3997,9 @@
 	      return event.immediatePropagationStopped === true;
 	    };
 
+	    // Some events have special handlers that wrap the real handler
+	    var handlerWrapper = eventFns.specialHandlerWrapper || defaultHandlerWrapper;
+
 	    // Copy event handlers in case event handlers array is modified during execution.
 	    if ((eventFnsLength > 1)) {
 	      eventFns = shallowCopy(eventFns);
@@ -3969,7 +4007,7 @@
 
 	    for (var i = 0; i < eventFnsLength; i++) {
 	      if (!event.isImmediatePropagationStopped()) {
-	        eventFns[i].call(element, event);
+	        handlerWrapper(element, event, eventFns[i]);
 	      }
 	    }
 	  };
@@ -3978,6 +4016,22 @@
 	  //       events on `element`
 	  eventHandler.elem = element;
 	  return eventHandler;
+	}
+
+	function defaultHandlerWrapper(element, event, handler) {
+	  handler.call(element, event);
+	}
+
+	function specialMouseHandlerWrapper(target, event, handler) {
+	  // Refer to jQuery's implementation of mouseenter & mouseleave
+	  // Read about mouseenter and mouseleave:
+	  // http://www.quirksmode.org/js/events_mouse.html#link8
+	  var related = event.relatedTarget;
+	  // For mousenter/leave call the handler if related is outside the target.
+	  // NB: No relatedTarget if the mouse left/entered the browser window
+	  if (!related || (related !== target && !jqLiteContains.call(target, related))) {
+	    handler.call(target, event);
+	  }
 	}
 
 	//////////////////////////////////////////
@@ -4008,35 +4062,28 @@
 	    var types = type.indexOf(' ') >= 0 ? type.split(' ') : [type];
 	    var i = types.length;
 
-	    while (i--) {
-	      type = types[i];
+	    var addHandler = function(type, specialHandlerWrapper, noEventListener) {
 	      var eventFns = events[type];
 
 	      if (!eventFns) {
-	        events[type] = [];
-
-	        if (type === 'mouseenter' || type === 'mouseleave') {
-	          // Refer to jQuery's implementation of mouseenter & mouseleave
-	          // Read about mouseenter and mouseleave:
-	          // http://www.quirksmode.org/js/events_mouse.html#link8
-
-	          jqLiteOn(element, MOUSE_EVENT_MAP[type], function(event) {
-	            var target = this, related = event.relatedTarget;
-	            // For mousenter/leave call the handler if related is outside the target.
-	            // NB: No relatedTarget if the mouse left/entered the browser window
-	            if (!related || (related !== target && !target.contains(related))) {
-	              handle(event, type);
-	            }
-	          });
-
-	        } else {
-	          if (type !== '$destroy') {
-	            addEventListenerFn(element, type, handle);
-	          }
+	        eventFns = events[type] = [];
+	        eventFns.specialHandlerWrapper = specialHandlerWrapper;
+	        if (type !== '$destroy' && !noEventListener) {
+	          addEventListenerFn(element, type, handle);
 	        }
-	        eventFns = events[type];
 	      }
+
 	      eventFns.push(fn);
+	    };
+
+	    while (i--) {
+	      type = types[i];
+	      if (MOUSE_EVENT_MAP[type]) {
+	        addHandler(MOUSE_EVENT_MAP[type], specialMouseHandlerWrapper);
+	        addHandler(type, undefined, true);
+	      } else {
+	        addHandler(type);
+	      }
 	    }
 	  },
 
@@ -5217,7 +5264,7 @@
 	   * When called, it scrolls to the element related to the specified `hash` or (if omitted) to the
 	   * current value of {@link ng.$location#hash $location.hash()}, according to the rules specified
 	   * in the
-	   * [HTML5 spec](http://dev.w3.org/html5/spec/Overview.html#the-indicated-part-of-the-document).
+	   * [HTML5 spec](http://www.w3.org/html/wg/drafts/html/master/browsers.html#the-indicated-part-of-the-document).
 	   *
 	   * It also watches the {@link ng.$location#hash $location.hash()} and automatically scrolls to
 	   * match any anchor whenever it changes. This can be disabled by calling
@@ -5732,7 +5779,7 @@
 	     * when an animation is detected (and animations are enabled), $animate will do the heavy lifting
 	     * to ensure that animation runs with the triggered DOM operation.
 	     *
-	     * By default $animate doesn't trigger an animations. This is because the `ngAnimate` module isn't
+	     * By default $animate doesn't trigger any animations. This is because the `ngAnimate` module isn't
 	     * included and only when it is active then the animation hooks that `$animate` triggers will be
 	     * functional. Once active then all structural `ng-` directives will trigger animations as they perform
 	     * their DOM-related operations (enter, leave and move). Other directives such as `ngClass`,
@@ -6084,6 +6131,13 @@
 	    };
 
 	    return function(element, options) {
+	      // there is no point in applying the styles since
+	      // there is no animation that goes on at all in
+	      // this version of $animateCss.
+	      if (options.cleanupStyles) {
+	        options.from = options.to = null;
+	      }
+
 	      if (options.from) {
 	        element.css(options.from);
 	        options.from = null;
@@ -6551,10 +6605,10 @@
 	           $scope.keys = [];
 	           $scope.cache = $cacheFactory('cacheId');
 	           $scope.put = function(key, value) {
-	             if (isUndefined($scope.cache.get(key))) {
+	             if (angular.isUndefined($scope.cache.get(key))) {
 	               $scope.keys.push(key);
 	             }
-	             $scope.cache.put(key, isUndefined(value) ? null : value);
+	             $scope.cache.put(key, angular.isUndefined(value) ? null : value);
 	           };
 	         }]);
 	     </file>
@@ -6577,9 +6631,9 @@
 
 	      var size = 0,
 	          stats = extend({}, options, {id: cacheId}),
-	          data = {},
+	          data = createMap(),
 	          capacity = (options && options.capacity) || Number.MAX_VALUE,
-	          lruHash = {},
+	          lruHash = createMap(),
 	          freshEnd = null,
 	          staleEnd = null;
 
@@ -6707,6 +6761,8 @@
 	            delete lruHash[key];
 	          }
 
+	          if (!(key in data)) return;
+
 	          delete data[key];
 	          size--;
 	        },
@@ -6721,9 +6777,9 @@
 	         * Clears the cache object of any entries.
 	         */
 	        removeAll: function() {
-	          data = {};
+	          data = createMap();
 	          size = 0;
-	          lruHash = {};
+	          lruHash = createMap();
 	          freshEnd = staleEnd = null;
 	        },
 
@@ -8124,6 +8180,7 @@
 	              return template.replace(/\{\{/g, startSymbol).replace(/}}/g, endSymbol);
 	        },
 	        NG_ATTR_BINDING = /^ngAttr[A-Z]/;
+	    var MULTI_ELEMENT_DIR_RE = /^(.+)Start$/;
 
 	    compile.$$addBindingInfo = debugInfoEnabled ? function $$addBindingInfo($element, binding) {
 	      var bindings = $element.data('$binding') || [];
@@ -8175,6 +8232,14 @@
 	      var namespace = null;
 	      return function publicLinkFn(scope, cloneConnectFn, options) {
 	        assertArg(scope, 'scope');
+
+	        if (previousCompileContext && previousCompileContext.needsNewScope) {
+	          // A parent directive did a replace and a directive on this element asked
+	          // for transclusion, which caused us to lose a layer of element on which
+	          // we could hold the new transclusion scope, so we will create it manually
+	          // here.
+	          scope = scope.$parent.$new();
+	        }
 
 	        options = options || {};
 	        var parentBoundTranscludeFn = options.parentBoundTranscludeFn,
@@ -8321,11 +8386,6 @@
 	            if (nodeLinkFn.scope) {
 	              childScope = scope.$new();
 	              compile.$$addScopeInfo(jqLite(node), childScope);
-	              var destroyBindings = nodeLinkFn.$$destroyBindings;
-	              if (destroyBindings) {
-	                nodeLinkFn.$$destroyBindings = null;
-	                childScope.$on('$destroyed', destroyBindings);
-	              }
 	            } else {
 	              childScope = scope;
 	            }
@@ -8344,8 +8404,7 @@
 	              childBoundTranscludeFn = null;
 	            }
 
-	            nodeLinkFn(childLinkFn, childScope, node, $rootElement, childBoundTranscludeFn,
-	                       nodeLinkFn);
+	            nodeLinkFn(childLinkFn, childScope, node, $rootElement, childBoundTranscludeFn);
 
 	          } else if (childLinkFn) {
 	            childLinkFn(scope, node.childNodes, undefined, parentBoundTranscludeFn);
@@ -8414,13 +8473,11 @@
 	                });
 	            }
 
-	            var directiveNName = ngAttrName.replace(/(Start|End)$/, '');
-	            if (directiveIsMultiElement(directiveNName)) {
-	              if (ngAttrName === directiveNName + 'Start') {
-	                attrStartName = name;
-	                attrEndName = name.substr(0, name.length - 5) + 'end';
-	                name = name.substr(0, name.length - 6);
-	              }
+	            var multiElementMatch = ngAttrName.match(MULTI_ELEMENT_DIR_RE);
+	            if (multiElementMatch && directiveIsMultiElement(multiElementMatch[1])) {
+	              attrStartName = name;
+	              attrEndName = name.substr(0, name.length - 5) + 'end';
+	              name = name.substr(0, name.length - 6);
 	            }
 
 	            nName = directiveNormalize(name.toLowerCase());
@@ -8659,7 +8716,8 @@
 	          } else {
 	            $template = jqLite(jqLiteClone(compileNode)).contents();
 	            $compileNode.empty(); // clear contents
-	            childTranscludeFn = compile($template, transcludeFn);
+	            childTranscludeFn = compile($template, transcludeFn, undefined,
+	                undefined, { needsNewScope: directive.$$isolateScope || directive.$$newScope});
 	          }
 	        }
 
@@ -8701,8 +8759,11 @@
 	            var templateDirectives = collectDirectives(compileNode, [], newTemplateAttrs);
 	            var unprocessedDirectives = directives.splice(i + 1, directives.length - (i + 1));
 
-	            if (newIsolateScopeDirective) {
-	              markDirectivesAsIsolate(templateDirectives);
+	            if (newIsolateScopeDirective || newScopeDirective) {
+	              // The original directive caused the current element to be replaced but this element
+	              // also needs to have a new scope, so we need to tell the template directives
+	              // that they would need to get their scope from further up, if they require transclusion
+	              markDirectiveScope(templateDirectives, newIsolateScopeDirective, newScopeDirective);
 	            }
 	            directives = directives.concat(templateDirectives).concat(unprocessedDirectives);
 	            mergeTemplateAttributes(templateAttrs, newTemplateAttrs);
@@ -8855,10 +8916,9 @@
 	        return elementControllers;
 	      }
 
-	      function nodeLinkFn(childLinkFn, scope, linkNode, $rootElement, boundTranscludeFn,
-	                          thisLinkFn) {
-	        var i, ii, linkFn, controller, isolateScope, elementControllers, transcludeFn, $element,
-	            attrs;
+	      function nodeLinkFn(childLinkFn, scope, linkNode, $rootElement, boundTranscludeFn) {
+	        var linkFn, isolateScope, controllerScope, elementControllers, transcludeFn, $element,
+	            attrs, removeScopeBindingWatches, removeControllerBindingWatches;
 
 	        if (compileNode === linkNode) {
 	          attrs = templateAttrs;
@@ -8868,8 +8928,11 @@
 	          attrs = new Attributes($element, templateAttrs);
 	        }
 
+	        controllerScope = scope;
 	        if (newIsolateScopeDirective) {
 	          isolateScope = scope.$new(true);
+	        } else if (newScopeDirective) {
+	          controllerScope = scope.$parent;
 	        }
 
 	        if (boundTranscludeFn) {
@@ -8890,42 +8953,34 @@
 	          compile.$$addScopeClass($element, true);
 	          isolateScope.$$isolateBindings =
 	              newIsolateScopeDirective.$$isolateBindings;
-	          initializeDirectiveBindings(scope, attrs, isolateScope,
-	                                      isolateScope.$$isolateBindings,
-	                                      newIsolateScopeDirective, isolateScope);
-	        }
-	        if (elementControllers) {
-	          // Initialize bindToController bindings for new/isolate scopes
-	          var scopeDirective = newIsolateScopeDirective || newScopeDirective;
-	          var bindings;
-	          var controllerForBindings;
-	          if (scopeDirective && elementControllers[scopeDirective.name]) {
-	            bindings = scopeDirective.$$bindings.bindToController;
-	            controller = elementControllers[scopeDirective.name];
-
-	            if (controller && controller.identifier && bindings) {
-	              controllerForBindings = controller;
-	              thisLinkFn.$$destroyBindings =
-	                  initializeDirectiveBindings(scope, attrs, controller.instance,
-	                                              bindings, scopeDirective);
-	            }
+	          removeScopeBindingWatches = initializeDirectiveBindings(scope, attrs, isolateScope,
+	                                        isolateScope.$$isolateBindings,
+	                                        newIsolateScopeDirective);
+	          if (removeScopeBindingWatches) {
+	            isolateScope.$on('$destroy', removeScopeBindingWatches);
 	          }
-	          for (i in elementControllers) {
-	            controller = elementControllers[i];
-	            var controllerResult = controller();
+	        }
 
-	            if (controllerResult !== controller.instance) {
-	              // If the controller constructor has a return value, overwrite the instance
-	              // from setupControllers and update the element data
-	              controller.instance = controllerResult;
-	              $element.data('$' + i + 'Controller', controllerResult);
-	              if (controller === controllerForBindings) {
-	                // Remove and re-install bindToController bindings
-	                thisLinkFn.$$destroyBindings();
-	                thisLinkFn.$$destroyBindings =
-	                  initializeDirectiveBindings(scope, attrs, controllerResult, bindings, scopeDirective);
-	              }
-	            }
+	        // Initialize bindToController bindings
+	        for (var name in elementControllers) {
+	          var controllerDirective = controllerDirectives[name];
+	          var controller = elementControllers[name];
+	          var bindings = controllerDirective.$$bindings.bindToController;
+
+	          if (controller.identifier && bindings) {
+	            removeControllerBindingWatches =
+	              initializeDirectiveBindings(controllerScope, attrs, controller.instance, bindings, controllerDirective);
+	          }
+
+	          var controllerResult = controller();
+	          if (controllerResult !== controller.instance) {
+	            // If the controller constructor has a return value, overwrite the instance
+	            // from setupControllers
+	            controller.instance = controllerResult;
+	            $element.data('$' + controllerDirective.name + 'Controller', controllerResult);
+	            removeControllerBindingWatches && removeControllerBindingWatches();
+	            removeControllerBindingWatches =
+	              initializeDirectiveBindings(controllerScope, attrs, controller.instance, bindings, controllerDirective);
 	          }
 	        }
 
@@ -8985,10 +9040,15 @@
 	      }
 	    }
 
-	    function markDirectivesAsIsolate(directives) {
-	      // mark all directives as needing isolate scope.
+	    // Depending upon the context in which a directive finds itself it might need to have a new isolated
+	    // or child scope created. For instance:
+	    // * if the directive has been pulled into a template because another directive with a higher priority
+	    // asked for element transclusion
+	    // * if the directive itself asks for transclusion but it is at the root of a template and the original
+	    // element was replaced. See https://github.com/angular/angular.js/issues/12936
+	    function markDirectiveScope(directives, isolateScope, newScope) {
 	      for (var j = 0, jj = directives.length; j < jj; j++) {
-	        directives[j] = inherit(directives[j], {$$isolateScope: true});
+	        directives[j] = inherit(directives[j], {$$isolateScope: isolateScope, $$newScope: newScope});
 	      }
 	    }
 
@@ -9135,7 +9195,9 @@
 	            var templateDirectives = collectDirectives(compileNode, [], tempTemplateAttrs);
 
 	            if (isObject(origAsyncDirective.scope)) {
-	              markDirectivesAsIsolate(templateDirectives);
+	              // the original directive that caused the template to be loaded async required
+	              // an isolate scope
+	              markDirectiveScope(templateDirectives, true);
 	            }
 	            directives = templateDirectives.concat(directives);
 	            mergeTemplateAttributes(tAttrs, tempTemplateAttrs);
@@ -9184,7 +9246,7 @@
 	              childBoundTranscludeFn = boundTranscludeFn;
 	            }
 	            afterTemplateNodeLinkFn(afterTemplateChildLinkFn, scope, linkNode, $rootElement,
-	              childBoundTranscludeFn, afterTemplateNodeLinkFn);
+	              childBoundTranscludeFn);
 	          }
 	          linkQueue = null;
 	        });
@@ -9201,8 +9263,7 @@
 	          if (afterTemplateNodeLinkFn.transcludeOnThisElement) {
 	            childBoundTranscludeFn = createBoundTranscludeFn(scope, afterTemplateNodeLinkFn.transclude, boundTranscludeFn);
 	          }
-	          afterTemplateNodeLinkFn(afterTemplateChildLinkFn, scope, node, rootElement, childBoundTranscludeFn,
-	                                  afterTemplateNodeLinkFn);
+	          afterTemplateNodeLinkFn(afterTemplateChildLinkFn, scope, node, rootElement, childBoundTranscludeFn);
 	        }
 	      };
 	    }
@@ -9311,7 +9372,7 @@
 	        compile: function() {
 	            return {
 	              pre: function attrInterpolatePreLinkFn(scope, element, attr) {
-	                var $$observers = (attr.$$observers || (attr.$$observers = {}));
+	                var $$observers = (attr.$$observers || (attr.$$observers = createMap()));
 
 	                if (EVENT_HANDLER_ATTR_REGEXP.test(name)) {
 	                  throw $compileMinErr('nodomevents',
@@ -9414,7 +9475,7 @@
 	        // Copy over user data (that includes Angular's $scope etc.). Don't copy private
 	        // data here because there's no public interface in jQuery to do that and copying over
 	        // event listeners (which is the main use of private data) wouldn't work anyway.
-	        jqLite(newNode).data(jqLite(firstElementToRemove).data());
+	        jqLite.data(newNode, jqLite.data(firstElementToRemove));
 
 	        // Remove data of the replaced element. We cannot just call .remove()
 	        // on the element it since that would deallocate scope that is needed
@@ -9462,9 +9523,8 @@
 
 	    // Set up $watches for isolate scope and controller bindings. This process
 	    // only occurs for isolate scopes and new scopes with controllerAs.
-	    function initializeDirectiveBindings(scope, attrs, destination, bindings,
-	                                         directive, newScope) {
-	      var onNewScopeDestroyed;
+	    function initializeDirectiveBindings(scope, attrs, destination, bindings, directive) {
+	      var removeWatchCollection = [];
 	      forEach(bindings, function(definition, scopeName) {
 	        var attrName = definition.attrName,
 	        optional = definition.optional,
@@ -9526,14 +9586,13 @@
 	              return lastValue = parentValue;
 	            };
 	            parentValueWatch.$stateful = true;
-	            var unwatch;
+	            var removeWatch;
 	            if (definition.collection) {
-	              unwatch = scope.$watchCollection(attrs[attrName], parentValueWatch);
+	              removeWatch = scope.$watchCollection(attrs[attrName], parentValueWatch);
 	            } else {
-	              unwatch = scope.$watch($parse(attrs[attrName], parentValueWatch), null, parentGet.literal);
+	              removeWatch = scope.$watch($parse(attrs[attrName], parentValueWatch), null, parentGet.literal);
 	            }
-	            onNewScopeDestroyed = (onNewScopeDestroyed || []);
-	            onNewScopeDestroyed.push(unwatch);
+	            removeWatchCollection.push(removeWatch);
 	            break;
 
 	          case '&':
@@ -9549,16 +9608,12 @@
 	            break;
 	        }
 	      });
-	      var destroyBindings = onNewScopeDestroyed ? function destroyBindings() {
-	        for (var i = 0, ii = onNewScopeDestroyed.length; i < ii; ++i) {
-	          onNewScopeDestroyed[i]();
+
+	      return removeWatchCollection.length && function removeWatches() {
+	        for (var i = 0, ii = removeWatchCollection.length; i < ii; ++i) {
+	          removeWatchCollection[i]();
 	        }
-	      } : noop;
-	      if (newScope && destroyBindings !== noop) {
-	        newScope.$on('$destroy', destroyBindings);
-	        return noop;
-	      }
-	      return destroyBindings;
+	      };
 	    }
 	  }];
 	}
@@ -10283,9 +10338,9 @@
 	   * Configure `$http` service to return promises without the shorthand methods `success` and `error`.
 	   * This should be used to make sure that applications work without these methods.
 	   *
-	   * Defaults to false. If no value is specified, returns the current configured value.
+	   * Defaults to true. If no value is specified, returns the current configured value.
 	   *
-	   * @param {boolean=} value If true, `$http` will return a normal promise without the `success` and `error` methods.
+	   * @param {boolean=} value If true, `$http` will return a promise with the deprecated legacy `success` and `error` methods.
 	   *
 	   * @returns {boolean|Object} If a value is specified, returns the $httpProvider for chaining.
 	   *    otherwise, returns the current configured value.
@@ -10363,28 +10418,18 @@
 	     *
 	     *
 	     * ## General usage
-	     * The `$http` service is a function which takes a single argument — a configuration object —
+	     * The `$http` service is a function which takes a single argument — a {@link $http#usage configuration object} —
 	     * that is used to generate an HTTP request and returns  a {@link ng.$q promise}.
 	     *
 	     * ```js
-	     *   // Simple GET request example :
-	     *   $http.get('/someUrl').
-	     *     then(function(response) {
+	     *   // Simple GET request example:
+	     *   $http({
+	     *     method: 'GET',
+	     *     url: '/someUrl'
+	     *   }).then(function successCallback(response) {
 	     *       // this callback will be called asynchronously
 	     *       // when the response is available
-	     *     }, function(response) {
-	     *       // called asynchronously if an error occurs
-	     *       // or server returns response with an error status.
-	     *     });
-	     * ```
-	     *
-	     * ```js
-	     *   // Simple POST request example (passing data) :
-	     *   $http.post('/someUrl', {msg:'hello word!'}).
-	     *     then(function(response) {
-	     *       // this callback will be called asynchronously
-	     *       // when the response is available
-	     *     }, function(response) {
+	     *     }, function errorCallback(response) {
 	     *       // called asynchronously if an error occurs
 	     *       // or server returns response with an error status.
 	     *     });
@@ -10404,25 +10449,16 @@
 	     * XMLHttpRequest will transparently follow it, meaning that the error callback will not be
 	     * called for such responses.
 	     *
-	     * ## Writing Unit Tests that use $http
-	     * When unit testing (using {@link ngMock ngMock}), it is necessary to call
-	     * {@link ngMock.$httpBackend#flush $httpBackend.flush()} to flush each pending
-	     * request using trained responses.
-	     *
-	     * ```
-	     * $httpBackend.expectGET(...);
-	     * $http.get(...);
-	     * $httpBackend.flush();
-	     * ```
 	     *
 	     * ## Shortcut methods
 	     *
 	     * Shortcut methods are also available. All shortcut methods require passing in the URL, and
-	     * request data must be passed in for POST/PUT requests.
+	     * request data must be passed in for POST/PUT requests. An optional config can be passed as the
+	     * last argument.
 	     *
 	     * ```js
-	     *   $http.get('/someUrl').then(successCallback);
-	     *   $http.post('/someUrl', data).then(successCallback);
+	     *   $http.get('/someUrl', config).then(successCallback, errorCallback);
+	     *   $http.post('/someUrl', data, config).then(successCallback, errorCallback);
 	     * ```
 	     *
 	     * Complete list of shortcut methods:
@@ -10435,6 +10471,17 @@
 	     * - {@link ng.$http#jsonp $http.jsonp}
 	     * - {@link ng.$http#patch $http.patch}
 	     *
+	     *
+	     * ## Writing Unit Tests that use $http
+	     * When unit testing (using {@link ngMock ngMock}), it is necessary to call
+	     * {@link ngMock.$httpBackend#flush $httpBackend.flush()} to flush each pending
+	     * request using trained responses.
+	     *
+	     * ```
+	     * $httpBackend.expectGET(...);
+	     * $http.get(...);
+	     * $httpBackend.flush();
+	     * ```
 	     *
 	     * ## Deprecation Notice
 	     * <div class="alert alert-danger">
@@ -10593,7 +10640,7 @@
 	     *
 	     * There are two kinds of interceptors (and two kinds of rejection interceptors):
 	     *
-	     *   * `request`: interceptors get called with a http `config` object. The function is free to
+	     *   * `request`: interceptors get called with a http {@link $http#usage config} object. The function is free to
 	     *     modify the `config` object or create a new one. The function needs to return the `config`
 	     *     object directly, or a promise containing the `config` or a new `config` object.
 	     *   * `requestError`: interceptor gets called when a previous interceptor threw an error or
@@ -10945,11 +10992,8 @@
 	      function transformResponse(response) {
 	        // make a copy since the response must be cacheable
 	        var resp = extend({}, response);
-	        if (!response.data) {
-	          resp.data = response.data;
-	        } else {
-	          resp.data = transformData(response.data, response.headers, response.status, config.transformResponse);
-	        }
+	        resp.data = transformData(response.data, response.headers, response.status,
+	                                  config.transformResponse);
 	        return (isSuccess(response.status))
 	          ? resp
 	          : $q.reject(resp);
@@ -11259,8 +11303,33 @@
 	  }];
 	}
 
-	function createXhr() {
-	    return new window.XMLHttpRequest();
+	/**
+	 * @ngdoc service
+	 * @name $xhrFactory
+	 *
+	 * @description
+	 * Factory function used to create XMLHttpRequest objects.
+	 *
+	 * Replace or decorate this service to create your own custom XMLHttpRequest objects.
+	 *
+	 * ```
+	 * angular.module('myApp', [])
+	 * .factory('$xhrFactory', function() {
+	 *   return function createXhr(method, url) {
+	 *     return new window.XMLHttpRequest({mozSystem: true});
+	 *   };
+	 * });
+	 * ```
+	 *
+	 * @param {string} method HTTP method of the request (GET, POST, PUT, ..)
+	 * @param {string} url URL of the request.
+	 */
+	function $xhrFactoryProvider() {
+	  this.$get = function() {
+	    return function createXhr() {
+	      return new window.XMLHttpRequest();
+	    };
+	  };
 	}
 
 	/**
@@ -11268,6 +11337,7 @@
 	 * @name $httpBackend
 	 * @requires $window
 	 * @requires $document
+	 * @requires $xhrFactory
 	 *
 	 * @description
 	 * HTTP backend used by the {@link ng.$http service} that delegates to
@@ -11280,8 +11350,8 @@
 	 * $httpBackend} which can be trained with responses.
 	 */
 	function $HttpBackendProvider() {
-	  this.$get = ['$browser', '$window', '$document', function($browser, $window, $document) {
-	    return createHttpBackend($browser, createXhr, $browser.defer, $window.angular.callbacks, $document[0]);
+	  this.$get = ['$browser', '$window', '$document', '$xhrFactory', function($browser, $window, $document, $xhrFactory) {
+	    return createHttpBackend($browser, $xhrFactory, $browser.defer, $window.angular.callbacks, $document[0]);
 	  }];
 	}
 
@@ -11305,7 +11375,7 @@
 	      });
 	    } else {
 
-	      var xhr = createXhr();
+	      var xhr = createXhr(method, url);
 
 	      xhr.open(method, url, true);
 	      forEach(headers, function(value, key) {
@@ -12557,9 +12627,9 @@
 	   * @description
 	   * This method is getter / setter.
 	   *
-	   * Return hash fragment when called without any parameter.
+	   * Returns the hash fragment when called without any parameters.
 	   *
-	   * Change hash fragment when called with parameter and return `$location`.
+	   * Changes the hash fragment when called with a parameter and returns `$location`.
 	   *
 	   *
 	   * ```js
@@ -12580,8 +12650,8 @@
 	   * @name $location#replace
 	   *
 	   * @description
-	   * If called, all changes to $location during current `$digest` will be replacing current history
-	   * record, instead of adding new one.
+	   * If called, all changes to $location during the current `$digest` will replace the current history
+	   * record, instead of adding a new one.
 	   */
 	  replace: function() {
 	    this.$$replace = true;
@@ -12901,7 +12971,7 @@
 	        var oldUrl = $location.absUrl();
 	        var oldState = $location.$$state;
 	        var defaultPrevented;
-
+	        newUrl = trimEmptyHash(newUrl);
 	        $location.$$parse(newUrl);
 	        $location.$$state = newState;
 
@@ -13174,20 +13244,30 @@
 
 
 	function ensureSafeMemberName(name, fullExpression) {
+	  if (name === "__defineGetter__" || name === "__defineSetter__"
+	      || name === "__lookupGetter__" || name === "__lookupSetter__"
+	      || name === "__proto__") {
+	    throw $parseMinErr('isecfld',
+	        'Attempting to access a disallowed field in Angular expressions! '
+	        + 'Expression: {0}', fullExpression);
+	  }
+	  return name;
+	}
+
+	function getStringValue(name, fullExpression) {
 	  // From the JavaScript docs:
 	  // Property names must be strings. This means that non-string objects cannot be used
 	  // as keys in an object. Any non-string object, including a number, is typecasted
 	  // into a string via the toString method.
 	  //
 	  // So, to ensure that we are checking the same `name` that JavaScript would use,
-	  // we cast it to a string, if possible
-	  name =  (isObject(name) && name.toString) ? name.toString() : name;
-
-	  if (name === "__defineGetter__" || name === "__defineSetter__"
-	      || name === "__lookupGetter__" || name === "__lookupSetter__"
-	      || name === "__proto__") {
-	    throw $parseMinErr('isecfld',
-	        'Attempting to access a disallowed field in Angular expressions! '
+	  // we cast it to a string, if possible.
+	  // Doing `name + ''` can cause a repl error if the result to `toString` is not a string,
+	  // this is, this will handle objects that misbehave.
+	  name = name + '';
+	  if (!isString(name)) {
+	    throw $parseMinErr('iseccst',
+	        'Cannot convert object to primitive value! '
 	        + 'Expression: {0}', fullExpression);
 	  }
 	  return name;
@@ -13234,6 +13314,16 @@
 	      throw $parseMinErr('isecff',
 	        'Referencing call, apply or bind in Angular expressions is disallowed! Expression: {0}',
 	        fullExpression);
+	    }
+	  }
+	}
+
+	function ensureSafeAssignContext(obj, fullExpression) {
+	  if (obj) {
+	    if (obj === (0).constructor || obj === (false).constructor || obj === ''.constructor ||
+	        obj === {}.constructor || obj === [].constructor || obj === Function.constructor) {
+	      throw $parseMinErr('isecaf',
+	        'Assigning to a constructor is disallowed! Expression: {0}', fullExpression);
 	    }
 	  }
 	}
@@ -13952,6 +14042,8 @@
 	        'ensureSafeMemberName',
 	        'ensureSafeObject',
 	        'ensureSafeFunction',
+	        'getStringValue',
+	        'ensureSafeAssignContext',
 	        'ifDefined',
 	        'plus',
 	        'text',
@@ -13960,6 +14052,8 @@
 	          ensureSafeMemberName,
 	          ensureSafeObject,
 	          ensureSafeFunction,
+	          getStringValue,
+	          ensureSafeAssignContext,
 	          ifDefined,
 	          plusFn,
 	          expression);
@@ -14103,6 +14197,7 @@
 	          if (ast.computed) {
 	            right = self.nextId();
 	            self.recurse(ast.property, right);
+	            self.getStringValue(right);
 	            self.addEnsureSafeMemberName(right);
 	            if (create && create !== 1) {
 	              self.if_(self.not(self.computedMember(left, right)), self.lazyAssign(self.computedMember(left, right), '{}'));
@@ -14186,6 +14281,7 @@
 	        self.if_(self.notNull(left.context), function() {
 	          self.recurse(ast.right, right);
 	          self.addEnsureSafeObject(self.member(left.context, left.name, left.computed));
+	          self.addEnsureSafeAssignContext(left.context);
 	          expression = self.member(left.context, left.name, left.computed) + ast.operator + right;
 	          self.assign(intoId, expression);
 	          recursionFn(intoId || expression);
@@ -14311,6 +14407,10 @@
 	    this.current().body.push(this.ensureSafeFunction(item), ';');
 	  },
 
+	  addEnsureSafeAssignContext: function(item) {
+	    this.current().body.push(this.ensureSafeAssignContext(item), ';');
+	  },
+
 	  ensureSafeObject: function(item) {
 	    return 'ensureSafeObject(' + item + ',text)';
 	  },
@@ -14321,6 +14421,14 @@
 
 	  ensureSafeFunction: function(item) {
 	    return 'ensureSafeFunction(' + item + ',text)';
+	  },
+
+	  getStringValue: function(item) {
+	    this.assign(item, 'getStringValue(' + item + ',text)');
+	  },
+
+	  ensureSafeAssignContext: function(item) {
+	    return 'ensureSafeAssignContext(' + item + ',text)';
 	  },
 
 	  lazyRecurse: function(ast, intoId, nameId, recursionFn, create, skipWatchIdCheck) {
@@ -14500,6 +14608,7 @@
 	        var lhs = left(scope, locals, assign, inputs);
 	        var rhs = right(scope, locals, assign, inputs);
 	        ensureSafeObject(lhs.value, self.expression);
+	        ensureSafeAssignContext(lhs.context);
 	        lhs.context[lhs.name] = rhs;
 	        return context ? {value: rhs} : rhs;
 	      };
@@ -14697,6 +14806,7 @@
 	      var value;
 	      if (lhs != null) {
 	        rhs = right(scope, locals, assign, inputs);
+	        rhs = getStringValue(rhs);
 	        ensureSafeMemberName(rhs, expression);
 	        if (create && create !== 1 && lhs && !(lhs[rhs])) {
 	          lhs[rhs] = {};
@@ -15002,13 +15112,14 @@
 	    function addInterceptor(parsedExpression, interceptorFn) {
 	      if (!interceptorFn) return parsedExpression;
 	      var watchDelegate = parsedExpression.$$watchDelegate;
+	      var useInputs = false;
 
 	      var regularWatch =
 	          watchDelegate !== oneTimeLiteralWatchDelegate &&
 	          watchDelegate !== oneTimeWatchDelegate;
 
 	      var fn = regularWatch ? function regularInterceptedExpression(scope, locals, assign, inputs) {
-	        var value = parsedExpression(scope, locals, assign, inputs);
+	        var value = useInputs && inputs ? inputs[0] : parsedExpression(scope, locals, assign, inputs);
 	        return interceptorFn(value, scope, locals);
 	      } : function oneTimeInterceptedExpression(scope, locals, assign, inputs) {
 	        var value = parsedExpression(scope, locals, assign, inputs);
@@ -15026,6 +15137,7 @@
 	        // If there is an interceptor, but no watchDelegate then treat the interceptor like
 	        // we treat filters - it is assumed to be a pure function unless flagged with $stateful
 	        fn.$$watchDelegate = inputsWatchDelegate;
+	        useInputs = !parsedExpression.inputs;
 	        fn.inputs = parsedExpression.inputs ? parsedExpression.inputs : [parsedExpression];
 	      }
 
@@ -15086,6 +15198,8 @@
 	 * ```
 	 *
 	 * Note: progress/notify callbacks are not currently supported via the ES6-style interface.
+	 *
+	 * Note: unlike ES6 behaviour, an exception thrown in the constructor function will NOT implicitly reject the promise.
 	 *
 	 * However, the more traditional CommonJS-style usage is still available, and documented below.
 	 *
@@ -15671,15 +15785,15 @@
 	 *     exposed as $$____ properties
 	 *
 	 * Loop operations are optimized by using while(count--) { ... }
-	 *   - this means that in order to keep the same order of execution as addition we have to add
+	 *   - This means that in order to keep the same order of execution as addition we have to add
 	 *     items to the array at the beginning (unshift) instead of at the end (push)
 	 *
 	 * Child scopes are created and removed often
-	 *   - Using an array would be slow since inserts in middle are expensive so we use linked list
+	 *   - Using an array would be slow since inserts in the middle are expensive; so we use linked lists
 	 *
-	 * There are few watches then a lot of observers. This is why you don't want the observer to be
-	 * implemented in the same way as watch. Watch requires return of initialization function which
-	 * are expensive to construct.
+	 * There are fewer watches than observers. This is why you don't want the observer to be implemented
+	 * in the same way as watch. Watch requires return of the initialization function which is expensive
+	 * to construct.
 	 */
 
 
@@ -15721,7 +15835,7 @@
 	 * Every application has a single root {@link ng.$rootScope.Scope scope}.
 	 * All other scopes are descendant scopes of the root scope. Scopes provide separation
 	 * between the model and the view, via a mechanism for watching the model for changes.
-	 * They also provide an event emission/broadcast and subscription facility. See the
+	 * They also provide event emission/broadcast and subscription facility. See the
 	 * {@link guide/scope developer guide on scopes}.
 	 */
 	function $RootScopeProvider() {
@@ -15756,6 +15870,29 @@
 
 	    function destroyChildScope($event) {
 	        $event.currentScope.$$destroyed = true;
+	    }
+
+	    function cleanUpScope($scope) {
+
+	      if (msie === 9) {
+	        // There is a memory leak in IE9 if all child scopes are not disconnected
+	        // completely when a scope is destroyed. So this code will recurse up through
+	        // all this scopes children
+	        //
+	        // See issue https://github.com/angular/angular.js/issues/10706
+	        $scope.$$childHead && cleanUpScope($scope.$$childHead);
+	        $scope.$$nextSibling && cleanUpScope($scope.$$nextSibling);
+	      }
+
+	      // The code below works around IE9 and V8's memory leaks
+	      //
+	      // See:
+	      // - https://code.google.com/p/v8/issues/detail?id=2073#c26
+	      // - https://github.com/angular/angular.js/issues/6794#issuecomment-38648909
+	      // - https://github.com/angular/angular.js/issues/1313#issuecomment-10378451
+
+	      $scope.$parent = $scope.$$nextSibling = $scope.$$prevSibling = $scope.$$childHead =
+	          $scope.$$childTail = $scope.$root = $scope.$$watchers = null;
 	    }
 
 	    /**
@@ -16554,16 +16691,9 @@
 	        this.$on = this.$watch = this.$watchGroup = function() { return noop; };
 	        this.$$listeners = {};
 
-	        // All of the code below is bogus code that works around V8's memory leak via optimized code
-	        // and inline caches.
-	        //
-	        // see:
-	        // - https://code.google.com/p/v8/issues/detail?id=2073#c26
-	        // - https://github.com/angular/angular.js/issues/6794#issuecomment-38648909
-	        // - https://github.com/angular/angular.js/issues/1313#issuecomment-10378451
-
-	        this.$parent = this.$$nextSibling = this.$$prevSibling = this.$$childHead =
-	            this.$$childTail = this.$root = this.$$watchers = null;
+	        // Disconnect the next sibling to prevent `cleanUpScope` destroying those too
+	        this.$$nextSibling = null;
+	        cleanUpScope(this);
 	      },
 
 	      /**
@@ -17559,7 +17689,7 @@
 	 * By default, Angular only loads templates from the same domain and protocol as the application
 	 * document.  This is done by calling {@link ng.$sce#getTrustedResourceUrl
 	 * $sce.getTrustedResourceUrl} on the template URL.  To load templates from other domains and/or
-	 * protocols, you may either either {@link ng.$sceDelegateProvider#resourceUrlWhitelist whitelist
+	 * protocols, you may either {@link ng.$sceDelegateProvider#resourceUrlWhitelist whitelist
 	 * them} or {@link ng.$sce#trustAsResourceUrl wrap it} into a trusted value.
 	 *
 	 * *Please note*:
@@ -19333,6 +19463,7 @@
 	    if (fractionSize > 0 && number < 1) {
 	      formatedText = number.toFixed(fractionSize);
 	      number = parseFloat(formatedText);
+	      formatedText = formatedText.replace(DECIMAL_SEP, decimalSep);
 	    }
 	  }
 
@@ -19809,7 +19940,7 @@
 	    if (!isArray(input) && !isString(input)) return input;
 
 	    begin = (!begin || isNaN(begin)) ? 0 : toInt(begin);
-	    begin = (begin < 0 && begin >= -input.length) ? input.length + begin : begin;
+	    begin = (begin < 0) ? Math.max(0, input.length + begin) : begin;
 
 	    if (limit >= 0) {
 	      return input.slice(begin, begin + limit);
@@ -21169,7 +21300,8 @@
 
 	// Regex code is obtained from SO: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime#answer-3143231
 	var ISO_DATE_REGEXP = /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/;
-	var URL_REGEXP = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
+	// See valid URLs in RFC3987 (http://tools.ietf.org/html/rfc3987)
+	var URL_REGEXP = /^[A-Za-z][A-Za-z\d.+-]*:\/*(?:\w+(?::\w+)?@)?[^\s/]+(?::\d+)?(?:\/[\w#!:.?+=&%@\-/]*)?$/;
 	var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 	var NUMBER_REGEXP = /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))([eE][+-]?\d+)?\s*$/;
 	var DATE_REGEXP = /^(\d{4})-(\d{2})-(\d{2})$/;
@@ -24735,7 +24867,13 @@
 	 * @param {string} ngInclude|src angular expression evaluating to URL. If the source is a string constant,
 	 *                 make sure you wrap it in **single** quotes, e.g. `src="'myPartialTemplate.html'"`.
 	 * @param {string=} onload Expression to evaluate when a new partial is loaded.
-	 *
+	 *                  <div class="alert alert-warning">
+	 *                  **Note:** When using onload on SVG elements in IE11, the browser will try to call
+	 *                  a function with the name on the window element, which will usually throw a
+	 *                  "function is undefined" error. To fix this, you can instead use `data-onload` or a
+	 *                  different form that {@link guide/directive#normalization matches} `onload`.
+	 *                  </div>
+	   *
 	 * @param {string=} autoscroll Whether `ngInclude` should call {@link ng.$anchorScroll
 	 *                  $anchorScroll} to scroll the viewport after the content is loaded.
 	 *
@@ -25128,7 +25266,7 @@
 	 *   </file>
 	 * </example>
 	 *
-	 * ### Example - splitting on whitespace
+	 * ### Example - splitting on newline
 	 * <example name="ngList-directive-newlines">
 	 *   <file name="index.html">
 	 *    <textarea ng-model="list" ng-list="&#10;" ng-trim="false"></textarea>
@@ -25213,7 +25351,9 @@
 	 * @ngdoc type
 	 * @name ngModel.NgModelController
 	 *
-	 * @property {string} $viewValue Actual string value in the view.
+	 * @property {*} $viewValue The actual value from the control's view. For `input` elements, this is a
+	 * String. See {@link ngModel.NgModelController#$setViewValue} for information about when the $viewValue
+	 * is set.
 	 * @property {*} $modelValue The value in the model that the control is bound to.
 	 * @property {Array.<Function>} $parsers Array of functions to execute, as a pipeline, whenever
 	       the control reads value from the DOM. The functions are called in array order, each passing
@@ -26326,12 +26466,13 @@
 	          </label><br />
 	        </form>
 	        <pre>user.name = <span ng-bind="user.name"></span></pre>
+	        <pre>user.data = <span ng-bind="user.data"></span></pre>
 	      </div>
 	    </file>
 	    <file name="app.js">
 	      angular.module('optionsExample', [])
 	        .controller('ExampleController', ['$scope', function($scope) {
-	          $scope.user = { name: 'say', data: '' };
+	          $scope.user = { name: 'John', data: '' };
 
 	          $scope.cancel = function(e) {
 	            if (e.keyCode == 27) {
@@ -26346,20 +26487,20 @@
 	      var other = element(by.model('user.data'));
 
 	      it('should allow custom events', function() {
-	        input.sendKeys(' hello');
+	        input.sendKeys(' Doe');
 	        input.click();
-	        expect(model.getText()).toEqual('say');
+	        expect(model.getText()).toEqual('John');
 	        other.click();
-	        expect(model.getText()).toEqual('say hello');
+	        expect(model.getText()).toEqual('John Doe');
 	      });
 
 	      it('should $rollbackViewValue when model changes', function() {
-	        input.sendKeys(' hello');
-	        expect(input.getAttribute('value')).toEqual('say hello');
+	        input.sendKeys(' Doe');
+	        expect(input.getAttribute('value')).toEqual('John Doe');
 	        input.sendKeys(protractor.Key.ESCAPE);
-	        expect(input.getAttribute('value')).toEqual('say');
+	        expect(input.getAttribute('value')).toEqual('John');
 	        other.click();
-	        expect(model.getText()).toEqual('say');
+	        expect(model.getText()).toEqual('John');
 	      });
 	    </file>
 	  </example>
@@ -26385,7 +26526,7 @@
 	    <file name="app.js">
 	      angular.module('optionsExample', [])
 	        .controller('ExampleController', ['$scope', function($scope) {
-	          $scope.user = { name: 'say' };
+	          $scope.user = { name: 'Igor' };
 	        }]);
 	    </file>
 	  </example>
@@ -26618,19 +26759,27 @@
 	 *
 	 * ## Complex Models (objects or collections)
 	 *
-	 * **Note:** By default, `ngModel` watches the model by reference, not value. This is important when
-	 * binding any input directive to a model that is an object or a collection.
+	 * By default, `ngModel` watches the model by reference, not value. This is important to know when
+	 * binding the select to a model that is an object or a collection.
 	 *
-	 * Since this is a common situation for `ngOptions` the directive additionally watches the model using
-	 * `$watchCollection` when the select has the `multiple` attribute or when there is a `track by` clause in
-	 * the options expression. This allows ngOptions to trigger a re-rendering of the options even if the actual
-	 * object/collection has not changed identity but only a property on the object or an item in the collection
-	 * changes.
+	 * One issue occurs if you want to preselect an option. For example, if you set
+	 * the model to an object that is equal to an object in your collection, `ngOptions` won't be able to set the selection,
+	 * because the objects are not identical. So by default, you should always reference the item in your collection
+	 * for preselections, e.g.: `$scope.selected = $scope.collection[3]`.
+	 *
+	 * Another solution is to use a `track by` clause, because then `ngOptions` will track the identity
+	 * of the item not by reference, but by the result of the `track by` expression. For example, if your
+	 * collection items have an id property, you would `track by item.id`.
+	 *
+	 * A different issue with objects or collections is that ngModel won't detect if an object property or
+	 * a collection item changes. For that reason, `ngOptions` additionally watches the model using
+	 * `$watchCollection`, when the expression contains a `track by` clause or the the select has the `multiple` attribute.
+	 * This allows ngOptions to trigger a re-rendering of the options even if the actual object/collection
+	 * has not changed identity, but only a property on the object or an item in the collection changes.
 	 *
 	 * Note that `$watchCollection` does a shallow comparison of the properties of the object (or the items in the collection
-	 * if the model is an array). This means that changing a property deeper inside the object/collection that the
-	 * first level will not trigger a re-rendering.
-	 *
+	 * if the model is an array). This means that changing a property deeper than the first level inside the
+	 * object/collection will not trigger a re-rendering.
 	 *
 	 * ## `select` **`as`**
 	 *
@@ -26643,17 +26792,13 @@
 	 * ### `select` **`as`** and **`track by`**
 	 *
 	 * <div class="alert alert-warning">
-	 * Do not use `select` **`as`** and **`track by`** in the same expression. They are not designed to work together.
+	 * Be careful when using `select` **`as`** and **`track by`** in the same expression.
 	 * </div>
 	 *
-	 * Consider the following example:
-	 *
-	 * ```html
-	 * <select ng-options="item.subItem as item.label for item in values track by item.id" ng-model="selected"></select>
-	 * ```
+	 * Given this array of items on the $scope:
 	 *
 	 * ```js
-	 * $scope.values = [{
+	 * $scope.items = [{
 	 *   id: 1,
 	 *   label: 'aLabel',
 	 *   subItem: { name: 'aSubItem' }
@@ -26662,20 +26807,33 @@
 	 *   label: 'bLabel',
 	 *   subItem: { name: 'bSubItem' }
 	 * }];
-	 *
-	 * $scope.selected = { name: 'aSubItem' };
 	 * ```
 	 *
-	 * With the purpose of preserving the selection, the **`track by`** expression is always applied to the element
-	 * of the data source (to `item` in this example). To calculate whether an element is selected, we do the
-	 * following:
+	 * This will work:
 	 *
-	 * 1. Apply **`track by`** to the elements in the array. In the example: `[1, 2]`
-	 * 2. Apply **`track by`** to the already selected value in `ngModel`.
-	 *    In the example: this is not possible as **`track by`** refers to `item.id`, but the selected
-	 *    value from `ngModel` is `{name: 'aSubItem'}`, so the **`track by`** expression is applied to
-	 *    a wrong object, the selected element can't be found, `<select>` is always reset to the "not
-	 *    selected" option.
+	 * ```html
+	 * <select ng-options="item as item.label for item in items track by item.id" ng-model="selected"></select>
+	 * ```
+	 * ```js
+	 * $scope.selected = $scope.items[0];
+	 * ```
+	 *
+	 * but this will not work:
+	 *
+	 * ```html
+	 * <select ng-options="item.subItem as item.label for item in items track by item.id" ng-model="selected"></select>
+	 * ```
+	 * ```js
+	 * $scope.selected = $scope.items[0].subItem;
+	 * ```
+	 *
+	 * In both examples, the **`track by`** expression is applied successfully to each `item` in the
+	 * `items` array. Because the selected option has been set programmatically in the controller, the
+	 * **`track by`** expression is also applied to the `ngModel` value. In the first example, the
+	 * `ngModel` value is `items[0]` and the **`track by`** expression evaluates to `items[0].id` with
+	 * no issue. In the second example, the `ngModel` value is `items[0].subItem` and the **`track by`**
+	 * expression evaluates to `items[0].subItem.id` (which is undefined). As a result, the model value
+	 * is not matched against any `<option>` and the `<select>` appears as having no selected value.
 	 *
 	 *
 	 * @param {string} ngModel Assignable angular expression to data-bind to.
@@ -26977,11 +27135,8 @@
 	  var optionTemplate = document.createElement('option'),
 	      optGroupTemplate = document.createElement('optgroup');
 
-	  return {
-	    restrict: 'A',
-	    terminal: true,
-	    require: ['select', '?ngModel'],
-	    link: function(scope, selectElement, attr, ctrls) {
+
+	    function ngOptionsPostLink(scope, selectElement, attr, ctrls) {
 
 	      // if ngModel is not defined, we don't need to do anything
 	      var ngModelCtrl = ctrls[1];
@@ -27035,7 +27190,6 @@
 	      var removeUnknownOption = function() {
 	        unknownOption.remove();
 	      };
-
 
 	      // Update the controller methods for multiple selectable options
 	      if (!multiple) {
@@ -27164,11 +27318,16 @@
 	      function updateOptionElement(option, element) {
 	        option.element = element;
 	        element.disabled = option.disabled;
-	        if (option.value !== element.value) element.value = option.selectValue;
+	        // NOTE: The label must be set before the value, otherwise IE10/11/EDGE create unresponsive
+	        // selects in certain circumstances when multiple selects are next to each other and display
+	        // the option list in listbox style, i.e. the select is [multiple], or specifies a [size].
+	        // See https://github.com/angular/angular.js/issues/11314 for more info.
+	        // This is unfortunately untestable with unit / e2e tests
 	        if (option.label !== element.label) {
 	          element.label = option.label;
 	          element.textContent = option.label;
 	        }
+	        if (option.value !== element.value) element.value = option.selectValue;
 	      }
 
 	      function addOrReuseElement(parent, current, type, templateElement) {
@@ -27206,10 +27365,15 @@
 	        var emptyOption_ = emptyOption && emptyOption[0];
 	        var unknownOption_ = unknownOption && unknownOption[0];
 
+	        // We cannot rely on the extracted empty option being the same as the compiled empty option,
+	        // because the compiled empty option might have been replaced by a comment because
+	        // it had an "element" transclusion directive on it (such as ngIf)
 	        if (emptyOption_ || unknownOption_) {
 	          while (current &&
 	                (current === emptyOption_ ||
-	                current === unknownOption_)) {
+	                current === unknownOption_ ||
+	                current.nodeType === NODE_TYPE_COMMENT ||
+	                current.value === '')) {
 	            current = current.nextSibling;
 	          }
 	        }
@@ -27306,7 +27470,20 @@
 	        }
 
 	      }
+	  }
 
+	  return {
+	    restrict: 'A',
+	    terminal: true,
+	    require: ['select', '?ngModel'],
+	    link: {
+	      pre: function ngOptionsPreLink(scope, selectElement, attr, ctrls) {
+	        // Deactivate the SelectController.register method to prevent
+	        // option directives from accidentally registering themselves
+	        // (and unwanted $destroy handlers etc.)
+	        ctrls[0].registerOption = noop;
+	      },
+	      post: ngOptionsPostLink
 	    }
 	  };
 	}];
@@ -27593,7 +27770,7 @@
 	 * Version 1.4 removed the alphabetic sorting. We now rely on the order returned by the browser
 	 * when running `for key in myObj`. It seems that browsers generally follow the strategy of providing
 	 * keys in the order in which they were defined, although there are exceptions when keys are deleted
-	 * and reinstated. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_issues
+	 * and reinstated. See the [MDN page on `delete` for more info](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_notes).
 	 *
 	 * If this is not desired, the recommended workaround is to convert your object into an array
 	 * that is sorted into the order that you prefer before providing it to `ngRepeat`.  You could
@@ -27603,15 +27780,21 @@
 	 *
 	 * # Tracking and Duplicates
 	 *
-	 * When the contents of the collection change, `ngRepeat` makes the corresponding changes to the DOM:
+	 * `ngRepeat` uses {@link $rootScope.Scope#$watchCollection $watchCollection} to detect changes in
+	 * the collection. When a change happens, ngRepeat then makes the corresponding changes to the DOM:
 	 *
 	 * * When an item is added, a new instance of the template is added to the DOM.
 	 * * When an item is removed, its template instance is removed from the DOM.
 	 * * When items are reordered, their respective templates are reordered in the DOM.
 	 *
-	 * By default, `ngRepeat` does not allow duplicate items in arrays. This is because when
-	 * there are duplicates, it is not possible to maintain a one-to-one mapping between collection
-	 * items and DOM elements.
+	 * To minimize creation of DOM elements, `ngRepeat` uses a function
+	 * to "keep track" of all items in the collection and their corresponding DOM elements.
+	 * For example, if an item is added to the collection, ngRepeat will know that all other items
+	 * already have DOM elements, and will not re-render them.
+	 *
+	 * The default tracking function (which tracks items by their identity) does not allow
+	 * duplicate items in arrays. This is because when there are duplicates, it is not possible
+	 * to maintain a one-to-one mapping between collection items and DOM elements.
 	 *
 	 * If you do need to repeat duplicate items, you can substitute the default tracking behavior
 	 * with your own using the `track by` expression.
@@ -27624,7 +27807,7 @@
 	 *    </div>
 	 * ```
 	 *
-	 * You may use arbitrary expressions in `track by`, including references to custom functions
+	 * You may also use arbitrary expressions in `track by`, including references to custom functions
 	 * on the scope:
 	 * ```html
 	 *    <div ng-repeat="n in [42, 42, 43, 43] track by myTrackingFunction(n)">
@@ -27632,10 +27815,14 @@
 	 *    </div>
 	 * ```
 	 *
-	 * If you are working with objects that have an identifier property, you can track
+	 * <div class="alert alert-success">
+	 * If you are working with objects that have an identifier property, you should track
 	 * by the identifier instead of the whole object. Should you reload your data later, `ngRepeat`
 	 * will not have to rebuild the DOM elements for items it has already rendered, even if the
-	 * JavaScript objects in the collection have been substituted for new ones:
+	 * JavaScript objects in the collection have been substituted for new ones. For large collections,
+	 * this signifincantly improves rendering performance. If you don't have a unique identifier,
+	 * `track by $index` can also provide a performance boost.
+	 * </div>
 	 * ```html
 	 *    <div ng-repeat="model in collection track by model.id">
 	 *      {{model.name}}
@@ -28793,6 +28980,15 @@
 
 	var noopNgModelController = { $setViewValue: noop, $render: noop };
 
+	function chromeHack(optionElement) {
+	  // Workaround for https://code.google.com/p/chromium/issues/detail?id=381459
+	  // Adding an <option selected="selected"> element to a <select required="required"> should
+	  // automatically select the new element
+	  if (optionElement[0].hasAttribute('selected')) {
+	    optionElement[0].selected = true;
+	  }
+	}
+
 	/**
 	 * @ngdoc type
 	 * @name  select.SelectController
@@ -28868,6 +29064,8 @@
 	    }
 	    var count = optionsMap.get(value) || 0;
 	    optionsMap.put(value, count + 1);
+	    self.ngModelCtrl.$render();
+	    chromeHack(element);
 	  };
 
 	  // Tell the select control that an option, with the given value, has been removed
@@ -28888,6 +29086,39 @@
 	  // Check whether the select control has an option matching the given value
 	  self.hasOption = function(value) {
 	    return !!optionsMap.get(value);
+	  };
+
+
+	  self.registerOption = function(optionScope, optionElement, optionAttrs, interpolateValueFn, interpolateTextFn) {
+
+	    if (interpolateValueFn) {
+	      // The value attribute is interpolated
+	      var oldVal;
+	      optionAttrs.$observe('value', function valueAttributeObserveAction(newVal) {
+	        if (isDefined(oldVal)) {
+	          self.removeOption(oldVal);
+	        }
+	        oldVal = newVal;
+	        self.addOption(newVal, optionElement);
+	      });
+	    } else if (interpolateTextFn) {
+	      // The text content is interpolated
+	      optionScope.$watch(interpolateTextFn, function interpolateWatchAction(newVal, oldVal) {
+	        optionAttrs.$set('value', newVal);
+	        if (oldVal !== newVal) {
+	          self.removeOption(oldVal);
+	        }
+	        self.addOption(newVal, optionElement);
+	      });
+	    } else {
+	      // The value attribute is static
+	      self.addOption(optionAttrs.value, optionElement);
+	    }
+
+	    optionElement.on('$destroy', function() {
+	      self.removeOption(optionAttrs.value);
+	      self.ngModelCtrl.$render();
+	    });
 	  };
 	}];
 
@@ -28934,6 +29165,8 @@
 	 *
 	 * @param {string} ngModel Assignable angular expression to data-bind to.
 	 * @param {string=} name Property name of the form under which the control is published.
+	 * @param {string=} multiple Allows multiple options to be selected. The selected values will be
+	 *     bound to the model as an array.
 	 * @param {string=} required Sets `required` validation error key if the value is not entered.
 	 * @param {string=} ngRequired Adds required attribute and required validation constraint to
 	 * the element when the ngRequired expression evaluates to true. Use ngRequired instead of required
@@ -28957,7 +29190,7 @@
 	 *     </select><br>
 	 *
 	 *     <label for="singleSelect"> Single select with "not selected" option and dynamic option values: </label><br>
-	 *     <select name="singleSelect" ng-model="data.singleSelect">
+	 *     <select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
 	 *       <option value="">---Please select---</option> <!-- not selected / blank option -->
 	 *       <option value="{{data.option1}}">Option 1</option> <!-- interpolation -->
 	 *       <option value="option-2">Option 2</option>
@@ -28998,7 +29231,7 @@
 	 * <div ng-controller="ExampleController">
 	 *   <form name="myForm">
 	 *     <label for="repeatSelect"> Repeat select: </label>
-	 *     <select name="repeatSelect" ng-model="data.repeatSelect">
+	 *     <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
 	 *       <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
 	 *     </select>
 	 *   </form>
@@ -29010,7 +29243,7 @@
 	 *  angular.module('ngrepeatSelect', [])
 	 *    .controller('ExampleController', ['$scope', function($scope) {
 	 *      $scope.data = {
-	 *       singleSelect: null,
+	 *       repeatSelect: null,
 	 *       availableOptions: [
 	 *         {id: '1', name: 'Option A'},
 	 *         {id: '2', name: 'Option B'},
@@ -29099,7 +29332,13 @@
 	    restrict: 'E',
 	    require: ['select', '?ngModel'],
 	    controller: SelectController,
-	    link: function(scope, element, attr, ctrls) {
+	    priority: 1,
+	    link: {
+	      pre: selectPreLink
+	    }
+	  };
+
+	  function selectPreLink(scope, element, attr, ctrls) {
 
 	      // if ngModel is not defined, we don't need to do anything
 	      var ngModelCtrl = ctrls[1];
@@ -29169,7 +29408,6 @@
 
 	      }
 	    }
-	  };
 	};
 
 
@@ -29177,16 +29415,6 @@
 	// of dynamically created (and destroyed) option elements to their containing select
 	// directive via its controller.
 	var optionDirective = ['$interpolate', function($interpolate) {
-
-	  function chromeHack(optionElement) {
-	    // Workaround for https://code.google.com/p/chromium/issues/detail?id=381459
-	    // Adding an <option selected="selected"> element to a <select required="required"> should
-	    // automatically select the new element
-	    if (optionElement[0].hasAttribute('selected')) {
-	      optionElement[0].selected = true;
-	    }
-	  }
-
 	  return {
 	    restrict: 'E',
 	    priority: 100,
@@ -29194,12 +29422,12 @@
 
 	      if (isDefined(attr.value)) {
 	        // If the value attribute is defined, check if it contains an interpolation
-	        var valueInterpolated = $interpolate(attr.value, true);
+	        var interpolateValueFn = $interpolate(attr.value, true);
 	      } else {
 	        // If the value attribute is not defined then we fall back to the
 	        // text content of the option element, which may be interpolated
-	        var interpolateFn = $interpolate(element.text(), true);
-	        if (!interpolateFn) {
+	        var interpolateTextFn = $interpolate(element.text(), true);
+	        if (!interpolateTextFn) {
 	          attr.$set('value', element.text());
 	        }
 	      }
@@ -29213,44 +29441,8 @@
 	            selectCtrl = parent.data(selectCtrlName) ||
 	              parent.parent().data(selectCtrlName); // in case we are in optgroup
 
-	        function addOption(optionValue) {
-	          selectCtrl.addOption(optionValue, element);
-	          selectCtrl.ngModelCtrl.$render();
-	          chromeHack(element);
-	        }
-
-	        // Only update trigger option updates if this is an option within a `select`
-	        // that also has `ngModel` attached
-	        if (selectCtrl && selectCtrl.ngModelCtrl) {
-
-	          if (valueInterpolated) {
-	            // The value attribute is interpolated
-	            var oldVal;
-	            attr.$observe('value', function valueAttributeObserveAction(newVal) {
-	              if (isDefined(oldVal)) {
-	                selectCtrl.removeOption(oldVal);
-	              }
-	              oldVal = newVal;
-	              addOption(newVal);
-	            });
-	          } else if (interpolateFn) {
-	            // The text content is interpolated
-	            scope.$watch(interpolateFn, function interpolateWatchAction(newVal, oldVal) {
-	              attr.$set('value', newVal);
-	              if (oldVal !== newVal) {
-	                selectCtrl.removeOption(oldVal);
-	              }
-	              addOption(newVal);
-	            });
-	          } else {
-	            // The value attribute is static
-	            addOption(attr.value);
-	          }
-
-	          element.on('$destroy', function() {
-	            selectCtrl.removeOption(attr.value);
-	            selectCtrl.ngModelCtrl.$render();
-	          });
+	        if (selectCtrl) {
+	          selectCtrl.registerOption(scope, element, attr, interpolateValueFn, interpolateTextFn);
 	        }
 	      };
 	    }
@@ -29509,7 +29701,7 @@
 	 * angular-ui-bootstrap
 	 * http://angular-ui.github.io/bootstrap/
 
-	 * Version: 0.14.1 - 2015-10-11
+	 * Version: 0.14.3 - 2015-10-23
 	 * License: MIT
 	 */
 	angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.buttons","ui.bootstrap.carousel","ui.bootstrap.dateparser","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.dropdown","ui.bootstrap.stackedMap","ui.bootstrap.modal","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.progressbar","ui.bootstrap.rating","ui.bootstrap.tabs","ui.bootstrap.timepicker","ui.bootstrap.typeahead"]);
@@ -29531,7 +29723,7 @@
 	              addClass: 'in',
 	              easing: 'ease',
 	              to: { height: element[0].scrollHeight + 'px' }
-	            }).start().done(expandDone);
+	            }).start().finally(expandDone);
 	          } else {
 	            $animate.addClass(element, 'in', {
 	              to: { height: element[0].scrollHeight + 'px' }
@@ -29566,7 +29758,7 @@
 	            $animateCss(element, {
 	              removeClass: 'in',
 	              to: {height: '0'}
-	            }).start().done(collapseDone);
+	            }).start().finally(collapseDone);
 	          } else {
 	            $animate.removeClass(element, 'in', {
 	              to: {height: '0'}
@@ -29613,20 +29805,19 @@
 
 	          if ($animateCss) {
 	            $animateCss(element, {
-	              addClass: 'in',
 	              easing: 'ease',
 	              to: { height: element[0].scrollHeight + 'px' }
 	            }).start().done(expandDone);
 	          } else {
-	            $animate.addClass(element, 'in', {
-	              to: { height: element[0].scrollHeight + 'px' }
+	            $animate.animate(element, {}, {
+	              height: element[0].scrollHeight + 'px'
 	            }).then(expandDone);
 	          }
 	        }
 
 	        function expandDone() {
 	          element.removeClass('collapsing')
-	            .addClass('collapse')
+	            .addClass('collapse in')
 	            .css({height: 'auto'});
 	        }
 
@@ -29642,19 +29833,18 @@
 	            .css({height: element[0].scrollHeight + 'px'})
 	            // initially all panel collapse have the collapse class, this removal
 	            // prevents the animation from jumping to collapsed state
-	            .removeClass('collapse')
+	            .removeClass('collapse in')
 	            .addClass('collapsing')
 	            .attr('aria-expanded', false)
 	            .attr('aria-hidden', true);
 
 	          if ($animateCss) {
 	            $animateCss(element, {
-	              removeClass: 'in',
 	              to: {height: '0'}
 	            }).start().done(collapseDone);
 	          } else {
-	            $animate.removeClass(element, 'in', {
-	              to: {height: '0'}
+	            $animate.animate(element, {}, {
+	              height: '0'
 	            }).then(collapseDone);
 	          }
 	        }
@@ -29928,13 +30118,16 @@
 
 	angular.module('ui.bootstrap.alert', [])
 
-	.controller('UibAlertController', ['$scope', '$attrs', '$timeout', function($scope, $attrs, $timeout) {
+	.controller('UibAlertController', ['$scope', '$attrs', '$interpolate', '$timeout', function($scope, $attrs, $interpolate, $timeout) {
 	  $scope.closeable = !!$attrs.close;
 
-	  if (angular.isDefined($attrs.dismissOnTimeout)) {
+	  var dismissOnTimeout = angular.isDefined($attrs.dismissOnTimeout) ?
+	    $interpolate($attrs.dismissOnTimeout)($scope.$parent) : null;
+
+	  if (dismissOnTimeout) {
 	    $timeout(function() {
 	      $scope.close();
-	    }, parseInt($attrs.dismissOnTimeout, 10));
+	    }, parseInt(dismissOnTimeout, 10));
 	  }
 	}])
 
@@ -30038,7 +30231,7 @@
 	  };
 	})
 
-	.directive('uibBtnCheckbox', ['$document', function($document) {
+	.directive('uibBtnCheckbox', function() {
 	  return {
 	    require: ['uibBtnCheckbox', 'ngModel'],
 	    controller: 'UibButtonsController',
@@ -30076,21 +30269,9 @@
 	          ngModelCtrl.$render();
 	        });
 	      });
-
-	      //accessibility
-	      element.on('keypress', function(e) {
-	        if (attrs.disabled || e.which !== 32 || $document[0].activeElement !== element[0]) {
-	          return;
-	        }
-
-	        scope.$apply(function() {
-	          ngModelCtrl.$setViewValue(element.hasClass(buttonsCtrl.activeClass) ? getFalseValue() : getTrueValue());
-	          ngModelCtrl.$render();
-	        });
-	      });
 	    }
 	  };
-	}]);
+	});
 
 	/* Deprecated buttons below */
 
@@ -30886,9 +31067,16 @@
 	      }
 
 	      if (isValid(fields.year, fields.month, fields.date)) {
-	        dt = new Date(fields.year, fields.month, fields.date,
-	          fields.hours, fields.minutes, fields.seconds,
-	          fields.milliseconds || 0);
+	        if (angular.isDate(baseDate) && !isNaN(baseDate.getTime())) {
+	          dt = new Date(baseDate);
+	          dt.setFullYear(fields.year, fields.month, fields.date,
+	            fields.hours, fields.minutes, fields.seconds,
+	            fields.milliseconds || 0);
+	        } else {
+	          dt = new Date(fields.year, fields.month, fields.date,
+	            fields.hours, fields.minutes, fields.seconds,
+	            fields.milliseconds || 0);
+	        }
 	      }
 
 	      return dt;
@@ -31238,17 +31426,6 @@
 	    return arrays;
 	  };
 
-	  // Fix a hard-reprodusible bug with timezones
-	  // The bug depends on OS, browser, current timezone and current date
-	  // i.e.
-	  // var date = new Date(2014, 0, 1);
-	  // console.log(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours());
-	  // can result in "2013 11 31 23" because of the bug.
-	  this.fixTimeZone = function(date) {
-	    var hours = date.getHours();
-	    date.setHours(hours === 23 ? hours + 2 : 0);
-	  };
-
 	  $scope.select = function(date) {
 	    if ($scope.datepickerMode === self.minMode) {
 	      var dt = ngModelCtrl.$viewValue ? new Date(ngModelCtrl.$viewValue) : new Date(0, 0, 0, 0, 0, 0, 0);
@@ -31333,7 +31510,6 @@
 	    var dates = new Array(n), current = new Date(startDate), i = 0, date;
 	    while (i < n) {
 	      date = new Date(current);
-	      this.fixTimeZone(date);
 	      dates[i++] = date;
 	      current.setDate(current.getDate() + 1);
 	    }
@@ -31343,8 +31519,11 @@
 	  this._refreshView = function() {
 	    var year = this.activeDate.getFullYear(),
 	      month = this.activeDate.getMonth(),
-	      firstDayOfMonth = new Date(year, month, 1),
-	      difference = this.startingDay - firstDayOfMonth.getDay(),
+	      firstDayOfMonth = new Date(this.activeDate);
+
+	    firstDayOfMonth.setFullYear(year, month, 1);
+
+	    var difference = this.startingDay - firstDayOfMonth.getDay(),
 	      numDisplayedFromPreviousMonth = (difference > 0) ? 7 - difference : - difference,
 	      firstDate = new Date(firstDayOfMonth);
 
@@ -31435,8 +31614,8 @@
 	        date;
 
 	    for (var i = 0; i < 12; i++) {
-	      date = new Date(year, i, 1);
-	      this.fixTimeZone(date);
+	      date = new Date(this.activeDate);
+	      date.setFullYear(year, i, 1);
 	      months[i] = angular.extend(this.createDateObject(date, this.formatMonth), {
 	        uid: scope.uniqueId + '-' + i
 	      });
@@ -31490,8 +31669,8 @@
 	    var years = new Array(range), date;
 
 	    for (var i = 0, start = getStartingYear(this.activeDate.getFullYear()); i < range; i++) {
-	      date = new Date(start + i, 0, 1);
-	      this.fixTimeZone(date);
+	      date = new Date(this.activeDate);
+	      date.setFullYear(start + i, 0, 1);
 	      years[i] = angular.extend(this.createDateObject(date, this.formatYear), {
 	        uid: scope.uniqueId + '-' + i
 	      });
@@ -31553,7 +31732,9 @@
 	.directive('uibDaypicker', function() {
 	  return {
 	    replace: true,
-	    templateUrl: 'template/datepicker/day.html',
+	    templateUrl: function(element, attrs) {
+	      return attrs.templateUrl || 'template/datepicker/day.html';
+	    },
 	    require: ['^?uibDatepicker', 'uibDaypicker', '^?datepicker'],
 	    controller: 'UibDaypickerController',
 	    link: function(scope, element, attrs, ctrls) {
@@ -31568,7 +31749,9 @@
 	.directive('uibMonthpicker', function() {
 	  return {
 	    replace: true,
-	    templateUrl: 'template/datepicker/month.html',
+	    templateUrl: function(element, attrs) {
+	      return attrs.templateUrl || 'template/datepicker/month.html';
+	    },
 	    require: ['^?uibDatepicker', 'uibMonthpicker', '^?datepicker'],
 	    controller: 'UibMonthpickerController',
 	    link: function(scope, element, attrs, ctrls) {
@@ -31583,7 +31766,9 @@
 	.directive('uibYearpicker', function() {
 	  return {
 	    replace: true,
-	    templateUrl: 'template/datepicker/year.html',
+	    templateUrl: function(element, attrs) {
+	      return attrs.templateUrl || 'template/datepicker/year.html';
+	    },
 	    require: ['^?uibDatepicker', 'uibYearpicker', '^?datepicker'],
 	    controller: 'UibYearpickerController',
 	    link: function(scope, element, attrs, ctrls) {
@@ -31639,7 +31824,7 @@
 	      dateFormat = datepickerPopupConfig.html5Types[attrs.type];
 	      isHtml5DateInput = true;
 	    } else {
-	      dateFormat = attrs.datepickerPopup || datepickerPopupConfig.datepickerPopup;
+	      dateFormat = attrs.datepickerPopup || attrs.uibDatepickerPopup || datepickerPopupConfig.datepickerPopup;
 	      attrs.$observe('uibDatepickerPopup', function(value, oldValue) {
 	          var newDateFormat = value || datepickerPopupConfig.datepickerPopup;
 	          // Invalidate the $modelValue to ensure that formatters re-run
@@ -32129,7 +32314,7 @@
 	  var focusElement = function() {
 	    self.element[0].focus();
 	  };
-	  
+
 	  $scope.$on('uib:datepicker.focus', focusElement);
 
 	  $scope.keydown = function(evt) {
@@ -32421,7 +32606,7 @@
 	        if (!angular.isNumber(self.selectedOption)) {
 	          self.selectedOption = 0;
 	        } else {
-	          self.selectedOption = (self.selectedOption === elems.length -1 ?
+	          self.selectedOption = (self.selectedOption === elems.length - 1 ?
 	            self.selectedOption :
 	            self.selectedOption + 1);
 	        }
@@ -32836,7 +33021,7 @@
 	    restrict: 'AC',
 	    require: '?^dropdown',
 	    link: function(scope, element, attrs, dropdownCtrl) {
-	      if (!dropdownCtrl) {
+	      if (!dropdownCtrl || angular.isDefined(attrs.dropdownNested)) {
 	        return;
 	      }
 
@@ -32941,7 +33126,6 @@
 	    }
 	  };
 	}]);
-
 
 	angular.module('ui.bootstrap.stackedMap', [])
 	/**
@@ -33177,7 +33361,7 @@
 
 
 	          $q.when(animationPromise).then(function() {
-	            var inputsWithAutofocus = element[0].querySelectorAll('[autofocus]');
+	            var inputWithAutofocus = element[0].querySelector('[autofocus]');
 	            /**
 	             * Auto-focusing of a freshly-opened modal element causes any child elements
 	             * with the autofocus attribute to lose focus. This is an issue on touch
@@ -33186,8 +33370,8 @@
 	             * the onscreen keyboard. Fixed by updated the focusing logic to only autofocus
 	             * the modal element if the modal does not contain an autofocus element.
 	             */
-	            if (inputsWithAutofocus.length) {
-	              inputsWithAutofocus[0].focus();
+	            if (inputWithAutofocus) {
+	              inputWithAutofocus.focus();
 	            } else {
 	              element[0].focus();
 	            }
@@ -33203,16 +33387,15 @@
 	    };
 	  }])
 
-	  .directive('uibModalAnimationClass', [
-	    function () {
-	      return {
-	        compile: function(tElement, tAttrs) {
-	          if (tAttrs.modalAnimation) {
-	            tElement.addClass(tAttrs.uibModalAnimationClass);
-	          }
+	  .directive('uibModalAnimationClass', function() {
+	    return {
+	      compile: function(tElement, tAttrs) {
+	        if (tAttrs.modalAnimation) {
+	          tElement.addClass(tAttrs.uibModalAnimationClass);
 	        }
-	      };
-	    }])
+	      }
+	    };
+	  })
 
 	  .directive('uibModalTransclude', function() {
 	    return {
@@ -33309,15 +33492,15 @@
 	      }
 
 	      function checkRemoveBackdrop() {
-	          //remove backdrop if no longer needed
-	          if (backdropDomEl && backdropIndex() == -1) {
-	            var backdropScopeRef = backdropScope;
-	            removeAfterAnimate(backdropDomEl, backdropScope, function() {
-	              backdropScopeRef = null;
-	            });
-	            backdropDomEl = undefined;
-	            backdropScope = undefined;
-	          }
+	        //remove backdrop if no longer needed
+	        if (backdropDomEl && backdropIndex() == -1) {
+	          var backdropScopeRef = backdropScope;
+	          removeAfterAnimate(backdropDomEl, backdropScope, function() {
+	            backdropScopeRef = null;
+	          });
+	          backdropDomEl = undefined;
+	          backdropScope = undefined;
+	        }
 	      }
 
 	      function removeAfterAnimate(domEl, scope, done) {
@@ -33369,7 +33552,7 @@
 
 	        var modal = openedWindows.top();
 	        if (modal && modal.value.keyboard) {
-	          switch (evt.which){
+	          switch (evt.which) {
 	            case 27: {
 	              evt.preventDefault();
 	              $rootScope.$apply(function() {
@@ -33456,7 +33639,7 @@
 	      };
 
 	      function broadcastClosing(modalWindow, resultOrReason, closing) {
-	          return !modalWindow.value.modalScope.$broadcast('modal.closing', resultOrReason, closing).defaultPrevented;
+	        return !modalWindow.value.modalScope.$broadcast('modal.closing', resultOrReason, closing).defaultPrevented;
 	      }
 
 	      $modalStack.close = function(modalInstance, result) {
@@ -33534,7 +33717,7 @@
 	      };
 
 	      $modalStack.loadFocusElementList = function(modalWindow) {
-	        if (focusableElementList === undefined || !focusableElementList.length0) {
+	        if (focusableElementList === undefined || !focusableElementList.length) {
 	          if (modalWindow) {
 	            var modalDomE1 = modalWindow.value.modalDomEl;
 	            if (modalDomE1 && modalDomE1.length) {
@@ -33554,8 +33737,8 @@
 	        backdrop: true, //can also be false or 'static'
 	        keyboard: true
 	      },
-	      $get: ['$injector', '$rootScope', '$q', '$templateRequest', '$controller', '$uibModalStack',
-	        function ($injector, $rootScope, $q, $templateRequest, $controller, $modalStack) {
+	      $get: ['$injector', '$rootScope', '$q', '$templateRequest', '$controller', '$uibModalStack', '$modalSuppressWarning', '$log',
+	        function ($injector, $rootScope, $q, $templateRequest, $controller, $modalStack, $modalSuppressWarning, $log) {
 	          var $modal = {};
 
 	          function getTemplatePromise(options) {
@@ -33582,8 +33765,7 @@
 	            return promiseChain;
 	          };
 
-	          $modal.open = function (modalOptions) {
-
+	          $modal.open = function(modalOptions) {
 	            var modalResultDeferred = $q.defer();
 	            var modalOpenedDeferred = $q.defer();
 	            var modalRenderDeferred = $q.defer();
@@ -33613,13 +33795,17 @@
 	            var templateAndResolvePromise =
 	              $q.all([getTemplatePromise(modalOptions)].concat(getResolvePromises(modalOptions.resolve)));
 
+	            function resolveWithTemplate() {
+	              return templateAndResolvePromise;
+	            }
+
 	            // Wait for the resolution of the existing promise chain.
 	            // Then switch to our own combined promise dependency (regardless of how the previous modal fared).
 	            // Then add to $modalStack and resolve opened.
 	            // Finally clean up the chain variable if no subsequent modal has overwritten it.
 	            var samePromise;
 	            samePromise = promiseChain = $q.all([promiseChain])
-	              .then(function() { return templateAndResolvePromise; }, function() { return templateAndResolvePromise; })
+	              .then(resolveWithTemplate, resolveWithTemplate)
 	              .then(function resolveSuccess(tplAndVars) {
 
 	                var modalScope = (modalOptions.scope || $rootScope).$new();
@@ -33638,7 +33824,16 @@
 	                //controllers
 	                if (modalOptions.controller) {
 	                  ctrlLocals.$scope = modalScope;
-	                  ctrlLocals.$modalInstance = modalInstance;
+	                  ctrlLocals.$uibModalInstance = modalInstance;
+	                  Object.defineProperty(ctrlLocals, '$modalInstance', {
+	                    get: function() {
+	                      if (!$modalSuppressWarning) {
+	                        $log.warn('$modalInstance is now deprecated. Use $uibModalInstance instead.');
+	                      }
+
+	                      return modalInstance;
+	                    }
+	                  });
 	                  angular.forEach(modalOptions.resolve, function(value, key) {
 	                    ctrlLocals[key] = tplAndVars[resolveIter++];
 	                  });
@@ -33684,7 +33879,8 @@
 	          };
 
 	          return $modal;
-	        }]
+	        }
+	      ]
 	    };
 
 	    return $modalProvider;
@@ -33825,7 +34021,7 @@
 
 
 	            $q.when(animationPromise).then(function() {
-	              var inputsWithAutofocus = element[0].querySelectorAll('[autofocus]');
+	              var inputWithAutofocus = element[0].querySelector('[autofocus]');
 	              /**
 	               * Auto-focusing of a freshly-opened modal element causes any child elements
 	               * with the autofocus attribute to lose focus. This is an issue on touch
@@ -33834,8 +34030,8 @@
 	               * the onscreen keyboard. Fixed by updated the focusing logic to only autofocus
 	               * the modal element if the modal does not contain an autofocus element.
 	               */
-	              if (inputsWithAutofocus.length) {
-	                inputsWithAutofocus[0].focus();
+	              if (inputWithAutofocus) {
+	                inputWithAutofocus.focus();
 	              } else {
 	                element[0].focus();
 	              }
@@ -34394,7 +34590,7 @@
 	    placement: 'top',
 	    animation: true,
 	    popupDelay: 0,
-	    popupCloseDelay: 500,
+	    popupCloseDelay: 0,
 	    useContentExp: false
 	  };
 
@@ -34502,7 +34698,7 @@
 	          'animation="animation" ' +
 	          'is-open="isOpen"' +
 	          'origin-scope="origScope" ' +
-	          'style="visibility: hidden; display: block;"' +
+	          'style="visibility: hidden; display: block; top: -9999px; left: -9999px;"' +
 	          '>' +
 	        '</div>';
 
@@ -34514,7 +34710,8 @@
 	            var tooltip;
 	            var tooltipLinkedScope;
 	            var transitionTimeout;
-	            var popupTimeout;
+	            var showTimeout;
+	            var hideTimeout;
 	            var positionTimeout;
 	            var appendToBody = angular.isDefined(options.appendToBody) ? options.appendToBody : false;
 	            var triggers = getTriggers(undefined);
@@ -34570,13 +34767,14 @@
 	                return;
 	              }
 
+	              cancelHide();
 	              prepareTooltip();
 
 	              if (ttScope.popupDelay) {
 	                // Do nothing if the tooltip was already scheduled to pop-up.
 	                // This happens if show is triggered multiple times before any hide is triggered.
-	                if (!popupTimeout) {
-	                  popupTimeout = $timeout(show, ttScope.popupDelay, false);
+	                if (!showTimeout) {
+	                  showTimeout = $timeout(show, ttScope.popupDelay, false);
 	                }
 	              } else {
 	                show();
@@ -34584,22 +34782,21 @@
 	            }
 
 	            function hideTooltipBind() {
-	              hide();
+	              cancelShow();
+
+	              if (ttScope.popupCloseDelay) {
+	                if (!hideTimeout) {
+	                  hideTimeout = $timeout(hide, ttScope.popupCloseDelay, false);
+	                }
+	              } else {
+	                hide();
+	              }
 	            }
 
 	            // Show the tooltip popup element.
 	            function show() {
-	              if (popupTimeout) {
-	                $timeout.cancel(popupTimeout);
-	                popupTimeout = null;
-	              }
-
-	              // If there is a pending remove transition, we must cancel it, lest the
-	              // tooltip be mysteriously removed.
-	              if (transitionTimeout) {
-	                $timeout.cancel(transitionTimeout);
-	                transitionTimeout = null;
-	              }
+	              cancelShow();
+	              cancelHide();
 
 	              // Don't show empty tooltips.
 	              if (!ttScope.content) {
@@ -34611,16 +34808,28 @@
 	              // And show the tooltip.
 	              ttScope.$evalAsync(function() {
 	                ttScope.isOpen = true;
-	                if (isOpenParse && angular.isFunction(isOpenParse.assign)) {
-	                  isOpenParse.assign(ttScope.origScope, ttScope.isOpen);
-	                }
-
+	                assignIsOpen(true);
 	                positionTooltip();
 	              });
 	            }
 
+	            function cancelShow() {
+	              if (showTimeout) {
+	                $timeout.cancel(showTimeout);
+	                showTimeout = null;
+	              }
+
+	              if (positionTimeout) {
+	                $timeout.cancel(positionTimeout);
+	                positionTimeout = null;
+	              }
+	            }
+
 	            // Hide the tooltip popup element.
 	            function hide() {
+	              cancelShow();
+	              cancelHide();
+
 	              if (!ttScope) {
 	                return;
 	              }
@@ -34628,27 +34837,29 @@
 	              // First things first: we don't show it anymore.
 	              ttScope.$evalAsync(function() {
 	                ttScope.isOpen = false;
-	                if (isOpenParse && angular.isFunction(isOpenParse.assign)) {
-	                  isOpenParse.assign(ttScope.origScope, ttScope.isOpen);
+	                assignIsOpen(false);
+	                // And now we remove it from the DOM. However, if we have animation, we
+	                // need to wait for it to expire beforehand.
+	                // FIXME: this is a placeholder for a port of the transitions library.
+	                // The fade transition in TWBS is 150ms.
+	                if (ttScope.animation) {
+	                  if (!transitionTimeout) {
+	                    transitionTimeout = $timeout(removeTooltip, 150, false);
+	                  }
+	                } else {
+	                  removeTooltip();
 	                }
 	              });
+	            }
 
-	              //if tooltip is going to be shown after delay, we must cancel this
-	              $timeout.cancel(popupTimeout);
-	              popupTimeout = null;
-
-	              $timeout.cancel(positionTimeout);
-	              positionTimeout = null;
-
-	              // And now we remove it from the DOM. However, if we have animation, we
-	              // need to wait for it to expire beforehand.
-	              // FIXME: this is a placeholder for a port of the transitions library.
-	              if (ttScope.animation) {
-	                if (!transitionTimeout) {
-	                  transitionTimeout = $timeout(removeTooltip, ttScope.popupCloseDelay);
-	                }
-	              } else {
-	                removeTooltip();
+	            function cancelHide() {
+	              if (hideTimeout) {
+	                $timeout.cancel(hideTimeout);
+	                hideTimeout = null;
+	              }
+	              if (transitionTimeout) {
+	                $timeout.cancel(transitionTimeout);
+	                transitionTimeout = null;
 	              }
 	            }
 
@@ -34706,6 +34917,12 @@
 	              ttScope.popupCloseDelay = !isNaN(closeDelay) ? closeDelay : options.popupCloseDelay;
 	            }
 
+	            function assignIsOpen(isOpen) {
+	              if (isOpenParse && angular.isFunction(isOpenParse.assign)) {
+	                isOpenParse.assign(scope, isOpen);
+	              }
+	            }
+
 	            ttScope.contentExp = function() {
 	              return ttScope.content;
 	            };
@@ -34714,9 +34931,8 @@
 	             * Observe the relevant attributes.
 	             */
 	            attrs.$observe('disabled', function(val) {
-	              if (popupTimeout && val) {
-	                $timeout.cancel(popupTimeout);
-	                popupTimeout = null;
+	              if (val) {
+	                cancelShow();
 	              }
 
 	              if (val && ttScope.isOpen) {
@@ -34727,7 +34943,7 @@
 	            if (isOpenParse) {
 	              scope.$watch(isOpenParse, function(val) {
 	                /*jshint -W018 */
-	                if (!val === ttScope.isOpen) {
+	                if (ttScope && !val === ttScope.isOpen) {
 	                  toggleTooltipBind();
 	                }
 	                /*jshint +W018 */
@@ -34860,11 +35076,11 @@
 
 	            // Make sure tooltip is destroyed and removed.
 	            scope.$on('$destroy', function onDestroyTooltip() {
-	              $timeout.cancel(transitionTimeout);
-	              $timeout.cancel(popupTimeout);
-	              $timeout.cancel(positionTimeout);
+	              cancelShow();
+	              cancelHide();
 	              unregisterTriggers();
 	              removeTooltip();
+	              openedTooltips.remove(ttScope);
 	              ttScope = null;
 	            });
 	          };
@@ -35346,9 +35562,8 @@
 	    });
 
 	    bar.recalculatePercentage = function() {
-	      bar.percent = +(100 * bar.value / bar.max).toFixed(2);
-
 	      var totalPercentage = self.bars.reduce(function(total, bar) {
+	        bar.percent = +(100 * bar.value / bar.max).toFixed(2);
 	        return total + bar.percent;
 	      }, 0);
 
@@ -35365,6 +35580,9 @@
 
 	  this.removeBar = function(bar) {
 	    this.bars.splice(this.bars.indexOf(bar), 1);
+	    this.bars.forEach(function (bar) {
+	      bar.recalculatePercentage();
+	    });
 	  };
 
 	  $scope.$watch('max', function(max) {
@@ -36573,419 +36791,431 @@
 	    };
 	  }])
 
-	  .directive('uibTypeahead', ['$compile', '$parse', '$q', '$timeout', '$document', '$window', '$rootScope', '$uibPosition', 'uibTypeaheadParser',
-	    function($compile, $parse, $q, $timeout, $document, $window, $rootScope, $position, typeaheadParser) {
+	  .controller('UibTypeaheadController', ['$scope', '$element', '$attrs', '$compile', '$parse', '$q', '$timeout', '$document', '$window', '$rootScope', '$uibPosition', 'uibTypeaheadParser',
+	    function(originalScope, element, attrs, $compile, $parse, $q, $timeout, $document, $window, $rootScope, $position, typeaheadParser) {
 	    var HOT_KEYS = [9, 13, 27, 38, 40];
 	    var eventDebounceTime = 200;
+	    var modelCtrl, ngModelOptions;
+	    //SUPPORTED ATTRIBUTES (OPTIONS)
 
-	    return {
-	      require: ['ngModel', '^?ngModelOptions'],
-	      link: function(originalScope, element, attrs, ctrls) {
-	        var modelCtrl = ctrls[0];
-	        var ngModelOptions = ctrls[1];
-	        //SUPPORTED ATTRIBUTES (OPTIONS)
+	    //minimal no of characters that needs to be entered before typeahead kicks-in
+	    var minLength = originalScope.$eval(attrs.typeaheadMinLength);
+	    if (!minLength && minLength !== 0) {
+	      minLength = 1;
+	    }
 
-	        //minimal no of characters that needs to be entered before typeahead kicks-in
-	        var minLength = originalScope.$eval(attrs.typeaheadMinLength);
-	        if (!minLength && minLength !== 0) {
-	          minLength = 1;
-	        }
+	    //minimal wait time after last character typed before typeahead kicks-in
+	    var waitTime = originalScope.$eval(attrs.typeaheadWaitMs) || 0;
 
-	        //minimal wait time after last character typed before typeahead kicks-in
-	        var waitTime = originalScope.$eval(attrs.typeaheadWaitMs) || 0;
+	    //should it restrict model values to the ones selected from the popup only?
+	    var isEditable = originalScope.$eval(attrs.typeaheadEditable) !== false;
 
-	        //should it restrict model values to the ones selected from the popup only?
-	        var isEditable = originalScope.$eval(attrs.typeaheadEditable) !== false;
+	    //binding to a variable that indicates if matches are being retrieved asynchronously
+	    var isLoadingSetter = $parse(attrs.typeaheadLoading).assign || angular.noop;
 
-	        //binding to a variable that indicates if matches are being retrieved asynchronously
-	        var isLoadingSetter = $parse(attrs.typeaheadLoading).assign || angular.noop;
+	    //a callback executed when a match is selected
+	    var onSelectCallback = $parse(attrs.typeaheadOnSelect);
 
-	        //a callback executed when a match is selected
-	        var onSelectCallback = $parse(attrs.typeaheadOnSelect);
+	    //should it select highlighted popup value when losing focus?
+	    var isSelectOnBlur = angular.isDefined(attrs.typeaheadSelectOnBlur) ? originalScope.$eval(attrs.typeaheadSelectOnBlur) : false;
 
-	        //should it select highlighted popup value when losing focus?
-	        var isSelectOnBlur = angular.isDefined(attrs.typeaheadSelectOnBlur) ? originalScope.$eval(attrs.typeaheadSelectOnBlur) : false;
+	    //binding to a variable that indicates if there were no results after the query is completed
+	    var isNoResultsSetter = $parse(attrs.typeaheadNoResults).assign || angular.noop;
 
-	        //binding to a variable that indicates if there were no results after the query is completed
-	        var isNoResultsSetter = $parse(attrs.typeaheadNoResults).assign || angular.noop;
+	    var inputFormatter = attrs.typeaheadInputFormatter ? $parse(attrs.typeaheadInputFormatter) : undefined;
 
-	        var inputFormatter = attrs.typeaheadInputFormatter ? $parse(attrs.typeaheadInputFormatter) : undefined;
+	    var appendToBody =  attrs.typeaheadAppendToBody ? originalScope.$eval(attrs.typeaheadAppendToBody) : false;
 
-	        var appendToBody =  attrs.typeaheadAppendToBody ? originalScope.$eval(attrs.typeaheadAppendToBody) : false;
+	    var appendToElementId =  attrs.typeaheadAppendToElementId || false;
 
-	        var appendToElementId =  attrs.typeaheadAppendToElementId || false;
+	    var focusFirst = originalScope.$eval(attrs.typeaheadFocusFirst) !== false;
 
-	        var focusFirst = originalScope.$eval(attrs.typeaheadFocusFirst) !== false;
+	    //If input matches an item of the list exactly, select it automatically
+	    var selectOnExact = attrs.typeaheadSelectOnExact ? originalScope.$eval(attrs.typeaheadSelectOnExact) : false;
 
-	        //If input matches an item of the list exactly, select it automatically
-	        var selectOnExact = attrs.typeaheadSelectOnExact ? originalScope.$eval(attrs.typeaheadSelectOnExact) : false;
+	    //INTERNAL VARIABLES
 
-	        //INTERNAL VARIABLES
+	    //model setter executed upon match selection
+	    var parsedModel = $parse(attrs.ngModel);
+	    var invokeModelSetter = $parse(attrs.ngModel + '($$$p)');
+	    var $setModelValue = function(scope, newValue) {
+	      if (angular.isFunction(parsedModel(originalScope)) &&
+	        ngModelOptions && ngModelOptions.$options && ngModelOptions.$options.getterSetter) {
+	        return invokeModelSetter(scope, {$$$p: newValue});
+	      } else {
+	        return parsedModel.assign(scope, newValue);
+	      }
+	    };
 
-	        //model setter executed upon match selection
-	        var parsedModel = $parse(attrs.ngModel);
-	        var invokeModelSetter = $parse(attrs.ngModel + '($$$p)');
-	        var $setModelValue = function(scope, newValue) {
-	          if (angular.isFunction(parsedModel(originalScope)) &&
-	            ngModelOptions && ngModelOptions.$options && ngModelOptions.$options.getterSetter) {
-	            return invokeModelSetter(scope, {$$$p: newValue});
-	          } else {
-	            return parsedModel.assign(scope, newValue);
-	          }
-	        };
+	    //expressions used by typeahead
+	    var parserResult = typeaheadParser.parse(attrs.uibTypeahead);
 
-	        //expressions used by typeahead
-	        var parserResult = typeaheadParser.parse(attrs.uibTypeahead);
+	    var hasFocus;
 
-	        var hasFocus;
+	    //Used to avoid bug in iOS webview where iOS keyboard does not fire
+	    //mousedown & mouseup events
+	    //Issue #3699
+	    var selected;
 
-	        //Used to avoid bug in iOS webview where iOS keyboard does not fire
-	        //mousedown & mouseup events
-	        //Issue #3699
-	        var selected;
+	    //create a child scope for the typeahead directive so we are not polluting original scope
+	    //with typeahead-specific data (matches, query etc.)
+	    var scope = originalScope.$new();
+	    var offDestroy = originalScope.$on('$destroy', function() {
+	      scope.$destroy();
+	    });
+	    scope.$on('$destroy', offDestroy);
 
-	        //create a child scope for the typeahead directive so we are not polluting original scope
-	        //with typeahead-specific data (matches, query etc.)
-	        var scope = originalScope.$new();
-	        var offDestroy = originalScope.$on('$destroy', function() {
-				    scope.$destroy();
-	        });
-	        scope.$on('$destroy', offDestroy);
+	    // WAI-ARIA
+	    var popupId = 'typeahead-' + scope.$id + '-' + Math.floor(Math.random() * 10000);
+	    element.attr({
+	      'aria-autocomplete': 'list',
+	      'aria-expanded': false,
+	      'aria-owns': popupId
+	    });
 
-	        // WAI-ARIA
-	        var popupId = 'typeahead-' + scope.$id + '-' + Math.floor(Math.random() * 10000);
-	        element.attr({
-	          'aria-autocomplete': 'list',
-	          'aria-expanded': false,
-	          'aria-owns': popupId
-	        });
+	    //pop-up element used to display matches
+	    var popUpEl = angular.element('<div uib-typeahead-popup></div>');
+	    popUpEl.attr({
+	      id: popupId,
+	      matches: 'matches',
+	      active: 'activeIdx',
+	      select: 'select(activeIdx)',
+	      'move-in-progress': 'moveInProgress',
+	      query: 'query',
+	      position: 'position'
+	    });
+	    //custom item template
+	    if (angular.isDefined(attrs.typeaheadTemplateUrl)) {
+	      popUpEl.attr('template-url', attrs.typeaheadTemplateUrl);
+	    }
 
-	        //pop-up element used to display matches
-	        var popUpEl = angular.element('<div uib-typeahead-popup></div>');
-	        popUpEl.attr({
-	          id: popupId,
-	          matches: 'matches',
-	          active: 'activeIdx',
-	          select: 'select(activeIdx)',
-	          'move-in-progress': 'moveInProgress',
-	          query: 'query',
-	          position: 'position'
-	        });
-	        //custom item template
-	        if (angular.isDefined(attrs.typeaheadTemplateUrl)) {
-	          popUpEl.attr('template-url', attrs.typeaheadTemplateUrl);
-	        }
+	    if (angular.isDefined(attrs.typeaheadPopupTemplateUrl)) {
+	      popUpEl.attr('popup-template-url', attrs.typeaheadPopupTemplateUrl);
+	    }
 
-	        if (angular.isDefined(attrs.typeaheadPopupTemplateUrl)) {
-	          popUpEl.attr('popup-template-url', attrs.typeaheadPopupTemplateUrl);
-	        }
+	    var resetMatches = function() {
+	      scope.matches = [];
+	      scope.activeIdx = -1;
+	      element.attr('aria-expanded', false);
+	    };
 
-	        var resetMatches = function() {
-	          scope.matches = [];
-	          scope.activeIdx = -1;
-	          element.attr('aria-expanded', false);
-	        };
+	    var getMatchId = function(index) {
+	      return popupId + '-option-' + index;
+	    };
 
-	        var getMatchId = function(index) {
-	          return popupId + '-option-' + index;
-	        };
+	    // Indicate that the specified match is the active (pre-selected) item in the list owned by this typeahead.
+	    // This attribute is added or removed automatically when the `activeIdx` changes.
+	    scope.$watch('activeIdx', function(index) {
+	      if (index < 0) {
+	        element.removeAttr('aria-activedescendant');
+	      } else {
+	        element.attr('aria-activedescendant', getMatchId(index));
+	      }
+	    });
 
-	        // Indicate that the specified match is the active (pre-selected) item in the list owned by this typeahead.
-	        // This attribute is added or removed automatically when the `activeIdx` changes.
-	        scope.$watch('activeIdx', function(index) {
-	          if (index < 0) {
-	            element.removeAttr('aria-activedescendant');
-	          } else {
-	            element.attr('aria-activedescendant', getMatchId(index));
-	          }
-	        });
+	    var inputIsExactMatch = function(inputValue, index) {
+	      if (scope.matches.length > index && inputValue) {
+	        return inputValue.toUpperCase() === scope.matches[index].label.toUpperCase();
+	      }
 
-	        var inputIsExactMatch = function(inputValue, index) {
-	          if (scope.matches.length > index && inputValue) {
-	            return inputValue.toUpperCase() === scope.matches[index].label.toUpperCase();
-	          }
+	      return false;
+	    };
 
-	          return false;
-	        };
+	    var getMatchesAsync = function(inputValue) {
+	      var locals = {$viewValue: inputValue};
+	      isLoadingSetter(originalScope, true);
+	      isNoResultsSetter(originalScope, false);
+	      $q.when(parserResult.source(originalScope, locals)).then(function(matches) {
+	        //it might happen that several async queries were in progress if a user were typing fast
+	        //but we are interested only in responses that correspond to the current view value
+	        var onCurrentRequest = (inputValue === modelCtrl.$viewValue);
+	        if (onCurrentRequest && hasFocus) {
+	          if (matches && matches.length > 0) {
+	            scope.activeIdx = focusFirst ? 0 : -1;
+	            isNoResultsSetter(originalScope, false);
+	            scope.matches.length = 0;
 
-	        var getMatchesAsync = function(inputValue) {
-	          var locals = {$viewValue: inputValue};
-	          isLoadingSetter(originalScope, true);
-	          isNoResultsSetter(originalScope, false);
-	          $q.when(parserResult.source(originalScope, locals)).then(function(matches) {
-	            //it might happen that several async queries were in progress if a user were typing fast
-	            //but we are interested only in responses that correspond to the current view value
-	            var onCurrentRequest = (inputValue === modelCtrl.$viewValue);
-	            if (onCurrentRequest && hasFocus) {
-	              if (matches && matches.length > 0) {
-	                scope.activeIdx = focusFirst ? 0 : -1;
-	                isNoResultsSetter(originalScope, false);
-	                scope.matches.length = 0;
-
-	                //transform labels
-	                for (var i = 0; i < matches.length; i++) {
-	                  locals[parserResult.itemName] = matches[i];
-	                  scope.matches.push({
-	                    id: getMatchId(i),
-	                    label: parserResult.viewMapper(scope, locals),
-	                    model: matches[i]
-	                  });
-	                }
-
-	                scope.query = inputValue;
-	                //position pop-up with matches - we need to re-calculate its position each time we are opening a window
-	                //with matches as a pop-up might be absolute-positioned and position of an input might have changed on a page
-	                //due to other elements being rendered
-	                recalculatePosition();
-
-	                element.attr('aria-expanded', true);
-
-	                //Select the single remaining option if user input matches
-	                if (selectOnExact && scope.matches.length === 1 && inputIsExactMatch(inputValue, 0)) {
-	                  scope.select(0);
-	                }
-	              } else {
-	                resetMatches();
-	                isNoResultsSetter(originalScope, true);
-	              }
+	            //transform labels
+	            for (var i = 0; i < matches.length; i++) {
+	              locals[parserResult.itemName] = matches[i];
+	              scope.matches.push({
+	                id: getMatchId(i),
+	                label: parserResult.viewMapper(scope, locals),
+	                model: matches[i]
+	              });
 	            }
-	            if (onCurrentRequest) {
-	              isLoadingSetter(originalScope, false);
+
+	            scope.query = inputValue;
+	            //position pop-up with matches - we need to re-calculate its position each time we are opening a window
+	            //with matches as a pop-up might be absolute-positioned and position of an input might have changed on a page
+	            //due to other elements being rendered
+	            recalculatePosition();
+
+	            element.attr('aria-expanded', true);
+
+	            //Select the single remaining option if user input matches
+	            if (selectOnExact && scope.matches.length === 1 && inputIsExactMatch(inputValue, 0)) {
+	              scope.select(0);
 	            }
-	          }, function() {
+	          } else {
 	            resetMatches();
-	            isLoadingSetter(originalScope, false);
 	            isNoResultsSetter(originalScope, true);
-	          });
-	        };
+	          }
+	        }
+	        if (onCurrentRequest) {
+	          isLoadingSetter(originalScope, false);
+	        }
+	      }, function() {
+	        resetMatches();
+	        isLoadingSetter(originalScope, false);
+	        isNoResultsSetter(originalScope, true);
+	      });
+	    };
 
-	        // bind events only if appendToBody params exist - performance feature
-	        if (appendToBody) {
-	          angular.element($window).bind('resize', fireRecalculating);
-	          $document.find('body').bind('scroll', fireRecalculating);
+	    // bind events only if appendToBody params exist - performance feature
+	    if (appendToBody) {
+	      angular.element($window).bind('resize', fireRecalculating);
+	      $document.find('body').bind('scroll', fireRecalculating);
+	    }
+
+	    // Declare the timeout promise var outside the function scope so that stacked calls can be cancelled later
+	    var timeoutEventPromise;
+
+	    // Default progress type
+	    scope.moveInProgress = false;
+
+	    function fireRecalculating() {
+	      if (!scope.moveInProgress) {
+	        scope.moveInProgress = true;
+	        scope.$digest();
+	      }
+
+	      // Cancel previous timeout
+	      if (timeoutEventPromise) {
+	        $timeout.cancel(timeoutEventPromise);
+	      }
+
+	      // Debounced executing recalculate after events fired
+	      timeoutEventPromise = $timeout(function() {
+	        // if popup is visible
+	        if (scope.matches.length) {
+	          recalculatePosition();
 	        }
 
-	        // Declare the timeout promise var outside the function scope so that stacked calls can be cancelled later
-	        var timeoutEventPromise;
-
-	        // Default progress type
 	        scope.moveInProgress = false;
+	      }, eventDebounceTime);
+	    }
 
-	        function fireRecalculating() {
-	          if (!scope.moveInProgress) {
-	            scope.moveInProgress = true;
-	            scope.$digest();
-	          }
+	    // recalculate actual position and set new values to scope
+	    // after digest loop is popup in right position
+	    function recalculatePosition() {
+	      scope.position = appendToBody ? $position.offset(element) : $position.position(element);
+	      scope.position.top += element.prop('offsetHeight');
+	    }
 
-	          // Cancel previous timeout
-	          if (timeoutEventPromise) {
-	            $timeout.cancel(timeoutEventPromise);
-	          }
+	    //we need to propagate user's query so we can higlight matches
+	    scope.query = undefined;
 
-	          // Debounced executing recalculate after events fired
-	          timeoutEventPromise = $timeout(function() {
-	            // if popup is visible
-	            if (scope.matches.length) {
-	              recalculatePosition();
-	            }
+	    //Declare the timeout promise var outside the function scope so that stacked calls can be cancelled later
+	    var timeoutPromise;
 
-	            scope.moveInProgress = false;
-	          }, eventDebounceTime);
-	        }
+	    var scheduleSearchWithTimeout = function(inputValue) {
+	      timeoutPromise = $timeout(function() {
+	        getMatchesAsync(inputValue);
+	      }, waitTime);
+	    };
 
-	        // recalculate actual position and set new values to scope
-	        // after digest loop is popup in right position
-	        function recalculatePosition() {
-	          scope.position = appendToBody ? $position.offset(element) : $position.position(element);
-	          scope.position.top += element.prop('offsetHeight');
-	        }
+	    var cancelPreviousTimeout = function() {
+	      if (timeoutPromise) {
+	        $timeout.cancel(timeoutPromise);
+	      }
+	    };
+
+	    resetMatches();
+
+	    scope.select = function(activeIdx) {
+	      //called from within the $digest() cycle
+	      var locals = {};
+	      var model, item;
+
+	      selected = true;
+	      locals[parserResult.itemName] = item = scope.matches[activeIdx].model;
+	      model = parserResult.modelMapper(originalScope, locals);
+	      $setModelValue(originalScope, model);
+	      modelCtrl.$setValidity('editable', true);
+	      modelCtrl.$setValidity('parse', true);
+
+	      onSelectCallback(originalScope, {
+	        $item: item,
+	        $model: model,
+	        $label: parserResult.viewMapper(originalScope, locals)
+	      });
+
+	      resetMatches();
+
+	      //return focus to the input element if a match was selected via a mouse click event
+	      // use timeout to avoid $rootScope:inprog error
+	      if (scope.$eval(attrs.typeaheadFocusOnSelect) !== false) {
+	        $timeout(function() { element[0].focus(); }, 0, false);
+	      }
+	    };
+
+	    //bind keyboard events: arrows up(38) / down(40), enter(13) and tab(9), esc(27)
+	    element.bind('keydown', function(evt) {
+	      //typeahead is open and an "interesting" key was pressed
+	      if (scope.matches.length === 0 || HOT_KEYS.indexOf(evt.which) === -1) {
+	        return;
+	      }
+
+	      // if there's nothing selected (i.e. focusFirst) and enter or tab is hit, clear the results
+	      if (scope.activeIdx === -1 && (evt.which === 9 || evt.which === 13)) {
+	        resetMatches();
+	        scope.$digest();
+	        return;
+	      }
+
+	      evt.preventDefault();
+
+	      if (evt.which === 40) {
+	        scope.activeIdx = (scope.activeIdx + 1) % scope.matches.length;
+	        scope.$digest();
+	      } else if (evt.which === 38) {
+	        scope.activeIdx = (scope.activeIdx > 0 ? scope.activeIdx : scope.matches.length) - 1;
+	        scope.$digest();
+	      } else if (evt.which === 13 || evt.which === 9) {
+	        scope.$apply(function () {
+	          scope.select(scope.activeIdx);
+	        });
+	      } else if (evt.which === 27) {
+	        evt.stopPropagation();
 
 	        resetMatches();
+	        scope.$digest();
+	      }
+	    });
 
-	        //we need to propagate user's query so we can higlight matches
-	        scope.query = undefined;
-
-	        //Declare the timeout promise var outside the function scope so that stacked calls can be cancelled later
-	        var timeoutPromise;
-
-	        var scheduleSearchWithTimeout = function(inputValue) {
-	          timeoutPromise = $timeout(function() {
-	            getMatchesAsync(inputValue);
-	          }, waitTime);
-	        };
-
-	        var cancelPreviousTimeout = function() {
-	          if (timeoutPromise) {
-	            $timeout.cancel(timeoutPromise);
-	          }
-	        };
-
-	        //plug into $parsers pipeline to open a typeahead on view changes initiated from DOM
-	        //$parsers kick-in on all the changes coming from the view as well as manually triggered by $setViewValue
-	        modelCtrl.$parsers.unshift(function(inputValue) {
-	          hasFocus = true;
-
-	          if (minLength === 0 || inputValue && inputValue.length >= minLength) {
-	            if (waitTime > 0) {
-	              cancelPreviousTimeout();
-	              scheduleSearchWithTimeout(inputValue);
-	            } else {
-	              getMatchesAsync(inputValue);
-	            }
-	          } else {
-	            isLoadingSetter(originalScope, false);
-	            cancelPreviousTimeout();
-	            resetMatches();
-	          }
-
-	          if (isEditable) {
-	            return inputValue;
-	          } else {
-	            if (!inputValue) {
-	              // Reset in case user had typed something previously.
-	              modelCtrl.$setValidity('editable', true);
-	              return null;
-	            } else {
-	              modelCtrl.$setValidity('editable', false);
-	              return undefined;
-	            }
-	          }
+	    element.bind('blur', function() {
+	      if (isSelectOnBlur && scope.matches.length && scope.activeIdx !== -1 && !selected) {
+	        selected = true;
+	        scope.$apply(function() {
+	          scope.select(scope.activeIdx);
 	        });
+	      }
+	      hasFocus = false;
+	      selected = false;
+	    });
 
-	        modelCtrl.$formatters.push(function(modelValue) {
-	          var candidateViewValue, emptyViewValue;
-	          var locals = {};
-
-	          // The validity may be set to false via $parsers (see above) if
-	          // the model is restricted to selected values. If the model
-	          // is set manually it is considered to be valid.
-	          if (!isEditable) {
-	            modelCtrl.$setValidity('editable', true);
-	          }
-
-	          if (inputFormatter) {
-	            locals.$model = modelValue;
-	            return inputFormatter(originalScope, locals);
-	          } else {
-	            //it might happen that we don't have enough info to properly render input value
-	            //we need to check for this situation and simply return model value if we can't apply custom formatting
-	            locals[parserResult.itemName] = modelValue;
-	            candidateViewValue = parserResult.viewMapper(originalScope, locals);
-	            locals[parserResult.itemName] = undefined;
-	            emptyViewValue = parserResult.viewMapper(originalScope, locals);
-
-	            return candidateViewValue !== emptyViewValue ? candidateViewValue : modelValue;
-	          }
-	        });
-
-	        scope.select = function(activeIdx) {
-	          //called from within the $digest() cycle
-	          var locals = {};
-	          var model, item;
-
-	          selected = true;
-	          locals[parserResult.itemName] = item = scope.matches[activeIdx].model;
-	          model = parserResult.modelMapper(originalScope, locals);
-	          $setModelValue(originalScope, model);
-	          modelCtrl.$setValidity('editable', true);
-	          modelCtrl.$setValidity('parse', true);
-
-	          onSelectCallback(originalScope, {
-	            $item: item,
-	            $model: model,
-	            $label: parserResult.viewMapper(originalScope, locals)
-	          });
-
-	          resetMatches();
-
-	          //return focus to the input element if a match was selected via a mouse click event
-	          // use timeout to avoid $rootScope:inprog error
-	          if (scope.$eval(attrs.typeaheadFocusOnSelect) !== false) {
-	            $timeout(function() { element[0].focus(); }, 0, false);
-	          }
-	        };
-
-	        //bind keyboard events: arrows up(38) / down(40), enter(13) and tab(9), esc(27)
-	        element.bind('keydown', function(evt) {
-	          //typeahead is open and an "interesting" key was pressed
-	          if (scope.matches.length === 0 || HOT_KEYS.indexOf(evt.which) === -1) {
-	            return;
-	          }
-
-	          // if there's nothing selected (i.e. focusFirst) and enter or tab is hit, clear the results
-	          if (scope.activeIdx === -1 && (evt.which === 9 || evt.which === 13)) {
-	            resetMatches();
-	            scope.$digest();
-	            return;
-	          }
-
-	          evt.preventDefault();
-
-	          if (evt.which === 40) {
-	            scope.activeIdx = (scope.activeIdx + 1) % scope.matches.length;
-	            scope.$digest();
-	          } else if (evt.which === 38) {
-	            scope.activeIdx = (scope.activeIdx > 0 ? scope.activeIdx : scope.matches.length) - 1;
-	            scope.$digest();
-	          } else if (evt.which === 13 || evt.which === 9) {
-	            scope.$apply(function () {
-	              scope.select(scope.activeIdx);
-	            });
-	          } else if (evt.which === 27) {
-	            evt.stopPropagation();
-
-	            resetMatches();
-	            scope.$digest();
-	          }
-	        });
-
-	        element.bind('blur', function() {
-	          if (isSelectOnBlur && scope.matches.length && scope.activeIdx !== -1 && !selected) {
-	            selected = true;
-	            scope.$apply(function() {
-	              scope.select(scope.activeIdx);
-	            });
-	          }
-	          hasFocus = false;
-	          selected = false;
-	        });
-
-	        // Keep reference to click handler to unbind it.
-	        var dismissClickHandler = function(evt) {
-	          // Issue #3973
-	          // Firefox treats right click as a click on document
-	          if (element[0] !== evt.target && evt.which !== 3 && scope.matches.length !== 0) {
-	            resetMatches();
-	            if (!$rootScope.$$phase) {
-	              scope.$digest();
-	            }
-	          }
-	        };
-
-	        $document.bind('click', dismissClickHandler);
-
-	        originalScope.$on('$destroy', function() {
-	          $document.unbind('click', dismissClickHandler);
-	          if (appendToBody || appendToElementId) {
-	            $popup.remove();
-	          }
-	          // Prevent jQuery cache memory leak
-	          popUpEl.remove();
-	        });
-
-	        var $popup = $compile(popUpEl)(scope);
-
-	        if (appendToBody) {
-	          $document.find('body').append($popup);
-	        } else if (appendToElementId !== false) {
-	          angular.element($document[0].getElementById(appendToElementId)).append($popup);
-	        } else {
-	          element.after($popup);
+	    // Keep reference to click handler to unbind it.
+	    var dismissClickHandler = function(evt) {
+	      // Issue #3973
+	      // Firefox treats right click as a click on document
+	      if (element[0] !== evt.target && evt.which !== 3 && scope.matches.length !== 0) {
+	        resetMatches();
+	        if (!$rootScope.$$phase) {
+	          scope.$digest();
 	        }
 	      }
 	    };
 
+	    $document.bind('click', dismissClickHandler);
+
+	    originalScope.$on('$destroy', function() {
+	      $document.unbind('click', dismissClickHandler);
+	      if (appendToBody || appendToElementId) {
+	        $popup.remove();
+	      }
+
+	      if (appendToBody) {
+	        angular.element($window).unbind('resize', fireRecalculating);
+	        $document.find('body').unbind('scroll', fireRecalculating);
+	      }
+	      // Prevent jQuery cache memory leak
+	      popUpEl.remove();
+	    });
+
+	    var $popup = $compile(popUpEl)(scope);
+
+	    if (appendToBody) {
+	      $document.find('body').append($popup);
+	    } else if (appendToElementId !== false) {
+	      angular.element($document[0].getElementById(appendToElementId)).append($popup);
+	    } else {
+	      element.after($popup);
+	    }
+
+	    this.init = function(_modelCtrl, _ngModelOptions) {
+	      modelCtrl = _modelCtrl;
+	      ngModelOptions = _ngModelOptions;
+
+	      //plug into $parsers pipeline to open a typeahead on view changes initiated from DOM
+	      //$parsers kick-in on all the changes coming from the view as well as manually triggered by $setViewValue
+	      modelCtrl.$parsers.unshift(function(inputValue) {
+	        hasFocus = true;
+
+	        if (minLength === 0 || inputValue && inputValue.length >= minLength) {
+	          if (waitTime > 0) {
+	            cancelPreviousTimeout();
+	            scheduleSearchWithTimeout(inputValue);
+	          } else {
+	            getMatchesAsync(inputValue);
+	          }
+	        } else {
+	          isLoadingSetter(originalScope, false);
+	          cancelPreviousTimeout();
+	          resetMatches();
+	        }
+
+	        if (isEditable) {
+	          return inputValue;
+	        } else {
+	          if (!inputValue) {
+	            // Reset in case user had typed something previously.
+	            modelCtrl.$setValidity('editable', true);
+	            return null;
+	          } else {
+	            modelCtrl.$setValidity('editable', false);
+	            return undefined;
+	          }
+	        }
+	      });
+
+	      modelCtrl.$formatters.push(function(modelValue) {
+	        var candidateViewValue, emptyViewValue;
+	        var locals = {};
+
+	        // The validity may be set to false via $parsers (see above) if
+	        // the model is restricted to selected values. If the model
+	        // is set manually it is considered to be valid.
+	        if (!isEditable) {
+	          modelCtrl.$setValidity('editable', true);
+	        }
+
+	        if (inputFormatter) {
+	          locals.$model = modelValue;
+	          return inputFormatter(originalScope, locals);
+	        } else {
+	          //it might happen that we don't have enough info to properly render input value
+	          //we need to check for this situation and simply return model value if we can't apply custom formatting
+	          locals[parserResult.itemName] = modelValue;
+	          candidateViewValue = parserResult.viewMapper(originalScope, locals);
+	          locals[parserResult.itemName] = undefined;
+	          emptyViewValue = parserResult.viewMapper(originalScope, locals);
+
+	          return candidateViewValue !== emptyViewValue ? candidateViewValue : modelValue;
+	        }
+	      });
+	    };
 	  }])
+
+	  .directive('uibTypeahead', function() {
+	    return {
+	      controller: 'UibTypeaheadController',
+	      require: ['ngModel', '^?ngModelOptions', 'uibTypeahead'],
+	      link: function(originalScope, element, attrs, ctrls) {
+	        ctrls[2].init(ctrls[0], ctrls[1]);
+	      }
+	    };
+	  })
 
 	  .directive('uibTypeaheadPopup', function() {
 	    return {
@@ -37477,6 +37707,11 @@
 	          if (appendToBody || appendToElementId) {
 	            $popup.remove();
 	          }
+
+	          if (appendToBody) {
+	            angular.element($window).unbind('resize', fireRecalculating);
+	            $document.find('body').unbind('scroll', fireRecalculating);
+	          }
 	          // Prevent jQuery cache memory leak
 	          popUpEl.remove();
 	        });
@@ -37794,18 +38029,6 @@
 	    "");
 	}]);
 
-	angular.module("template/tooltip/tooltip-html-unsafe-popup.html", []).run(["$templateCache", function($templateCache) {
-	  $templateCache.put("template/tooltip/tooltip-html-unsafe-popup.html",
-	    "<div class=\"tooltip\"\n" +
-	    "  tooltip-animation-class=\"fade\"\n" +
-	    "  tooltip-classes\n" +
-	    "  ng-class=\"{ in: isOpen() }\">\n" +
-	    "  <div class=\"tooltip-arrow\"></div>\n" +
-	    "  <div class=\"tooltip-inner\" bind-html-unsafe=\"content\"></div>\n" +
-	    "</div>\n" +
-	    "");
-	}]);
-
 	angular.module("template/tooltip/tooltip-popup.html", []).run(["$templateCache", function($templateCache) {
 	  $templateCache.put("template/tooltip/tooltip-popup.html",
 	    "<div\n" +
@@ -37991,7 +38214,7 @@
 /***/ function(module, exports) {
 
 	/**
-	 * @license AngularJS v1.4.6
+	 * @license AngularJS v1.4.8
 	 * (c) 2010-2015 Google, Inc. http://angularjs.org
 	 * License: MIT
 	 */
@@ -39193,22 +39416,12 @@
 	    $scope.nflPath = false;
 	    $scope.aboutPath = false;
 	    $scope.cbbPath = false;
-	    $scope.buttonText = 'Loading Games...';
+	    $scope.buttonText = 'Get Results';
 	    $scope.dropdownLists = __webpack_require__(37);
 
-	      $http.get('/api' + $scope.path)
-	      .then(function(res) {
-	        //success
-	        $scope.games = res.data;
-	        $scope.buttonText = 'Get Results';
-	      }, function(res) {
-	        //error
-	        $scope.errors.push({
-	          msg: 'could not retrieve games from server'
-	        });
-	      });
 
-	    $scope.rangeDisableCheck = function (listName) {
+
+	    $scope.rangeDisableCheck = function(listName) {
 
 	      if (!!$scope.selected[listName]) {
 	        $scope.rangeDisabled[listName] = true;
@@ -39219,9 +39432,10 @@
 
 	    };
 
-	    $scope.equalsDisableCheck = function (listName, lessListName, greaterListName) {
+	    $scope.equalsDisableCheck = function(listName, lessListName, greaterListName) {
 
-	      if (!!$scope.selectedGreater[greaterListName] || !!$scope.selectedLess[lessListName]) {
+	      if (!!$scope.selectedGreater[greaterListName] ||
+	          !!$scope.selectedLess[lessListName]) {
 	        $scope.equalsDisabled[listName] = true;
 	      } else {
 	        $scope.equalsDisabled[listName] = false;
@@ -39231,175 +39445,190 @@
 
 	    $scope.filterGames = function() {
 
-	      $scope.filteredGames = $scope.games;
 	      $scope.errors = [];
 	      $scope.property = [];
+	      $scope.params = {};
 	      $scope.propertyGreater = [];
 	      $scope.propertyLess = [];
 	      $scope.selection = [];
 	      $scope.selectionGreater = [];
 	      $scope.selectionLess = [];
-	      $scope.winCount = 0;
-	      $scope.lossCount = 0;
-	      $scope.pushCount = 0;
-	      $scope.overCount = 0;
-	      $scope.underCount = 0;
-	      $scope.pushTotalCount = 0;
-	      $scope.roiSpreadNet = 0;
-	      $scope.roiOverNet = 0;
-	      $scope.roiUnderNet = 0;
-	      $scope.roiTotalWagered = 0;
+	      var winCount = 0;
+	      var lossCount = 0;
+	      var pushCount = 0;
+	      var overCount = 0;
+	      var underCount = 0;
+	      var pushTotalCount = 0;
+	      var roiSpreadNet = 0;
+	      var roiOverNet = 0;
+	      var roiUnderNet = 0;
+	      var roiTotalWagered = 0;
 	      $scope.spreadRoi = {};
 	      $scope.overRoi = {};
 	      $scope.underRoi = {};
 
 	      for (var prop in $scope.selected) {
 	        if (!!$scope.selected[prop]) {
-	          $scope.property.push(prop);
-	          $scope.selection.push($scope.selected[prop].value);
+	          $scope.params[prop] = $scope.selected[prop].value;
 	        }
 	      }
 
-	      for (var propGreater in $scope.selectedGreater) {
-	        if (!!$scope.selectedGreater[propGreater]) {
-	          $scope.propertyGreater.push(propGreater.split('Greater')[0]);
-	          $scope.selectionGreater.push(parseFloat($scope.selectedGreater[propGreater].value.split('>=')[1]));
-	        }
-	      }
+	      $scope.buttonText = 'Loading Games';
 
-	      for (var propLess in $scope.selectedLess) {
-	        if (!!$scope.selectedLess[propLess]) {
-	          $scope.propertyLess.push(propLess.split('Less')[0]);
-	          $scope.selectionLess.push(parseFloat($scope.selectedLess[propLess].value.split('<=')[1]));
-	        }
-	      }
+	      $http.get('/api' + $scope.path, {
+	          params: $scope.params
+	        })
+	        .then(function(res) {
+	          //success
+	          $scope.games = res.data;
+	          $scope.buttonText = 'Get Results';
 
-	      $scope.property.forEach(function(propElement, propIndex, propArr) {
-
-	        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
-	          if (game[propElement] == $scope.selection[propIndex]) {
-	            return game;
+	          for (var propGreater in $scope.selectedGreater) {
+	            if (!!$scope.selectedGreater[propGreater]) {
+	              $scope.propertyGreater.push(propGreater.split('Greater')[0]);
+	              $scope.selectionGreater.push(parseFloat($scope.selectedGreater[propGreater].value.split('>=')[1]));
+	            }
 	          }
+
+	          for (var propLess in $scope.selectedLess) {
+	            if (!!$scope.selectedLess[propLess]) {
+	              $scope.propertyLess.push(propLess.split('Less')[0]);
+	              $scope.selectionLess.push(parseFloat($scope.selectedLess[propLess].value.split('<=')[1]));
+	            }
+	          }
+
+	          $scope.propertyGreater.forEach(function(propElement, propIndex, propArr) {
+
+	            $scope.games = $scope.games.filter(function(game, gameIndex, gameArr) {
+	              if (game[propElement] >= $scope.selectionGreater[propIndex]) {
+	                return game;
+	              }
+	            });
+	          });
+
+	          $scope.propertyLess.forEach(function(propElement, propIndex, propArr) {
+
+	            $scope.games = $scope.games.filter(function(game, gameIndex, gameArr) {
+	              if (game[propElement] <= $scope.selectionLess[propIndex]) {
+	                return game;
+	              }
+	            });
+	          });
+
+	          function gradeCount() {
+	            for (var i = 0; i < $scope.games.length; i++) {
+	              if ($scope.games[i].atsGrade == "W") {
+	                winCount++;
+	                roiSpreadNet++;
+	                roiTotalWagered += 1.1;
+	              } else if ($scope.games[i].atsGrade == "L") {
+	                lossCount++;
+	                roiSpreadNet -= 1.1;
+	                roiTotalWagered += 1.1;
+	              } else if ($scope.games[i].atsGrade == "P") {
+	                pushCount++;
+	                roiTotalWagered += 1.1;
+	              }
+	            }
+	          }
+
+	          gradeCount();
+
+	          function totalGradeCount() {
+	            for (var i = 0; i < $scope.games.length; i++) {
+	              if ($scope.games[i].totalGrade == "O") {
+	                overCount++;
+	                roiOverNet++;
+	                roiUnderNet -= 1.1;
+	              } else if ($scope.games[i].totalGrade == "U") {
+	                underCount++;
+	                roiUnderNet++;
+	                roiOverNet -= 1.1;
+	              } else if ($scope.games[i].totalGrade == "P") {
+	                pushTotalCount++;
+	              }
+	            }
+	          }
+
+	          totalGradeCount();
+
+	          function runCalcs(aCount, bCount, cCount) {
+
+	            function calc() {
+	              return Math.round(100 * (aCount / (bCount + cCount) * 10)) / 10;
+	            }
+
+	            if (isNaN(calc(aCount, bCount, cCount))) {
+	              return "N/A";
+	            } else {
+	              return calc(aCount, bCount, cCount) + "%";
+	            }
+	          }
+
+	          $scope.percentWin = runCalcs(winCount, winCount, lossCount);
+	          $scope.percentOver = runCalcs(overCount, overCount, underCount);
+	          $scope.percentUnder = runCalcs(underCount, underCount, overCount);
+	          $scope.spreadRoi.val = runCalcs(roiSpreadNet, roiTotalWagered, 0);
+	          $scope.overRoi.val = runCalcs(roiOverNet, roiTotalWagered, 0);
+	          $scope.underRoi.val = runCalcs(roiUnderNet, roiTotalWagered, 0);
+
+	          function roiColor(field) {
+	            if (parseFloat(field.val.split('%')[0]) > 0) {
+	              field.colorBool = 'green';
+	            } else if (parseFloat(field.val.split('%')[0]) < 0) {
+	              field.colorBool = 'red';
+	            }
+	          }
+
+	          roiColor($scope.spreadRoi);
+	          roiColor($scope.overRoi);
+	          roiColor($scope.underRoi);
+
+	          $scope.games = $scope.games.sort(function(a, b) {
+	            a = new Date(a.date);
+	            b = new Date(b.date);
+	            if (a < b) {
+	              return 1;
+	            } else if (a > b) {
+	              return -1;
+	            } else {
+	              return 0;
+	            }
+	          });
+
+	          $scope.games.forEach(function(el, i, arr) {
+	            if (el.spreadOpen === 99 || el.spreadOpen === -99) {
+	              el.spreadOpen = 'OFF';
+	            }
+	            if (el.spreadClose === 99 || el.spreadClose === -99) {
+	              el.spreadClose = 'OFF';
+	            }
+	            if (el.totalOpen === 99) {
+	              el.totalOpen = 'OFF';
+	            }
+	            if (el.totalClose === 99) {
+	              el.totalClose = 'OFF';
+	            }
+	          });
+
+	          $scope.winCount = winCount;
+	          $scope.lossCount = lossCount;
+	          $scope.pushCount = pushCount;
+	          $scope.overCount = overCount;
+	          $scope.underCount = underCount;
+	          $scope.pushTotalCount = pushTotalCount;
+	          $scope.roiSpreadNet = roiSpreadNet;
+	          $scope.roiOverNet = roiOverNet;
+	          $scope.roiUnderNet = roiUnderNet;
+
+	          $scope.resultsTableGames = $scope.games.slice(0, 49);
+	          $scope.resultsTable = true;
+	        }, function(res) {
+	          //error
+	          $scope.errors.push({
+	            msg: 'could not retrieve games from server'
+	          });
 	        });
-	      });
-
-	      $scope.propertyGreater.forEach(function(propElement, propIndex, propArr) {
-
-	        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
-	          if (game[propElement] >= $scope.selectionGreater[propIndex]) {
-	            return game;
-	          }
-	        });
-	      });
-
-	      $scope.propertyLess.forEach(function(propElement, propIndex, propArr) {
-
-	        $scope.filteredGames = $scope.filteredGames.filter(function(game, gameIndex, gameArr) {
-	          if (game[propElement] <= $scope.selectionLess[propIndex]) {
-	            return game;
-	          }
-	        });
-	      });
-
-	      $scope.filteredGames.forEach(function(el, i, arr) {
-	        if (el.spreadOpen === 99 || el.spreadOpen === -99) {
-	          el.spreadOpen = 'OFF';
-	        }
-	        if (el.spreadClose === 99 || el.spreadClose === -99) {
-	          el.spreadClose = 'OFF';
-	        }
-	        if (el.totalOpen === 99) {
-	          el.totalOpen = 'OFF';
-	        }
-	        if (el.totalClose === 99) {
-	          el.totalClose = 'OFF';
-	        }
-	      });
-
-	      $scope.filteredGames = $scope.filteredGames.sort(function(a, b) {
-	        a = new Date(a.date);
-	        b = new Date(b.date);
-	        if (a < b) {
-	          return 1;
-	        } else if (a > b) {
-	          return -1;
-	        } else {
-	          return 0;
-	        }
-	      });
-
-	      function gradeCount() {
-	        for (var i = 0; i < $scope.filteredGames.length; i++) {
-	          if ($scope.filteredGames[i].atsGrade == "W") {
-	            $scope.winCount++;
-	            $scope.roiSpreadNet++;
-	            $scope.roiTotalWagered += 1.1;
-	          } else if ($scope.filteredGames[i].atsGrade == "L") {
-	            $scope.lossCount++;
-	            $scope.roiSpreadNet -= 1.1;
-	            $scope.roiTotalWagered += 1.1;
-	          } else if ($scope.filteredGames[i].atsGrade == "P") {
-	            $scope.pushCount++;
-	            $scope.roiTotalWagered += 1.1;
-	          }
-	        }
-	      }
-
-	      gradeCount();
-
-	      function totalGradeCount() {
-	        for (var i = 0; i < $scope.filteredGames.length; i++) {
-	          if ($scope.filteredGames[i].totalGrade == "O") {
-	            $scope.overCount++;
-	            $scope.roiOverNet++;
-	            $scope.roiUnderNet -= 1.1;
-	          } else if ($scope.filteredGames[i].totalGrade == "U") {
-	            $scope.underCount++;
-	            $scope.roiUnderNet++;
-	            $scope.roiOverNet -= 1.1;
-	          } else if ($scope.filteredGames[i].totalGrade == "P") {
-	            $scope.pushTotalCount++;
-	          }
-	        }
-	      }
-
-	      totalGradeCount();
-
-	      function runCalcs(aCount, bCount, cCount) {
-
-	        function calc() {
-	          return Math.round(100 * (aCount / (bCount + cCount) * 10)) / 10;
-	        }
-
-	        if (isNaN(calc(aCount, bCount, cCount))) {
-	          return "N/A";
-	        } else {
-	          return calc(aCount, bCount, cCount) + "%";
-	        }
-	      }
-
-	      $scope.percentWin = runCalcs($scope.winCount, $scope.winCount, $scope.lossCount);
-	      $scope.percentOver = runCalcs($scope.overCount, $scope.overCount, $scope.underCount);
-	      $scope.percentUnder = runCalcs($scope.underCount, $scope.underCount, $scope.overCount);
-	      $scope.spreadRoi.val = runCalcs($scope.roiSpreadNet, $scope.roiTotalWagered, 0);
-	      $scope.overRoi.val = runCalcs($scope.roiOverNet, $scope.roiTotalWagered, 0);
-	      $scope.underRoi.val = runCalcs($scope.roiUnderNet, $scope.roiTotalWagered, 0);
-
-	      function roiColor(field) {
-	        if (parseFloat(field.val.split('%')[0]) > 0) {
-	          field.colorBool = 'green';
-	        } else if (parseFloat(field.val.split('%')[0]) < 0) {
-	          field.colorBool = 'red';
-	        }
-	      }
-
-	      roiColor($scope.spreadRoi);
-	      roiColor($scope.overRoi);
-	      roiColor($scope.underRoi);
-
-	      $scope.resultsTableGames = $scope.filteredGames.slice(0,49);
-
-	      $scope.resultsTable = true;
 	    };
 	  }]);
 	};
