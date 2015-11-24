@@ -53,9 +53,9 @@
       <tr data-ng-repeat="game in resultsTableGames track by game.eventId" data-ng-class="{W: 'success', L: 'danger'}[game.atsGrade]">
         <td>{{::game.date.split('T')[0]}}</td>
         <td>{{::game.week}}</td>
-        <td>{{::game.teamAbbrev}}</td>
+        <td>{{::game.teamName}}</td>
         <td>{{::game.teamSite.toUpperCase()}}</td>
-        <td>{{::game.opponentAbbrev}}</td>
+        <td>{{::game.opponentName}}</td>
         <td>{{::game.teamScore + '-' + game.opponentScore}}</td>
         <td>{{::game.suGrade}}</td>
         <td>{{::game.spreadClose + ' (' + game.spreadOpen + ')'}}</td>
