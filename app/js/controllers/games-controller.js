@@ -46,7 +46,18 @@ module.exports = function(app) {
     };
 
     $scope.filterGames = function() {
-
+      $scope.winCount = '';
+      $scope.lossCount = '';
+      $scope.pushCount = '';
+      $scope.overCount = '';
+      $scope.underCount = '';
+      $scope.pushTotalCount = '';
+      $scope.roiSpreadNet = '';
+      $scope.roiOverNet = '';
+      $scope.roiUnderNet = '';
+      $scope.percentWin = '';
+      $scope.percentOver = '';
+      $scope.percentUnder = '';
       $scope.errors = [];
       $scope.property = [];
       $scope.params = {};
@@ -75,7 +86,7 @@ module.exports = function(app) {
         }
       }
 
-      $scope.buttonText = 'Loading Games';
+      $scope.buttonText = 'Loading Games...';
 
       $http.get('/api' + $scope.path, {
           params: $scope.params

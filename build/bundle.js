@@ -555,7 +555,7 @@
 
 
 	// module
-	exports.push([module.id, ".header {\n\tfont-family: 'BentonSansBold';\n\tfont-size: 64px;\n\tfont-style: italic;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n  font-family: arial;\n  text-decoration: underline;\n  text-align: center;\n  font-weight: bold;\n \tfont-size: 32px;\n \tmargin-top: 20px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .navItem {\n \tcolor: white;\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n\ttext-decoration: none;\n }\n\n.currentNav {\n \tcolor: #FFE0B2;\n }\n\n #about {\n\tmargin-left: 185px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \ttext-decoration: none;\n }\n\n.comingSoon {\n\tfont-size: 11px;\n \twidth: 20px;\n\tdisplay: inline-block;\n}\n\n.breakEven {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n .openerNote {\n\tfont-size: 18px;\n\tfont-weight: bold;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.breakEvenSection {\n\theight: 43px;\n}\n\n.dropdown {\n\tpadding-top: 15px;\n\tdisplay: inline-block;\n\twidth: 340px;\n\ttext-align: center;\n}\n\n.dropDownSection {\n\tclear: both;\n}\n\n.optionTitle {\n\tfont-weight: bold;\n}\n\n#cfbTeam {\nmargin-top: 80px;\nfont-size: 20px;\nheight: 40px;\n}\n\n#team, #teamAbbrev {\nmargin-top: 20px;\nfont-size: 20px;\nclear: both;\nmargin-left: 300px;\nheight: 40px;\n}\n\n.selectWithoutRange {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n\twidth: 340px;\n}\n\n.selectWithRange {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n}\n\n.enabled {\n\tbackground-color: #FFFFFF;\n\t}\n\nselect[disabled=\"disabled\"] {\n\tbackground-color: #E6E6E6;\n}\n\n.rangeSelected {\n\tbackground-color: #FFFF94;\n}\n\n.rangeHeader {\n\twidth: auto;\n}\n\n.equals {\n\twidth: 67px;\n}\n\n.greaterLess {\n\twidth: 89px;\n}\n\n.rangeInput {\n\tpadding-left: 5px;\n\tbackground-color: #FFFFFF;\n\twidth: 80px;\n}\n\nbutton {\n  font-family: 'BentonSansRegular';\n\tclear: both;\n\tmargin-top: 40px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tmargin-bottom: 15px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n}\n\n.resultsTable {\n\tfont-family: 'BentonSansBold';\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: black;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\tborder-style: solid;\n\tborder-top-color: black;\n\tborder-top-style: solid;\n}\n\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\theight: 30px;\n\twidth: 50%;\n\tborder-color: black;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\theight: 20px;\n\twidth: 20%;\n\tborder-color: black;\n}\n\n#gamesTable tr {\n\tbackground-color: #EEEEEE;\n\topacity: .90;\n}\n\n#gamesTable tr:nth-child(1) {\n\tborder-color: black;\n\tbackground-color: #003366;\n\tcolor: white;\n\topacity: 1;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .90;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tclear: both;\n\tmargin: 0 auto;\n\t-webkit-animation-duration: 2s;\n  -webkit-animation-delay: 0s;\n  -webkit-animation-iteration-count: 1;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.nfl {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.cfb {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n/*.ATL {\n\tbackground-image: url(../img/atl.gif);\n}\n\n.BK {\n\tbackground-image: url(../img/bk.gif);\n}\n\n.BOS {\n\tbackground-image: url(../img/bos.gif);\n}\n\n.CHAR {\n\tbackground-image: url(../img/cha.gif);\n}\n\n.CHI {\n\tbackground-image: url(../img/chi.gif);\n}\n\n.CLE {\n\tbackground-image: url(../img/cle.gif);\n}\n\n.DAL {\n\tbackground-image: url(../img/dal.gif);\n}\n\n.DEN {\n\tbackground-image: url(../img/den.gif);\n}\n\n.DET {\n\tbackground-image: url(../img/det.gif);\n}\n\n.GS {\n\tbackground-image: url(../img/gs.gif);\n}\n\n.HOU {\n\tbackground-image: url(../img/hou.gif);\n}\n\n.IND {\n\tbackground-image: url(../img/ind.gif);\n}\n\n.LAC {\n\tbackground-image: url(../img/lac.gif);\n}\n\n.LAL {\n\tbackground-image: url(../img/lal.gif);\n}\n\n.MEM {\n\tbackground-image: url(../img/mem.gif);\n}\n\n.MIA {\n\tbackground-image: url(../img/mia.gif);\n}\n\n.MIL {\n\tbackground-image: url(../img/mil.gif);\n}\n\n.MIN {\n\tbackground-image: url(../img/min.gif);\n}\n\n.NO {\n\tbackground-image: url(../img/no.gif);\n}\n\n.NY {\n\tbackground-image: url(../img/ny.gif);\n}\n\n.OKC {\n\tbackground-image: url(../img/okc.gif);\n}\n\n.ORL {\n\tbackground-image: url(../img/orl.gif);\n}\n\n.PHI {\n\tbackground-image: url(../img/phi.gif);\n}\n\n.PHO {\n\tbackground-image: url(../img/phx.gif);\n}\n\n.POR {\n\tbackground-image: url(../img/por.gif);\n}\n\n.SA {\n\tbackground-image: url(../img/sa.gif);\n}\n\n.SAC {\n\tbackground-image: url(../img/sac.gif);\n}\n\n.TOR {\n\tbackground-image: url(../img/tor.gif);\n}\n\n.UTA {\n\tbackground-image: url(../img/uta.gif);\n}\n\n.WAS {\n\tbackground-image: url(../img/was.gif);\n}\n\t*/\n", ""]);
+	exports.push([module.id, ".header {\n\tfont-family: 'BentonSansBold';\n\tfont-size: 64px;\n\tfont-style: italic;\n\ttext-align: center;\n\tpadding:15px 0;\n\tmargin: auto;\n\tborder-bottom: #87adde;\n\tborder-bottom-style: ridge;\n\n}\n .subheading {\n  font-family: arial;\n  text-decoration: underline;\n  text-align: center;\n  font-weight: bold;\n \tfont-size: 32px;\n \tmargin-top: 20px;\n }\n\n.navBar {\n \theight: 60px;\n \tbackground-color: #003366;\n \tfont-family: 'BentonSansBold';\n \tcolor: white;\n \tfont-size: 24px;\n }\n\n .navItem {\n \tcolor: white;\n\tmargin-left: 40px;\n\tdisplay: inline-block;\n\ttext-decoration: none;\n }\n\n.currentNav {\n \tcolor: #FFE0B2;\n }\n\n #about {\n\tmargin-left: 185px;\n \tmargin-top: 18px;\n \tdisplay: inline-block;\n \ttext-decoration: none;\n }\n\n.comingSoon {\n\tfont-size: 11px;\n \twidth: 20px;\n\tdisplay: inline-block;\n}\n\n.new {\n\tfont-size: 11px;\n \twidth: 20px;\n\tdisplay: inline-block;\n\tvertical-align: super;\n}\n\n.breakEven {\n \tfont-size: 18px;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n .openerNote {\n\tfont-size: 18px;\n\tfont-weight: bold;\n \tpadding-left: 12px;\n \tpadding-top: 10px;\n \tfont-style: italic;\n }\n\n.breakEvenSection {\n\theight: 43px;\n}\n\n.dropdown {\n\tpadding-top: 15px;\n\tdisplay: inline-block;\n\twidth: 340px;\n\ttext-align: center;\n}\n\n.dropDownSection {\n\tclear: both;\n}\n\n.optionTitle {\n\tfont-weight: bold;\n}\n\n#cfbTeam {\nmargin-top: 80px;\nfont-size: 20px;\nheight: 40px;\n}\n\n#team, #teamAbbrev {\nmargin-top: 20px;\nfont-size: 20px;\nclear: both;\nmargin-left: 300px;\nheight: 40px;\n}\n\n.selectWithoutRange {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n\tbackground-color: #FFFFFF;\n\twidth: 340px;\n}\n\n.selectWithRange {\n\tfont-family: 'BentonSansRegular';\n\theight: 30px;\n\tfont-size: 18px;\n}\n\n.enabled {\n\tbackground-color: #FFFFFF;\n\t}\n\nselect[disabled=\"disabled\"] {\n\tbackground-color: #E6E6E6;\n}\n\n.rangeSelected {\n\tbackground-color: #FFFF94;\n}\n\n.rangeHeader {\n\twidth: auto;\n}\n\n.equals {\n\twidth: 67px;\n}\n\n.greaterLess {\n\twidth: 89px;\n}\n\n.rangeInput {\n\tpadding-left: 5px;\n\tbackground-color: #FFFFFF;\n\twidth: 80px;\n}\n\nbutton {\n  font-family: 'BentonSansRegular';\n\tclear: both;\n\tmargin-top: 40px;\n\theight: 50px;\n\twidth: 150px;\n\tborder-radius: 5px;\n\tbackground-color: #E37527;\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tmargin-bottom: 15px;\n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tbackground-color:#deb887;\n}\n\n.resultsTable {\n\tfont-family: 'BentonSansBold';\n\tfont-size:12px;\n\twidth:50%;\n\tborder-width: 1px;\n\tborder-color: black;\n\tborder-collapse: collapse;\n\tmargin:auto;\n\tclear: both;\n\tmargin-right: 25%;\n\tmargin-bottom: 15px;\n\tborder-style: solid;\n\tborder-top-color: black;\n\tborder-top-style: solid;\n}\n\n.resultsTable td {\n\tfont-size: 12px;\n\tborder-width: 1px;\n\tpadding: 8px;\n\tborder-style: solid;\n\tborder-color: black;\n}\n\n#winLossTable td {\n\tfont-size: 25px;\n\ttext-align: center;\n\theight: 30px;\n\twidth: 50%;\n\tborder-color: black;\n}\n\n#overUnderTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\theight: 20px;\n\twidth: 20%;\n\tborder-color: black;\n}\n\n#gamesTable tr {\n\tbackground-color: #EEEEEE;\n\topacity: .90;\n}\n\n#gamesTable tr:nth-child(1) {\n\tborder-color: black;\n\tbackground-color: #003366;\n\tcolor: white;\n\topacity: 1;\n}\n\n#gamesTable td {\n\tfont-size: 18px;\n\ttext-align: center;\n\theight: 20px;\n\twidth: 20%;\n\topacity: .90;\n}\n\n#teamLogo {\n\theight: 110px;\n\twidth: 150px;\n\tbackground-repeat: no-repeat;\n\tclear: both;\n\tmargin: 0 auto;\n}\n\n.green {\n\tcolor: green;\n}\n\n.red {\n\tcolor: red;\n}\n\n.nba {\n\tbackground-image: url(" + __webpack_require__(15) + ");\n}\n\n.nfl {\n\tbackground-image: url(" + __webpack_require__(16) + ");\n}\n\n.cfb, .cbb {\n\tbackground-image: url(" + __webpack_require__(17) + ");\n}\n\n/*.ATL {\n\tbackground-image: url(../img/atl.gif);\n}\n\n.BK {\n\tbackground-image: url(../img/bk.gif);\n}\n\n.BOS {\n\tbackground-image: url(../img/bos.gif);\n}\n\n.CHAR {\n\tbackground-image: url(../img/cha.gif);\n}\n\n.CHI {\n\tbackground-image: url(../img/chi.gif);\n}\n\n.CLE {\n\tbackground-image: url(../img/cle.gif);\n}\n\n.DAL {\n\tbackground-image: url(../img/dal.gif);\n}\n\n.DEN {\n\tbackground-image: url(../img/den.gif);\n}\n\n.DET {\n\tbackground-image: url(../img/det.gif);\n}\n\n.GS {\n\tbackground-image: url(../img/gs.gif);\n}\n\n.HOU {\n\tbackground-image: url(../img/hou.gif);\n}\n\n.IND {\n\tbackground-image: url(../img/ind.gif);\n}\n\n.LAC {\n\tbackground-image: url(../img/lac.gif);\n}\n\n.LAL {\n\tbackground-image: url(../img/lal.gif);\n}\n\n.MEM {\n\tbackground-image: url(../img/mem.gif);\n}\n\n.MIA {\n\tbackground-image: url(../img/mia.gif);\n}\n\n.MIL {\n\tbackground-image: url(../img/mil.gif);\n}\n\n.MIN {\n\tbackground-image: url(../img/min.gif);\n}\n\n.NO {\n\tbackground-image: url(../img/no.gif);\n}\n\n.NY {\n\tbackground-image: url(../img/ny.gif);\n}\n\n.OKC {\n\tbackground-image: url(../img/okc.gif);\n}\n\n.ORL {\n\tbackground-image: url(../img/orl.gif);\n}\n\n.PHI {\n\tbackground-image: url(../img/phi.gif);\n}\n\n.PHO {\n\tbackground-image: url(../img/phx.gif);\n}\n\n.POR {\n\tbackground-image: url(../img/por.gif);\n}\n\n.SA {\n\tbackground-image: url(../img/sa.gif);\n}\n\n.SAC {\n\tbackground-image: url(../img/sac.gif);\n}\n\n.TOR {\n\tbackground-image: url(../img/tor.gif);\n}\n\n.UTA {\n\tbackground-image: url(../img/uta.gif);\n}\n\n.WAS {\n\tbackground-image: url(../img/was.gif);\n}\n\t*/\n", ""]);
 
 	// exports
 
@@ -39444,7 +39444,18 @@
 	    };
 
 	    $scope.filterGames = function() {
-
+	      $scope.winCount = '';
+	      $scope.lossCount = '';
+	      $scope.pushCount = '';
+	      $scope.overCount = '';
+	      $scope.underCount = '';
+	      $scope.pushTotalCount = '';
+	      $scope.roiSpreadNet = '';
+	      $scope.roiOverNet = '';
+	      $scope.roiUnderNet = '';
+	      $scope.percentWin = '';
+	      $scope.percentOver = '';
+	      $scope.percentUnder = '';
 	      $scope.errors = [];
 	      $scope.property = [];
 	      $scope.params = {};
@@ -39473,7 +39484,7 @@
 	        }
 	      }
 
-	      $scope.buttonText = 'Loading Games';
+	      $scope.buttonText = 'Loading Games...';
 
 	      $http.get('/api' + $scope.path, {
 	          params: $scope.params
@@ -39641,13 +39652,15 @@
 
 	var nbaList = __webpack_require__(38);
 	var cfbList = __webpack_require__(49);
-	var nflList = __webpack_require__(63);
+	var cbbList = __webpack_require__(63);
+	var nflList = __webpack_require__(75);
 
 	module.exports = {
 
 	          nba: nbaList,
 	          nfl: nflList,
-	          cfb: cfbList
+	          cfb: cfbList,
+	          cbb: cbbList
 	};
 
 /***/ },
@@ -41187,15 +41200,1055 @@
 
 	var teamList = __webpack_require__(64);
 	var teamSiteList = __webpack_require__(65);
-	var weekList = __webpack_require__(66);
-	var gameTypeList = __webpack_require__(67);
-	var seasonList = __webpack_require__(68);
-	var spreadList = __webpack_require__(69);
-	var spreadGreaterList = __webpack_require__(70);
-	var spreadLessList = __webpack_require__(71);
-	var spreadMoveList = __webpack_require__(72);
-	var spreadStatusList = __webpack_require__(73);
-	var totalMoveList = __webpack_require__(74);
+	var gameTypeList = __webpack_require__(66);
+	var seasonList = __webpack_require__(67);
+	var spreadList = __webpack_require__(68);
+	var spreadGreaterList = __webpack_require__(69);
+	var spreadLessList = __webpack_require__(70);
+	var spreadMoveList = __webpack_require__(71);
+	var spreadStatusList = __webpack_require__(72);
+	var totalMoveList = __webpack_require__(73);
+	var conferenceList = __webpack_require__(74);
+
+	module.exports = {
+
+	          teamAbbrev: teamList,
+	          teamSite: teamSiteList,
+	          teamConference: conferenceList,
+	          opponentAbbrev: teamList,
+	          opponentConference: conferenceList,
+	          gameType: gameTypeList,
+	          season: seasonList,
+	          spreadStatus: spreadStatusList,
+	          spreadClose: spreadList,
+	          spreadCloseGreater: spreadGreaterList,
+	          spreadCloseLess: spreadLessList,
+	          spreadMove: spreadMoveList,
+	          totalMove: totalMoveList
+	};
+
+/***/ },
+/* 64 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+
+	{value: "ACU", fullName: "Abilene Christian"},
+	{value: "AFA", fullName: "Air Force"},
+	{value: "AKR", fullName: "Akron"},
+	{value: "ALA", fullName: "Alabama"},
+	{value: "AAMU", fullName: "Alabama A&M"},
+	{value: "ALST", fullName: "Alabama St."},
+	{value: "ALSKA", fullName: "Alaska - Anchorage"},
+	{value: "ALBY", fullName: "Albany"},
+	{value: "ALCN", fullName: "Alcorn St."},
+	{value: "AMER", fullName: "American U."},
+	{value: "APP", fullName: "Appalachian St."},
+	{value: "ARIZ", fullName: "Arizona"},
+	{value: "ASU", fullName: "Arizona State"},
+	{value: "ARK", fullName: "Arkansas"},
+	{value: "UALR", fullName: "Arkansas-Little Rock"},
+	{value: "ARPB", fullName: "Arkansas-Pine Bluff"},
+	{value: "ARST", fullName: "Arkansas St."},
+	{value: "ARMY", fullName: "Army"},
+	{value: "AUB", fullName: "Auburn"},
+	{value: "PEAY", fullName: "Austin Peay"},
+	{value: "BALL", fullName: "Ball St."},
+	{value: "BAY", fullName: "Baylor"},
+	{value: "BEL", fullName: "Belmont"},
+	{value: "COOK", fullName: "Bethune-Cookman"},
+	{value: "BING", fullName: "Binghamton"},
+	{value: "BSU", fullName: "Boise St."},
+	{value: "BC", fullName: "Boston College"},
+	{value: "BU", fullName: "Boston U"},
+	{value: "BGSU", fullName: "Bowling Green"},
+	{value: "BRAD", fullName: "Bradley"},
+	{value: "BYU", fullName: "Brigham Young"},
+	{value: "BRWN", fullName: "Brown"},
+	{value: "BRY", fullName: "Bryant"},
+	{value: "BUCK", fullName: "Bucknell"},
+	{value: "BUFF", fullName: "Buffalo"},
+	{value: "BUT", fullName: "Butler"},
+	{value: "CAL", fullName: "California"},
+	{value: "CP", fullName: "Cal Poly SLO"},
+	{value: "CSB", fullName: "Cal. State - Bakersfield"},
+	{value: "CSF", fullName: "Cal St. Fullerton"},
+	{value: "CAMP", fullName: "Campbell"},
+	{value: "CAN", fullName: "Canisius"},
+	{value: "CENT", fullName: "Centenary"},
+	{value: "CARK", fullName: "Central Arkansas"},
+	{value: "CCSU", fullName: "Central Conn. St."},
+	{value: "UCF", fullName: "Central Florida"},
+	{value: "CMU", fullName: "Central Michigan"},
+	{value: "CHAMIN", fullName: "Chaminade"},
+	{value: "COFC", fullName: "Charleston"},
+	{value: "CHSO", fullName: "Charleston Southern"},
+	{value: "CHAR", fullName: "Charlotte"},
+	{value: "CHAT", fullName: "Chattanooga"},
+	{value: "CHS", fullName: "Chicago St."},
+	{value: "CIN", fullName: "Cincinnati"},
+	{value: "CLEM", fullName: "Clemson"},
+	{value: "CLEV", fullName: "Cleveland St."},
+	{value: "CCAR", fullName: "Coastal Carolina"},
+	{value: "COLG", fullName: "Colgate"},
+	{value: "COLO", fullName: "Colorado"},
+	{value: "CSU", fullName: "Colorado St."},
+	{value: "CLMB", fullName: "Columbia"},
+	{value: "UCONN", fullName: "Connecticut"},
+	{value: "COPP", fullName: "Coppin St."},
+	{value: "COR", fullName: "Cornell"},
+	{value: "CRE", fullName: "Creighton"},
+	{value: "CSN", fullName: "CSU Northridge"},
+	{value: "DART", fullName: "Dartmouth"},
+	{value: "DAV", fullName: "Davidson"},
+	{value: "DAY", fullName: "Dayton"},
+	{value: "DEL", fullName: "Delaware"},
+	{value: "DSU", fullName: "Delaware State"},
+	{value: "DEN", fullName: "Denver"},
+	{value: "DEP", fullName: "DePaul"},
+	{value: "DET", fullName: "Detroit"},
+	{value: "DRKE", fullName: "Drake"},
+	{value: "DREX", fullName: "Drexel"},
+	{value: "DUKE", fullName: "Duke"},
+	{value: "DUQ", fullName: "Duquesne"},
+	{value: "ECU", fullName: "East Carolina"},
+	{value: "EIU", fullName: "Eastern Illinois"},
+	{value: "EKY", fullName: "Eastern Kentucky"},
+	{value: "EMU", fullName: "Eastern Michigan"},
+	{value: "EWU", fullName: "Eastern Washington"},
+	{value: "ETSU", fullName: "East Tennessee St."},
+	{value: "ELON", fullName: "Elon University"},
+	{value: "EVAN", fullName: "Evansville"},
+	{value: "FAIR", fullName: "Fairfield"},
+	{value: "FDU", fullName: "Fairleigh Dickinson"},
+	{value: "FLA", fullName: "Florida"},
+	{value: "FAMU", fullName: "Florida A&M"},
+	{value: "FAU", fullName: "Florida Atlantic"},
+	{value: "FGCU", fullName: "Florida Gulf Coast"},
+	{value: "FIU", fullName: "Florida International"},
+	{value: "FSU", fullName: "Florida St."},
+	{value: "FOR", fullName: "Fordham"},
+	{value: "FRES", fullName: "Fresno St."},
+	{value: "FUR", fullName: "Furman"},
+	{value: "WEBB", fullName: "Gardner-Webb"},
+	{value: "GMU", fullName: "George Mason"},
+	{value: "GTWN", fullName: "Georgetown"},
+	{value: "GW", fullName: "George Washington"},
+	{value: "UGA", fullName: "Georgia"},
+	{value: "GASO", fullName: "Georgia Southern"},
+	{value: "GSU", fullName: "Georgia St"},
+	{value: "GT", fullName: "Georgia Tech"},
+	{value: "GONZ", fullName: "Gonzaga"},
+	{value: "GRAM", fullName: "Grambling State"},
+	{value: "GRC", fullName: "Grand Canyon"},
+	{value: "GB", fullName: "Green Bay"},
+	{value: "HAMP", fullName: "Hampton"},
+	{value: "HART", fullName: "Hartford"},
+	{value: "HARV", fullName: "Harvard"},
+	{value: "HAW", fullName: "Hawaii"},
+	{value: "HP", fullName: "High Point"},
+	{value: "HOF", fullName: "Hofstra"},
+	{value: "HC", fullName: "Holy Cross"},
+	{value: "HOU", fullName: "Houston"},
+	{value: "HBU", fullName: "Houston Baptist"},
+	{value: "HOW", fullName: "Howard"},
+	{value: "IDHO", fullName: "Idaho"},
+	{value: "IDST", fullName: "Idaho State"},
+	{value: "ILL", fullName: "Illinois"},
+	{value: "UIC", fullName: "Illinois-Chicago"},
+	{value: "ILST", fullName: "Illinois St."},
+	{value: "IW", fullName: "Incarnate Word"},
+	{value: "IND", fullName: "Indiana"},
+	{value: "INDPU", fullName: "Indiana - Purdue"},
+	{value: "INST", fullName: "Indiana St."},
+	{value: "IONA", fullName: "Iona"},
+	{value: "IOWA", fullName: "Iowa"},
+	{value: "ISU", fullName: "Iowa St."},
+	{value: "IPFW", fullName: "IUPU - Ft. Wayne"},
+	{value: "JKST", fullName: "Jackson State"},
+	{value: "JAC", fullName: "Jacksonville"},
+	{value: "JVST", fullName: "Jacksonville St."},
+	{value: "JMU", fullName: "James Madison"},
+	{value: "KU", fullName: "Kansas"},
+	{value: "KSU", fullName: "Kansas St."},
+	{value: "KENN", fullName: "Kennesaw St."},
+	{value: "KENT", fullName: "Kent St."},
+	{value: "UK", fullName: "Kentucky"},
+	{value: "LAF", fullName: "Lafayette"},
+	{value: "LAM", fullName: "Lamar"},
+	{value: "LAS", fullName: "La Salle"},
+	{value: "LASR", fullName: "La Sierra University"},
+	{value: "LEH", fullName: "Lehigh"},
+	{value: "LIB", fullName: "Liberty"},
+	{value: "LIP", fullName: "Lipscomb"},
+	{value: "LIU", fullName: "LIU Brooklyn"},
+	{value: "LBSU", fullName: "Long Beach St."},
+	{value: "LONG", fullName: "Longwood"},
+	{value: "ULL", fullName: "Louisiana-Lafayette"},
+	{value: "ULM", fullName: "Louisiana-Monroe"},
+	{value: "LSU", fullName: "Louisiana State"},
+	{value: "LT", fullName: "Louisiana Tech"},
+	{value: "LOU", fullName: "Louisville"},
+	{value: "L-IL", fullName: "Loyola-Chicago"},
+	{value: "L-MD", fullName: "Loyola-Maryland"},
+	{value: "LMU", fullName: "Loyola Marymount"},
+	{value: "ME", fullName: "Maine"},
+	{value: "MAN", fullName: "Manhattan"},
+	{value: "MRST", fullName: "Marist"},
+	{value: "MARQ", fullName: "Marquette"},
+	{value: "MRSH", fullName: "Marshall"},
+	{value: "MD", fullName: "Maryland"},
+	{value: "UMES", fullName: "Maryland - E. Shore"},
+	{value: "MASS", fullName: "Massachusetts"},
+	{value: "MCNS", fullName: "McNeese St."},
+	{value: "UMBC", fullName: "MD Baltimore Cty"},
+	{value: "MEM", fullName: "Memphis"},
+	{value: "MER", fullName: "Mercer"},
+	{value: "MIA", fullName: "Miami-Florida"},
+	{value: "M-OH", fullName: "Miami (OH)"},
+	{value: "MICH", fullName: "Michigan"},
+	{value: "MSU", fullName: "Michigan St"},
+	{value: "MTU", fullName: "Middle Tennessee St."},
+	{value: "MINN", fullName: "Minnesota"},
+	{value: "MISS", fullName: "Mississippi"},
+	{value: "MSST", fullName: "Mississippi St."},
+	{value: "MVSU", fullName: "Mississippi Valley State"},
+	{value: "MIZZ", fullName: "Missouri"},
+	{value: "MOSU", fullName: "Missouri St."},
+	{value: "MONM", fullName: "Monmouth-NJ"},
+	{value: "MONT", fullName: "Montana"},
+	{value: "MTST", fullName: "Montana St."},
+	{value: "MORE", fullName: "Morehead St."},
+	{value: "MORG", fullName: "Morgan St."},
+	{value: "MSM", fullName: "Mount St. Mary's"},
+	{value: "MURR", fullName: "Murray St."},
+	{value: "NAVY", fullName: "Navy"},
+	{value: "UNCA", fullName: "N.C. Asheville"},
+	{value: "UNCG", fullName: "NC-Greensboro"},
+	{value: "NCST", fullName: "N.C. State"},
+	{value: "UNCW", fullName: "NC-Wilmington"},
+	{value: "NEB", fullName: "Nebraska"},
+	{value: "NEOM", fullName: "Nebraska Omaha"},
+	{value: "NEV", fullName: "Nevada"},
+	{value: "UNH", fullName: "New Hampshire"},
+	{value: "NJIT", fullName: "New Jersey Tech"},
+	{value: "UNM", fullName: "New Mexico"},
+	{value: "NMSU", fullName: "New Mexico St."},
+	{value: "UNO", fullName: "New Orleans"},
+	{value: "NIAG", fullName: "Niagara"},
+	{value: "NICH", fullName: "Nicholls State"},
+	{value: "NCAT", fullName: "No.Carolina A&T"},
+	{value: "NORF", fullName: "Norfolk State"},
+	{value: "UNC", fullName: "North Carolina"},
+	{value: "NCCU", fullName: "North Carolina Central"},
+	{value: "UND", fullName: "North Dakota"},
+	{value: "NDSU", fullName: "North Dakota State"},
+	{value: "NE", fullName: "Northeastern"},
+	{value: "NAU", fullName: "Northern Arizona"},
+	{value: "UNCO", fullName: "Northern Colorado"},
+	{value: "NIU", fullName: "Northern Illinois"},
+	{value: "UNI", fullName: "Northern Iowa"},
+	{value: "NKU", fullName: "Northern Kentucky"},
+	{value: "UNF", fullName: "North Florida"},
+	{value: "UNT", fullName: "North Texas"},
+	{value: "NW", fullName: "Northwestern"},
+	{value: "NWST", fullName: "Northwestern St."},
+	{value: "ND", fullName: "Notre Dame"},
+	{value: "OAK", fullName: "Oakland"},
+	{value: "OHIO", fullName: "Ohio"},
+	{value: "OSU", fullName: "Ohio St."},
+	{value: "OKLA", fullName: "Oklahoma"},
+	{value: "OKST", fullName: "Oklahoma St."},
+	{value: "ODU", fullName: "Old Dominion"},
+	{value: "ORU", fullName: "Oral Roberts"},
+	{value: "ORE", fullName: "Oregon"},
+	{value: "ORST", fullName: "Oregon St."},
+	{value: "PAC", fullName: "Pacific"},
+	{value: "PSU", fullName: "Penn St."},
+	{value: "PENN", fullName: "Pennsylvania"},
+	{value: "PEPP", fullName: "Pepperdine"},
+	{value: "PITT", fullName: "Pittsburgh"},
+	{value: "PORT", fullName: "Portland"},
+	{value: "PRST", fullName: "Portland St."},
+	{value: "PV", fullName: "Prairie View A&M"},
+	{value: "PRE", fullName: "Presbyterian"},
+	{value: "PRIN", fullName: "Princeton"},
+	{value: "PROV", fullName: "Providence"},
+	{value: "PUR", fullName: "Purdue"},
+	{value: "QUIN", fullName: "Quinnipiac"},
+	{value: "RAD", fullName: "Radford"},
+	{value: "URI", fullName: "Rhode Island"},
+	{value: "RICE", fullName: "Rice"},
+	{value: "RICH", fullName: "Richmond"},
+	{value: "RID", fullName: "Rider"},
+	{value: "RMU", fullName: "Robert Morris"},
+	{value: "ROCH", fullName: "Rochester College"},
+	{value: "RUTG", fullName: "Rutgers"},
+	{value: "CSUS", fullName: "Sacramento State"},
+	{value: "SHU", fullName: "Sacred Heart"},
+	{value: "SLU", fullName: "Saint Louis"},
+	{value: "SAM", fullName: "Samford"},
+	{value: "SHSU", fullName: "Sam Houston St."},
+	{value: "USD", fullName: "San Diego"},
+	{value: "SDSU", fullName: "San Diego St."},
+	{value: "SF", fullName: "San Francisco"},
+	{value: "SJSU", fullName: "San Jose St."},
+	{value: "SCU", fullName: "Santa Clara"},
+	{value: "SAV", fullName: "Savannah State"},
+	{value: "SEA", fullName: "Seattle"},
+	{value: "SEMO", fullName: "SE Missouri St."},
+	{value: "HALL", fullName: "Seton Hall"},
+	{value: "SIE", fullName: "Siena"},
+	{value: "SIUE", fullName: "SIU - Edwardsville"},
+	{value: "USA", fullName: "South Alabama"},
+	{value: "SCAR", fullName: "South Carolina"},
+	{value: "SCST", fullName: "South Carolina State"},
+	{value: "SCUS", fullName: "South Carolina Upstate"},
+	{value: "SDAK", fullName: "South Dakota"},
+	{value: "SDST", fullName: "South Dakota State"},
+	{value: "SELA", fullName: "Southeastern Louisiana"},
+	{value: "SOU", fullName: "Southern"},
+	{value: "USC", fullName: "Southern California"},
+	{value: "SIU", fullName: "Southern Illinois"},
+	{value: "SMU", fullName: "Southern Methodist"},
+	{value: "USM", fullName: "Southern Miss"},
+	{value: "SUU", fullName: "Southern Utah"},
+	{value: "USF", fullName: "South Florida"},
+	{value: "STAN", fullName: "Stanford"},
+	{value: "SBON", fullName: "St. Bonaventure"},
+	{value: "SFA", fullName: "Stephen F. Austin"},
+	{value: "STET", fullName: "Stetson"},
+	{value: "SFNY", fullName: "St. Francis (NY)"},
+	{value: "SFPA", fullName: "St. Francis (PA)"},
+	{value: "SJU", fullName: "St. John's"},
+	{value: "JOES", fullName: "St. Joseph's"},
+	{value: "SMC", fullName: "St. Mary's"},
+	{value: "STON", fullName: "Stony Brook"},
+	{value: "SPC", fullName: "St. Peter's"},
+	{value: "SYR", fullName: "Syracuse"},
+	{value: "TEM", fullName: "Temple"},
+	{value: "TENN", fullName: "Tennessee"},
+	{value: "TNST", fullName: "Tennessee St."},
+	{value: "TNTC", fullName: "Tennessee Tech"},
+	{value: "UTM", fullName: "Tenn-Martin"},
+	{value: "TEX", fullName: "Texas"},
+	{value: "TAM", fullName: "Texas A&M"},
+	{value: "AMCC", fullName: "Texas A&M CC"},
+	{value: "UTA", fullName: "Texas-Arlington"},
+	{value: "TCU", fullName: "Texas Christian"},
+	{value: "UTEP", fullName: "Texas-El Paso"},
+	{value: "UTRGV", fullName: "Texas Rio Grande Valley"},
+	{value: "UTSA", fullName: "Texas-San Antonio"},
+	{value: "TXSO", fullName: "Texas Southern"},
+	{value: "TXST", fullName: "Texas State"},
+	{value: "TTU", fullName: "Texas Tech"},
+	{value: "CIT", fullName: "The Citadel"},
+	{value: "TOL", fullName: "Toledo"},
+	{value: "TOWS", fullName: "Towson"},
+	{value: "TROY", fullName: "Troy"},
+	{value: "TULN", fullName: "Tulane"},
+	{value: "TLSA", fullName: "Tulsa"},
+	{value: "UAB", fullName: "UAB"},
+	{value: "UCD", fullName: "UC Davis"},
+	{value: "UCI", fullName: "UC Irvine"},
+	{value: "UCLA", fullName: "UCLA"},
+	{value: "UCRV", fullName: "UC Riverside"},
+	{value: "UCSB", fullName: "UC Santa Barbara"},
+	{value: "UMKC", fullName: "UMKC"},
+	{value: "UNLV", fullName: "UNLV"},
+	{value: "UTAH", fullName: "Utah"},
+	{value: "USU", fullName: "Utah St."},
+	{value: "UVU", fullName: "Utah Valley"},
+	{value: "VALP", fullName: "Valparaiso"},
+	{value: "VAN", fullName: "Vanderbilt"},
+	{value: "VCU", fullName: "VCU"},
+	{value: "UVM", fullName: "Vermont"},
+	{value: "VILL", fullName: "Villanova"},
+	{value: "UVA", fullName: "Virginia"},
+	{value: "VT", fullName: "Virginia Tech"},
+	{value: "VMI", fullName: "VMI"},
+	{value: "WAG", fullName: "Wagner"},
+	{value: "WAKE", fullName: "Wake Forest"},
+	{value: "WASH", fullName: "Washington"},
+	{value: "WSU", fullName: "Washington St."},
+	{value: "WEB", fullName: "Weber St."},
+	{value: "WALAB", fullName: "West Alabama"},
+	{value: "WCU", fullName: "Western Carolina"},
+	{value: "WIU", fullName: "Western Illinois"},
+	{value: "WKU", fullName: "Western Kentucky"},
+	{value: "WMU", fullName: "Western Michigan"},
+	{value: "WNMEX", fullName: "Western New Mexico"},
+	{value: "WVU", fullName: "West Virginia"},
+	{value: "WICH", fullName: "Wichita St."},
+	{value: "CWM", fullName: "William & Mary"},
+	{value: "WIN", fullName: "Winthrop"},
+	{value: "WIS", fullName: "Wisconsin"},
+	{value: "MILW", fullName: "Wis.-Milwaukee"},
+	{value: "WOF", fullName: "Wofford"},
+	{value: "WRST", fullName: "Wright St."},
+	{value: "WYO", fullName: "Wyoming"},
+	{value: "XAV", fullName: "Xavier"},
+	{value: "YALE", fullName: "Yale"},
+	{value: "YSU", fullName: "Youngstown St."}
+	];
+
+/***/ },
+/* 65 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"home", fullName:'Home'},
+	          {value:"road", fullName:'Road'},
+	          {value:"neutral", fullName:'Neutral'}
+	          ];
+
+/***/ },
+/* 66 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	  {value:"Regular Season", fullName:'Regular Season'},
+	  {value:"Conf. Tournament", fullName:'Conference Tournament'},
+	  {value:"NCAA Tournament", fullName:'NCAA Tournament'},
+	  {value:"NIT", fullName:'NIT Tournament'},
+	  {value:"CBI", fullName:'CBI Tournament'},
+	  {value:"CIT", fullName:'CIT Tournament'}
+	  ];
+
+/***/ },
+/* 67 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	  {value:"2015-16", fullName:'2015-16'},
+	  {value:"2014-15", fullName:'2014-15'},
+	  {value:"2013-14", fullName:'2013-14'},
+	  {value:"2012-13", fullName:'2012-13'},
+	  {value:"2011-12", fullName:'2011-12'},
+	  {value:"2010-11", fullName:'2010-11'}
+	  ];
+
+/***/ },
+/* 68 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	  { value: '-41', fullName: '-41' },
+	  { value: '-40.5', fullName: '-40.5' },
+	  { value: '-40', fullName: '-40' },
+	  { value: '-39.5', fullName: '-39.5' },
+	  { value: '-39', fullName: '-39' },
+	  { value: '-38.5', fullName: '-38.5' },
+	  { value: '-38', fullName: '-38' },
+	  { value: '-37.5', fullName: '-37.5' },
+	  { value: '-37', fullName: '-37' },
+	  { value: '-36.5', fullName: '-36.5' },
+	  { value: '-36', fullName: '-36' },
+	  { value: '-35.5', fullName: '-35.5' },
+	  { value: '-35', fullName: '-35' },
+	  { value: '-34.5', fullName: '-34.5' },
+	  { value: '-34', fullName: '-34' },
+	  { value: '-33.5', fullName: '-33.5' },
+	  { value: '-33', fullName: '-33' },
+	  { value: '-32.5', fullName: '-32.5' },
+	  { value: '-32', fullName: '-32' },
+	  { value: '-31.5', fullName: '-31.5' },
+	  { value: '-31', fullName: '-31' },
+	  { value: '-30.5', fullName: '-30.5' },
+	  { value: '-30', fullName: '-30' },
+	  { value: '-29.5', fullName: '-29.5' },
+	  { value: '-29', fullName: '-29' },
+	  { value: '-28.5', fullName: '-28.5' },
+	  { value: '-28', fullName: '-28' },
+	  { value: '-27.5', fullName: '-27.5' },
+	  { value: '-27', fullName: '-27' },
+	  { value: '-26.5', fullName: '-26.5' },
+	  { value: '-26', fullName: '-26' },
+	  { value: '-25.5', fullName: '-25.5' },
+	  { value: '-25', fullName: '-25' },
+	  { value: '-24.5', fullName: '-24.5' },
+	  { value: '-24', fullName: '-24' },
+	  { value: '-23.5', fullName: '-23.5' },
+	  { value: '-23', fullName: '-23' },
+	  { value: '-22.5', fullName: '-22.5' },
+	  { value: '-22', fullName: '-22' },
+	  { value: '-21.5', fullName: '-21.5' },
+	  { value: '-21', fullName: '-21' },
+	  { value: '-20.5', fullName: '-20.5' },
+	  { value: '-20', fullName: '-20' },
+	  { value: '-19.5', fullName: '-19.5' },
+	  { value: '-19', fullName: '-19' },
+	  { value: '-18.5', fullName: '-18.5' },
+	  { value: '-18', fullName: '-18' },
+	  { value: '-17.5', fullName: '-17.5' },
+	  { value: '-17', fullName: '-17' },
+	  { value: '-16.5', fullName: '-16.5' },
+	  { value: '-16', fullName: '-16' },
+	  { value: '-15.5', fullName: '-15.5' },
+	  { value: '-15', fullName: '-15' },
+	  { value: '-14.5', fullName: '-14.5' },
+	  { value: '-14', fullName: '-14' },
+	  { value: '-13.5', fullName: '-13.5' },
+	  { value: '-13', fullName: '-13' },
+	  { value: '-12.5', fullName: '-12.5' },
+	  { value: '-12', fullName: '-12' },
+	  { value: '-11.5', fullName: '-11.5' },
+	  { value: '-11', fullName: '-11' },
+	  { value: '-10.5', fullName: '-10.5' },
+	  { value: '-10', fullName: '-10' },
+	  { value: '-9.5', fullName: '-9.5' },
+	  { value: '-9', fullName: '-9' },
+	  { value: '-8.5', fullName: '-8.5' },
+	  { value: '-8', fullName: '-8' },
+	  { value: '-7.5', fullName: '-7.5' },
+	  { value: '-7', fullName: '-7' },
+	  { value: '-6.5', fullName: '-6.5' },
+	  { value: '-6', fullName: '-6' },
+	  { value: '-5.5', fullName: '-5.5' },
+	  { value: '-5', fullName: '-5' },
+	  { value: '-4.5', fullName: '-4.5' },
+	  { value: '-4', fullName: '-4' },
+	  { value: '-3.5', fullName: '-3.5' },
+	  { value: '-3', fullName: '-3' },
+	  { value: '-2.5', fullName: '-2.5' },
+	  { value: '-2', fullName: '-2' },
+	  { value: '-1.5', fullName: '-1.5' },
+	  { value: '-1', fullName: '-1' },
+	  { value: '0', fullName: '0' },
+	  { value: '1', fullName: '1' },
+	  { value: '1.5', fullName: '1.5' },
+	  { value: '2', fullName: '2' },
+	  { value: '2.5', fullName: '2.5' },
+	  { value: '3', fullName: '3' },
+	  { value: '3.5', fullName: '3.5' },
+	  { value: '4', fullName: '4' },
+	  { value: '4.5', fullName: '4.5' },
+	  { value: '5', fullName: '5' },
+	  { value: '5.5', fullName: '5.5' },
+	  { value: '6', fullName: '6' },
+	  { value: '6.5', fullName: '6.5' },
+	  { value: '7', fullName: '7' },
+	  { value: '7.5', fullName: '7.5' },
+	  { value: '8', fullName: '8' },
+	  { value: '8.5', fullName: '8.5' },
+	  { value: '9', fullName: '9' },
+	  { value: '9.5', fullName: '9.5' },
+	  { value: '10', fullName: '10' },
+	  { value: '10.5', fullName: '10.5' },
+	  { value: '11', fullName: '11' },
+	  { value: '11.5', fullName: '11.5' },
+	  { value: '12', fullName: '12' },
+	  { value: '12.5', fullName: '12.5' },
+	  { value: '13', fullName: '13' },
+	  { value: '13.5', fullName: '13.5' },
+	  { value: '14', fullName: '14' },
+	  { value: '14.5', fullName: '14.5' },
+	  { value: '15', fullName: '15' },
+	  { value: '15.5', fullName: '15.5' },
+	  { value: '16', fullName: '16' },
+	  { value: '16.5', fullName: '16.5' },
+	  { value: '17', fullName: '17' },
+	  { value: '17.5', fullName: '17.5' },
+	  { value: '18', fullName: '18' },
+	  { value: '18.5', fullName: '18.5' },
+	  { value: '19', fullName: '19' },
+	  { value: '19.5', fullName: '19.5' },
+	  { value: '20', fullName: '20' },
+	  { value: '20.5', fullName: '20.5' },
+	  { value: '21', fullName: '21' },
+	  { value: '21.5', fullName: '21.5' },
+	  { value: '22', fullName: '22' },
+	  { value: '22.5', fullName: '22.5' },
+	  { value: '23', fullName: '23' },
+	  { value: '23.5', fullName: '23.5' },
+	  { value: '24', fullName: '24' },
+	  { value: '24.5', fullName: '24.5' },
+	  { value: '25', fullName: '25' },
+	  { value: '25.5', fullName: '25.5' },
+	  { value: '26', fullName: '26' },
+	  { value: '26.5', fullName: '26.5' },
+	  { value: '27', fullName: '27' },
+	  { value: '27.5', fullName: '27.5' },
+	  { value: '28', fullName: '28' },
+	  { value: '28.5', fullName: '28.5' },
+	  { value: '29', fullName: '29' },
+	  { value: '29.5', fullName: '29.5' },
+	  { value: '30', fullName: '30' },
+	  { value: '30.5', fullName: '30.5' },
+	  { value: '31', fullName: '31' },
+	  { value: '31.5', fullName: '31.5' },
+	  { value: '32', fullName: '32' },
+	  { value: '32.5', fullName: '32.5' },
+	  { value: '33', fullName: '33' },
+	  { value: '33.5', fullName: '33.5' },
+	  { value: '34', fullName: '34' },
+	  { value: '34.5', fullName: '34.5' },
+	  { value: '35', fullName: '35' },
+	  { value: '35.5', fullName: '35.5' },
+	  { value: '36', fullName: '36' },
+	  { value: '36.5', fullName: '36.5' },
+	  { value: '37', fullName: '37' },
+	  { value: '37.5', fullName: '37.5' },
+	  { value: '38', fullName: '38' },
+	  { value: '38.5', fullName: '38.5' },
+	  { value: '39', fullName: '39' },
+	  { value: '39.5', fullName: '39.5' },
+	  { value: '40', fullName: '40' },
+	  { value: '40.5', fullName: '40.5' },
+	  { value: '41', fullName: '41' },
+	  ];
+
+
+/***/ },
+/* 69 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	  { value: '>=-41', fullName: '>=-41' },
+	  { value: '>=-40.5', fullName: '>=-40.5' },
+	  { value: '>=-40', fullName: '>=-40' },
+	  { value: '>=-39.5', fullName: '>=-39.5' },
+	  { value: '>=-39', fullName: '>=-39' },
+	  { value: '>=-38.5', fullName: '>=-38.5' },
+	  { value: '>=-38', fullName: '>=-38' },
+	  { value: '>=-37.5', fullName: '>=-37.5' },
+	  { value: '>=-37', fullName: '>=-37' },
+	  { value: '>=-36.5', fullName: '>=-36.5' },
+	  { value: '>=-36', fullName: '>=-36' },
+	  { value: '>=-35.5', fullName: '>=-35.5' },
+	  { value: '>=-35', fullName: '>=-35' },
+	  { value: '>=-34.5', fullName: '>=-34.5' },
+	  { value: '>=-34', fullName: '>=-34' },
+	  { value: '>=-33.5', fullName: '>=-33.5' },
+	  { value: '>=-33', fullName: '>=-33' },
+	  { value: '>=-32.5', fullName: '>=-32.5' },
+	  { value: '>=-32', fullName: '>=-32' },
+	  { value: '>=-31.5', fullName: '>=-31.5' },
+	  { value: '>=-31', fullName: '>=-31' },
+	  { value: '>=-30.5', fullName: '>=-30.5' },
+	  { value: '>=-30', fullName: '>=-30' },
+	  { value: '>=-29.5', fullName: '>=-29.5' },
+	  { value: '>=-29', fullName: '>=-29' },
+	  { value: '>=-28.5', fullName: '>=-28.5' },
+	  { value: '>=-28', fullName: '>=-28' },
+	  { value: '>=-27.5', fullName: '>=-27.5' },
+	  { value: '>=-27', fullName: '>=-27' },
+	  { value: '>=-26.5', fullName: '>=-26.5' },
+	  { value: '>=-26', fullName: '>=-26' },
+	  { value: '>=-25.5', fullName: '>=-25.5' },
+	  { value: '>=-25', fullName: '>=-25' },
+	  { value: '>=-24.5', fullName: '>=-24.5' },
+	  { value: '>=-24', fullName: '>=-24' },
+	  { value: '>=-23.5', fullName: '>=-23.5' },
+	  { value: '>=-23', fullName: '>=-23' },
+	  { value: '>=-22.5', fullName: '>=-22.5' },
+	  { value: '>=-22', fullName: '>=-22' },
+	  { value: '>=-21.5', fullName: '>=-21.5' },
+	  { value: '>=-21', fullName: '>=-21' },
+	  { value: '>=-20.5', fullName: '>=-20.5' },
+	  { value: '>=-20', fullName: '>=-20' },
+	  { value: '>=-19.5', fullName: '>=-19.5' },
+	  { value: '>=-19', fullName: '>=-19' },
+	  { value: '>=-18.5', fullName: '>=-18.5' },
+	  { value: '>=-18', fullName: '>=-18' },
+	  { value: '>=-17.5', fullName: '>=-17.5' },
+	  { value: '>=-17', fullName: '>=-17' },
+	  { value: '>=-16.5', fullName: '>=-16.5' },
+	  { value: '>=-16', fullName: '>=-16' },
+	  { value: '>=-15.5', fullName: '>=-15.5' },
+	  { value: '>=-15', fullName: '>=-15' },
+	  { value: '>=-14.5', fullName: '>=-14.5' },
+	  { value: '>=-14', fullName: '>=-14' },
+	  { value: '>=-13.5', fullName: '>=-13.5' },
+	  { value: '>=-13', fullName: '>=-13' },
+	  { value: '>=-12.5', fullName: '>=-12.5' },
+	  { value: '>=-12', fullName: '>=-12' },
+	  { value: '>=-11.5', fullName: '>=-11.5' },
+	  { value: '>=-11', fullName: '>=-11' },
+	  { value: '>=-10.5', fullName: '>=-10.5' },
+	  { value: '>=-10', fullName: '>=-10' },
+	  { value: '>=-9.5', fullName: '>=-9.5' },
+	  { value: '>=-9', fullName: '>=-9' },
+	  { value: '>=-8.5', fullName: '>=-8.5' },
+	  { value: '>=-8', fullName: '>=-8' },
+	  { value: '>=-7.5', fullName: '>=-7.5' },
+	  { value: '>=-7', fullName: '>=-7' },
+	  { value: '>=-6.5', fullName: '>=-6.5' },
+	  { value: '>=-6', fullName: '>=-6' },
+	  { value: '>=-5.5', fullName: '>=-5.5' },
+	  { value: '>=-5', fullName: '>=-5' },
+	  { value: '>=-4.5', fullName: '>=-4.5' },
+	  { value: '>=-4', fullName: '>=-4' },
+	  { value: '>=-3.5', fullName: '>=-3.5' },
+	  { value: '>=-3', fullName: '>=-3' },
+	  { value: '>=-2.5', fullName: '>=-2.5' },
+	  { value: '>=-2', fullName: '>=-2' },
+	  { value: '>=-1.5', fullName: '>=-1.5' },
+	  { value: '>=-1', fullName: '>=-1' },
+	  { value: '>=0', fullName: '>=0' },
+	  { value: '>=1', fullName: '>=1' },
+	  { value: '>=1.5', fullName: '>=1.5' },
+	  { value: '>=2', fullName: '>=2' },
+	  { value: '>=2.5', fullName: '>=2.5' },
+	  { value: '>=3', fullName: '>=3' },
+	  { value: '>=3.5', fullName: '>=3.5' },
+	  { value: '>=4', fullName: '>=4' },
+	  { value: '>=4.5', fullName: '>=4.5' },
+	  { value: '>=5', fullName: '>=5' },
+	  { value: '>=5.5', fullName: '>=5.5' },
+	  { value: '>=6', fullName: '>=6' },
+	  { value: '>=6.5', fullName: '>=6.5' },
+	  { value: '>=7', fullName: '>=7' },
+	  { value: '>=7.5', fullName: '>=7.5' },
+	  { value: '>=8', fullName: '>=8' },
+	  { value: '>=8.5', fullName: '>=8.5' },
+	  { value: '>=9', fullName: '>=9' },
+	  { value: '>=9.5', fullName: '>=9.5' },
+	  { value: '>=10', fullName: '>=10' },
+	  { value: '>=10.5', fullName: '>=10.5' },
+	  { value: '>=11', fullName: '>=11' },
+	  { value: '>=11.5', fullName: '>=11.5' },
+	  { value: '>=12', fullName: '>=12' },
+	  { value: '>=12.5', fullName: '>=12.5' },
+	  { value: '>=13', fullName: '>=13' },
+	  { value: '>=13.5', fullName: '>=13.5' },
+	  { value: '>=14', fullName: '>=14' },
+	  { value: '>=14.5', fullName: '>=14.5' },
+	  { value: '>=15', fullName: '>=15' },
+	  { value: '>=15.5', fullName: '>=15.5' },
+	  { value: '>=16', fullName: '>=16' },
+	  { value: '>=16.5', fullName: '>=16.5' },
+	  { value: '>=17', fullName: '>=17' },
+	  { value: '>=17.5', fullName: '>=17.5' },
+	  { value: '>=18', fullName: '>=18' },
+	  { value: '>=18.5', fullName: '>=18.5' },
+	  { value: '>=19', fullName: '>=19' },
+	  { value: '>=19.5', fullName: '>=19.5' },
+	  { value: '>=20', fullName: '>=20' },
+	  { value: '>=20.5', fullName: '>=20.5' },
+	  { value: '>=21', fullName: '>=21' },
+	  { value: '>=21.5', fullName: '>=21.5' },
+	  { value: '>=22', fullName: '>=22' },
+	  { value: '>=22.5', fullName: '>=22.5' },
+	  { value: '>=23', fullName: '>=23' },
+	  { value: '>=23.5', fullName: '>=23.5' },
+	  { value: '>=24', fullName: '>=24' },
+	  { value: '>=24.5', fullName: '>=24.5' },
+	  { value: '>=25', fullName: '>=25' },
+	  { value: '>=25.5', fullName: '>=25.5' },
+	  { value: '>=26', fullName: '>=26' },
+	  { value: '>=26.5', fullName: '>=26.5' },
+	  { value: '>=27', fullName: '>=27' },
+	  { value: '>=27.5', fullName: '>=27.5' },
+	  { value: '>=28', fullName: '>=28' },
+	  { value: '>=28.5', fullName: '>=28.5' },
+	  { value: '>=29', fullName: '>=29' },
+	  { value: '>=29.5', fullName: '>=29.5' },
+	  { value: '>=30', fullName: '>=30' },
+	  { value: '>=30.5', fullName: '>=30.5' },
+	  { value: '>=31', fullName: '>=31' },
+	  { value: '>=31.5', fullName: '>=31.5' },
+	  { value: '>=32', fullName: '>=32' },
+	  { value: '>=32.5', fullName: '>=32.5' },
+	  { value: '>=33', fullName: '>=33' },
+	  { value: '>=33.5', fullName: '>=33.5' },
+	  { value: '>=34', fullName: '>=34' },
+	  { value: '>=34.5', fullName: '>=34.5' },
+	  { value: '>=35', fullName: '>=35' },
+	  { value: '>=35.5', fullName: '>=35.5' },
+	  { value: '>=36', fullName: '>=36' },
+	  { value: '>=36.5', fullName: '>=36.5' },
+	  { value: '>=37', fullName: '>=37' },
+	  { value: '>=37.5', fullName: '>=37.5' },
+	  { value: '>=38', fullName: '>=38' },
+	  { value: '>=38.5', fullName: '>=38.5' },
+	  { value: '>=39', fullName: '>=39' },
+	  { value: '>=39.5', fullName: '>=39.5' },
+	  { value: '>=40', fullName: '>=40' },
+	  { value: '>=40.5', fullName: '>=40.5' },
+	  { value: '>=41', fullName: '>=41' },
+	  ];
+
+
+/***/ },
+/* 70 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	  { value: '<=-41', fullName: '<=-41' },
+	  { value: '<=-40.5', fullName: '<=-40.5' },
+	  { value: '<=-40', fullName: '<=-40' },
+	  { value: '<=-39.5', fullName: '<=-39.5' },
+	  { value: '<=-39', fullName: '<=-39' },
+	  { value: '<=-38.5', fullName: '<=-38.5' },
+	  { value: '<=-38', fullName: '<=-38' },
+	  { value: '<=-37.5', fullName: '<=-37.5' },
+	  { value: '<=-37', fullName: '<=-37' },
+	  { value: '<=-36.5', fullName: '<=-36.5' },
+	  { value: '<=-36', fullName: '<=-36' },
+	  { value: '<=-35.5', fullName: '<=-35.5' },
+	  { value: '<=-35', fullName: '<=-35' },
+	  { value: '<=-34.5', fullName: '<=-34.5' },
+	  { value: '<=-34', fullName: '<=-34' },
+	  { value: '<=-33.5', fullName: '<=-33.5' },
+	  { value: '<=-33', fullName: '<=-33' },
+	  { value: '<=-32.5', fullName: '<=-32.5' },
+	  { value: '<=-32', fullName: '<=-32' },
+	  { value: '<=-31.5', fullName: '<=-31.5' },
+	  { value: '<=-31', fullName: '<=-31' },
+	  { value: '<=-30.5', fullName: '<=-30.5' },
+	  { value: '<=-30', fullName: '<=-30' },
+	  { value: '<=-29.5', fullName: '<=-29.5' },
+	  { value: '<=-29', fullName: '<=-29' },
+	  { value: '<=-28.5', fullName: '<=-28.5' },
+	  { value: '<=-28', fullName: '<=-28' },
+	  { value: '<=-27.5', fullName: '<=-27.5' },
+	  { value: '<=-27', fullName: '<=-27' },
+	  { value: '<=-26.5', fullName: '<=-26.5' },
+	  { value: '<=-26', fullName: '<=-26' },
+	  { value: '<=-25.5', fullName: '<=-25.5' },
+	  { value: '<=-25', fullName: '<=-25' },
+	  { value: '<=-24.5', fullName: '<=-24.5' },
+	  { value: '<=-24', fullName: '<=-24' },
+	  { value: '<=-23.5', fullName: '<=-23.5' },
+	  { value: '<=-23', fullName: '<=-23' },
+	  { value: '<=-22.5', fullName: '<=-22.5' },
+	  { value: '<=-22', fullName: '<=-22' },
+	  { value: '<=-21.5', fullName: '<=-21.5' },
+	  { value: '<=-21', fullName: '<=-21' },
+	  { value: '<=-20.5', fullName: '<=-20.5' },
+	  { value: '<=-20', fullName: '<=-20' },
+	  { value: '<=-19.5', fullName: '<=-19.5' },
+	  { value: '<=-19', fullName: '<=-19' },
+	  { value: '<=-18.5', fullName: '<=-18.5' },
+	  { value: '<=-18', fullName: '<=-18' },
+	  { value: '<=-17.5', fullName: '<=-17.5' },
+	  { value: '<=-17', fullName: '<=-17' },
+	  { value: '<=-16.5', fullName: '<=-16.5' },
+	  { value: '<=-16', fullName: '<=-16' },
+	  { value: '<=-15.5', fullName: '<=-15.5' },
+	  { value: '<=-15', fullName: '<=-15' },
+	  { value: '<=-14.5', fullName: '<=-14.5' },
+	  { value: '<=-14', fullName: '<=-14' },
+	  { value: '<=-13.5', fullName: '<=-13.5' },
+	  { value: '<=-13', fullName: '<=-13' },
+	  { value: '<=-12.5', fullName: '<=-12.5' },
+	  { value: '<=-12', fullName: '<=-12' },
+	  { value: '<=-11.5', fullName: '<=-11.5' },
+	  { value: '<=-11', fullName: '<=-11' },
+	  { value: '<=-10.5', fullName: '<=-10.5' },
+	  { value: '<=-10', fullName: '<=-10' },
+	  { value: '<=-9.5', fullName: '<=-9.5' },
+	  { value: '<=-9', fullName: '<=-9' },
+	  { value: '<=-8.5', fullName: '<=-8.5' },
+	  { value: '<=-8', fullName: '<=-8' },
+	  { value: '<=-7.5', fullName: '<=-7.5' },
+	  { value: '<=-7', fullName: '<=-7' },
+	  { value: '<=-6.5', fullName: '<=-6.5' },
+	  { value: '<=-6', fullName: '<=-6' },
+	  { value: '<=-5.5', fullName: '<=-5.5' },
+	  { value: '<=-5', fullName: '<=-5' },
+	  { value: '<=-4.5', fullName: '<=-4.5' },
+	  { value: '<=-4', fullName: '<=-4' },
+	  { value: '<=-3.5', fullName: '<=-3.5' },
+	  { value: '<=-3', fullName: '<=-3' },
+	  { value: '<=-2.5', fullName: '<=-2.5' },
+	  { value: '<=-2', fullName: '<=-2' },
+	  { value: '<=-1.5', fullName: '<=-1.5' },
+	  { value: '<=-1', fullName: '<=-1' },
+	  { value: '<=0', fullName: '<=0' },
+	  { value: '<=1', fullName: '<=1' },
+	  { value: '<=1.5', fullName: '<=1.5' },
+	  { value: '<=2', fullName: '<=2' },
+	  { value: '<=2.5', fullName: '<=2.5' },
+	  { value: '<=3', fullName: '<=3' },
+	  { value: '<=3.5', fullName: '<=3.5' },
+	  { value: '<=4', fullName: '<=4' },
+	  { value: '<=4.5', fullName: '<=4.5' },
+	  { value: '<=5', fullName: '<=5' },
+	  { value: '<=5.5', fullName: '<=5.5' },
+	  { value: '<=6', fullName: '<=6' },
+	  { value: '<=6.5', fullName: '<=6.5' },
+	  { value: '<=7', fullName: '<=7' },
+	  { value: '<=7.5', fullName: '<=7.5' },
+	  { value: '<=8', fullName: '<=8' },
+	  { value: '<=8.5', fullName: '<=8.5' },
+	  { value: '<=9', fullName: '<=9' },
+	  { value: '<=9.5', fullName: '<=9.5' },
+	  { value: '<=10', fullName: '<=10' },
+	  { value: '<=10.5', fullName: '<=10.5' },
+	  { value: '<=11', fullName: '<=11' },
+	  { value: '<=11.5', fullName: '<=11.5' },
+	  { value: '<=12', fullName: '<=12' },
+	  { value: '<=12.5', fullName: '<=12.5' },
+	  { value: '<=13', fullName: '<=13' },
+	  { value: '<=13.5', fullName: '<=13.5' },
+	  { value: '<=14', fullName: '<=14' },
+	  { value: '<=14.5', fullName: '<=14.5' },
+	  { value: '<=15', fullName: '<=15' },
+	  { value: '<=15.5', fullName: '<=15.5' },
+	  { value: '<=16', fullName: '<=16' },
+	  { value: '<=16.5', fullName: '<=16.5' },
+	  { value: '<=17', fullName: '<=17' },
+	  { value: '<=17.5', fullName: '<=17.5' },
+	  { value: '<=18', fullName: '<=18' },
+	  { value: '<=18.5', fullName: '<=18.5' },
+	  { value: '<=19', fullName: '<=19' },
+	  { value: '<=19.5', fullName: '<=19.5' },
+	  { value: '<=20', fullName: '<=20' },
+	  { value: '<=20.5', fullName: '<=20.5' },
+	  { value: '<=21', fullName: '<=21' },
+	  { value: '<=21.5', fullName: '<=21.5' },
+	  { value: '<=22', fullName: '<=22' },
+	  { value: '<=22.5', fullName: '<=22.5' },
+	  { value: '<=23', fullName: '<=23' },
+	  { value: '<=23.5', fullName: '<=23.5' },
+	  { value: '<=24', fullName: '<=24' },
+	  { value: '<=24.5', fullName: '<=24.5' },
+	  { value: '<=25', fullName: '<=25' },
+	  { value: '<=25.5', fullName: '<=25.5' },
+	  { value: '<=26', fullName: '<=26' },
+	  { value: '<=26.5', fullName: '<=26.5' },
+	  { value: '<=27', fullName: '<=27' },
+	  { value: '<=27.5', fullName: '<=27.5' },
+	  { value: '<=28', fullName: '<=28' },
+	  { value: '<=28.5', fullName: '<=28.5' },
+	  { value: '<=29', fullName: '<=29' },
+	  { value: '<=29.5', fullName: '<=29.5' },
+	  { value: '<=30', fullName: '<=30' },
+	  { value: '<=30.5', fullName: '<=30.5' },
+	  { value: '<=31', fullName: '<=31' },
+	  { value: '<=31.5', fullName: '<=31.5' },
+	  { value: '<=32', fullName: '<=32' },
+	  { value: '<=32.5', fullName: '<=32.5' },
+	  { value: '<=33', fullName: '<=33' },
+	  { value: '<=33.5', fullName: '<=33.5' },
+	  { value: '<=34', fullName: '<=34' },
+	  { value: '<=34.5', fullName: '<=34.5' },
+	  { value: '<=35', fullName: '<=35' },
+	  { value: '<=35.5', fullName: '<=35.5' },
+	  { value: '<=36', fullName: '<=36' },
+	  { value: '<=36.5', fullName: '<=36.5' },
+	  { value: '<=37', fullName: '<=37' },
+	  { value: '<=37.5', fullName: '<=37.5' },
+	  { value: '<=38', fullName: '<=38' },
+	  { value: '<=38.5', fullName: '<=38.5' },
+	  { value: '<=39', fullName: '<=39' },
+	  { value: '<=39.5', fullName: '<=39.5' },
+	  { value: '<=40', fullName: '<=40' },
+	  { value: '<=40.5', fullName: '<=40.5' },
+	  { value: '<=41', fullName: '<=41' },
+	  ];
+
+
+/***/ },
+/* 71 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"FOR", fullName:'For'},
+	          {value:"AGAINST", fullName:'Against'},
+	          {value:"NONE", fullName:'None'}
+	          ];
+
+/***/ },
+/* 72 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"favorite", fullName:'Favorite'},
+	          {value:"underdog", fullName:'Underdog'}
+	          ];
+
+/***/ },
+/* 73 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+	          {value:"UP", fullName:'Up'},
+	          {value:"DOWN", fullName:'Down'},
+	          {value:"NONE", fullName:'None'}
+	          ];
+
+/***/ },
+/* 74 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = [
+
+	 {value: "America East", fullName: "America East"},
+	 {value: "American Athletic Conference", fullName: "AAC"},
+	 {value: "Atlantic 10", fullName: "Atlantic 10"},
+	 {value: "Atlantic Coast", fullName: "ACC"},
+	 {value: "Atlantic Sun", fullName: "Atlantic Sun"},
+	 {value: "Big 12", fullName: "Big 12"},
+	 {value: "Big East", fullName: "Big East"},
+	 {value: "Big Sky", fullName: "Big Sky"},
+	 {value: "Big South", fullName: "Big South"},
+	 {value: "Big Ten", fullName: "Big Ten"},
+	 {value: "Big West", fullName: "Big West"},
+	 {value: "Colonial Athletic Association", fullName: "Colonial"},
+	 {value: "Conference USA", fullName: "C-USA"},
+	 {value: "Horizon League", fullName: "Horizon"},
+	 {value: "Ivy League", fullName: "Ivy League"},
+	 {value: "Metro Atlantic Athletic", fullName: "MAAC"},
+	 {value: "Mid-American", fullName: "MAC"},
+	 {value: "Mid-Eastern Athletic", fullName: "MEAC"},
+	 {value: "Missouri Valley", fullName: "Missouri Valley"},
+	 {value: "Mountain West", fullName: "Mountain West"},
+	 {value: "Northeast", fullName: "Northeast"},
+	 {value: "Ohio Valley", fullName: "Ohio Valley"},
+	 {value: "Pacific-12", fullName: "Pac-12"},
+	 {value: "Patriot League", fullName: "Patriot League"},
+	 {value: "Southeastern", fullName: "SEC"},
+	 {value: "Southern", fullName: "Southern"},
+	 {value: "Southland", fullName: "Southland"},
+	 {value: "Southwestern Athletic", fullName: "SWAC"},
+	 {value: "Summit", fullName: "Summit League"},
+	 {value: "Sun Belt", fullName: "Sun Belt"},
+	 {value: "West Coast", fullName: "West Coast Conference"},
+	 {value: "Western Athletic", fullName: "WAC"}
+	];
+
+/***/ },
+/* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var teamList = __webpack_require__(76);
+	var teamSiteList = __webpack_require__(77);
+	var weekList = __webpack_require__(78);
+	var gameTypeList = __webpack_require__(79);
+	var seasonList = __webpack_require__(80);
+	var spreadList = __webpack_require__(81);
+	var spreadGreaterList = __webpack_require__(82);
+	var spreadLessList = __webpack_require__(83);
+	var spreadMoveList = __webpack_require__(84);
+	var spreadStatusList = __webpack_require__(85);
+	var totalMoveList = __webpack_require__(86);
 
 	module.exports = {
 
@@ -41214,7 +42267,7 @@
 	};
 
 /***/ },
-/* 64 */
+/* 76 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41255,7 +42308,7 @@
 	          ];
 
 /***/ },
-/* 65 */
+/* 77 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41267,7 +42320,7 @@
 	          ];
 
 /***/ },
-/* 66 */
+/* 78 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41298,7 +42351,7 @@
 	        ];
 
 /***/ },
-/* 67 */
+/* 79 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41309,7 +42362,7 @@
 	          ];
 
 /***/ },
-/* 68 */
+/* 80 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41323,7 +42376,7 @@
 	          ];
 
 /***/ },
-/* 69 */
+/* 81 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41399,7 +42452,7 @@
 	       ];
 
 /***/ },
-/* 70 */
+/* 82 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41475,7 +42528,7 @@
 	       ];
 
 /***/ },
-/* 71 */
+/* 83 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41551,7 +42604,7 @@
 	       ];
 
 /***/ },
-/* 72 */
+/* 84 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41563,7 +42616,7 @@
 	          ];
 
 /***/ },
-/* 73 */
+/* 85 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41574,7 +42627,7 @@
 	          ];
 
 /***/ },
-/* 74 */
+/* 86 */
 /***/ function(module, exports) {
 
 	'use strict';
