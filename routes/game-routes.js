@@ -21,7 +21,9 @@ module.exports = function(router) {
   router.get('/nba', function(req, res) {
     sql.sync()
       .then(function() {
-        nbaGame.all()
+        nbaGame.findAll({
+          where: req.query
+        })
           .then(function(data) {
             res.json(data);
           })
@@ -37,24 +39,10 @@ module.exports = function(router) {
   router.get('/nfl', function(req, res) {
     sql.sync()
       .then(function() {
-        nflGame.all()
-          .then(function(data) {
-            res.json(data);
-          })
-          .error(function(err) {
-            console.log(err);
-            res.status(500).json({
-              msg: 'server error'
-            });
-          });
-      });
-  });
-
-  router.get('/', function(req, res) {
-    sql.sync()
-      .then(function() {
-        nflGame.all()
-          .then(function(data) {
+        nflGame.findAll({
+          where: req.query
+        })
+        .then(function(data) {
             res.json(data);
           })
           .error(function(err) {
@@ -69,7 +57,9 @@ module.exports = function(router) {
   router.get('/cfb', function(req, res) {
     sql.sync()
       .then(function() {
-        cfbGame.all()
+        cfbGame.findAll({
+          where: req.query
+        })
           .then(function(data) {
             res.json(data);
           })
@@ -86,10 +76,7 @@ module.exports = function(router) {
     sql.sync()
       .then(function() {
         cbbGame.findAll({
-          where: {
-            teamName: 'Kentucky',
-            season: '2015-16',
-          }
+          where: req.query
         })
           .then(function(data) {
             res.json(data);
