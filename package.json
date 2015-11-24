@@ -36,6 +36,7 @@
     "node-libs-browser": "^0.5.2",
     "style-loader": "^0.12.4",
     "superagent": "^1.3.0",
+    "superagent-cli": "^2.0.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1"
