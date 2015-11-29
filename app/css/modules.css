@@ -9,14 +9,6 @@
 	border-bottom-style: ridge;
 
 }
- .subheading {
-  font-family: 'BentonSansRegular';
-  text-decoration: underline;
-  text-align: center;
-  font-weight: bold;
- 	font-size: 32px;
- 	margin-top: 15px;
- }
 
  .feedback {
 	margin-top: 10px;
