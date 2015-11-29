@@ -11,7 +11,7 @@
 }
 
  .feedback {
-	margin-top: 10px;
+	margin-top: 20px;
 	text-align: center;
  }
 
@@ -90,6 +90,7 @@
 
 #team, #teamAbbrev {
 font-size: 20px;
+margin-top: 5px;
 clear: both;
 margin-left: 300px;
 height: 40px;
