@@ -10,12 +10,17 @@
 
 }
  .subheading {
-  font-family: arial;
+  font-family: 'BentonSansRegular';
   text-decoration: underline;
   text-align: center;
   font-weight: bold;
  	font-size: 32px;
- 	margin-top: 20px;
+ 	margin-top: 15px;
+ }
+
+ .feedback {
+	margin-top: 10px;
+	text-align: center;
  }
 
 .navBar {
@@ -91,14 +96,7 @@
 	font-weight: bold;
 }
 
-#cfbTeam {
-margin-top: 80px;
-font-size: 20px;
-height: 40px;
-}
-
 #team, #teamAbbrev {
-margin-top: 20px;
 font-size: 20px;
 clear: both;
 margin-left: 300px;
