@@ -88,6 +88,10 @@ module.exports = function(app) {
 
       $scope.buttonText = 'Loading Games...';
 
+      if ($scope.path === '/') {
+        $scope.path = '/nfl';
+      }
+
       $http.get('/api' + $scope.path, {
           params: $scope.params
         })
